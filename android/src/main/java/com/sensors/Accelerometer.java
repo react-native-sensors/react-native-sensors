@@ -13,14 +13,14 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
 
-public class Accelerometer extends ReactContextBaseJavaModule {
+public class Accelerometer extends ReactContextBaseJavaModule implements SensorEventListener {
 
   private final ReactApplicationContext reactContext;
   private final SensorManager sensorManager;
   private final Sensor sensor;
   private final int interval;
 
-  public Accelerometer(ReactApplicationContext reactContext) implements SensorEventListener {
+  public Accelerometer(ReactApplicationContext reactContext) {
     super(reactContext);
     this.reactContext = reactContext;
     this.sensorManager = (SensorManager)reactContext.getSystemService(reactContext.SENSOR_SERVICE);
