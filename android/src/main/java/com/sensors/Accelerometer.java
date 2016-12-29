@@ -55,7 +55,7 @@ public class Accelerometer extends ReactContextBaseJavaModule implements SensorE
 
   @Override
   public String getName() {
-    return "RNSensors";
+    return "Accelerometer";
   }
 
   // SensorEventListener Interface
