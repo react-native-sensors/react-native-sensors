@@ -33,14 +33,14 @@ function createSensorMonitorCreator(sensorType) {
     const observable = Rx.Observable.create(function (obs) {
       observer = obs;
       DeviceEventEmitter.addListener(sensorType, function(data) {
-        observer.onNext(data);
+        observer.next(data);
       });
     })
 
     // Stop the sensor manager
     observable.stop = () => {
       RNSensors.stop(sensorType);
-      observer.onCompleted();
+      observer.complete();
     };
 
     return observable;
