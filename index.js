@@ -1,8 +1,6 @@
 import { NativeModules, DeviceEventEmitter } from 'react-native';
 import { Observable } from 'rxjs/Observable';
-
-
-const { Gyroscope as GyroNative, Accelerometer as AccNative } = NativeModules;
+const { Gyroscope: GyroNative, Accelerometer: AccNative } = NativeModules;
 
 const handle = {
   Accelerometer: AccNative,
@@ -25,7 +23,7 @@ const RNSensors = {
 function createSensorMonitorCreator(sensorType) {
   function Creator(options) {
     const {
-      updateInterval, // time in ms
+      updateInterval = 100, // time in ms
     } = options;
 
     // Start the sensor manager
