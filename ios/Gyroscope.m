@@ -43,7 +43,7 @@ RCT_EXPORT_METHOD(setUpdateInterval:(double) interval) {
 
 RCT_EXPORT_METHOD(getUpdateInterval:(RCTResponseSenderBlock) cb) {
     double interval = self->_motionManager.gyroUpdateInterval;
-    NSLog(@"getGyroscopeUpdateInterval: %f", interval);
+    NSLog(@"getUpdateInterval: %f", interval);
     cb(@[[NSNull null], [NSNumber numberWithDouble:interval]]);
 }
 
@@ -66,10 +66,10 @@ RCT_EXPORT_METHOD(getData:(RCTResponseSenderBlock) cb) {
 
 RCT_EXPORT_METHOD(startUpdates) {
     NSLog(@"startUpdates");
-    [self->_motionManager startGyroscopeUpdates];
+    [self->_motionManager startGyroUpdates];
 
     /* Receive the gyroscope data on this block */
-    [self->_motionManager startGyroscopeUpdatesToQueue:[NSOperationQueue mainQueue]
+    [self->_motionManager startGyroUpdatesToQueue:[NSOperationQueue mainQueue]
                                       withHandler:^(CMGyroData *gyroData, NSError *error)
      {
          double x = gyroData.rotationRate.x;
@@ -90,7 +90,7 @@ RCT_EXPORT_METHOD(startUpdates) {
 
 RCT_EXPORT_METHOD(stopUpdates) {
     NSLog(@"stopUpdates");
-    [self->_motionManager stopGyroscopeUpdates];
+    [self->_motionManager stopGyroUpdates];
 }
 
 @end
