@@ -1,0 +1,20 @@
+{
+  "name": "react-native-sensors",
+  "version": "0.0.1-alpha.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": "",
+  "license": "",
+  "peerDependencies": {
+    "react-native": "^0.39.0"
+  },
+  "dependencies": {
+    "rxjs": "^5.0.2"
+  }
+}
