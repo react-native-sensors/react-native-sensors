@@ -1,5 +1,5 @@
 import { NativeModules, DeviceEventEmitter } from 'react-native';
-import { Observable } from 'rxjs/Observable';
+import Rx from 'rxjs/Rx';
 const { Gyroscope: GyroNative, Accelerometer: AccNative } = NativeModules;
 
 const handle = {
@@ -8,33 +8,39 @@ const handle = {
 };
 
 const RNSensors = {
-  start(type, updateInterval) {
+  start: function (type, updateInterval) {
     const api = handle[type];
     api.setUpdateInterval(updateInterval);
     api.startUpdates();
-  }
+  },
 
-  stop(type) {
+  stop: function (type) {
     const api = handle[type];
     api.stopUpdates();
-  }
-}
+  },
+};
 
 function createSensorMonitorCreator(sensorType) {
   function Creator(options) {
     const {
       updateInterval = 100, // time in ms
     } = options;
-
+    let observer;
     // Start the sensor manager
     RNSensors.start(sensorType, updateInterval);
 
     // Instanciate observable
-    const observable = Observable.bindCallback(DeviceEventEmitter.addListener(sensorType));
+    const observable = Rx.Observable.create(function (obs) {
+      observer = obs;
+      DeviceEventEmitter.addListener(sensorType, function(data) {
+        observer.onNext(data);
+      });
+    })
 
     // Stop the sensor manager
     observable.stop = () => {
       RNSensors.stop(sensorType);
+      observer.onCompleted();
     };
 
     return observable;
