@@ -8,17 +8,21 @@ import android.hardware.SensorManager;
 import android.util.Log;
 import android.support.annotation.Nullable;
 
+import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.Callback;
+import com.facebook.react.modules.core.DeviceEventManagerModule;
 
 public class Accelerometer extends ReactContextBaseJavaModule implements SensorEventListener {
 
   private final ReactApplicationContext reactContext;
   private final SensorManager sensorManager;
   private final Sensor sensor;
-  private final int interval;
+  private int interval;
+  private Arguments arguments;
 
   public Accelerometer(ReactApplicationContext reactContext) {
     super(reactContext);
@@ -67,13 +71,13 @@ public class Accelerometer extends ReactContextBaseJavaModule implements SensorE
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
       Sensor mySensor = sensorEvent.sensor;
-      WritableMap map = mArguments.createMap();
+      WritableMap map = arguments.createMap();
 
       if (mySensor.getType() == Sensor.TYPE_ACCELEROMETER) {
 				map.putDouble("x", sensorEvent.values[0]);
 				map.putDouble("y", sensorEvent.values[1]);
 				map.putDouble("z", sensorEvent.values[2]);
-        map.putDouble("timestamp", (double) curTime);
+        map.putDouble("timestamp", (double) System.currentTimeMillis());
         sendEvent("Accelerometer", map);
       }
     }
