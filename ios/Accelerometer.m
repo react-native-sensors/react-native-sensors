@@ -38,8 +38,8 @@ RCT_EXPORT_MODULE();
     return self;
 }
 
-RCT_EXPORT_METHOD(setAccelerometerInterval:(double) interval) {
-    NSLog(@"setAccelerometerInterval: %f", interval);
+RCT_EXPORT_METHOD(setUpdateInterval:(double) interval) {
+    NSLog(@"setUpdateInterval: %f", interval);
 
     [self->_motionManager setAccelerometerUpdateInterval:interval];
 }

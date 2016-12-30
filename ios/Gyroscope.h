@@ -3,7 +3,6 @@
 #import "RCTBridgeModule.h"
 #import <CoreMotion/CoreMotion.h>
 
-
 @interface Gyroscope : NSObject<RCTBridgeModule> {
     CMMotionManager *_motionManager;
 }
