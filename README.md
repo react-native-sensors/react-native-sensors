@@ -35,7 +35,7 @@
 
 ## Usage
 ```javascript
-import { Accelerometer, Gyroscope, Magnetometer } from 'react-native-sensors';
+import { Accelerometer, Gyroscope } from 'react-native-sensors';
 const accelerationObservable = new Accelerometer({
   updateInterval: 100, // defaults to 100ms
 });
