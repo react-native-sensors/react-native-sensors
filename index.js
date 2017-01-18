@@ -1,7 +1,7 @@
 import Sensors from './src/sensors';
-import SensorAwareView from './src/SensorAwareView';
+import decorator from './src/decorator';
 
 export default {
   ...Sensors,
-  SensorAwareView,
+  decorator,
 };
