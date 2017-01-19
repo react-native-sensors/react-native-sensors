@@ -7,7 +7,7 @@ const optionsType = React.PropTypes.shape({
 });
 
 const sensorType = React.PropTypes.oneOf([
-  React.Proptypes.bool,
+  React.PropTypes.bool,
   optionsType,
 ]);
 
