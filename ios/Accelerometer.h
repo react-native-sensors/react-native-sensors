@@ -1,6 +1,6 @@
 // Inspired by https://github.com/pwmckenna/react-native-motion-manager
 
-#import "RCTBridgeModule.h"
+#import <React/RCTBridgeModule.h>
 #import <CoreMotion/CoreMotion.h>
 
 @interface Accelerometer : NSObject <RCTBridgeModule> {
