@@ -32,7 +32,7 @@ RCT_EXPORT_MODULE();
         }
         else
         {
-            NSLog(@"Accelerometer not Available!");
+            NSLog(@"Accelerometer not available!");
         }
     }
     return self;
@@ -40,8 +40,9 @@ RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(setUpdateInterval:(double) interval) {
     NSLog(@"setUpdateInterval: %f", interval);
+    double intervalInSeconds = interval * 1000;
 
-    [self->_motionManager setAccelerometerUpdateInterval:interval];
+    [self->_motionManager setAccelerometerUpdateInterval:intervalInSeconds];
 }
 
 RCT_EXPORT_METHOD(getUpdateInterval:(RCTResponseSenderBlock) cb) {
