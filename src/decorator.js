@@ -1,23 +1,27 @@
 import React from 'react';
 import Sensors from './sensors';
 
-const AVAILABLE_SENSORS = ['Accelerometer', 'Gyroscope', 'Magnetometer'];
+const AVAILABLE_SENSORS = ['Accelerometer', 'Gyroscope'];
 const optionsType = React.PropTypes.shape({
   updateInterval: React.PropTypes.number,
 });
-
-const sensorType = React.PropTypes.oneOf([
-  React.PropTypes.bool,
-  optionsType,
-]);
 
 class SensorWrapper extends React.Component {
   static propTypes = {
     children: React.PropTypes.node.isRequired,
     sensors: React.PropTypes.shape({
-      Accelerometer: sensorType,
-      Gyroscope: sensorType,
-      Magnetometer: sensorType,
+      Accelerometer: React.PropTypes.oneOfType([
+        React.PropTypes.bool,
+        optionsType,
+      ]),
+      Gyroscope: React.PropTypes.oneOfType([
+        React.PropTypes.bool,
+        optionsType,
+      ]),
+      Magnetometer: React.PropTypes.oneOfType([
+        React.PropTypes.bool,
+        optionsType,
+      ]),
     }),
   }
 
@@ -30,11 +34,12 @@ class SensorWrapper extends React.Component {
 
   componentWillMount() {
     const observables = [];
-    this.props.sensors.entries().forEach(([name, sensorOptions]) => {
-      const observable = new Sensors[name](sensorOptions);
+    Object.entries(this.props.sensors).forEach(([name, sensorOptions]) => {
+      const options = typeof(sensorOptions) === 'boolean' ? null : sensorOptions;
+      const observable = new Sensors[name](options);
       observables.push(observable);
 
-      onservable.subscribe(sensorValue => {
+      observable.subscribe(sensorValue => {
         this.setState({
           [name]: sensorValue,
         });
@@ -51,14 +56,18 @@ class SensorWrapper extends React.Component {
   }
 
   render() {
-    return React.cloneElement(this.children, this.state);
+    return React.cloneElement(this.props.children, this.state);
   }
 }
 
-export default function sensors(options = {}) {
+export default function decorator(options = {}) {
   const sensors = Object.keys(options)
                     .filter(key => AVAILABLE_SENSORS.includes(key))
-                    .filter(key => options[key]);
+                    .filter(key => options[key])
+                    .reduce((carry, key) => {
+                      carry[key] = options[key];
+                      return carry
+                    }, {});
 
   return Component => props => (
     <SensorWrapper sensors={sensors}>
