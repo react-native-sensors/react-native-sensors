@@ -21,10 +21,10 @@ const RNSensors = {
 };
 
 function createSensorMonitorCreator(sensorType) {
-  function Creator(options) {
+  function Creator(options = {}) {
     const {
       updateInterval = 100, // time in ms
-    } = options;
+    } = (options || {});
     let observer;
     // Start the sensor manager
     RNSensors.start(sensorType, updateInterval);
