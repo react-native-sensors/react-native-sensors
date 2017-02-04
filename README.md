@@ -1,6 +1,14 @@
 
 # react-native-sensors
 
+## Supported React Native Versions
+
+| React Native Version      | react-native-sensors Version |
+|---------------------------|------------------------------|
+| <= 39                     | < 1.0                        |
+| >= 40                     | >= 1.0                       |
+
+
 ## Getting started
 
 `$ npm install react-native-sensors --save`
