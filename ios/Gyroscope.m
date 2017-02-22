@@ -37,7 +37,7 @@ RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(setUpdateInterval:(double) interval) {
     NSLog(@"setGyroUpdateInterval: %f", interval);
-    double intervalInSeconds = interval * 1000;
+    double intervalInSeconds = interval / 1000;
 
     [self->_motionManager setGyroUpdateInterval:intervalInSeconds];
 }
