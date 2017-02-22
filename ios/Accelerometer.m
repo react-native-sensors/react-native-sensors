@@ -40,7 +40,7 @@ RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(setUpdateInterval:(double) interval) {
     NSLog(@"setUpdateInterval: %f", interval);
-    double intervalInSeconds = interval * 1000;
+    double intervalInSeconds = interval / 1000;
 
     [self->_motionManager setAccelerometerUpdateInterval:intervalInSeconds];
 }
@@ -72,7 +72,7 @@ RCT_EXPORT_METHOD(startUpdates) {
     NSLog(@"startUpdates");
     [self->_motionManager startAccelerometerUpdates];
 
-    /* Receive the ccelerometer data on this block */
+    /* Receive the accelerometer data on this block */
     [self->_motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue mainQueue]
                                                withHandler:^(CMAccelerometerData *accelerometerData, NSError *error)
      {
