@@ -1,8 +1,12 @@
 {
   "name": "react-native-sensors",
   "version": "2.0.0",
-  "description": "",
+  "description": "A developer friendly approach for sensors in react-native",
   "main": "index.js",
+  "repository": {
+    "url": "git@github.com:react-native-sensors/react-native-sensors.git",
+    "type": "git"
+  },
   "keywords": [
     "react-native"
   ],
