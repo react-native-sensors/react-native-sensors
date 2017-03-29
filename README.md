@@ -41,6 +41,16 @@
       compile project(':react-native-sensors')
   	```
 
+#### Windows
+
+1. In Visual Studio, right click on the solution ➜ `add` ➜ `existing project...`
+2. Go to `node_modules` ➜ `react-native-sensors` and add `RNSensors.csproj`
+3. In Visual Studio, in the solution explorer, expand your project, right click `References` ➜ `Add Reference...` and add RNSensors
+4. In the MainPage.cs
+  - Add `using RNSensors;`
+  - Add `new RNSensorsPackage()` on the List of Packages, right below `new MainReactPackage()`
+5. Done !
+
 ## Usage
 
 ### Sensor API

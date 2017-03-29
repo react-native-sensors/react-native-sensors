@@ -29,6 +29,11 @@ project.xcworkspace
 .gradle
 local.properties
 
+# Windows
+#
+bin/
+obj/
+
 # node.js
 #
 node_modules/
