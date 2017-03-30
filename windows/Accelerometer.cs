@@ -15,12 +15,7 @@ namespace RNSensors
 
         public Accelerometer(ReactContext reactContext) : base(reactContext)
         {
-            //_accelerometer = Sensors.Accelerometer.GetDefault();
-
-            //if (_accelerometer == null)
-            //{
-            //    throw new Exception("No Accelerometer found");
-            //}
+            
         }
 
         public override string Name
@@ -35,7 +30,7 @@ namespace RNSensors
         {
             Sensors.AccelerometerReading reading = e.Reading;
 
-            this.SendEvent("Accelerometer", new AccelerometerJsonObject
+            this.SendEvent("Accelerometer", new RNSensorsJsonObject
             {
                 X = reading.AccelerationX,
                 Y = reading.AccelerationY,
@@ -48,6 +43,7 @@ namespace RNSensors
         public void setUpdateInterval(int newInterval)
         {
             this.interval = newInterval;
+            if (_accelerometer != null) _accelerometer.ReportInterval = (uint)this.interval;
         }
 
         [ReactMethod]
@@ -57,6 +53,8 @@ namespace RNSensors
             {
                 _accelerometer = Sensors.Accelerometer.GetDefault();
                 if (_accelerometer == null) throw new Exception("No Accelerometer found");
+
+                this.setUpdateInterval(this.interval);
             }
             _accelerometer.ReadingChanged += new TypedEventHandler<Sensors.Accelerometer, Sensors.AccelerometerReadingChangedEventArgs>(ReadingChanged);
         }
@@ -64,14 +62,8 @@ namespace RNSensors
         [ReactMethod]
         public void stopUpdates()
         {
-            //throw new NotImplementedException();
+            _accelerometer.ReadingChanged -= new TypedEventHandler<Sensors.Accelerometer, Sensors.AccelerometerReadingChangedEventArgs>(ReadingChanged);
         }
-
-        //[ReactMethod]
-        //public string getName()
-        //{
-        //    return this.Name;
-        //}
 
         private void SendEvent(string eventName, JObject parameters)
         {
@@ -92,26 +84,6 @@ namespace RNSensors
         public void OnSuspend()
         {
             throw new NotImplementedException();
-        }
-
-        public class AccelerometerJsonObject
-        {
-            [JsonProperty("X")]
-            public double X;
-
-            [JsonProperty("Y")]
-            public double Y;
-
-            [JsonProperty("Z")]
-            public double Z;
-
-            [JsonProperty("timestamp")]
-            public DateTimeOffset Timestamp;
-
-            public JObject ToJObject()
-            {
-                return JObject.Parse(JsonConvert.SerializeObject(this));
-            }
         }
     }
 }

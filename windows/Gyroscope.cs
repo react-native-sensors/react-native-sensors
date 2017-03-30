@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using ReactNative.Bridge;
 using ReactNative.Modules.Core;
 using System;
@@ -11,16 +10,11 @@ namespace RNSensors
     public class Gyroscope : ReactContextNativeModuleBase, ILifecycleEventListener
     {
         private Sensors.Gyrometer _gyrometer;
-        private int interval;
+        private int interval = 100;
 
         public Gyroscope(ReactContext reactContext) : base(reactContext)
         {
-            //_gyrometer = Sensors.Gyrometer.GetDefault();
-
-            //if (_gyrometer == null)
-            //{
-            //    throw new Exception("No Gyroscope found");
-            //}
+            
         }
 
         public override string Name
@@ -35,19 +29,20 @@ namespace RNSensors
         {
             Sensors.GyrometerReading reading = e.Reading;
 
-            this.SendEvent("Gyroscope", new AccelerometerJsonObject
+            this.SendEvent("Gyroscope", new RNSensorsJsonObject
             {
                 X = reading.AngularVelocityX,
                 Y = reading.AngularVelocityY,
                 Z = reading.AngularVelocityZ,
                 Timestamp = reading.Timestamp
-            });
+            }.ToJObject());
         }
 
         [ReactMethod]
         public void setUpdateInterval(int newInterval)
         {
             this.interval = newInterval;
+            if (_gyrometer != null) _gyrometer.ReportInterval = (uint)this.interval;
         }
 
         [ReactMethod]
@@ -57,6 +52,8 @@ namespace RNSensors
             {
                 _gyrometer = Sensors.Gyrometer.GetDefault();
                 if (_gyrometer == null) throw new Exception("No Gyroscope found");
+
+                this.setUpdateInterval(this.interval);
             }
             _gyrometer.ReadingChanged += new TypedEventHandler<Sensors.Gyrometer, Sensors.GyrometerReadingChangedEventArgs>(ReadingChanged);
         }
@@ -64,14 +61,8 @@ namespace RNSensors
         [ReactMethod]
         public void stopUpdates()
         {
-            throw new NotImplementedException();
+            _gyrometer.ReadingChanged -= new TypedEventHandler<Sensors.Gyrometer, Sensors.GyrometerReadingChangedEventArgs>(ReadingChanged);
         }
-
-        //[ReactMethod]
-        //public string getName()
-        //{
-        //    return this.Name;
-        //}
 
         private void SendEvent(string eventName, JObject parameters)
         {
@@ -92,21 +83,6 @@ namespace RNSensors
         public void OnSuspend()
         {
             throw new NotImplementedException();
-        }
-
-        public class AccelerometerJsonObject : JObject
-        {
-            [JsonProperty("x")]
-            public double X;
-
-            [JsonProperty("Y")]
-            public double Y;
-
-            [JsonProperty("Z")]
-            public double Z;
-
-            [JsonProperty("timestamp")]
-            public DateTimeOffset Timestamp;
         }
     }
 }
