@@ -11,6 +11,7 @@ namespace RNSensors
     {
         private Sensors.Gyrometer _gyrometer;
         private int interval = 100;
+        private DateTimeOffset _lastReading = DateTimeOffset.Now;
 
         public Gyroscope(ReactContext reactContext) : base(reactContext)
         {
@@ -29,20 +30,24 @@ namespace RNSensors
         {
             Sensors.GyrometerReading reading = e.Reading;
 
-            this.SendEvent("Gyroscope", new RNSensorsJsonObject
+            if (_lastReading.AddMilliseconds(interval) <= reading.Timestamp)
             {
-                X = reading.AngularVelocityX,
-                Y = reading.AngularVelocityY,
-                Z = reading.AngularVelocityZ,
-                Timestamp = reading.Timestamp
-            }.ToJObject());
+                _lastReading = reading.Timestamp;
+
+                this.SendEvent("Gyroscope", new RNSensorsJsonObject
+                {
+                    X = reading.AngularVelocityX,
+                    Y = reading.AngularVelocityY,
+                    Z = reading.AngularVelocityZ,
+                    Timestamp = reading.Timestamp
+                }.ToJObject());
+            }
         }
 
         [ReactMethod]
         public void setUpdateInterval(int newInterval)
         {
             this.interval = newInterval;
-            if (_gyrometer != null) _gyrometer.ReportInterval = (uint)this.interval;
         }
 
         [ReactMethod]
@@ -52,8 +57,6 @@ namespace RNSensors
             {
                 _gyrometer = Sensors.Gyrometer.GetDefault();
                 if (_gyrometer == null) throw new Exception("No Gyroscope found");
-
-                this.setUpdateInterval(this.interval);
             }
             _gyrometer.ReadingChanged += new TypedEventHandler<Sensors.Gyrometer, Sensors.GyrometerReadingChangedEventArgs>(ReadingChanged);
         }

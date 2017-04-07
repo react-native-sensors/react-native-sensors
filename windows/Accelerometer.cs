@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using ReactNative.Bridge;
 using ReactNative.Modules.Core;
 using System;
@@ -11,7 +10,8 @@ namespace RNSensors
     public class Accelerometer : ReactContextNativeModuleBase, ILifecycleEventListener
     {
         private Sensors.Accelerometer _accelerometer;
-        private int interval;
+        private int interval = 100;
+        private DateTimeOffset _lastReading = DateTimeOffset.Now;
 
         public Accelerometer(ReactContext reactContext) : base(reactContext)
         {
@@ -30,20 +30,24 @@ namespace RNSensors
         {
             Sensors.AccelerometerReading reading = e.Reading;
 
-            this.SendEvent("Accelerometer", new RNSensorsJsonObject
+            if (_lastReading.AddMilliseconds(interval) <= reading.Timestamp)
             {
-                X = reading.AccelerationX,
-                Y = reading.AccelerationY,
-                Z = reading.AccelerationZ,
-                Timestamp = reading.Timestamp
-            }.ToJObject());
+                _lastReading = reading.Timestamp;
+
+                this.SendEvent("Accelerometer", new RNSensorsJsonObject
+                {
+                    X = reading.AccelerationX,
+                    Y = reading.AccelerationY,
+                    Z = reading.AccelerationZ,
+                    Timestamp = reading.Timestamp
+                }.ToJObject());
+            }
         }
 
         [ReactMethod]
         public void setUpdateInterval(int newInterval)
         {
             this.interval = newInterval;
-            if (_accelerometer != null) _accelerometer.ReportInterval = (uint)this.interval;
         }
 
         [ReactMethod]
@@ -53,8 +57,6 @@ namespace RNSensors
             {
                 _accelerometer = Sensors.Accelerometer.GetDefault();
                 if (_accelerometer == null) throw new Exception("No Accelerometer found");
-
-                this.setUpdateInterval(this.interval);
             }
             _accelerometer.ReadingChanged += new TypedEventHandler<Sensors.Accelerometer, Sensors.AccelerometerReadingChangedEventArgs>(ReadingChanged);
         }
