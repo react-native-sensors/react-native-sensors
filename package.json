@@ -17,5 +17,9 @@
   },
   "dependencies": {
     "rxjs": "^5.0.2"
+  },
+  "devDependencies": {
+    "react-native": "^0.43.2",
+    "react-native-windows": "^0.43.0-rc.0"
   }
 }
