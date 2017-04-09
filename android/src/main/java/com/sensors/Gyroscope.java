@@ -21,6 +21,7 @@ public class Gyroscope extends ReactContextBaseJavaModule implements SensorEvent
   private final ReactApplicationContext reactContext;
   private final SensorManager sensorManager;
   private final Sensor sensor;
+  private double lastReading = (double) System.currentTimeMillis();
   private int interval;
   private Arguments arguments;
 
@@ -70,15 +71,20 @@ public class Gyroscope extends ReactContextBaseJavaModule implements SensorEvent
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
-      Sensor mySensor = sensorEvent.sensor;
-      WritableMap map = arguments.createMap();
+      double tempMs = (double) System.currentTimeMillis();
+      if (tempMs - lastReading >= interval){
+        lastReading = tempMs;
 
-      if (mySensor.getType() == Sensor.TYPE_GYROSCOPE) {
-				map.putDouble("x", sensorEvent.values[0]);
-				map.putDouble("y", sensorEvent.values[1]);
-				map.putDouble("z", sensorEvent.values[2]);
-        map.putDouble("timestamp", (double) System.currentTimeMillis());
-        sendEvent("Gyroscope", map);
+        Sensor mySensor = sensorEvent.sensor;
+        WritableMap map = arguments.createMap();
+
+        if (mySensor.getType() == Sensor.TYPE_GYROSCOPE) {
+          map.putDouble("x", sensorEvent.values[0]);
+          map.putDouble("y", sensorEvent.values[1]);
+          map.putDouble("z", sensorEvent.values[2]);
+          map.putDouble("timestamp", (double) System.currentTimeMillis());
+          sendEvent("Gyroscope", map);
+        }
       }
     }
 
