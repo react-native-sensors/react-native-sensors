@@ -13,7 +13,7 @@
 
 `$ npm install react-native-sensors --save`
 
-### Mostly automatic installation
+### Automatic installation
 
 `$ react-native link react-native-sensors`
 
