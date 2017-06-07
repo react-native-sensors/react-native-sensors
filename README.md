@@ -58,7 +58,7 @@
 ```javascript
 import { Accelerometer, Gyroscope } from 'react-native-sensors';
 const accelerationObservable = new Accelerometer({
-  updateInterval: 100, // defaults to 100ms
+  updateInterval: 0.1, // defaults to 100ms
 });
 
 // Normal RxJS functions
@@ -99,7 +99,7 @@ class MyComponent { // no lifecycle needed
 
 export default sensors({
   Accelerometer: {
-    updateInterval: 300, // optional
+    updateInterval: 0.3, // optional
   },
   Gyroscope: true,
   Magnetometer: false, // disabled
