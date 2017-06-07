@@ -18,10 +18,6 @@ class SensorWrapper extends React.Component {
         React.PropTypes.bool,
         optionsType,
       ]),
-      Magnetometer: React.PropTypes.oneOfType([
-        React.PropTypes.bool,
-        optionsType,
-      ]),
     }),
   }
 

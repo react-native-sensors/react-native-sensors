@@ -57,5 +57,4 @@ const Magnetometer = createSensorMonitorCreator('Magnetometer');
 export default {
   Accelerometer,
   Gyroscope,
-  Magnetometer,
 };
