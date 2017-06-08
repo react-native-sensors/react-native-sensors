@@ -102,7 +102,6 @@ export default sensors({
     updateInterval: 300, // optional
   },
   Gyroscope: true,
-  Magnetometer: false, // disabled
 })(MyComponent);
 ```
 
