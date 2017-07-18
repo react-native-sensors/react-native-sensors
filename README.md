@@ -8,6 +8,11 @@
 | <= 39                     | < 1.0                        |
 | >= 40                     | >= 1.0                       |
 
+## Cool Projects using `react-native-sensors`
+
+- [react-native-live-translator](https://github.com/agrcrobles/react-native-live-translator)
+
+Do you want your project listed here? Just send a PR.
 
 ## Getting started
 
