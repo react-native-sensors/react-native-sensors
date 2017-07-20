@@ -11,6 +11,7 @@
 ## Cool Projects using `react-native-sensors`
 
 - [react-native-live-translator](https://github.com/agrcrobles/react-native-live-translator)
+- [imagination-react-native](https://github.com/Matzielab/imagination-react-native)
 
 Do you want your project listed here? Just send a PR.
 
