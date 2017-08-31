@@ -23,6 +23,12 @@ Do you want your project listed here? Just send a PR.
 
 `$ react-native link react-native-sensors`
 
+Option: With CocoaPods (iOS only)
+
+Add the following to your Podfile and run `$ pod install`:
+
+`pod 'RNSensors', :path => '../node_modules/react-native-sensors'`
+
 ### Manual installation
 
 #### iOS
