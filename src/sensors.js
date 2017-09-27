@@ -11,7 +11,8 @@ const RNSensors = {
   start: function (type, updateInterval) {
     const api = handle[type];
     api.setUpdateInterval(updateInterval);
-    api.startUpdates();
+    // A promise is returned in Android, since it can fail with an exception
+    return api.startUpdates() || Promise.resolve();
   },
 
   stop: function (type) {
@@ -25,25 +26,27 @@ function createSensorMonitorCreator(sensorType) {
     const {
       updateInterval = 100, // time in ms
     } = (options || {});
-    let observer;
     // Start the sensor manager
-    RNSensors.start(sensorType, updateInterval);
+    return RNSensors.start(sensorType, updateInterval).then(() => {
 
-    // Instanciate observable
-    const observable = Rx.Observable.create(function (obs) {
-      observer = obs;
-      DeviceEventEmitter.addListener(sensorType, function(data) {
-        observer.next(data);
-      });
-    })
+      let observer;
+      // Instanciate observable
+      const observable = Rx.Observable.create(function (obs) {
+        observer = obs;
+        DeviceEventEmitter.addListener(sensorType, function(data) {
+          observer.next(data);
+        });
+      })
 
-    // Stop the sensor manager
-    observable.stop = () => {
-      RNSensors.stop(sensorType);
-      observer.complete();
-    };
+      // Stop the sensor manager
+      observable.stop = () => {
+        RNSensors.stop(sensorType);
+        observer.complete();
+      };
 
-    return observable;
+      return observable;
+    });
+
   }
 
   return Creator;
