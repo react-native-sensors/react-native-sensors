@@ -14,7 +14,7 @@
   "license": "",
   "peerDependencies": {
     "react-native": ">=0.39.0",
-    "prop-types": "^15.6.0",
+    "prop-types": "^15.6.0"
   },
   "dependencies": {
     "rxjs": "^5.0.2"
