@@ -14,6 +14,7 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.Callback;
+import com.facebook.react.bridge.Promise;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 
 public class Gyroscope extends ReactContextBaseJavaModule implements SensorEventListener {
@@ -39,11 +40,13 @@ public class Gyroscope extends ReactContextBaseJavaModule implements SensorEvent
   }
 
   @ReactMethod
-  public void startUpdates() {
+  public void startUpdates(Promise promise) {
     if (this.sensor == null) {
       // No sensor found, throw error
-      throw new RuntimeException("No Gyroscope found");
+      promise.reject(new RuntimeException("No Gyroscope found"));
+      return;
     }
+    promise.resolve(null);
     // Milisecond to Mikrosecond conversion
     sensorManager.registerListener(this, sensor, this.interval * 1000);
   }
