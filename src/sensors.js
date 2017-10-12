@@ -26,27 +26,31 @@ function createSensorMonitorCreator(sensorType) {
     const {
       updateInterval = 100, // time in ms
     } = (options || {});
-    // Start the sensor manager
-    return RNSensors.start(sensorType, updateInterval).then(() => {
 
-      let observer;
-      // Instanciate observable
-      const observable = Rx.Observable.create(function (obs) {
-        observer = obs;
+
+    let observer;
+
+    // Instanciate observable
+    const observable = Rx.Observable.create(function (obs) {
+      observer = obs;
+      // Start the sensor manager
+      RNSensors.start(sensorType, updateInterval).then(() => {
         DeviceEventEmitter.addListener(sensorType, function(data) {
           observer.next(data);
         });
-      })
-
-      // Stop the sensor manager
-      observable.stop = () => {
-        RNSensors.stop(sensorType);
-        observer.complete();
-      };
-
-      return observable;
+      }, (error) => {
+        observer.error(error)
+      });
     });
 
+    // Stop the sensor manager
+    observable.stop = () => {
+      RNSensors.stop(sensorType);
+      observer.complete();
+    };
+
+
+    return observable;
   }
 
   return Creator;
