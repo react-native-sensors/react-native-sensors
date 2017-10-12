@@ -46,6 +46,8 @@ function createSensorMonitorCreator(sensorType) {
       DeviceEventEmitter.addListener(sensorType, function(data) {
         observer.next(data);
       });
+    }, (error) => {
+      observer.error(error)
     });
 
     return observable;
