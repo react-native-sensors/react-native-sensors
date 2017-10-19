@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RNSensors", "RNSensors.csproj", "{DAD44AC6-0742-4A86-9178-82C80E469A7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactNative", "..\node_modules\react-native-windows\ReactWindows\ReactNative\ReactNative.csproj", "{C7673AD5-E3AA-468C-A5FD-FA38154E205C}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\node_modules\react-native-windows\ReactWindows\ReactNative.Shared\ReactNative.Shared.projitems*{c7673ad5-e3aa-468c-a5fd-fa38154e205c}*SharedItemsImports = 4
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAD44AC6-0742-4A86-9178-82C80E469A7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAD44AC6-0742-4A86-9178-82C80E469A7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAD44AC6-0742-4A86-9178-82C80E469A7D}.Debug|ARM.ActiveCfg = Debug|ARM
+		{DAD44AC6-0742-4A86-9178-82C80E469A7D}.Debug|ARM.Build.0 = Debug|ARM
+		{DAD44AC6-0742-4A86-9178-82C80E469A7D}.Debug|x64.ActiveCfg = Debug|x64
+		{DAD44AC6-0742-4A86-9178-82C80E469A7D}.Debug|x64.Build.0 = Debug|x64
+		{DAD44AC6-0742-4A86-9178-82C80E469A7D}.Debug|x86.ActiveCfg = Debug|x86
+		{DAD44AC6-0742-4A86-9178-82C80E469A7D}.Debug|x86.Build.0 = Debug|x86
+		{DAD44AC6-0742-4A86-9178-82C80E469A7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAD44AC6-0742-4A86-9178-82C80E469A7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAD44AC6-0742-4A86-9178-82C80E469A7D}.Release|ARM.ActiveCfg = Release|ARM
+		{DAD44AC6-0742-4A86-9178-82C80E469A7D}.Release|ARM.Build.0 = Release|ARM
+		{DAD44AC6-0742-4A86-9178-82C80E469A7D}.Release|x64.ActiveCfg = Release|x64
+		{DAD44AC6-0742-4A86-9178-82C80E469A7D}.Release|x64.Build.0 = Release|x64
+		{DAD44AC6-0742-4A86-9178-82C80E469A7D}.Release|x86.ActiveCfg = Release|x86
+		{DAD44AC6-0742-4A86-9178-82C80E469A7D}.Release|x86.Build.0 = Release|x86
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Debug|ARM.ActiveCfg = Debug|ARM
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Debug|ARM.Build.0 = Debug|ARM
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Debug|x64.ActiveCfg = Debug|x64
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Debug|x64.Build.0 = Debug|x64
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Debug|x86.ActiveCfg = Debug|x86
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Debug|x86.Build.0 = Debug|x86
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Release|Any CPU.ActiveCfg = Release|x86
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Release|ARM.ActiveCfg = Release|ARM
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Release|ARM.Build.0 = Release|ARM
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Release|x64.ActiveCfg = Release|x64
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Release|x64.Build.0 = Release|x64
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Release|x86.ActiveCfg = Release|x86
+		{C7673AD5-E3AA-468C-A5FD-FA38154E205C}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
