@@ -98,6 +98,11 @@ class MyComponent { // no lifecycle needed
       Gyroscope,
     } = this.props;
 
+    if (!Accelerometer || !Gyroscope) {
+      // One of the sensors is still initializing
+      return null;
+    }
+
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
