@@ -10,8 +10,12 @@
   "keywords": [
     "react-native"
   ],
-  "author": "",
-  "license": "",
+  "author": {
+    "name": "Daniel Schmidt",
+    "email": "danielmschmidt92@gmail.com",
+    "url": "danielmschmidt.de"
+  },
+  "license": "MIT",
   "peerDependencies": {
     "react-native": ">=0.39.0",
     "prop-types": "^15.6.0"
