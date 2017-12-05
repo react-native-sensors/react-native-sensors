@@ -1,5 +1,5 @@
 import { NativeModules, DeviceEventEmitter } from 'react-native';
-import Rx from 'rxjs/Rx';
+import * as Rx from 'rxjs/Rx';
 const { Gyroscope: GyroNative, Accelerometer: AccNative } = NativeModules;
 
 const handle = {
