@@ -3,6 +3,12 @@
   "version": "2.4.2",
   "description": "A developer friendly approach for sensors in react-native",
   "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
   "repository": {
     "url": "git@github.com:react-native-sensors/react-native-sensors.git",
     "type": "git"
@@ -22,5 +28,11 @@
   },
   "dependencies": {
     "rxjs": "^5.0.2"
+  },
+  "devDependencies": {
+    "babel-jest": "^21.2.0",
+    "babel-preset-react-native": "^4.0.0",
+    "jest": "^21.2.1",
+    "react-test-renderer": "^16.2.0"
   }
 }
