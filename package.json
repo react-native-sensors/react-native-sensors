@@ -18,6 +18,9 @@
     "email": "danielmschmidt92@gmail.com",
     "url": "danielmschmidt.de"
   },
+  "jest": {
+    "timers": "fake"
+  },
   "babel": {
     "presets": [
       "react-native"
