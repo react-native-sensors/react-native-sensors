@@ -1,4 +1,4 @@
-jest.unmock('rxjs/Rx');
+jest.unmock("rxjs/Rx");
 function createSensorMock() {
   return {
     setUpdateInterval: jest.fn(),
@@ -13,14 +13,14 @@ const mockSensors = {
   Gyroscope: mockGyro,
   Accelerometer: mockAcc
 };
-jest.mock('react-native', () => ({
+jest.mock("react-native", () => ({
   NativeModules: mockSensors,
-  DeviceEventEmitter: ({
+  DeviceEventEmitter: {
     addListener: mockDeviceEvents
-  })
+  }
 }));
 
-const RNSensors = require('../../').default;
+const RNSensors = require("../../").default;
 describe("sensors", () => {
   beforeEach(() => {
     mockGyro.setUpdateInterval.mockReset();
@@ -33,7 +33,7 @@ describe("sensors", () => {
   });
 
   it("should be mocked", () => {
-    const { NativeModules } = require('react-native');
+    const { NativeModules } = require("react-native");
     const { Gyroscope, Accelerometer } = NativeModules;
     Gyroscope.setUpdateInterval();
     Gyroscope.startUpdates();
@@ -41,7 +41,6 @@ describe("sensors", () => {
     Accelerometer.setUpdateInterval();
     Accelerometer.startUpdates();
     Accelerometer.stopUpdates();
-
 
     expect(Gyroscope.setUpdateInterval).toHaveBeenCalled();
     expect(Gyroscope.startUpdates).toHaveBeenCalled();
@@ -51,58 +50,58 @@ describe("sensors", () => {
     expect(Accelerometer.stopUpdates).toHaveBeenCalled();
   });
 
-  ['Accelerometer', 'Gyroscope'].forEach(type => {
+  ["Accelerometer", "Gyroscope"].forEach(type => {
     describe(type, () => {
       const Sensor = RNSensors[type];
       const sensorMock = mockSensors[type];
 
-      it('should expose a constructor', () => {
+      it("should expose a constructor", () => {
         expect(Sensor).toBeInstanceOf(Function);
       });
 
-      it('should start a sensor on creation', () => {
+      it("should start a sensor on creation", () => {
         const instance = new Sensor();
         // If no one subscribes the observable is not invoked
         instance.subscribe(value => {});
         expect(instance.stop).toBeInstanceOf(Function);
-        
+
         expect(sensorMock.startUpdates).toHaveBeenCalled();
         expect(sensorMock.setUpdateInterval).toHaveBeenCalledWith(100);
       });
 
-      it('should pass the correct update interval', () => {
+      it("should pass the correct update interval", () => {
         const instance = new Sensor({
-          updateInterval: 20,
+          updateInterval: 20
         });
         // If no one subscribes the observable is not invoked
-        instance.subscribe(value => { });
+        instance.subscribe(value => {});
         expect(sensorMock.setUpdateInterval).toHaveBeenCalledWith(20);
       });
 
-      it('should stop a sensor on command', () => {
+      it("should stop a sensor on command", () => {
         const instance = new Sensor();
-        instance.subscribe(value => { });
+        instance.subscribe(value => {});
         instance.stop();
 
         expect(sensorMock.stopUpdates).toHaveBeenCalled();
       });
 
-      describe('events', () => {
-        it('should register a device event callback', async () => {
-          const { DeviceEventEmitter } = require('react-native');
+      describe("events", () => {
+        it("should register a device event callback", async () => {
+          const { DeviceEventEmitter } = require("react-native");
           const startUpdatesPromise = Promise.resolve();
           sensorMock.startUpdates.mockReturnValueOnce(startUpdatesPromise);
 
           const instance = new Sensor();
-          instance.subscribe(value => { });
+          instance.subscribe(value => {});
           expect(sensorMock.startUpdates).toHaveBeenCalled();
           await startUpdatesPromise;
 
           expect(DeviceEventEmitter.addListener).toHaveBeenCalled();
         });
 
-        it('should add a value to the observable if an event was triggered', async () => {
-          const { DeviceEventEmitter } = require('react-native');
+        it("should add a value to the observable if an event was triggered", async () => {
+          const { DeviceEventEmitter } = require("react-native");
           const startUpdatesPromise = Promise.resolve();
           sensorMock.startUpdates.mockReturnValueOnce(startUpdatesPromise);
           const instance = new Sensor();
@@ -114,7 +113,9 @@ describe("sensors", () => {
           };
 
           let lastValue;
-          instance.subscribe(value => { lastValue = value });
+          instance.subscribe(value => {
+            lastValue = value;
+          });
           await startUpdatesPromise;
 
           expect(DeviceEventEmitter.addListener.mock.calls[0][0]).toBe(type);
@@ -124,9 +125,11 @@ describe("sensors", () => {
           expect(lastValue).toEqual(data);
         });
 
-        it('should error the observer if an error occured during initialization', async () => {
-          const { DeviceEventEmitter } = require('react-native');
-          const startUpdatesPromise = Promise.reject(new Error('Init impossible'));
+        it("should error the observer if an error occured during initialization", async () => {
+          const { DeviceEventEmitter } = require("react-native");
+          const startUpdatesPromise = Promise.reject(
+            new Error("Init impossible")
+          );
           sensorMock.startUpdates.mockReturnValueOnce(startUpdatesPromise);
           const instance = new Sensor();
           const data = {
@@ -138,13 +141,20 @@ describe("sensors", () => {
 
           let lastValue, lastError;
           try {
-            instance.subscribe(value => { lastValue = value }, error => { lastError = error });
+            instance.subscribe(
+              value => {
+                lastValue = value;
+              },
+              error => {
+                lastError = error;
+              }
+            );
             await startUpdatesPromise;
-          } catch(e) {
+          } catch (e) {
             // expected
           }
 
-            expect(lastError).toMatchSnapshot();
+          expect(lastError).toMatchSnapshot();
         });
       });
     });
