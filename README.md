@@ -1,5 +1,5 @@
 
-# react-native-sensors [![codebeat badge](https://codebeat.co/badges/9661e295-3793-4d58-9161-4d0471a68b0c)](https://codebeat.co/projects/github-com-react-native-sensors-react-native-sensors-master) [![BCH compliance](https://bettercodehub.com/edge/badge/react-native-sensors/react-native-sensors?branch=master)](https://bettercodehub.com/)
+# react-native-sensors [![Build Status](https://travis-ci.org/react-native-sensors/react-native-sensors.svg?branch=master)](https://travis-ci.org/react-native-sensors/react-native-sensors) [![codebeat badge](https://codebeat.co/badges/9661e295-3793-4d58-9161-4d0471a68b0c)](https://codebeat.co/projects/github-com-react-native-sensors-react-native-sensors-master) [![BCH compliance](https://bettercodehub.com/edge/badge/react-native-sensors/react-native-sensors?branch=master)](https://bettercodehub.com/)
 
 ## Supported React Native Versions
 
