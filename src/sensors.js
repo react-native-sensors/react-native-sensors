@@ -42,7 +42,7 @@ function createSensorMonitorCreator(sensorType) {
         observer.error(error)
       });
     });
-
+    
     // Stop the sensor manager
     observable.stop = () => {
       RNSensors.stop(sensorType);
