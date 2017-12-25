@@ -2,6 +2,9 @@
   "name": "react-native-sensors",
   "version": "2.4.2",
   "description": "A developer friendly approach for sensors in react-native",
+  "scripts": {
+    "test": "jest"
+  },
   "main": "index.js",
   "repository": {
     "url": "git@github.com:react-native-sensors/react-native-sensors.git",
@@ -15,6 +18,11 @@
     "email": "danielmschmidt92@gmail.com",
     "url": "danielmschmidt.de"
   },
+  "babel": {
+    "presets": [
+      "react-native"
+    ]
+  },
   "license": "MIT",
   "peerDependencies": {
     "react-native": ">=0.39.0",
@@ -22,5 +30,13 @@
   },
   "dependencies": {
     "rxjs": "^5.0.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.0.4",
+    "babel-preset-react-native": "^4.0.0",
+    "jest": "^22.0.4",
+    "react-native": "^0.51.0",
+    "regenerator-runtime": "^0.11.1"
   }
 }
