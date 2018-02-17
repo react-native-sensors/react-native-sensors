@@ -17,7 +17,6 @@ import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 
-
 public class Accelerometer extends ReactContextBaseJavaModule implements SensorEventListener {
 
   private final ReactApplicationContext reactContext;
