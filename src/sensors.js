@@ -57,8 +57,8 @@ function createSensorMonitorCreator(sensorType) {
         resolve(observable);
       }).catch(error => {
         reject(error);
-      })
-    })
+      });
+    });
   }
 
   return Creator;
@@ -71,5 +71,5 @@ const Magnetometer = createSensorMonitorCreator('Magnetometer');
 
 export default {
   Accelerometer,
-  Gyroscope,
+  Gyroscope
 };
