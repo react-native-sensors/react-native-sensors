@@ -15,24 +15,27 @@ RCT_EXPORT_MODULE();
 
     if (self) {
         self->_motionManager = [[CMMotionManager alloc] init];
-        //Gyroscope
-        if([self->_motionManager isGyroAvailable])
-        {
-            NSLog(@"Gyroscope available");
-            /* Start the gyroscope if it is not active already */
-            if([self->_motionManager isGyroActive] == NO)
-            {
-                NSLog(@"Gyroscope active");
-            } else {
-                NSLog(@"Gyroscope not active");
-            }
-        }
-        else
-        {
-            NSLog(@"Gyroscope not Available!");
-        }
     }
     return self;
+}
+
+RCT_EXPORT_METHOD(isAvailable,
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+    if([self->_motionManager isGyroAvailable])
+    {
+        /* Start the accelerometer if it is not active already */
+        if([self->_motionManager isGyroActive] == NO)
+        {
+            resolve();
+        } else {
+            reject(@"not_active");
+        }
+    }
+    else
+    {
+        reject(@"not_available");
+    }
 }
 
 RCT_EXPORT_METHOD(setUpdateInterval:(double) interval) {

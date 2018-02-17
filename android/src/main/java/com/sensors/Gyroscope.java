@@ -35,18 +35,22 @@ public class Gyroscope extends ReactContextBaseJavaModule implements SensorEvent
 
   // RN Methods
   @ReactMethod
-  public void setUpdateInterval(int newInterval) {
-    this.interval = newInterval;
-  }
-
-  @ReactMethod
-  public void startUpdates(Promise promise) {
+  public void isAvailable(Promise promise) {
     if (this.sensor == null) {
       // No sensor found, throw error
       promise.reject(new RuntimeException("No Gyroscope found"));
       return;
     }
     promise.resolve(null);
+  }
+
+  @ReactMethod
+  public void setUpdateInterval(int newInterval) {
+    this.interval = newInterval;
+  }
+
+  @ReactMethod
+  public void startUpdates(Promise promise) {
     // Milisecond to Mikrosecond conversion
     sensorManager.registerListener(this, sensor, this.interval * 1000);
   }
@@ -63,13 +67,13 @@ public class Gyroscope extends ReactContextBaseJavaModule implements SensorEvent
 
   // SensorEventListener Interface
   private void sendEvent(String eventName, @Nullable WritableMap params) {
-		try {
-			this.reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-				.emit(eventName, params);
-		} catch (RuntimeException e) {
-			Log.e("ERROR", "java.lang.RuntimeException: Trying to invoke Javascript before CatalystInstance has been set!");
-		}
-	}
+    try {
+      this.reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+        .emit(eventName, params);
+    } catch (RuntimeException e) {
+      Log.e("ERROR", "java.lang.RuntimeException: Trying to invoke Javascript before CatalystInstance has been set!");
+    }
+  }
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
