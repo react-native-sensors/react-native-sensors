@@ -98,6 +98,7 @@ import { decorator as sensors } from 'react-native-sensors';
 class MyComponent { // no lifecycle needed
   render() {
     const {
+      sensorsFound,
       Accelerometer,
       Gyroscope,
     } = this.props;
@@ -110,8 +111,8 @@ class MyComponent { // no lifecycle needed
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Acceleration has value: {Accelerometer}
-          Gyro has value: {Gyroscope}
+          { sensorsFound['Accelerometer'] && `Acceleration has value: ${Accelerometer}` || 'Acceleration is not available' }
+          { sensorsFound['Gyroscope'] && `Gyro has value: ${Gyroscope}` || 'Gyro is not available' }
         </Text>
       </View>
     );
