@@ -20,36 +20,36 @@ class SensorWrapper extends React.Component {
     super(props);
     this.state = {
       _observables: [],
-      sensorFound: false
+      sensorsFound: {}
     };
   }
 
   componentWillMount() {
     const observables = [];
-    Object.entries(this.props.sensors).forEach(([name, sensorOptions]) => {
+
+    Object.entries(this.props.sensors).forEach(async ([name, sensorOptions]) => {
       const options = typeof sensorOptions === "boolean" ? null : sensorOptions;
 
-      const observable = new Sensors[name](options)
-        .then(observable => {
-          observables.push(observable);
+      let sensorFound = null;
+      try {
+        const observable = await new Sensors[name](options);
+        observables.push(observable);
 
-          observable.subscribe(sensorValue => {
-            this.setState({
-              [name]: sensorValue
-            });
-          });
-
+        observable.subscribe(sensorValue => {
           this.setState({
-            _observables: observables,
-            sensorFound: true
-          });
-        })
-        .catch(e => {
-          this.setState({
-            _observables: observables,
-            sensorFound: false
+            [name]: sensorValue
           });
         });
+
+        sensorFound = true;
+      } catch (e) {
+        sensorFound = false;
+      }
+
+      this.setState({
+        _observables: observables,
+        sensorsFound: { ...this.state.sensorsFound, [name]: sensorFound }
+      });
     });
 
   }
