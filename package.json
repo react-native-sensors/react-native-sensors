@@ -3,6 +3,8 @@
   "version": "2.4.2",
   "description": "A developer friendly approach for sensors in react-native",
   "scripts": {
+    "contributor:add": "all-contributors add",
+    "contributor:generate": "all-contributors generate",
     "test": "jest"
   },
   "main": "index.js",
@@ -35,6 +37,7 @@
     "rxjs": "^5.0.2"
   },
   "devDependencies": {
+    "all-contributors-cli": "^4.10.1",
     "babel-core": "^6.26.0",
     "babel-jest": "^22.0.4",
     "babel-preset-react-native": "^4.0.0",
