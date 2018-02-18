@@ -1,0 +1,107 @@
+{
+  "projectName": "react-native-sensors",
+  "projectOwner": "react-native-sensors",
+  "files": ["README.md"],
+  "imageSize": 100,
+  "commit": true,
+  "contributors": [
+    {
+      "login": "DanielMSchmidt",
+      "name": "Daniel Schmidt",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1337046?v=4",
+      "profile": "http://danielmschmidt.de/",
+      "contributions": ["code"]
+    },
+    {
+      "login": "Noitidart",
+      "name": "Noitidart",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/6372489?v=4",
+      "profile": "http://noitidart.github.io/",
+      "contributions": ["doc"]
+    },
+    {
+      "login": "tontonrally",
+      "name": "Christophe Lemonnier",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/6213682?v=4",
+      "profile": "https://github.com/tontonrally",
+      "contributions": ["code"]
+    },
+    {
+      "login": "Greeny7",
+      "name": "Gennady",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/12188900?v=4",
+      "profile": "http://belogortsev.ru/",
+      "contributions": ["doc"]
+    },
+    {
+      "login": "jiaminglu",
+      "name": "Jiaming Lu",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1251301?v=4",
+      "profile": "https://github.com/jiaminglu",
+      "contributions": ["code"]
+    },
+    {
+      "login": "alexwasner",
+      "name": "Alex Wasner",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/4612947?v=4",
+      "profile": "https://github.com/alexwasner",
+      "contributions": ["code"]
+    },
+    {
+      "login": "namqdam",
+      "name": "Nam Đàm",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/9479593?v=4",
+      "profile": "https://github.com/namqdam",
+      "contributions": ["code"]
+    },
+    {
+      "login": "mikeknapp",
+      "name": "Mike Knapp",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/103593?v=4",
+      "profile": "http://www.twitter.com/mikeee",
+      "contributions": ["code"]
+    },
+    {
+      "login": "Lleios",
+      "name": "Kevin Gonnord",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/10956848?v=4",
+      "profile": "https://github.com/Lleios",
+      "contributions": ["code"]
+    },
+    {
+      "login": "ImAtome",
+      "name": "ImAtome",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/7541319?v=4",
+      "profile": "https://github.com/ImAtome",
+      "contributions": ["code"]
+    },
+    {
+      "login": "lisamai",
+      "name": "Lisa Huynh",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/3603130?v=4",
+      "profile": "https://github.com/lisamai",
+      "contributions": ["code"]
+    },
+    {
+      "login": "corymsmith",
+      "name": "Cory Smith",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/7315?v=4",
+      "profile": "http://bullish.io",
+      "contributions": ["code"]
+    },
+    {
+      "login": "epeli",
+      "name": "Esa-Matti Suuronen",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/225712?v=4",
+      "profile": "https://medium.com/@esamatti",
+      "contributions": ["code"]
+    },
+    {
+      "login": "vietnugent",
+      "name": "Viet Nguyen",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/19377299?v=4",
+      "profile": "https://openbeta.io",
+      "contributions": ["code"]
+    }
+  ]
+}
