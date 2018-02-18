@@ -73,17 +73,17 @@ Add the following to your Podfile and run `$ pod install`:
 ```javascript
 import { Accelerometer, Gyroscope } from "react-native-sensors";
 const accelerationObservable = new Accelerometer({
-  updateInterval: 100 // defaults to 100ms
+	updateInterval: 100 // defaults to 100ms
 });
 
 // Normal RxJS functions
 accelerationObservable
-  .map(({ x, y, z }) => x + y + z)
-  .filter(speed => speed > 20)
-  .subscribe(speed => console.log(`You moved your phone with ${speed}`));
+	.map(({ x, y, z }) => x + y + z)
+	.filter(speed => speed > 20)
+	.subscribe(speed => console.log(`You moved your phone with ${speed}`));
 
 setTimeout(() => {
-  accelerationObservable.stop();
+	accelerationObservable.stop();
 }, 1000);
 ```
 
@@ -95,31 +95,31 @@ import { Text, View } from "react-native";
 import { decorator as sensors } from "react-native-sensors";
 
 class MyComponent {
-  // no lifecycle needed
-  render() {
-    const { Accelerometer, Gyroscope } = this.props;
+	// no lifecycle needed
+	render() {
+		const { Accelerometer, Gyroscope } = this.props;
 
-    if (!Accelerometer || !Gyroscope) {
-      // One of the sensors is still initializing
-      return null;
-    }
+		if (!Accelerometer || !Gyroscope) {
+			// One of the sensors is still initializing
+			return null;
+		}
 
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Acceleration has value: {Accelerometer}
-          Gyro has value: {Gyroscope}
-        </Text>
-      </View>
-    );
-  }
+		return (
+			<View style={styles.container}>
+				<Text style={styles.welcome}>
+					Acceleration has value: {Accelerometer}
+					Gyro has value: {Gyroscope}
+				</Text>
+			</View>
+		);
+	}
 }
 
 export default sensors({
-  Accelerometer: {
-    updateInterval: 300 // optional
-  },
-  Gyroscope: true
+	Accelerometer: {
+		updateInterval: 300 // optional
+	},
+	Gyroscope: true
 })(MyComponent);
 ```
 
