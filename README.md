@@ -54,39 +54,29 @@ Add the following to your Podfile and run `$ pod install`:
      compile project(':react-native-sensors')
    ```
 
-#### Windows
-
-1. In Visual Studio, right click on the solution ➜ `add` ➜ `existing project...`
-2. Go to `node_modules` ➜ `react-native-sensors` and add `RNSensors.csproj`
-3. In Visual Studio, in the solution explorer, expand your project, right click `References` ➜ `Add Reference...` and add RNSensors
-4. In the MainPage.cs
-
-* Add `using RNSensors;`
-* Add `new RNSensorsPackage()` on the List of Packages, right below `new MainReactPackage()`
-
-5. Done !
-
 ## Usage
 
 ### Sensor API
 
 ```javascript
-import { Accelerometer, Gyroscope } from 'react-native-sensors';
+import { Accelerometer, Gyroscope } from "react-native-sensors";
 
-let accelerationObservable = null
+let accelerationObservable = null;
 new Accelerometer({
-  updateInterval: 400, // defaults to 100ms
-}).then(observable => {
-  accelerationObservable = observable
-  
-  // Normal RxJS functions
-  accelerationObservable
-    .map(({ x, y, z }) => x + y + z)
-    .filter(speed => speed > 20)
-    .subscribe(speed => console.log(`You moved your phone with ${speed}`));
-}).catch(error => {
-  console.log('The sensor is not available')
+  updateInterval: 400 // defaults to 100ms
 })
+  .then(observable => {
+    accelerationObservable = observable;
+
+    // Normal RxJS functions
+    accelerationObservable
+      .map(({ x, y, z }) => x + y + z)
+      .filter(speed => speed > 20)
+      .subscribe(speed => console.log(`You moved your phone with ${speed}`));
+  })
+  .catch(error => {
+    console.log("The sensor is not available");
+  });
 
 setTimeout(() => {
   accelerationObservable.stop();
@@ -103,11 +93,7 @@ import { decorator as sensors } from "react-native-sensors";
 class MyComponent {
   // no lifecycle needed
   render() {
-    const {
-      sensorsFound,
-      Accelerometer,
-      Gyroscope,
-    } = this.props;
+    const { sensorsFound, Accelerometer, Gyroscope } = this.props;
 
     if (!Accelerometer || !Gyroscope) {
       // One of the sensors is still initializing
@@ -117,8 +103,11 @@ class MyComponent {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          { sensorsFound['Accelerometer'] && `Acceleration has value: ${Accelerometer}` || 'Acceleration is not available' }
-          { sensorsFound['Gyroscope'] && `Gyro has value: ${Gyroscope}` || 'Gyro is not available' }
+          {(sensorsFound["Accelerometer"] &&
+            `Acceleration has value: ${Accelerometer}`) ||
+            "Acceleration is not available"}
+          {(sensorsFound["Gyroscope"] && `Gyro has value: ${Gyroscope}`) ||
+            "Gyro is not available"}
         </Text>
       </View>
     );
