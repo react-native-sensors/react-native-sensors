@@ -18,24 +18,27 @@ RCT_EXPORT_MODULE();
 
     if (self) {
         self->_motionManager = [[CMMotionManager alloc] init];
-        //Accelerometer
-        if([self->_motionManager isAccelerometerAvailable])
-        {
-            NSLog(@"Accelerometer available");
-            /* Start the accelerometer if it is not active already */
-            if([self->_motionManager isAccelerometerActive] == NO)
-            {
-                NSLog(@"Accelerometer active");
-            } else {
-                NSLog(@"Accelerometer not active");
-            }
-        }
-        else
-        {
-            NSLog(@"Accelerometer not available!");
-        }
     }
     return self;
+}
+
+RCT_EXPORT_METHOD(isAvailable,
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+    if([self->_motionManager isAccelerometerAvailable])
+    {
+        /* Start the accelerometer if it is not active already */
+        if([self->_motionManager isAccelerometerActive] == NO)
+        {
+            resolve();
+        } else {
+            reject(@"not_active");
+        }
+    }
+    else
+    {
+        reject(@"not_available");
+    }
 }
 
 RCT_EXPORT_METHOD(setUpdateInterval:(double) interval) {

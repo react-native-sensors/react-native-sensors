@@ -71,16 +71,22 @@ Add the following to your Podfile and run `$ pod install`:
 ### Sensor API
 
 ```javascript
-import { Accelerometer, Gyroscope } from "react-native-sensors";
-const accelerationObservable = new Accelerometer({
-  updateInterval: 100 // defaults to 100ms
-});
+import { Accelerometer, Gyroscope } from 'react-native-sensors';
 
-// Normal RxJS functions
-accelerationObservable
-  .map(({ x, y, z }) => x + y + z)
-  .filter(speed => speed > 20)
-  .subscribe(speed => console.log(`You moved your phone with ${speed}`));
+let accelerationObservable = null
+new Accelerometer({
+  updateInterval: 400, // defaults to 100ms
+}).then(observable => {
+  accelerationObservable = observable
+  
+  // Normal RxJS functions
+  accelerationObservable
+    .map(({ x, y, z }) => x + y + z)
+    .filter(speed => speed > 20)
+    .subscribe(speed => console.log(`You moved your phone with ${speed}`));
+}).catch(error => {
+  console.log('The sensor is not available')
+})
 
 setTimeout(() => {
   accelerationObservable.stop();
@@ -97,7 +103,11 @@ import { decorator as sensors } from "react-native-sensors";
 class MyComponent {
   // no lifecycle needed
   render() {
-    const { Accelerometer, Gyroscope } = this.props;
+    const {
+      sensorsFound,
+      Accelerometer,
+      Gyroscope,
+    } = this.props;
 
     if (!Accelerometer || !Gyroscope) {
       // One of the sensors is still initializing
@@ -107,8 +117,8 @@ class MyComponent {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Acceleration has value: {Accelerometer}
-          Gyro has value: {Gyroscope}
+          { sensorsFound['Accelerometer'] && `Acceleration has value: ${Accelerometer}` || 'Acceleration is not available' }
+          { sensorsFound['Gyroscope'] && `Gyro has value: ${Gyroscope}` || 'Gyro is not available' }
         </Text>
       </View>
     );
