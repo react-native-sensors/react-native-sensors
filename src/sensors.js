@@ -1,49 +1,55 @@
-import { DeviceEventEmitter } from 'react-native';
-import * as Rx from 'rxjs/Rx';
-import RNSensors from './rnsensors'
+import { DeviceEventEmitter } from "react-native";
+import * as Rx from "rxjs/Rx";
+import RNSensors from "./rnsensors";
 
 function createSensorMonitorCreator(sensorType) {
-  function Creator(options = {}) {
-    return RNSensors.isAvailable(sensorType).then(() => {
-      const {
-        updateInterval = 100, // time in ms
-      } = (options || {});
+	function Creator(options = {}) {
+		return RNSensors.isAvailable(sensorType)
+			.then(() => {
+				const {
+					updateInterval = 100 // time in ms
+				} =
+					options || {};
 
-      let observer;
+				let observer;
 
-      // Instanciate observable
-      const observable = Rx.Observable.create(function (obs) {
-        observer = obs;
-        // Start the sensor manager
-        RNSensors.start(sensorType, updateInterval).then(() => {
-          DeviceEventEmitter.addListener(sensorType, function(data) {
-            observer.next(data);
-          });
-        }, (error) => {
-          observer.error(error)
-        });
-      });
+				// Instanciate observable
+				const observable = Rx.Observable.create(function(obs) {
+					observer = obs;
+					// Start the sensor manager
+					RNSensors.start(sensorType, updateInterval).then(
+						() => {
+							DeviceEventEmitter.addListener(sensorType, function(data) {
+								observer.next(data);
+							});
+						},
+						error => {
+							observer.error(error);
+						}
+					);
+				});
 
-      // Stop the sensor manager
-      observable.stop = () => {
-        RNSensors.stop(sensorType);
-        observer.complete();
-      };
-      return observable;
-    }).catch(error => {
-      return error;
-    });
-  }
+				// Stop the sensor manager
+				observable.stop = () => {
+					RNSensors.stop(sensorType);
+					observer.complete();
+				};
+				return observable;
+			})
+			.catch(error => {
+				return error;
+			});
+	}
 
-  return Creator;
+	return Creator;
 }
 
 // TODO: lazily intialize them (maybe via getter)
-const Accelerometer = createSensorMonitorCreator('Accelerometer');
-const Gyroscope = createSensorMonitorCreator('Gyroscope');
+const Accelerometer = createSensorMonitorCreator("Accelerometer");
+const Gyroscope = createSensorMonitorCreator("Gyroscope");
 // const Magnetometer = createSensorMonitorCreator('Magnetometer');
 
 export default {
-  Accelerometer,
-  Gyroscope
+	Accelerometer,
+	Gyroscope
 };
