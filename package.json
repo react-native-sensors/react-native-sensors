@@ -12,21 +12,18 @@
     "url": "git@github.com:react-native-sensors/react-native-sensors.git",
     "type": "git"
   },
-  "keywords": [
-    "react-native"
-  ],
+  "homepage": "https://github.com/react-native-sensors/react-native-sensors",
+  "keywords": ["react-native"],
   "author": {
     "name": "Daniel Schmidt",
     "email": "danielmschmidt92@gmail.com",
-    "url": "danielmschmidt.de"
+    "url": "http://danielmschmidt.de"
   },
   "jest": {
     "timers": "fake"
   },
   "babel": {
-    "presets": [
-      "react-native"
-    ]
+    "presets": ["react-native"]
   },
   "license": "MIT",
   "peerDependencies": {
