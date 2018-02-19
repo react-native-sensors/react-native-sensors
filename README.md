@@ -71,25 +71,27 @@ Add the following to your Podfile and run `$ pod install`:
 ### Sensor API
 
 ```javascript
-import { Accelerometer, Gyroscope } from 'react-native-sensors';
+import { Accelerometer, Gyroscope } from "react-native-sensors";
 
-let accelerationObservable = null
+let accelerationObservable = null;
 new Accelerometer({
-  updateInterval: 400, // defaults to 100ms
-}).then(observable => {
-  accelerationObservable = observable
-  
-  // Normal RxJS functions
-  accelerationObservable
-    .map(({ x, y, z }) => x + y + z)
-    .filter(speed => speed > 20)
-    .subscribe(speed => console.log(`You moved your phone with ${speed}`));
-}).catch(error => {
-  console.log('The sensor is not available')
+	updateInterval: 400 // defaults to 100ms
 })
+	.then(observable => {
+		accelerationObservable = observable;
+
+		// Normal RxJS functions
+		accelerationObservable
+			.map(({ x, y, z }) => x + y + z)
+			.filter(speed => speed > 20)
+			.subscribe(speed => console.log(`You moved your phone with ${speed}`));
+	})
+	.catch(error => {
+		console.log("The sensor is not available");
+	});
 
 setTimeout(() => {
-  accelerationObservable.stop();
+	accelerationObservable.stop();
 }, 1000);
 ```
 
@@ -101,35 +103,34 @@ import { Text, View } from "react-native";
 import { decorator as sensors } from "react-native-sensors";
 
 class MyComponent {
-  // no lifecycle needed
-  render() {
-    const {
-      sensorsFound,
-      Accelerometer,
-      Gyroscope,
-    } = this.props;
+	// no lifecycle needed
+	render() {
+		const { sensorsFound, Accelerometer, Gyroscope } = this.props;
 
-    if (!Accelerometer || !Gyroscope) {
-      // One of the sensors is still initializing
-      return null;
-    }
+		if (!Accelerometer || !Gyroscope) {
+			// One of the sensors is still initializing
+			return null;
+		}
 
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          { sensorsFound['Accelerometer'] && `Acceleration has value: ${Accelerometer}` || 'Acceleration is not available' }
-          { sensorsFound['Gyroscope'] && `Gyro has value: ${Gyroscope}` || 'Gyro is not available' }
-        </Text>
-      </View>
-    );
-  }
+		return (
+			<View style={styles.container}>
+				<Text style={styles.welcome}>
+					{(sensorsFound["Accelerometer"] &&
+						`Acceleration has value: ${Accelerometer}`) ||
+						"Acceleration is not available"}
+					{(sensorsFound["Gyroscope"] && `Gyro has value: ${Gyroscope}`) ||
+						"Gyro is not available"}
+				</Text>
+			</View>
+		);
+	}
 }
 
 export default sensors({
-  Accelerometer: {
-    updateInterval: 300 // optional
-  },
-  Gyroscope: true
+	Accelerometer: {
+		updateInterval: 300 // optional
+	},
+	Gyroscope: true
 })(MyComponent);
 ```
 
