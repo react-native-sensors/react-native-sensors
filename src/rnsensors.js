@@ -10,8 +10,7 @@ const RNSensors = {
 	start: function(type, updateInterval) {
 		const api = handle[type];
 		api.setUpdateInterval(updateInterval);
-		// A promise is returned in Android, since it can fail with an exception
-		return api.startUpdates() || Promise.resolve();
+		api.startUpdates();
 	},
 
 	isAvailable: function(type) {

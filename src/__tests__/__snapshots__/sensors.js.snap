@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`sensors Accelerometer events should error the observer if an error occured during initialization 1`] = `[Error: Init impossible]`;
-
-exports[`sensors Gyroscope events should error the observer if an error occured during initialization 1`] = `[Error: Init impossible]`;

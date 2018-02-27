@@ -50,7 +50,7 @@ public class Gyroscope extends ReactContextBaseJavaModule implements SensorEvent
   }
 
   @ReactMethod
-  public void startUpdates(Promise promise) {
+  public void startUpdates() {
     // Milisecond to Mikrosecond conversion
     sensorManager.registerListener(this, sensor, this.interval * 1000);
   }
