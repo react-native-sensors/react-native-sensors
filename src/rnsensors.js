@@ -1,18 +1,21 @@
 import { NativeModules, DeviceEventEmitter } from "react-native";
 const { Gyroscope: GyroNative, Accelerometer: AccNative, Magnetometer: MagnNative  } = NativeModules;
 
+if (!GyroNative && !AccNative) {
+	throw new Error("Native modules for sensors not available. Did react-native link run successfully?");
+}
+
 const handle = {
 	Accelerometer: AccNative,
 	Gyroscope: GyroNative,
-  Magnetometer: MagnNative
+	Magnetometer: MagnNative
 };
 
 const RNSensors = {
 	start: function(type, updateInterval) {
 		const api = handle[type];
 		api.setUpdateInterval(updateInterval);
-		// A promise is returned in Android, since it can fail with an exception
-		return api.startUpdates() || Promise.resolve();
+		api.startUpdates();
 	},
 
 	isAvailable: function(type) {

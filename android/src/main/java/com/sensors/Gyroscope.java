@@ -30,7 +30,7 @@ public class Gyroscope extends ReactContextBaseJavaModule implements SensorEvent
     super(reactContext);
     this.reactContext = reactContext;
     this.sensorManager = (SensorManager)reactContext.getSystemService(reactContext.SENSOR_SERVICE);
-    this.sensor = this.sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);   
+    this.sensor = this.sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
   }
 
   // RN Methods
@@ -50,7 +50,7 @@ public class Gyroscope extends ReactContextBaseJavaModule implements SensorEvent
   }
 
   @ReactMethod
-  public void startUpdates(Promise promise) {
+  public void startUpdates() {
     // Milisecond to Mikrosecond conversion
     sensorManager.registerListener(this, sensor, this.interval * 1000);
   }

@@ -4,29 +4,23 @@ import RNSensors from "./rnsensors";
 
 function createSensorMonitorCreator(sensorType) {
 	function Creator(options = {}) {
-		return RNSensors.isAvailable(sensorType)
+		return RNSensors
+			.isAvailable(sensorType)
 			.then(() => {
-				const {
-					updateInterval = 100 // time in ms
-				} =
-					options || {};
 
+				const { updateInterval = 100 } = options || {}; // time in ms
 				let observer;
 
 				// Instanciate observable
-				const observable = Rx.Observable.create(function(obs) {
+				const observable = Rx.Observable.create(obs => {
 					observer = obs;
+
+					DeviceEventEmitter.addListener(sensorType, data => {
+						observer.next(data);
+					});
+
 					// Start the sensor manager
-					RNSensors.start(sensorType, updateInterval).then(
-						() => {
-							DeviceEventEmitter.addListener(sensorType, function(data) {
-								observer.next(data);
-							});
-						},
-						error => {
-							observer.error(error);
-						}
-					);
+					RNSensors.start(sensorType, updateInterval);
 				});
 
 				// Stop the sensor manager
@@ -34,6 +28,7 @@ function createSensorMonitorCreator(sensorType) {
 					RNSensors.stop(sensorType);
 					observer.complete();
 				};
+
 				return observable;
 			})
 			.catch(error => {

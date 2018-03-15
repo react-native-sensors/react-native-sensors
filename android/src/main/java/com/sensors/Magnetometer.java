@@ -51,8 +51,7 @@ public class Magnetometer extends ReactContextBaseJavaModule implements SensorEv
 
 
   @ReactMethod
-  public void startUpdates(Promise promise) {
-    promise.resolve(null);
+  public void startUpdates() {
     // Milisecond to Mikrosecond conversion
     sensorManager.registerListener(this, sensor, this.interval * 1000);
   }

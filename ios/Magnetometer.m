@@ -13,31 +13,37 @@
 RCT_EXPORT_MODULE();
 
 - (id) init {
-   self = [super init];
-   NSLog(@"Magnetometer");
+    self = [super init];
+    NSLog(@"Magnetometer");
 
-   if (self) {
-       self->_motionManager = [[CMMotionManager alloc] init];
-   }
-   return self;
+    if (self) {
+        self->_motionManager = [[CMMotionManager alloc] init];
+    }
+    return self;
 }
 
-RCT_EXPORT_METHOD(isAvailable,
-                resolver:(RCTPromiseResolveBlock)resolve
-                rejecter:(RCTPromiseRejectBlock)reject) {
-   if([self->_motionManager isMagnetometerAvailable])
-   {
-       /* Start the magnetometer if it is not active already */
-       if([self->_motionManager isMagnetometerActive] == NO)
+RCT_REMAP_METHOD(isAvailable,
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+    return [self isAvailableWithResolver:resolve
+                               rejecter:reject];
+}
+
+- (void) isAvailableWithResolver:(RCTPromiseResolveBlock) resolve
+                        rejecter:(RCTPromiseRejectBlock) reject {
+    if([self->_motionManager isMagnetometerAvailable])
+    {
+        /* Start the accelerometer if it is not active already */
+        if([self->_motionManager isMagnetometerActive] == NO)
         {
-            resolve();
+            resolve(@YES);
         } else {
-            reject(@"not_active");
+            reject(@"-1", @"Magnetometer is not active", [[NSError alloc] init]);
         }
     }
     else
     {
-        reject(@"not_available");
+        reject(@"-1", @"Magnetometer is not available", [[NSError alloc] init]);
     }
 }
 
@@ -84,6 +90,7 @@ RCT_EXPORT_METHOD(startUpdates) {
          double z = magnetometerData.magneticField.z;
          double timestamp = magnetometerData.timestamp;
          NSLog(@"startMagnetometerUpdates: %f, %f, %f, %f", x, y, z, timestamp);
+
          [self.bridge.eventDispatcher sendDeviceEventWithName:@"Magnetometer" body:@{
                                                                                    @"x" : [NSNumber numberWithDouble:x],
                                                                                    @"y" : [NSNumber numberWithDouble:y],
