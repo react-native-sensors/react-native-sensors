@@ -13,7 +13,7 @@ import com.facebook.react.bridge.JavaScriptModule;
 public class RNSensorsPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-      return Arrays.<NativeModule>asList(new Gyroscope(reactContext), new Accelerometer(reactContext));
+      return Arrays.<NativeModule>asList(new Gyroscope(reactContext), new Accelerometer(reactContext), new Magnetometer(reactContext));
     }
 
     @Override

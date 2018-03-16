@@ -17,7 +17,7 @@ import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 
-public class Accelerometer extends ReactContextBaseJavaModule implements SensorEventListener {
+public class Magnetometer extends ReactContextBaseJavaModule implements SensorEventListener {
 
   private final ReactApplicationContext reactContext;
   private final SensorManager sensorManager;
@@ -26,11 +26,11 @@ public class Accelerometer extends ReactContextBaseJavaModule implements SensorE
   private int interval;
   private Arguments arguments;
 
-  public Accelerometer(ReactApplicationContext reactContext) {
+  public Magnetometer(ReactApplicationContext reactContext) {
     super(reactContext);
     this.reactContext = reactContext;
     this.sensorManager = (SensorManager)reactContext.getSystemService(reactContext.SENSOR_SERVICE);
-    this.sensor = this.sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+    this.sensor = this.sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
   }
 
   // RN Methods
@@ -38,7 +38,7 @@ public class Accelerometer extends ReactContextBaseJavaModule implements SensorE
   public void isAvailable(Promise promise) {
     if (this.sensor == null) {
       // No sensor found, throw error
-      promise.reject(new RuntimeException("No Accelerometer found"));
+      promise.reject(new RuntimeException("No Magnetometer found"));
       return;
     }
     promise.resolve(null);
@@ -63,7 +63,7 @@ public class Accelerometer extends ReactContextBaseJavaModule implements SensorE
 
   @Override
   public String getName() {
-    return "Accelerometer";
+    return "Magnetometer";
   }
 
   // SensorEventListener Interface
@@ -76,21 +76,21 @@ public class Accelerometer extends ReactContextBaseJavaModule implements SensorE
     }
   }
 
-    @Override
-    public void onSensorChanged(SensorEvent sensorEvent) {
-      double tempMs = (double) System.currentTimeMillis();
-      if (tempMs - lastReading >= interval){
-        lastReading = tempMs;
+  @Override
+  public void onSensorChanged(SensorEvent sensorEvent) {
+    double tempMs = (double) System.currentTimeMillis();
+    if (tempMs - lastReading >= interval){
+      lastReading = tempMs;
 
-        Sensor mySensor = sensorEvent.sensor;
-        WritableMap map = arguments.createMap();
+      Sensor mySensor = sensorEvent.sensor;
+      WritableMap map = arguments.createMap();
 
-        if (mySensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-          map.putDouble("x", sensorEvent.values[0]);
-          map.putDouble("y", sensorEvent.values[1]);
-          map.putDouble("z", sensorEvent.values[2]);
-          map.putDouble("timestamp", tempMs);
-          sendEvent("Accelerometer", map);
+      if (mySensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
+        map.putDouble("x", sensorEvent.values[0]);
+        map.putDouble("y", sensorEvent.values[1]);
+        map.putDouble("z", sensorEvent.values[2]);
+        map.putDouble("timestamp", tempMs);
+          sendEvent("Magnetometer", map);
         }
       }
     }
