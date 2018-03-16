@@ -1,5 +1,7 @@
 jest.unmock("rxjs/Rx");
+
 function createSensorMock() {
+
 	return {
 		isAvailable: () => new Promise(resolve => resolve()),
 		setUpdateInterval: jest.fn(),
@@ -7,13 +9,17 @@ function createSensorMock() {
 		stopUpdates: jest.fn()
 	};
 }
+
 const mockGyro = createSensorMock();
 const mockAcc = createSensorMock();
+const mockMagn = createSensorMock();
 const mockDeviceEvents = jest.fn();
 const mockSensors = {
 	Gyroscope: mockGyro,
-	Accelerometer: mockAcc
+	Accelerometer: mockAcc,
+	Magnetometer: mockMagn
 };
+
 jest.mock("react-native", () => ({
 	NativeModules: mockSensors,
 	DeviceEventEmitter: {
@@ -24,6 +30,7 @@ jest.mock("react-native", () => ({
 const RNSensors = require("../../").default;
 
 describe("sensors", () => {
+
 	beforeEach(() => {
 		mockGyro.setUpdateInterval.mockReset();
 		mockGyro.startUpdates.mockReset();
@@ -31,18 +38,24 @@ describe("sensors", () => {
 		mockAcc.setUpdateInterval.mockReset();
 		mockAcc.startUpdates.mockReset();
 		mockAcc.stopUpdates.mockReset();
+		mockMagn.setUpdateInterval.mockReset();
+		mockMagn.startUpdates.mockReset();
+		mockMagn.stopUpdates.mockReset();
 		mockDeviceEvents.mockReset();
 	});
 
 	it("should be mocked", () => {
 		const { NativeModules } = require("react-native");
-		const { Gyroscope, Accelerometer } = NativeModules;
+		const { Gyroscope, Accelerometer, Magnetometer } = NativeModules;
 		Gyroscope.setUpdateInterval();
 		Gyroscope.startUpdates();
 		Gyroscope.stopUpdates();
 		Accelerometer.setUpdateInterval();
 		Accelerometer.startUpdates();
 		Accelerometer.stopUpdates();
+		Magnetometer.setUpdateInterval();
+		Magnetometer.startUpdates();
+		Magnetometer.stopUpdates();
 
 		expect(Gyroscope.setUpdateInterval).toHaveBeenCalled();
 		expect(Gyroscope.startUpdates).toHaveBeenCalled();
@@ -50,10 +63,15 @@ describe("sensors", () => {
 		expect(Accelerometer.setUpdateInterval).toHaveBeenCalled();
 		expect(Accelerometer.startUpdates).toHaveBeenCalled();
 		expect(Accelerometer.stopUpdates).toHaveBeenCalled();
+		expect(Magnetometer.setUpdateInterval).toHaveBeenCalled();
+		expect(Magnetometer.startUpdates).toHaveBeenCalled();
+		expect(Magnetometer.stopUpdates).toHaveBeenCalled();
 	});
 
-	["Accelerometer", "Gyroscope"].forEach(type => {
+	["Accelerometer", "Gyroscope", "Magnetometer"].forEach(type => {
+
 		describe(type, () => {
+
 			const Sensor = RNSensors[type];
 			const sensorMock = mockSensors[type];
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B18A2800205ADE2700ED2038 /* Magnetometer.m in Sources */ = {isa = PBXBuildFile; fileRef = B18A27FF205ADE2700ED2038 /* Magnetometer.m */; };
 		E7FCE1881E14639E005C5155 /* Gyroscope.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FCE1871E14639E005C5155 /* Gyroscope.m */; };
 		E7FCE18B1E150266005C5155 /* Accelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FCE18A1E150266005C5155 /* Accelerometer.m */; };
 /* End PBXBuildFile section */
@@ -25,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNSensors.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNSensors.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B18A27FE205ADE2700ED2038 /* Magnetometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Magnetometer.h; sourceTree = "<group>"; };
+		B18A27FF205ADE2700ED2038 /* Magnetometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Magnetometer.m; sourceTree = "<group>"; };
 		E7FCE1861E14639E005C5155 /* Gyroscope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gyroscope.h; sourceTree = "<group>"; };
 		E7FCE1871E14639E005C5155 /* Gyroscope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gyroscope.m; sourceTree = "<group>"; };
 		E7FCE1891E150266005C5155 /* Accelerometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Accelerometer.h; sourceTree = "<group>"; };
@@ -53,6 +56,8 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				B18A27FE205ADE2700ED2038 /* Magnetometer.h */,
+				B18A27FF205ADE2700ED2038 /* Magnetometer.m */,
 				E7FCE1891E150266005C5155 /* Accelerometer.h */,
 				E7FCE18A1E150266005C5155 /* Accelerometer.m */,
 				E7FCE1861E14639E005C5155 /* Gyroscope.h */,
@@ -119,6 +124,7 @@
 			files = (
 				E7FCE1881E14639E005C5155 /* Gyroscope.m in Sources */,
 				E7FCE18B1E150266005C5155 /* Accelerometer.m in Sources */,
+				B18A2800205ADE2700ED2038 /* Magnetometer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
