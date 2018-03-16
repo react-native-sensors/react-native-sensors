@@ -1,5 +1,4 @@
 jest.unmock("rxjs/Rx");
-const RNSensors = require("../../").default;
 
 function createSensorMock() {
 
@@ -27,6 +26,8 @@ jest.mock("react-native", () => ({
 		addListener: mockDeviceEvents
 	}
 }));
+
+const RNSensors = require("../../").default;
 
 describe("sensors", () => {
 
