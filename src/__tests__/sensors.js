@@ -94,13 +94,10 @@ describe("sensors", () => {
 			describe("events", () => {
 				it("should register a device event callback", async () => {
 					const { DeviceEventEmitter } = require("react-native");
-					const startUpdatesPromise = Promise.resolve();
-					sensorMock.startUpdates.mockReturnValueOnce(startUpdatesPromise);
 
-					await Sensor().then(async instance => {
+					await Sensor().then(instance => {
 						instance.subscribe(value => {});
 						expect(sensorMock.startUpdates).toHaveBeenCalled();
-						await startUpdatesPromise;
 
 						expect(DeviceEventEmitter.addListener).toHaveBeenCalled();
 					});
@@ -108,9 +105,7 @@ describe("sensors", () => {
 
 				it("should add a value to the observable if an event was triggered", async () => {
 					const { DeviceEventEmitter } = require("react-native");
-					const startUpdatesPromise = Promise.resolve();
-					sensorMock.startUpdates.mockReturnValueOnce(startUpdatesPromise);
-					await new Sensor().then(async instance => {
+					await new Sensor().then(instance => {
 						const data = {
 							x: 0,
 							y: 0,
@@ -122,46 +117,12 @@ describe("sensors", () => {
 						instance.subscribe(value => {
 							lastValue = value;
 						});
-						await startUpdatesPromise;
 
 						expect(DeviceEventEmitter.addListener.mock.calls[0][0]).toBe(type);
 						const emitEvent = DeviceEventEmitter.addListener.mock.calls[0][1];
 						emitEvent(data);
 
 						expect(lastValue).toEqual(data);
-					});
-				});
-
-				it("should error the observer if an error occured during initialization", async () => {
-					const { DeviceEventEmitter } = require("react-native");
-					const startUpdatesPromise = Promise.reject(
-						new Error("Init impossible")
-					);
-					sensorMock.startUpdates.mockReturnValueOnce(startUpdatesPromise);
-					await new Sensor().then(async instance => {
-						const data = {
-							x: 0,
-							y: 0,
-							z: 0,
-							timestamp: 1514196009536
-						};
-
-						let lastValue, lastError;
-						try {
-							instance.subscribe(
-								value => {
-									lastValue = value;
-								},
-								error => {
-									lastError = error;
-								}
-							);
-							await startUpdatesPromise;
-						} catch (e) {
-							// expected
-						}
-
-						expect(lastError).toMatchSnapshot();
 					});
 				});
 			});

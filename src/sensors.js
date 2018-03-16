@@ -16,17 +16,13 @@ function createSensorMonitorCreator(sensorType) {
 				// Instanciate observable
 				const observable = Rx.Observable.create(function(obs) {
 					observer = obs;
+
+					DeviceEventEmitter.addListener(sensorType, function(data) {
+						observer.next(data);
+					});
+
 					// Start the sensor manager
-					RNSensors.start(sensorType, updateInterval).then(
-						() => {
-							DeviceEventEmitter.addListener(sensorType, function(data) {
-								observer.next(data);
-							});
-						},
-						error => {
-							observer.error(error);
-						}
-					);
+					RNSensors.start(sensorType, updateInterval);
 				});
 
 				// Stop the sensor manager
