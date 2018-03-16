@@ -22,22 +22,28 @@ RCT_EXPORT_MODULE();
     return self;
 }
 
-RCT_EXPORT_METHOD(isAvailable,
+RCT_REMAP_METHOD(isAvailable,
                  resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject) {
+    return [self isAvailableWithResolver:resolve
+                                rejecter:reject];
+}
+
+- (void) isAvailableWithResolver:(RCTPromiseResolveBlock) resolve
+                        rejecter:(RCTPromiseRejectBlock) reject {
     if([self->_motionManager isAccelerometerAvailable])
     {
         /* Start the accelerometer if it is not active already */
         if([self->_motionManager isAccelerometerActive] == NO)
         {
-            resolve();
+            resolve(@YES);
         } else {
-            reject(@"not_active");
+            reject(@"-1", @"Acceletometer is not active", [[NSError alloc] init]);
         }
     }
     else
     {
-        reject(@"not_available");
+        reject(@"-1", @"Acceletometer is not available", [[NSError alloc] init]);
     }
 }
 
