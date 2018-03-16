@@ -13,7 +13,7 @@ class SensorWrapper extends React.Component {
 		sensors: PropTypes.shape({
 			Accelerometer: PropTypes.oneOfType([PropTypes.bool, optionsType]),
 			Gyroscope: PropTypes.oneOfType([PropTypes.bool, optionsType]),
-      Magnetometer: PropTypes.oneOfType([PropTypes.bool, optionsType])
+			Magnetometer: PropTypes.oneOfType([PropTypes.bool, optionsType])
 		})
 	};
 
