@@ -2,6 +2,12 @@
 
 # Version 3
 
+## 3.0.0-1
+
+* [Add linking failure message](https://github.com/react-native-sensors/react-native-sensors/pull/61): If you forget to link the native dependencies you now get `"Native modules for sensors not available. Did react-native link run successfully?"` as an error
+* [Fix sensor availability checks](https://github.com/react-native-sensors/react-native-sensors/pull/60)
+* [Fix startup API](https://github.com/react-native-sensors/react-native-sensors/pull/56)
+
 ## 3.0.0-0
 
 * BREAKING: [removed windows support](https://github.com/react-native-sensors/react-native-sensors/commit/2c347ae93db97274f14f8d2b3fb15daf72c6eebe) We had to remove the windows support as there was no one maintaining it. If you have interest in using this library on a windows phone, please leave an issue. We would be very happy to revert this commit and get windows up to speed again.
