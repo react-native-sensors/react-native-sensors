@@ -44,7 +44,7 @@
     "babel-preset-react-native": "4.0.0",
     "jest": "22.4.2",
     "react": "16.2.0",
-    "react-native": "0.51.1",
+    "react-native": "0.54.2",
     "regenerator-runtime": "0.11.1"
   }
 }
