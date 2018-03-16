@@ -1,7 +1,6 @@
 jest.unmock("rxjs/Rx");
 
 function createSensorMock() {
-
 	return {
 		isAvailable: () => new Promise(resolve => resolve()),
 		setUpdateInterval: jest.fn(),
@@ -30,7 +29,6 @@ jest.mock("react-native", () => ({
 const RNSensors = require("../../").default;
 
 describe("sensors", () => {
-
 	beforeEach(() => {
 		mockGyro.setUpdateInterval.mockReset();
 		mockGyro.startUpdates.mockReset();
@@ -69,9 +67,7 @@ describe("sensors", () => {
 	});
 
 	["Accelerometer", "Gyroscope", "Magnetometer"].forEach(type => {
-
 		describe(type, () => {
-
 			const Sensor = RNSensors[type];
 			const sensorMock = mockSensors[type];
 
