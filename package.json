@@ -38,13 +38,13 @@
     "rxjs": "^5.0.2"
   },
   "devDependencies": {
-    "all-contributors-cli": "^4.10.1",
-    "babel-core": "^6.26.0",
-    "babel-jest": "^22.0.4",
-    "babel-preset-react-native": "^4.0.0",
-    "jest": "^22.0.4",
-    "react": "^16.2.0",
-    "react-native": "^0.51.0",
-    "regenerator-runtime": "^0.11.1"
+    "all-contributors-cli": "4.11.1",
+    "babel-core": "6.26.0",
+    "babel-jest": "22.4.1",
+    "babel-preset-react-native": "4.0.0",
+    "jest": "22.4.2",
+    "react": "16.2.0",
+    "react-native": "0.51.1",
+    "regenerator-runtime": "0.11.1"
   }
 }
