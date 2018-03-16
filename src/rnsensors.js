@@ -1,5 +1,9 @@
 import { NativeModules, DeviceEventEmitter } from "react-native";
-const { Gyroscope: GyroNative, Accelerometer: AccNative, Magnetometer: MagnNative  } = NativeModules;
+const {
+	Gyroscope: GyroNative,
+	Accelerometer: AccNative,
+	Magnetometer: MagnNative
+} = NativeModules;
 
 if (!GyroNative && !AccNative && !MagnNative) {
 	throw new Error(
