@@ -1,6 +1,6 @@
 {
   "name": "react-native-sensors",
-  "version": "3.0.0-1",
+  "version": "3.0.0-2",
   "description": "A developer friendly approach for sensors in react-native",
   "scripts": {
     "contributor:add": "all-contributors add",
