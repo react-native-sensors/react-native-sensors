@@ -4,10 +4,8 @@ import RNSensors from "./rnsensors";
 
 function createSensorMonitorCreator(sensorType) {
 	function Creator(options = {}) {
-		return RNSensors
-			.isAvailable(sensorType)
+		return RNSensors.isAvailable(sensorType)
 			.then(() => {
-
 				const { updateInterval = 100 } = options || {}; // time in ms
 				let observer;
 
