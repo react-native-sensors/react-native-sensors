@@ -2,6 +2,9 @@
 
 # Version 3
 
+## 3.0.0-2
+* [Magnetometer](https://github.com/react-native-sensors/react-native-sensors/pull/62) support
+
 ## 3.0.0-1
 
 * [Add linking failure message](https://github.com/react-native-sensors/react-native-sensors/pull/61): If you forget to link the native dependencies you now get `"Native modules for sensors not available. Did react-native link run successfully?"` as an error
