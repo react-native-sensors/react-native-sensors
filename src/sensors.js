@@ -41,9 +41,11 @@ function createSensorMonitorCreator(sensorType) {
 const Accelerometer = createSensorMonitorCreator("Accelerometer");
 const Gyroscope = createSensorMonitorCreator("Gyroscope");
 const Magnetometer = createSensorMonitorCreator("Magnetometer");
+const Barometer = createSensorMonitorCreator("Barometer");
 
 export default {
 	Accelerometer,
 	Gyroscope,
-	Magnetometer
+	Magnetometer,
+	Barometer
 };
