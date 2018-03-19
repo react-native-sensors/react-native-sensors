@@ -1,4 +1,18 @@
-language: node_js
-node_js:
-  - "8"
-  - "7"
+
+matrix:
+  include:
+    # Unit tests on node 8
+    - language: node_js
+      node_js: 8
+
+    # Unit tests on node 7
+    - language: node_js
+      node_js: 7
+
+    # Website
+    - language: node_js
+      env:
+        - NAME='Website - master'
+      node_js: 8
+      script:
+      - scripts/publish-website.sh 
