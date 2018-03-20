@@ -7,58 +7,62 @@
 
 /* List of projects/orgs using your project for the users page */
 const users = [
-  {
-    caption: "react-native-live-translator",
-    infoLink: "https://github.com/agrcrobles/react-native-live-translator",
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png',
-    pinned: true
-  },
-  {
-    caption: "imagination-react-native",
-    infoLink: "https://github.com/Matzielab/imagination-react-native",
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png',
-    pinned: true
-  },
-  {
-    caption: "react-native-game-engine-handbook",
-    infoLink: "https://github.com/bberak/react-native-game-engine-handbook",
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png',
-    pinned: true
-  },
-  {
-    caption: "react-native-iridescent",
-    infoLink: "https://github.com/elevenfooteleven/react-native-iridescent",
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png',
-    pinned: true
-  }
+	{
+		caption: "react-native-live-translator",
+		infoLink: "https://github.com/agrcrobles/react-native-live-translator",
+		image:
+			"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png",
+		pinned: true
+	},
+	{
+		caption: "imagination-react-native",
+		infoLink: "https://github.com/Matzielab/imagination-react-native",
+		image:
+			"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png",
+		pinned: true
+	},
+	{
+		caption: "react-native-game-engine-handbook",
+		infoLink: "https://github.com/bberak/react-native-game-engine-handbook",
+		image:
+			"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png",
+		pinned: true
+	},
+	{
+		caption: "react-native-iridescent",
+		infoLink: "https://github.com/elevenfooteleven/react-native-iridescent",
+		image:
+			"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png",
+		pinned: true
+	}
 ];
 
 const siteConfig = {
-  title: "React Native Sensors",
-  tagline:
-    "A developer friendly approach for sensors in React Native (Accelerometer, Gyroscope, Magnetometer)",
-  url: "https://react-native-sensors.github.io",
-  baseUrl: "/react-native-sensors/" /* base url for your project */,
-  projectName: "react-native-sensors",
-  headerLinks: [
-    { doc: "GettingStarted", label: "Docs" },
-    {
-      href: "https://github.com/react-native-sensors/react-native-sensors",
-      label: "GitHub"
-    }
-  ],
-  users,
-  /* path to images for header/footer */
-  headerIcon: "",
-  footerIcon: "",
-  favicon: "",
-  /* colors for website */
-  colors: {
-    primaryColor: "#7692FF",
-    secondaryColor: "#4BC6B9"
-  },
-  /* custom fonts for website */
-  /*fonts: {
+	title: "React Native Sensors",
+	tagline:
+		"A developer friendly approach for sensors in React Native (Accelerometer, Gyroscope, Magnetometer)",
+	url: "https://react-native-sensors.github.io",
+	baseUrl: "/react-native-sensors/" /* base url for your project */,
+	projectName: "react-native-sensors",
+	headerLinks: [
+		{ doc: "GettingStarted", label: "Docs" },
+		{
+			href: "https://github.com/react-native-sensors/react-native-sensors",
+			label: "GitHub"
+		}
+	],
+	users,
+	/* path to images for header/footer */
+	headerIcon: "",
+	footerIcon: "",
+	favicon: "",
+	/* colors for website */
+	colors: {
+		primaryColor: "#7692FF",
+		secondaryColor: "#4BC6B9"
+	},
+	/* custom fonts for website */
+	/*fonts: {
     myFont: [
       "Times New Roman",
       "Serif"
@@ -68,19 +72,19 @@ const siteConfig = {
       "system-ui"
     ]
   },*/
-  // This copyright info is used in /core/Footer.js and blog rss/atom feeds.
-  copyright: "Copyright © " + new Date().getFullYear() + " Daniel Schmidt",
-  // organizationName: 'deltice', // or set an env variable ORGANIZATION_NAME
-  // projectName: 'test-site', // or set an env variable PROJECT_NAME
-  highlight: {
-    // Highlight.js theme to use for syntax highlighting in code blocks
-    theme: "default"
-  },
-  scripts: ["https://buttons.github.io/buttons.js"],
-  // You may provide arbitrary config keys to be used as needed by your template.
-  repoUrl: "https://github.com/react-native-sensors/react-native-sensors"
-  /* On page navigation for the current documentation page */
-  // onPageNav: 'separate',
+	// This copyright info is used in /core/Footer.js and blog rss/atom feeds.
+	copyright: "Copyright © " + new Date().getFullYear() + " Daniel Schmidt",
+	// organizationName: 'deltice', // or set an env variable ORGANIZATION_NAME
+	// projectName: 'test-site', // or set an env variable PROJECT_NAME
+	highlight: {
+		// Highlight.js theme to use for syntax highlighting in code blocks
+		theme: "default"
+	},
+	scripts: ["https://buttons.github.io/buttons.js"],
+	// You may provide arbitrary config keys to be used as needed by your template.
+	repoUrl: "https://github.com/react-native-sensors/react-native-sensors"
+	/* On page navigation for the current documentation page */
+	// onPageNav: 'separate',
 };
 
 module.exports = siteConfig;

@@ -5,11 +5,11 @@ title: API
 
 We have two different APIs to provide the same functionality, one is **Default**, which is more verbose, the other one is **Decorator** which is a bit more elegant, but might be harder to read.
 
-Supported sensors: 
+Supported sensors:
 
-- Accelerometer
-- Gyroscope
-- Magnetometer
+* Accelerometer
+* Gyroscope
+* Magnetometer
 
 The API of each of them is the same, therefore you will just see Accelerometer in the docs:
 
