@@ -2,7 +2,7 @@
 
 if [ "$TRAVIS_PULL_REQUEST" = "false" ] && [ "$TRAVIS_BRANCH" = "master" ]; then
   git config user.email "$GIT_USER@users.noreply.github.com"
-  git config user.name "Daniel Schmidt"
+  git config user.name "$GIT_USER"
   echo "machine github.com login $GIT_USER password $GIT_TOKEN" > ~/.netrc
 
   cd website
