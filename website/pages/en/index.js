@@ -100,7 +100,7 @@ const Features = props => (
   <Block layout="fourColumn">
     {[
       {
-        title: 'RxJS is our API',
+        title: 'RxJS Observables as API',
         content: 'This gives you an intuitive way to deal with sensor data',
       },
       {
