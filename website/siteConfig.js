@@ -38,8 +38,8 @@ const siteConfig = {
   tagline:
     "A developer friendly approach for sensors in React Native (Accelerometer, Gyroscope, Magnetometer)",
   url: "https://react-native-sensors.github.io",
-  baseUrl: "/react-native-sensors/" /* base url for your project */,
-  projectName: "react-native-sensors",
+  baseUrl: "/" /* base url for your project */,
+  projectName: "react-native-sensors.github.com",
   headerLinks: [
     { doc: "GettingStarted", label: "Docs" },
     {
