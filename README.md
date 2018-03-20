@@ -126,7 +126,7 @@ export default sensors({
 
 ## Changelog
 
-[Please see the changelog here](Changelog.md)
+[Please see the changelog here](docs/Changelog.md)
 
 ## Credits
 
