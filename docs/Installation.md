@@ -6,7 +6,6 @@ sidebar_label: Installation
 
 ## Installation
 
-
 `$ npm install react-native-sensors --save`
 
 ### Automatic installation
