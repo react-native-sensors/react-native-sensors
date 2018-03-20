@@ -1,0 +1,7 @@
+{
+  "docs": {
+    "Getting Started": ["Installation", "GettingStarted"],
+    "Usage": ["Usage.Default", "Usage.Decorator"],
+    "API": ["API", "Changelog"]
+  }
+}
