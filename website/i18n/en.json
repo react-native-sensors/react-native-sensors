@@ -3,7 +3,7 @@
   "localized-strings": {
     "next": "Next",
     "previous": "Previous",
-    "tagline": "A developer friendly approach for sensors in React Native (Accelerometer, Gyroscope, Magnetometer)",
+    "tagline": "A developer friendly approach for sensors in React Native",
     "API": "API",
     "Changelog": "Changelog",
     "GettingStarted": "Getting Started with React Native Sensors",
