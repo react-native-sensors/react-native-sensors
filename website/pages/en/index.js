@@ -79,8 +79,13 @@ class HomeSplash extends React.Component {
 				<div className="inner">
 					<ProjectTitle />
 					<PromoSection>
-						<Button href="#try">Try It Out</Button>
+						<ul style={{textAlign: 'left'}}>
+							<li>Accelerometer</li>
+							<li>Gyroscope</li>
+							<li>Magnetometer</li>
+						</ul>
 					</PromoSection>
+					<Button href="#try">Try It Out</Button>
 				</div>
 			</SplashContainer>
 		);
@@ -101,10 +106,14 @@ const Features = props => (
 	<Block layout="fourColumn">
 		{[
 			{
+				image: 'https://dwglogo.com/wp-content/uploads/2017/05/RxJS_logo.png',
+				imageAlign: "top",
 				title: "RxJS Observables as API",
 				content: "This gives you an intuitive way to deal with sensor data"
 			},
 			{
+				image: 'http://amenssolutions.com/images/HD/ios-android.png',
+				imageAlign: "top",
 				title: "Full iOS & Android support",
 				content:
 					"Our philosophy is not to ship partial support; same sensors for every device"
@@ -117,33 +126,23 @@ const Showcase = props => {
 	if ((siteConfig.users || []).length === 0) {
 		return null;
 	}
-	const showcase = siteConfig.users
-		.filter(user => {
-			return user.pinned;
-		})
-		.map((user, i) => {
-			return (
-				<a href={user.infoLink} key={i} style={{ position: "relative" }}>
-					<img src={user.image} title={user.caption} />
-					<span
-						style={{
-							position: "absolute",
-							bottom: "-35px",
-							left: 0,
-							right: 0
-						}}
-					>
-						{user.caption}
-					</span>
-				</a>
-			);
-		});
 
 	return (
 		<div className="productShowcaseSection paddingBottom">
 			<h2>{"Who's Using This?"}</h2>
 			<p>This project is used by all these people</p>
-			<div className="logos">{showcase}</div>
+			<Block layout="fourColumn">
+				{siteConfig.users
+					.filter(user => {
+						return user.pinned;
+					}).slice(0, 4)
+					.map(user => ({
+						image: user.image,
+						imageAlign: "top",
+						title: user.caption
+					})
+				)}
+			</Block>
 		</div>
 	);
 };
