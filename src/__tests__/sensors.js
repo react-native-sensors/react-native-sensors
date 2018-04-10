@@ -12,11 +12,13 @@ function createSensorMock() {
 const mockGyro = createSensorMock();
 const mockAcc = createSensorMock();
 const mockMagn = createSensorMock();
+const mockLight = createSensorMock();
 const mockDeviceEvents = jest.fn();
 const mockSensors = {
 	Gyroscope: mockGyro,
 	Accelerometer: mockAcc,
-	Magnetometer: mockMagn
+	Magnetometer: mockMagn,
+	Lightsensor: mockLight
 };
 
 jest.mock("react-native", () => ({
@@ -39,12 +41,16 @@ describe("sensors", () => {
 		mockMagn.setUpdateInterval.mockReset();
 		mockMagn.startUpdates.mockReset();
 		mockMagn.stopUpdates.mockReset();
+		mockLight.setUpdateInterval.mockReset();
+		mockLight.startUpdates.mockReset();
+		mockLight.stopUpdates.mockReset();
 		mockDeviceEvents.mockReset();
 	});
 
 	it("should be mocked", () => {
 		const { NativeModules } = require("react-native");
-		const { Gyroscope, Accelerometer, Magnetometer } = NativeModules;
+		const { Gyroscope, Accelerometer, Magnetometer, Lightsensor } = NativeModules;
+
 		Gyroscope.setUpdateInterval();
 		Gyroscope.startUpdates();
 		Gyroscope.stopUpdates();
@@ -54,6 +60,9 @@ describe("sensors", () => {
 		Magnetometer.setUpdateInterval();
 		Magnetometer.startUpdates();
 		Magnetometer.stopUpdates();
+		Lightsensor.setUpdateInterval();
+		Lightsensor.startUpdates();
+		Lightsensor.stopUpdates();
 
 		expect(Gyroscope.setUpdateInterval).toHaveBeenCalled();
 		expect(Gyroscope.startUpdates).toHaveBeenCalled();
@@ -64,13 +73,16 @@ describe("sensors", () => {
 		expect(Magnetometer.setUpdateInterval).toHaveBeenCalled();
 		expect(Magnetometer.startUpdates).toHaveBeenCalled();
 		expect(Magnetometer.stopUpdates).toHaveBeenCalled();
+		expect(Lightsensor.setUpdateInterval).toHaveBeenCalled();
+		expect(Lightsensor.startUpdates).toHaveBeenCalled();
+		expect(Lightsensor.stopUpdates).toHaveBeenCalled();
 	});
 
-	["Accelerometer", "Gyroscope", "Magnetometer"].forEach(type => {
+	["Accelerometer", "Gyroscope", "Magnetometer", "Lightsensor"].forEach(type => {
 		describe(type, () => {
 			const Sensor = RNSensors[type];
 			const sensorMock = mockSensors[type];
-
+			
 			it("should expose a constructor", () => {
 				expect(Sensor).toBeInstanceOf(Function);
 			});
