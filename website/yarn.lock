@@ -881,9 +881,9 @@ diacritics-map@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/diacritics-map/-/diacritics-map-0.1.0.tgz#6dfc0ff9d01000a2edf2865371cac316e94977af"
 
-docusaurus@1.0.10:
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/docusaurus/-/docusaurus-1.0.10.tgz#e456692021e9cb6e20c195ef7fb76b64e437373c"
+docusaurus@1.0.11:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/docusaurus/-/docusaurus-1.0.11.tgz#1212e48cade94f1040bb9d162998495300393950"
   dependencies:
     babel-plugin-transform-class-properties "^6.24.1"
     babel-plugin-transform-object-rest-spread "^6.26.0"
