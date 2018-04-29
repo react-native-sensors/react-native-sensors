@@ -21,7 +21,8 @@
   },
   "dependencies": {
     "react": "16.3.1",
-    "react-native": "0.55.3"
+    "react-native": "0.55.3",
+    "react-native-sensors": "file:../"
   },
   "devDependencies": {
     "babel-jest": "22.4.3",

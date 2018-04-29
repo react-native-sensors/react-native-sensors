@@ -1,38 +1,56 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableHighlight
 } from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
 
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component {
+  state = {
+    view: null
+  };
+
   render() {
+    if (this.state.view === "default") {
+      return (
+        <View style={styles.container}>
+        <Text testID="headline-default" style={styles.welcome}>
+          Default usage
+        </Text>
+        <TouchableHighlight testID="nav-back" onPress={() => this.setState({view: null})}>
+          <Text>Go Back</Text>
+        </TouchableHighlight>
+      </View>
+      )
+    }
+
+    if (this.state.view === "decorator") {
+      return (
+        <View style={styles.container}>
+        <Text testID="headline-decorator" style={styles.welcome}>
+          Decorator usage
+        </Text>
+        <TouchableHighlight testID="nav-back" onPress={() => this.setState({view: null})}>
+          <Text>Go Back</Text>
+        </TouchableHighlight>
+      </View>
+      )
+    }
+
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
+        <Text testID="headline-main" style={styles.welcome}>
+          Main
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+        <TouchableHighlight testID="nav-default" onPress={() => this.setState({view: 'default'})}>
+          <Text>GoTo Default</Text>
+        </TouchableHighlight>
+        <TouchableHighlight testID="nav-decorator" onPress={() => this.setState({view: 'decorator'})}>
+          <Text>GoTo Decorator</Text>
+        </TouchableHighlight>
       </View>
     );
   }

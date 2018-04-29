@@ -18,7 +18,7 @@ matrix:
       - scripts/publish-website.sh 
     
     - language: objective-c
-      osx_image: xcode8.3
+      osx_image: xcode9.3
 
       branches:
         only:
@@ -26,8 +26,8 @@ matrix:
 
       env:
         global:
-        - NAME='E2E Tests (iOS)'
-        - NODE_VERSION=stable
+          - NAME='E2E Tests (iOS)'
+          - NODE_VERSION=stable
 
       install:
         - brew tap wix/brew
