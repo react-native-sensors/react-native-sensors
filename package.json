@@ -22,7 +22,8 @@
     "url": "http://danielmschmidt.de"
   },
   "jest": {
-    "timers": "fake"
+    "timers": "fake",
+    "testPathIgnorePatterns": ["/node_modules/", "<rootDir>/test/"]
   },
   "babel": {
     "presets": [
