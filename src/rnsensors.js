@@ -29,6 +29,11 @@ const RNSensors = {
 		return api.isAvailable();
 	},
 
+	setUpdateInterval: function(type, interval) {
+		const api = handle[type];
+		return api.setUpdateInterval(interval);
+	},
+
 	stop: function(type) {
 		const api = handle[type];
 		api.stopUpdates();

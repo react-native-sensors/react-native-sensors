@@ -21,6 +21,11 @@ function createSensorMonitorCreator(sensorType) {
 					RNSensors.start(sensorType, updateInterval);
 				});
 
+				// set update interval
+				observable.setUpdateInterval = (interval) => {
+					RNSensors.setUpdateInterval(sensorType, interval);
+				};
+
 				// Stop the sensor manager
 				observable.stop = () => {
 					RNSensors.stop(sensorType);
