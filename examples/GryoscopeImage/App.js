@@ -10,8 +10,6 @@ const Dimensions = require('Dimensions');
 const PixelRatio = require('PixelRatio');
 const window = Dimensions.get('window');
 
-const kitten = require("./img/kitten.jpeg");
-
 const deviceWidth = window.width;
 const deviceHeight = window.height;
 
