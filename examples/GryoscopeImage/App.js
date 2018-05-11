@@ -7,15 +7,16 @@ import {
 } from 'react-native';
 import { Gyroscope } from "react-native-sensors";
 const Dimensions = require('Dimensions');
+const PixelRatio = require('PixelRatio');
 const window = Dimensions.get('window');
 
-const kitten = require("./img/kitten.jpeg")
-
-const imageWidth = 1000;
-const imageHeight = 500;
+const kitten = require("./img/kitten.jpeg");
 
 const deviceWidth = window.width;
 const deviceHeight = window.height;
+
+const imageWidth = 8 * deviceWidth;
+const imageHeight = deviceHeight;
 
 const middleOfTheScreenX = (imageWidth - deviceWidth) / 2;
 const middleOfTheScreenY = (imageHeight - deviceHeight) / 2;
@@ -25,12 +26,10 @@ export default class App extends Component {
     super(props);
 
     new Gyroscope({
-      updateInterval: 400 // defaults to 100ms
+      updateInterval: 50
     })
       .then(observable => {
         observable
-          // .filter(({x,y}) => x >= 1 || y >= 1)
-          // .debounceTime(10)
           .subscribe(({x,y,z}) => {
             this.setState(state => ({
               x: x + state.x,
@@ -44,7 +43,7 @@ export default class App extends Component {
       });
       
     this.state = {
-      image: `https://placekitten.com/${imageWidth}/${imageHeight}`,
+      image: `https://placeimg.com/${PixelRatio.getPixelSizeForLayoutSize(imageWidth)}/${PixelRatio.getPixelSizeForLayoutSize(imageHeight)}/any`,
       x: 0, 
       y: 0, 
       z: 0
@@ -54,16 +53,18 @@ export default class App extends Component {
 
   render() {
     console.log("State", this.state);
-    const positionOnScreenX = 0;
+    const positionOnScreenX = -imageWidth / 2;
     const positionOnScreenY = 0;
+
+    const movementX = (-this.state.y / 10) * imageWidth;
+    const movementY = 0;
 
     return (
       <View style={styles.container}>
         <Image
-          translateX={positionOnScreenX + (this.state.y * 10)}
-          translateY={positionOnScreenY + (this.state.x * 10)}
+          translateX={positionOnScreenX + movementX}
           style={styles.image}
-          source={kitten}
+          source={{uri: this.state.image}}
         />
       </View>
     );
