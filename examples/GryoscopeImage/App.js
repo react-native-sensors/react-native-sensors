@@ -1,38 +1,70 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
-  Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  Image
 } from 'react-native';
+import { Gyroscope } from "react-native-sensors";
+const Dimensions = require('Dimensions');
+const window = Dimensions.get('window');
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+const kitten = require("./img/kitten.jpeg")
 
-type Props = {};
-export default class App extends Component<Props> {
+const imageWidth = 1000;
+const imageHeight = 500;
+
+const deviceWidth = window.width;
+const deviceHeight = window.height;
+
+const middleOfTheScreenX = (imageWidth - deviceWidth) / 2;
+const middleOfTheScreenY = (imageHeight - deviceHeight) / 2;
+
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+
+    new Gyroscope({
+      updateInterval: 400 // defaults to 100ms
+    })
+      .then(observable => {
+        observable
+          // .filter(({x,y}) => x >= 1 || y >= 1)
+          // .debounceTime(10)
+          .subscribe(({x,y,z}) => {
+            this.setState(state => ({
+              x: x + state.x,
+              y: y + state.y,
+              z: z + state.z
+            }));
+          });
+      })
+      .catch(error => {
+        console.log("The sensor is not available");
+      });
+      
+    this.state = {
+      image: `https://placekitten.com/${imageWidth}/${imageHeight}`,
+      x: 0, 
+      y: 0, 
+      z: 0
+    };
+  }
+
+
   render() {
+    console.log("State", this.state);
+    const positionOnScreenX = 0;
+    const positionOnScreenY = 0;
+
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+        <Image
+          translateX={positionOnScreenX + (this.state.y * 10)}
+          translateY={positionOnScreenY + (this.state.x * 10)}
+          style={styles.image}
+          source={kitten}
+        />
       </View>
     );
   }
@@ -45,14 +77,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  image: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    height: imageHeight,
+    width: imageWidth,
   },
 });
