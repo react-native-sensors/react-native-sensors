@@ -1,0 +1,3 @@
+rootProject.name = 'GryoscopeImage'
+
+include ':app'
