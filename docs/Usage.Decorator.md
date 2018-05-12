@@ -4,6 +4,8 @@ title: The Decorator Syntax of React Native Sensors
 sidebar_label: Decorator Syntax
 ---
 
+This is your option if you would like to have just the sensor data and nothing more. You loose some control you would have had with the RxJS usage, but you gain a lot of convenience. This example shows how you can use the decorator effectively:
+
 ```javascript
 import React, { Component } from "react";
 import { Text, View } from "react-native";

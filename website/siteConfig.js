@@ -44,7 +44,7 @@ const siteConfig = {
 	baseUrl: "/" /* base url for your project */,
 	projectName: "react-native-sensors.github.io",
 	headerLinks: [
-		{ doc: "GettingStarted", label: "Docs" },
+		{ doc: "Installation", label: "Documentation" },
 		{
 			href: "https://github.com/react-native-sensors/react-native-sensors",
 			label: "GitHub"

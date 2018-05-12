@@ -1,8 +1,10 @@
 ---
-id: Usage.Default
-title: The Default Syntax of React Native Sensors
-sidebar_label: Default Syntax
+id: Usage.RxJS
+title: The RxJS Syntax of React Native Sensors
+sidebar_label: RxJS Syntax
 ---
+
+You can access your sensor data through a [RxJS Observable](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html). This way you have the maximum of control over your data stream. You can add the values up, filter them, only react if a certain value is reached: You have the choice. Here is a small example showing the relatively small API interface. If you would like to learn more, please see the [API specification](/docs/API.html).
 
 ```javascript
 import { Accelerometer, Gyroscope } from "react-native-sensors";
