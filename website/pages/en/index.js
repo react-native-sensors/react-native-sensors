@@ -85,7 +85,7 @@ class HomeSplash extends React.Component {
 							<li>Magnetometer</li>
 						</ul>
 					</PromoSection>
-					<Button href="#try">Try It Out</Button>
+					<Button href="/docs/GettingStarted.html">Try It Out</Button>
 				</div>
 			</SplashContainer>
 		);
@@ -106,7 +106,7 @@ const Features = props => (
 	<Block layout="fourColumn">
 		{[
 			{
-				image: 'https://dwglogo.com/wp-content/uploads/2017/05/RxJS_logo.png',
+				image: siteConfig.baseUrl + "img/rxjs_logo.png",
 				imageAlign: "top",
 				title: "RxJS Observables as API",
 				content: "This gives you an intuitive way to deal with sensor data"
