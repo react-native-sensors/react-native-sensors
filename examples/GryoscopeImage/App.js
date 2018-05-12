@@ -17,7 +17,6 @@ const imageWidth = 8 * deviceWidth;
 const imageHeight = deviceHeight;
 
 const middleOfTheScreenX = (imageWidth - deviceWidth) / 2;
-const middleOfTheScreenY = (imageHeight - deviceHeight) / 2;
 
 export default class App extends Component {
   constructor(props) {
@@ -50,12 +49,10 @@ export default class App extends Component {
 
 
   render() {
-    console.log("State", this.state);
     const positionOnScreenX = -imageWidth / 2;
-    const positionOnScreenY = 0;
-
+    // The y axis of the sensor data resembles what we need for the x axis
+    // in the image
     const movementX = (-this.state.y / 10) * imageWidth;
-    const movementY = 0;
 
     return (
       <View style={styles.container}>
