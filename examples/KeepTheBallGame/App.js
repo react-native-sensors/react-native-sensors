@@ -23,9 +23,10 @@ export default class App extends Component {
         this.setState({ error: "The sensor is not available" });
       });
   }
+
   render() {
-    console.log("State", this.state);
     const { error, observable } = this.state;
+
     if (error) {
       return (
         <View style={styles.container}>
