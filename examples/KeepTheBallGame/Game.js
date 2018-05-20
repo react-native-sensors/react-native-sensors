@@ -64,7 +64,6 @@ export default class Game extends Component {
   }
 
   startNewGame() {
-    console.log("Starting a new game");
     this.subscription.unsubscribe();
     this.setState({ gameOver: false });
     this.startGameEventListener();
