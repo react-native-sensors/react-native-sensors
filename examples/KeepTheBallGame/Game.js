@@ -1,29 +1,9 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { Text, View, Button } from "react-native";
 
-const TABLE_SIZE = 250;
-const BALL_SIZE = 50;
-
-function Table({ children }) {
-  return <View style={[styles.table, styles.centeredContent]}>{children}</View>;
-}
-
-function Ball({ x, y }) {
-  return (
-    <View
-      style={[
-        styles.ball,
-        { transform: [{ translateX: x }, { translateY: y }] }
-      ]}
-    />
-  );
-}
-
-function GameOverScreen({ onNewGame }) {
-  return (
-    <Button onPress={onNewGame} title="You lost. Click here to start again" />
-  );
-}
+import Ball, { BALL_SIZE } from "./Ball";
+import Table, { TABLE_SIZE } from "./Table";
+import GameOverScreen from "./GameOver";
 
 const neutralData = {
   x: 0,
@@ -81,22 +61,3 @@ export default class Game extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  centeredContent: {
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  table: {
-    height: TABLE_SIZE,
-    width: TABLE_SIZE,
-    backgroundColor: "rgb(50,50,180)"
-  },
-  ball: {
-    width: BALL_SIZE,
-    height: BALL_SIZE,
-    borderRadius: BALL_SIZE / 2,
-    backgroundColor: "red"
-  }
-});
