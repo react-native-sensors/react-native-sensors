@@ -157,11 +157,15 @@ const Examples = props => (
           here.
         </a>
       </p>
-	  <p className="hide-small">
-		The example on the right side is using the gyroscope sensor to move an image around. <a href="https://github.com/react-native-sensors/react-native-sensors/tree/master/examples/GryoscopeImage">You can find the implementation here.</a>
-	  </p>
+      <p className="hide-small">
+        The example on the right side is using the gyroscope sensor to move an
+        image around.{" "}
+        <a href="https://github.com/react-native-sensors/react-native-sensors/tree/master/examples/GryoscopeImage">
+          You can find the implementation here.
+        </a>
+      </p>
 
-	  {props.children}
+      {props.children}
     </div>
     <div className="example-image hide-small split-right">
       <div style={{ position: "relative", paddingBottom: "54%" }}>
@@ -189,8 +193,8 @@ class Index extends React.Component {
         <div className="mainContainer">
           <Features />
           <Examples>
-          	<Showcase language={language} />
-		  </Examples>
+            <Showcase language={language} />
+          </Examples>
         </div>
       </div>
     );

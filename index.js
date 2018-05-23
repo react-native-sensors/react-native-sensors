@@ -5,6 +5,6 @@ export const { Accelerometer, Gyroscope, Magnetometer } = { ...Sensors };
 export { decorator };
 
 export default {
-	...Sensors,
-	decorator
+  ...Sensors,
+  decorator
 };

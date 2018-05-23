@@ -34,27 +34,27 @@ Add the following to your Podfile and run `$ pod install`:
 
 #### iOS
 
-1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-2. Go to `node_modules` ➜ `react-native-sensors` and add `RNSensors.xcodeproj`
-3. In XCode, in the project navigator, select your project. Add `libRNSensors.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-4. Run your project (`Cmd+R`)<
+1.  In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
+2.  Go to `node_modules` ➜ `react-native-sensors` and add `RNSensors.xcodeproj`
+3.  In XCode, in the project navigator, select your project. Add `libRNSensors.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
+4.  Run your project (`Cmd+R`)<
 
 #### Android
 
-1. Open up `android/app/src/main/java/[...]/MainApplication.java`
+1.  Open up `android/app/src/main/java/[...]/MainApplication.java`
 
 * Add `import com.sensors.RNSensorsPackage;` to the imports at the top of the file
 * Add `new RNSensorsPackage()` to the list returned by the `getPackages()` method
 
-2. Append the following lines to `android/settings.gradle`:
-   ```
-   include ':react-native-sensors'
-   project(':react-native-sensors').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-sensors/android')
-   ```
-3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
-   ```
-     compile project(':react-native-sensors')
-   ```
+2.  Append the following lines to `android/settings.gradle`:
+    ```
+    include ':react-native-sensors'
+    project(':react-native-sensors').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-sensors/android')
+    ```
+3.  Insert the following lines inside the dependencies block in `android/app/build.gradle`:
+    ```
+      compile project(':react-native-sensors')
+    ```
 
 ## Usage
 
@@ -65,23 +65,23 @@ import { Accelerometer, Gyroscope } from "react-native-sensors";
 
 let accelerationObservable = null;
 new Accelerometer({
-	updateInterval: 400 // defaults to 100ms
+  updateInterval: 400 // defaults to 100ms
 })
-	.then(observable => {
-		accelerationObservable = observable;
+  .then(observable => {
+    accelerationObservable = observable;
 
-		// Normal RxJS functions
-		accelerationObservable
-			.map(({ x, y, z }) => x + y + z)
-			.filter(speed => speed > 20)
-			.subscribe(speed => console.log(`You moved your phone with ${speed}`));
-	})
-	.catch(error => {
-		console.log("The sensor is not available");
-	});
+    // Normal RxJS functions
+    accelerationObservable
+      .map(({ x, y, z }) => x + y + z)
+      .filter(speed => speed > 20)
+      .subscribe(speed => console.log(`You moved your phone with ${speed}`));
+  })
+  .catch(error => {
+    console.log("The sensor is not available");
+  });
 
 setTimeout(() => {
-	accelerationObservable.stop();
+  accelerationObservable.stop();
 }, 1000);
 ```
 
@@ -93,34 +93,34 @@ import { Text, View } from "react-native";
 import { decorator as sensors } from "react-native-sensors";
 
 class MyComponent {
-	// no lifecycle needed
-	render() {
-		const { sensorsFound, Accelerometer, Gyroscope } = this.props;
+  // no lifecycle needed
+  render() {
+    const { sensorsFound, Accelerometer, Gyroscope } = this.props;
 
-		if (!Accelerometer || !Gyroscope) {
-			// One of the sensors is still initializing
-			return null;
-		}
+    if (!Accelerometer || !Gyroscope) {
+      // One of the sensors is still initializing
+      return null;
+    }
 
-		return (
-			<View style={styles.container}>
-				<Text style={styles.welcome}>
-					{(sensorsFound["Accelerometer"] &&
-						`Acceleration has value: ${Accelerometer}`) ||
-						"Acceleration is not available"}
-					{(sensorsFound["Gyroscope"] && `Gyro has value: ${Gyroscope}`) ||
-						"Gyro is not available"}
-				</Text>
-			</View>
-		);
-	}
+    return (
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          {(sensorsFound["Accelerometer"] &&
+            `Acceleration has value: ${Accelerometer}`) ||
+            "Acceleration is not available"}
+          {(sensorsFound["Gyroscope"] && `Gyro has value: ${Gyroscope}`) ||
+            "Gyro is not available"}
+        </Text>
+      </View>
+    );
+  }
 }
 
 export default sensors({
-	Accelerometer: {
-		updateInterval: 300 // optional
-	},
-	Gyroscope: true
+  Accelerometer: {
+    updateInterval: 300 // optional
+  },
+  Gyroscope: true
 })(MyComponent);
 ```
 
