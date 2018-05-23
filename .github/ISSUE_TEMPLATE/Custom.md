@@ -1,7 +1,6 @@
 ---
 name: Sensor request
 about: Suggest a new sensor to be added
-
 ---
 
 **What is the purpose of this sensor?**
