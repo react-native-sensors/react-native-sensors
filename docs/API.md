@@ -43,10 +43,10 @@ import { decorator } from "react-native-sensors";
 
 ```js
 export default sensors({
-	Accelerometer: {
-		updateInterval: 300
-	},
-	Gyroscope: true
+  Accelerometer: {
+    updateInterval: 300
+  },
+  Gyroscope: true
 })(MyComponent);
 ```
 
