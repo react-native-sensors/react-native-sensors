@@ -13,6 +13,7 @@
 * [imagination-react-native](https://github.com/Matzielab/imagination-react-native)
 * [react-native-game-engine-handbook](https://github.com/bberak/react-native-game-engine-handbook)
 * [react-native-iridescent](https://github.com/elevenfooteleven/react-native-iridescent)
+* [FlyThru](https://github.com/Noitidart/FlyThru)
 
 Do you want your project listed here? Just send a PR.
 
