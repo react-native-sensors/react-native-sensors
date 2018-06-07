@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Observable } from 'rxjs';
+import { Observable } from "rxjs";
 import Sensors from "./sensors";
 
 const AVAILABLE_SENSORS = ["Accelerometer", "Gyroscope", "Magnetometer"];
@@ -59,7 +59,7 @@ class SensorWrapper extends React.Component {
   }
 
   componentWillUnmount() {
-    this.state._observables.forEach((observable) => {
+    this.state._observables.forEach(observable => {
       if (observable instanceof Observable) {
         observable.stop();
       }
