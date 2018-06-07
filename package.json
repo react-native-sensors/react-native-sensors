@@ -6,7 +6,7 @@
     "contributor:add": "all-contributors add",
     "contributor:generate": "all-contributors generate",
     "test": "jest",
-    "format": "prettier --write './{,**/}*.{js,jsx,json,md,css}'"
+    "format": "prettier --write $(npx jest --listTests)"
   },
   "main": "index.js",
   "repository": {
