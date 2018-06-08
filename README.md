@@ -60,7 +60,7 @@ Add the following to your Podfile and run `$ pod install`:
 
 iOS simulators currently have **no support** for sensors. In order to retrieve any sensor output, you **must develop on a real device**.
 
-Android simulators offer support for some sensors.
+Android simulators offer support for some sensors. [This article](https://developer.android.com/studio/run/emulator#extended) documents how to use them (under the "Virtual Sensors" section.
 
 ## Usage
 
