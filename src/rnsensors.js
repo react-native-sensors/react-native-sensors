@@ -20,21 +20,21 @@ const handle = {
 };
 
 const RNSensors = {
-	start: function(type, updateInterval) {
-		const api = handle[type];
-		api.setUpdateInterval(updateInterval);
-		api.startUpdates();
-	},
+  start: function(type, updateInterval) {
+    const api = handle[type];
+    api.setUpdateInterval(updateInterval);
+    api.startUpdates();
+  },
 
-	isAvailable: function(type) {
-		const api = handle[type];
-		return api.isAvailable();
-	},
+  isAvailable: function(type) {
+    const api = handle[type];
+    return api.isAvailable();
+  },
 
-	stop: function(type) {
-		const api = handle[type];
-		api.stopUpdates();
-	}
+  stop: function(type) {
+    const api = handle[type];
+    api.stopUpdates();
+  }
 };
 
 export default RNSensors;

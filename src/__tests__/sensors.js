@@ -1,12 +1,12 @@
 jest.unmock("rxjs/Rx");
 
 function createSensorMock() {
-	return {
-		isAvailable: () => new Promise(resolve => resolve()),
-		setUpdateInterval: jest.fn(),
-		startUpdates: jest.fn(),
-		stopUpdates: jest.fn()
-	};
+  return {
+    isAvailable: () => new Promise(resolve => resolve()),
+    setUpdateInterval: jest.fn(),
+    startUpdates: jest.fn(),
+    stopUpdates: jest.fn()
+  };
 }
 
 const mockGyro = createSensorMock();
@@ -22,10 +22,10 @@ const mockSensors = {
 };
 
 jest.mock("react-native", () => ({
-	NativeModules: mockSensors,
-	DeviceEventEmitter: {
-		addListener: mockDeviceEvents
-	}
+  NativeModules: mockSensors,
+  DeviceEventEmitter: {
+    addListener: mockDeviceEvents
+  }
 }));
 
 const RNSensors = require("../../").default;
