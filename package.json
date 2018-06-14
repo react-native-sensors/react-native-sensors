@@ -76,7 +76,7 @@
   },
   "dependencies": {
     "jest-runner-prettier": "^0.2.6",
-    "rxjs": "^5.0.2"
+    "rxjs": "^6.0.0"
   },
   "devDependencies": {
     "all-contributors-cli": "4.11.1",
