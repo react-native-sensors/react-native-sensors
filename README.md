@@ -56,6 +56,12 @@ Add the following to your Podfile and run `$ pod install`:
     ```
       compile project(':react-native-sensors')
     ```
+    
+### Build example App which under the main repo directory
+1. Run npm install on the main repo (/ from this project)
+2. Run npm install on the example (ex. /examples/GyroscopeImage)
+3. Start the app like any other react native app (react-native run-ios or react-native run-android)
+
 
 ## Usage
 
@@ -137,7 +143,8 @@ This project is inspired by the [react-native-sensor-manager](https://github.com
 
 Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- ALL-CONTRIBUTORS-LIST:
+- Do not remove or modify this section -->
 
 <!-- prettier-ignore -->
 | [<img src="https://avatars2.githubusercontent.com/u/1337046?v=4" width="100px;"/><br /><sub><b>Daniel Schmidt</b></sub>](http://danielmschmidt.de/)<br />[💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=DanielMSchmidt "Code") | [<img src="https://avatars0.githubusercontent.com/u/6372489?v=4" width="100px;"/><br /><sub><b>Noitidart</b></sub>](http://noitidart.github.io/)<br />[📖](https://github.com/react-native-sensors/react-native-sensors/commits?author=Noitidart "Documentation") | [<img src="https://avatars2.githubusercontent.com/u/6213682?v=4" width="100px;"/><br /><sub><b>Christophe Lemonnier</b></sub>](https://github.com/tontonrally)<br />[💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=tontonrally "Code") | [<img src="https://avatars2.githubusercontent.com/u/12188900?v=4" width="100px;"/><br /><sub><b>Gennady</b></sub>](http://belogortsev.ru/)<br />[📖](https://github.com/react-native-sensors/react-native-sensors/commits?author=Greeny7 "Documentation") | [<img src="https://avatars2.githubusercontent.com/u/1251301?v=4" width="100px;"/><br /><sub><b>Jiaming Lu</b></sub>](https://github.com/jiaminglu)<br />[💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=jiaminglu "Code") | [<img src="https://avatars1.githubusercontent.com/u/4612947?v=4" width="100px;"/><br /><sub><b>Alex Wasner</b></sub>](https://github.com/alexwasner)<br />[💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=alexwasner "Code") | [<img src="https://avatars1.githubusercontent.com/u/9479593?v=4" width="100px;"/><br /><sub><b>Nam Đàm</b></sub>](https://github.com/namqdam)<br />[💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=namqdam "Code") |
