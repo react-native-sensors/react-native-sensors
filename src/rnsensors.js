@@ -1,20 +1,22 @@
 import { NativeModules, DeviceEventEmitter } from "react-native";
 const {
-  Gyroscope: GyroNative,
-  Accelerometer: AccNative,
-  Magnetometer: MagnNative
+	Gyroscope: GyroNative,
+	Accelerometer: AccNative,
+	Magnetometer: MagnNative,
+	Lightsensor: LightNative
 } = NativeModules;
 
-if (!GyroNative && !AccNative && !MagnNative) {
-  throw new Error(
-    "Native modules for sensors not available. Did react-native link run successfully?"
-  );
+if (!GyroNative && !AccNative && !MagnNative && !LightNative) {
+	throw new Error(
+		"Native modules for sensors not available. Did react-native link run successfully?"
+	);
 }
 
 const handle = {
-  Accelerometer: AccNative,
-  Gyroscope: GyroNative,
-  Magnetometer: MagnNative
+	Accelerometer: AccNative,
+	Gyroscope: GyroNative,
+	Magnetometer: MagnNative,
+	Lightsensor: LightNative
 };
 
 const RNSensors = {
