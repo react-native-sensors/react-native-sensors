@@ -54,7 +54,7 @@ Add the following to your Podfile and run `$ pod install`:
     ```
 3.  Insert the following lines inside the dependencies block in `android/app/build.gradle`:
     ```
-      compile project(':react-native-sensors')
+      implementation project(':react-native-sensors')
     ```
 
 ## Usage
