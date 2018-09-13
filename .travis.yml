@@ -1,19 +1,18 @@
-
+cache:
+  directories:
+    - ~/.npm
+notifications:
+  email: false
+after_success:
+  - npm run travis-deploy-once "npm run semantic-release"
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
 matrix:
   include:
     # Unit tests on node 8
     - language: node_js
       node_js: 8
-      cache:
-        directories:
-          - ~/.npm
-      notifications:
-        email: false
-      after_success:
-        - npm run travis-deploy-once "npm run semantic-release"
-      branches:
-        except:
-          - /^v\d+\.\d+\.\d+$/
 
     # Unit tests on node 7
     - language: node_js
