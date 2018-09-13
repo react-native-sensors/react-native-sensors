@@ -133,6 +133,10 @@ export default sensors({
 
 This project is inspired by the [react-native-sensor-manager](https://github.com/kprimice/react-native-sensor-manager) and by the [react-native-motion-manager](https://github.com/pwmckenna/react-native-motion-manager). Both have similar solutions with a non-uniform interface and this project aims to unify both.
 
+## Contributing
+
+* We use semantic-release for the deployment of new versions, so please stick to [this format](https://github.com/semantic-release/semantic-release#commit-message-format)
+
 ## Contributors
 
 Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
