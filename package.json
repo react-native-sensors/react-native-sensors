@@ -1,18 +1,17 @@
 {
   "name": "react-native-sensors",
-  "version": "3.1.0",
+  "version": "0.0.0-development",
   "description": "A developer friendly approach for sensors in react-native",
   "scripts": {
     "contributor:add": "all-contributors add",
     "contributor:generate": "all-contributors generate",
     "test": "jest",
-    "format": "prettier --write $(npx jest --listTests)"
+    "format": "prettier --write $(npx jest --listTests)",
+    "semantic-release": "semantic-release",
+    "travis-deploy-once": "travis-deploy-once"
   },
   "main": "index.js",
-  "repository": {
-    "url": "git@github.com:react-native-sensors/react-native-sensors.git",
-    "type": "git"
-  },
+  "repository": "https://github.com:react-native-sensors/react-native-sensors",
   "homepage": "https://github.com/react-native-sensors/react-native-sensors",
   "keywords": [
     "react-native"
@@ -88,6 +87,8 @@
     "prettier": "1.12.1",
     "react": "16.3.2",
     "react-native": "0.55.4",
-    "regenerator-runtime": "0.11.1"
+    "regenerator-runtime": "0.11.1",
+    "semantic-release": "^15.9.15",
+    "travis-deploy-once": "^5.0.7"
   }
 }
