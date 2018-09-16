@@ -28,9 +28,6 @@ function createSensorMonitorCreator(sensorType) {
         };
 
         return observable;
-      })
-      .catch(error => {
-        return error;
       });
   }
 
