@@ -87,7 +87,7 @@
     "prettier": "1.12.1",
     "react": "16.5.1",
     "react-native": "0.55.4",
-    "regenerator-runtime": "0.11.1",
+    "regenerator-runtime": "0.12.1",
     "semantic-release": "15.9.15",
     "travis-deploy-once": "5.0.7"
   }
