@@ -11,7 +11,7 @@
     "travis-deploy-once": "travis-deploy-once"
   },
   "main": "index.js",
-  "repository": "https://github.com:react-native-sensors/react-native-sensors",
+  "repository": "git@github.com:react-native-sensors/react-native-sensors.git",
   "homepage": "https://github.com/react-native-sensors/react-native-sensors",
   "keywords": [
     "react-native"
