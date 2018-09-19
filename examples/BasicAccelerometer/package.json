@@ -7,16 +7,15 @@
     "test": "jest"
   },
   "dependencies": {
-    "react": "16.3.1",
-    "react-native": "0.55.4",
-    "react-native-sensors": "^3.0.0",
-    "rxjs": "^5.4.3"
+    "react": "16.5.0",
+    "react-native": "0.57.0",
+    "react-native-sensors": "^4.0.0"
   },
   "devDependencies": {
-    "babel-jest": "22.4.3",
-    "babel-preset-react-native": "4.0.0",
-    "jest": "22.4.3",
-    "react-test-renderer": "16.3.1"
+    "babel-jest": "23.6.0",
+    "jest": "23.6.0",
+    "metro-react-native-babel-preset": "0.45.3",
+    "react-test-renderer": "16.5.0"
   },
   "jest": {
     "preset": "react-native"
