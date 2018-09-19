@@ -1,4 +1,4 @@
-# react-native-sensors [![Build Status](https://travis-ci.org/react-native-sensors/react-native-sensors.svg?branch=master)](https://travis-ci.org/react-native-sensors/react-native-sensors) [![codebeat badge](https://codebeat.co/badges/9661e295-3793-4d58-9161-4d0471a68b0c)](https://codebeat.co/projects/github-com-react-native-sensors-react-native-sensors-master) [![BCH compliance](https://bettercodehub.com/edge/badge/react-native-sensors/react-native-sensors?branch=master)](https://bettercodehub.com/) [![All Contributors](https://img.shields.io/badge/all_contributors-18-orange.svg?style=flat-square)](#contributors)
+# react-native-sensors [![Build Status](https://travis-ci.org/react-native-sensors/react-native-sensors.svg?branch=master)](https://travis-ci.org/react-native-sensors/react-native-sensors) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) [![codebeat badge](https://codebeat.co/badges/9661e295-3793-4d58-9161-4d0471a68b0c)](https://codebeat.co/projects/github-com-react-native-sensors-react-native-sensors-master) [![BCH compliance](https://bettercodehub.com/edge/badge/react-native-sensors/react-native-sensors?branch=master)](https://bettercodehub.com/) [![All Contributors](https://img.shields.io/badge/all_contributors-18-orange.svg?style=flat-square)](#contributors)
 
 ## Supported React Native Versions
 
@@ -56,6 +56,11 @@ Add the following to your Podfile and run `$ pod install`:
     ```
       implementation project(':react-native-sensors')
     ```
+
+## Running on Simulator
+
+* iOS simulators currently have **no support** for sensors. In order to retrieve any sensor output, you **must develop on a real device**
+* Android simulators offer support for some sensors. [This article](https://developer.android.com/studio/run/emulator#extended) documents how to use them (see "Virtual Sensors" section)
 
 ## Usage
 
@@ -132,6 +137,10 @@ export default sensors({
 ## Credits
 
 This project is inspired by the [react-native-sensor-manager](https://github.com/kprimice/react-native-sensor-manager) and by the [react-native-motion-manager](https://github.com/pwmckenna/react-native-motion-manager). Both have similar solutions with a non-uniform interface and this project aims to unify both.
+
+## Contributing
+
+* We use semantic-release for the deployment of new versions, so please stick to [this format](https://github.com/semantic-release/semantic-release#commit-message-format)
 
 ## Contributors
 
