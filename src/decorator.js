@@ -3,62 +3,59 @@ import PropTypes from "prop-types";
 import Sensors from "./sensors";
 
 const AVAILABLE_SENSORS = ["Accelerometer", "Gyroscope", "Magnetometer"];
-const optionsType = PropTypes.shape({
-  updateInterval: PropTypes.number
-});
 
 class SensorWrapper extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     sensors: PropTypes.shape({
-      Accelerometer: PropTypes.oneOfType([PropTypes.bool, optionsType]),
-      Gyroscope: PropTypes.oneOfType([PropTypes.bool, optionsType]),
-      Magnetometer: PropTypes.oneOfType([PropTypes.bool, optionsType])
+      Accelerometer: PropTypes.bool,
+      Gyroscope: PropTypes.bool,
+      Magnetometer: PropTypes.bool
     })
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      _observables: [],
+      _subscriptions: [],
       sensorsFound: {}
     };
   }
 
   componentWillMount() {
-    const observables = [];
+    const subscriptions = [];
 
     Object.entries(this.props.sensors).forEach(
       async ([name, sensorOptions]) => {
-        const options =
-          typeof sensorOptions === "boolean" ? null : sensorOptions;
+        const observable = new Sensors[name]();
 
-        let sensorFound = null;
-        try {
-          const observable = await new Sensors[name](options);
-          observables.push(observable);
-
-          observable.subscribe(sensorValue => {
+        const subscription = observable.subscribe(
+          sensorValue => {
             this.setState({
-              [name]: sensorValue
+              [name]: sensorValue,
+              sensorsFound: { ...this.state.sensorsFound, [name]: true }
             });
-          });
+          },
+          err => {
+            console.warn("RNSensors:", err);
+            this.setState({
+              sensorsFound: { ...this.state.sensorsFound, [name]: false }
+            });
+          }
+        );
 
-          sensorFound = true;
-        } catch (e) {
-          sensorFound = false;
-        }
-
-        this.setState({
-          _observables: observables,
-          sensorsFound: { ...this.state.sensorsFound, [name]: sensorFound }
-        });
+        subscriptions.push(subscription);
       }
     );
+    this.setState({
+      _subscriptions: subscriptions
+    });
   }
 
   componentWillUnmount() {
-    this.state._observables.forEach(observable => observable.stop());
+    this.state._subscriptions.forEach(subscription =>
+      subscription.unsubscribe()
+    );
   }
 
   render() {
