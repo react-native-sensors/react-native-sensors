@@ -17,6 +17,9 @@ const handle = {
   Magnetometer: MagnNative
 };
 
+// Cache the availability of sensors
+const availableSensors = {};
+
 const RNSensors = {
   start: function(type) {
     const api = handle[type];
@@ -25,7 +28,10 @@ const RNSensors = {
 
   isAvailable: function(type) {
     const api = handle[type];
-    return api.isAvailable();
+    const promise = availableSensors[type] || api.isAvailable();
+    availableSensors[type] = promise;
+
+    return promise;
   },
 
   stop: function(type) {
