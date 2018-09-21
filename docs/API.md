@@ -18,8 +18,8 @@ The API of each of them is the same, therefore you will just see Accelerometer i
 ### setUpdateIntervalForType(type: string, interval: number)
 
 ```js
-import { setUpdateIntervalForType } from "react-native-sensors";
-setUpdateIntervalForType("Accelerometer", 100);
+import { setUpdateIntervalForType, SensorTypes } from "react-native-sensors";
+setUpdateIntervalForType(SensorTypes.Accelerometer, 100);
 ```
 
 ## RxJS
