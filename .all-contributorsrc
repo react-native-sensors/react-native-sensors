@@ -178,6 +178,15 @@
         "question",
         "code"
       ]
+    },
+    {
+      "login": "ethanneff",
+      "name": "Ethan Neff",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/2933593?v=4",
+      "profile": "http://eneff.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github"
