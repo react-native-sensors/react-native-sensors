@@ -1,7 +1,6 @@
 import { observe } from "rxjs-marbles/jest";
 
-// const AVAILABLE_SENSORS = ["Accelerometer", "Gyroscope", "Magnetometer"]
-const AVAILABLE_SENSORS = ["Accelerometer"];
+const AVAILABLE_SENSORS = ["Accelerometer", "Gyroscope", "Magnetometer"];
 
 function wait(time = 50) {
   return new Promise(resolve => setTimeout(resolve, time));

@@ -14,7 +14,6 @@ function createSensorMonitorCreator(sensorType) {
     return Observable.create(function subscribe(observer) {
       this.unsubscribeCallback = () => {};
 
-      // TODO: memorize the result of this call
       RNSensors.isAvailable(sensorType).then(
         () => {
           DeviceEventEmitter.addListener(sensorType, data => {
@@ -30,7 +29,6 @@ function createSensorMonitorCreator(sensorType) {
             }
           };
 
-          // TODO: redesign update interval API
           // Start the sensor manager
           RNSensors.start(sensorType);
           refCountByType[sensorType] += 1;
