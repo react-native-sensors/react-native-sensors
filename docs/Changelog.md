@@ -3,7 +3,16 @@ id: Changelog
 title: Changelog
 ---
 
+## Version 4
+
+* [Do not convert errors to return values](https://github.com/react-native-sensors/react-native-sensors/pull/157)
+* [Do not crash iOS Simulator](https://github.com/react-native-sensors/react-native-sensors/pull/151)
+
 ## Version 3
+
+### 3.1.0
+
+* Add Semantic Release
 
 ### 3.0.0
 
