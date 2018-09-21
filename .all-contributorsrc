@@ -196,6 +196,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "miracle2k",
+      "name": "Michael Elsdörfer",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/13807?v=4",
+      "profile": "http://blog.elsdoerfer.name",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github"
