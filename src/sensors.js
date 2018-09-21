@@ -1,45 +1,56 @@
 import { DeviceEventEmitter } from "react-native";
-import * as Rx from "rxjs/Rx";
+import { Observable } from "rxjs";
 import RNSensors from "./rnsensors";
 
+// Let's make sure that we stop the sensor once no one listens
+const refCountByType = {
+  Gyroscope: 0,
+  Accelerometer: 0,
+  Magnetometer: 0
+};
+
 function createSensorMonitorCreator(sensorType) {
-  function Creator(options = {}) {
-    return RNSensors.isAvailable(sensorType).then(() => {
-      const { updateInterval = 100 } = options || {}; // time in ms
-      let observer;
+  return function Creator(options = {}) {
+    return Observable.create(function subscribe(observer) {
+      this.unsubscribeCallback = () => {};
 
-      // Instanciate observable
-      const observable = Rx.Observable.create(obs => {
-        observer = obs;
+      // TODO: memorize the result of this call
+      RNSensors.isAvailable(sensorType).then(
+        () => {
+          DeviceEventEmitter.addListener(sensorType, data => {
+            observer.next(data);
+          });
 
-        DeviceEventEmitter.addListener(sensorType, data => {
-          observer.next(data);
-        });
+          // Register the unsubscribe handler
+          this.unsubscribeCallback = () => {
+            refCountByType[sensorType] -= 1;
 
-        // Start the sensor manager
-        RNSensors.start(sensorType, updateInterval);
-      });
+            if (refCountByType[sensorType] === 0) {
+              RNSensors.stop(sensorType);
+            }
+          };
 
-      // Stop the sensor manager
-      observable.stop = () => {
-        RNSensors.stop(sensorType);
-        observer.complete();
-      };
+          // TODO: redesign update interval API
+          // Start the sensor manager
+          RNSensors.start(sensorType);
+          refCountByType[sensorType] += 1;
+        },
+        () => {
+          observer.error(new Error(`Sensor ${sensorType} is not available`));
+        }
+      );
 
-      return observable;
+      return () => this.unsubscribeCallback();
     });
-  }
-
-  return Creator;
+  };
 }
 
-// TODO: lazily intialize them (maybe via getter)
 const Accelerometer = createSensorMonitorCreator("Accelerometer");
 const Gyroscope = createSensorMonitorCreator("Gyroscope");
 const Magnetometer = createSensorMonitorCreator("Magnetometer");
 
 export default {
-  Accelerometer,
   Gyroscope,
+  Accelerometer,
   Magnetometer
 };

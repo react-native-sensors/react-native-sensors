@@ -9,36 +9,34 @@ This is your option if you would like to have just the sensor data and nothing m
 ```javascript
 import React, { Component } from "react";
 import { Text, View } from "react-native";
-import { decorator as sensors } from "react-native-sensors";
+import {
+  decorator as sensors,
+  setUpdateIntervalForType
+} from "react-native-sensors";
 
-class MyComponent {
-  // no lifecycle needed
-  render() {
-    const { sensorsFound, Accelerometer, Gyroscope } = this.props;
+setUpdateIntervalForType("Accelerometer", 400);
 
-    if (!Accelerometer || !Gyroscope) {
-      // One of the sensors is still initializing
-      return null;
-    }
-
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          {(sensorsFound["Accelerometer"] &&
-            `Acceleration has value: ${Accelerometer}`) ||
-            "Acceleration is not available"}
-          {(sensorsFound["Gyroscope"] && `Gyro has value: ${Gyroscope}`) ||
-            "Gyro is not available"}
-        </Text>
-      </View>
-    );
+function MyComponent({ sensorsFound, Accelerometer, Gyroscope }) {
+  if (!Accelerometer || !Gyroscope) {
+    // One of the sensors is still initializing
+    return null;
   }
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.welcome}>
+        {(sensorsFound["Accelerometer"] &&
+          `Acceleration has value: ${Accelerometer}`) ||
+          "Acceleration is not available"}
+        {(sensorsFound["Gyroscope"] && `Gyro has value: ${Gyroscope}`) ||
+          "Gyro is not available"}
+      </Text>
+    </View>
+  );
 }
 
 export default sensors({
-  Accelerometer: {
-    updateInterval: 300 // optional
-  },
+  Accelerometer: true,
   Gyroscope: true
 })(MyComponent);
 ```

@@ -13,13 +13,22 @@ Supported sensors:
 
 The API of each of them is the same, therefore you will just see Accelerometer in the docs:
 
-## Default
+## General
+
+### setUpdateIntervalForType(type: string, interval: number)
+
+```js
+import { setUpdateIntervalForType } from "react-native-sensors";
+setUpdateIntervalForType("Accelerometer", 100);
+```
+
+## RxJS
 
 ```js
 import { Accelerometer } from "react-native-sensors";
 ```
 
-### async constructor(options: Object) => Promise<SensorObservable>
+### async constructor(options: Object) => SensorObservable
 
 #### options.updateInterval
 
@@ -27,11 +36,7 @@ import { Accelerometer } from "react-native-sensors";
 
 ### SensorObservable
 
-This is an [RxJS Observable](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html), extended by these functions:
-
-#### stop
-
-Destroys the event creator and closes the observable.
+This is an [RxJS Observable](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html) and when **every observable of this type is** unsubscribed it will automatically stop the sensor from polling.
 
 ## Decorator
 
