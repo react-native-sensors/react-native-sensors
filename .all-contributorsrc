@@ -168,6 +168,17 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "dabit1",
+      "name": "David Escalera",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/23297390?v=4",
+      "profile": "https://github.com/dabit1",
+      "contributions": [
+        "question",
+        "code"
+      ]
     }
-  ]
+  ],
+  "repoType": "github"
 }
