@@ -1,4 +1,4 @@
-import { NativeModules, DeviceEventEmitter } from "react-native";
+import { NativeModules } from "react-native";
 const {
   Gyroscope: GyroNative,
   Accelerometer: AccNative,
