@@ -130,6 +130,14 @@ export default sensors({
 })(MyComponent);
 ```
 
+## FAQ
+
+### Accelerometer and/or Gyroscope show strange values
+
+It seems like iOS and Android have these two swapped from what the common understanding of what an Accelerometer or a Gyroscope is.
+It might make sense to swap them to see if they now fit your perception.
+We chose against switching them out because we want to stay in line with the rest of the industy.
+
 ## Changelog
 
 [Please see the changelog here](docs/Changelog.md)
