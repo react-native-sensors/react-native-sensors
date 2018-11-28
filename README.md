@@ -7,6 +7,10 @@
 | <= 39                | < 1.0                        |
 | >= 40                | >= 1.0                       |
 
+## Documentation
+
+Please visit our [website](https://react-native-sensors.github.io/) for the documentation.
+
 ## Cool Projects using `react-native-sensors`
 
 * [react-native-live-translator](https://github.com/agrcrobles/react-native-live-translator)
@@ -16,63 +20,6 @@
 * [FlyThru](https://github.com/Noitidart/FlyThru)
 
 Do you want your project listed here? Just send a PR.
-
-## Getting started
-
-`$ npm install react-native-sensors --save`
-
-### Automatic installation
-
-`$ react-native link react-native-sensors`
-
-Option: With CocoaPods (iOS only)
-
-Add the following to your Podfile and run `$ pod install`:
-
-`pod 'RNSensors', :path => '../node_modules/react-native-sensors'`
-
-### Manual installation
-
-#### iOS
-
-1.  In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-2.  Go to `node_modules` ➜ `react-native-sensors` and add `RNSensors.xcodeproj`
-3.  In XCode, in the project navigator, select your project. Add `libRNSensors.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-4.  Run your project (`Cmd+R`)<
-
-#### Android
-
-1.  Open up `android/app/src/main/java/[...]/MainApplication.java`
-
-* Add `import com.sensors.RNSensorsPackage;` to the imports at the top of the file
-* Add `new RNSensorsPackage()` to the list returned by the `getPackages()` method
-
-2.  Append the following lines to `android/settings.gradle`:
-    ```
-    include ':react-native-sensors'
-    project(':react-native-sensors').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-sensors/android')
-    ```
-3.  Insert the following lines inside the dependencies block in `android/app/build.gradle`:
-    ```
-      implementation project(':react-native-sensors')
-    ```
-
-## Running on Simulator
-
-* iOS simulators currently have **no support** for sensors. In order to retrieve any sensor output, you **must develop on a real device**
-* Android simulators offer support for some sensors. [This article](https://developer.android.com/studio/run/emulator#extended) documents how to use them (see "Virtual Sensors" section)
-
-## Documentation
-
-Please visit our [website](https://react-native-sensors.github.io/) for the documentation.
-
-## FAQ
-
-### Accelerometer and/or Gyroscope show strange values
-
-It seems like iOS and Android have these two swapped from what the common understanding of what an Accelerometer or a Gyroscope is.
-It might make sense to swap them to see if they now fit your perception.
-We chose against switching them out because we want to stay in line with the rest of the industy.
 
 ## Changelog
 
