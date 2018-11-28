@@ -11,37 +11,40 @@ if (!GyroNative && !AccNative && !MagnNative) {
   );
 }
 
-const handle = {
-  accelerometer: AccNative,
-  gyroscope: GyroNative,
-  magnetometer: MagnNative
-};
+function getApi(type) {
+  switch (type.toLocaleLowerCase()) {
+    case "accelerometer":
+      return AccNative;
+    case "gyroscope":
+      return GyroNative;
+    case "magnetometer":
+      return MagnNative;
+    default:
+      throw new Error("unknown api requested: " + type);
+  }
+}
 
 // Cache the availability of sensors
 const availableSensors = {};
 
 const RNSensors = {
   start: function(type) {
-    const api = handle[type];
-    api.startUpdates();
+    getApi(type).startUpdates();
   },
 
   isAvailable: function(type) {
-    const api = handle[type];
-    const promise = availableSensors[type] || api.isAvailable();
+    const promise = availableSensors[type] || getApi(type).isAvailable();
     availableSensors[type] = promise;
 
     return promise;
   },
 
   stop: function(type) {
-    const api = handle[type];
-    api.stopUpdates();
+    getApi(type).stopUpdates();
   },
 
   setUpdateInterval(type, updateInterval) {
-    const api = handle[type];
-    api.setUpdateInterval(updateInterval);
+    getApi(type).setUpdateInterval(updateInterval);
   }
 };
 
