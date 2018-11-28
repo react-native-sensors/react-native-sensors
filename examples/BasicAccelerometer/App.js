@@ -9,21 +9,27 @@ const Value = ({ name, value }) => (
   </View>
 );
 
+const acc$ = new Accelerometer({
+  updateInterval: 400 // defaults to 100ms
+});
+
 export default class App extends Component {
   constructor(props) {
     super(props);
 
-    new Accelerometer({
-      updateInterval: 400 // defaults to 100ms
-    })
-      .then(observable => {
-        observable.subscribe(({ x, y, z }) => this.setState({ x, y, z }));
-      })
-      .catch(error => {
-        console.log("The sensor is not available");
-      });
-
     this.state = { x: 0, y: 0, z: 0 };
+  }
+
+  componentWillMount() {
+    const subscription = acc$.subscribe(({ x, y, z }) =>
+      this.setState({ x, y, z })
+    );
+    this.setState({ subscription });
+  }
+
+  componentWillUnmount() {
+    this.state.subscription.unsubscribe();
+    this.setState({ subscription: null });
   }
 
   render() {

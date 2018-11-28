@@ -9,9 +9,9 @@
   "dependencies": {
     "react": "16.3.1",
     "react-native": "0.55.4",
-    "react-native-sensors": "^3.0.0",
+    "react-native-sensors": "^5.0.0-rc.1",
     "recompose": "0.27.1",
-    "rxjs": "^5.5.10"
+    "rxjs": "^6.3.3"
   },
   "devDependencies": {
     "babel-jest": "22.4.4",

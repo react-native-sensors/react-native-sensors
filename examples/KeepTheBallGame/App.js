@@ -4,48 +4,15 @@ import { Accelerometer } from "react-native-sensors";
 
 import Game from "./Game";
 
+const accelerometer$ = new Accelerometer({
+  updateInterval: 16
+});
+
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      observable: null,
-      error: null
-    };
-
-    new Accelerometer({
-      updateInterval: 16
-    })
-      .then(observable => {
-        this.setState({ observable });
-      })
-      .catch(error => {
-        this.setState({ error: "The sensor is not available" });
-      });
-  }
-
   render() {
-    const { error, observable } = this.state;
-
-    if (error) {
-      return (
-        <View style={styles.container}>
-          <Text style={styles.headline}>{error}</Text>
-        </View>
-      );
-    }
-
-    if (!observable) {
-      return (
-        <View style={styles.container}>
-          <Text style={styles.headline}>Loading Sensor</Text>
-        </View>
-      );
-    }
-
     return (
       <View style={styles.container}>
-        <Game data={observable} />
+        <Game data={accelerometer$} />
       </View>
     );
   }
