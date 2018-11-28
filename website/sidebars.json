@@ -1,7 +1,6 @@
 {
   "docs": {
-    "Getting Started": ["Installation", "GettingStarted"],
-    "Usage": ["Usage.RxJS", "Usage.Decorator"],
-    "API": ["API", "Changelog", "BlogPosts"]
+    "Usage": ["Installation", "Usage", "API"],
+    "About": ["Changelog", "BlogPosts"]
   }
 }
