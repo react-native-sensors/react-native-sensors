@@ -8,18 +8,17 @@ You can access your sensor data through a [RxJS Observable](http://reactivex.io/
 
 ```javascript
 import {
-  Accelerometer,
-  Gyroscope,
-  setUpdateIntervalForType
+  accelerometer,
+  gyroscope,
+  setUpdateIntervalForType,
+  SensorTypes
 } from "react-native-sensors";
+import { map, filter } from "rxjs/operators";
 
-setUpdateIntervalForType("Accelerometer", 400); // defaults to 100ms
-const accelerationObservable = new Accelerometer();
+setUpdateIntervalForType(SensorTypes.Accelerometer, 400); // defaults to 100ms
 
-// Normal RxJS functions
-const subscription = accelerationObservable
-  .map(({ x, y, z }) => x + y + z)
-  .filter(speed => speed > 20)
+const subscription = accelerometer
+  .pipe(map(({ x, y, z }) => x + y + z), filter(speed => speed > 20))
   .subscribe(
     speed => console.log(`You moved your phone with ${speed}`),
     error => {
@@ -28,8 +27,7 @@ const subscription = accelerationObservable
   );
 
 setTimeout(() => {
-  // If it's the last reference to an Accelerometer
-  // we will stop the native API
+  // If it's the last subscription to accelerometer it will stop polling in the native API
   subscription.unsubscribe();
 }, 1000);
 ```

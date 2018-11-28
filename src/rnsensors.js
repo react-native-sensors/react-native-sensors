@@ -12,9 +12,9 @@ if (!GyroNative && !AccNative && !MagnNative) {
 }
 
 const handle = {
-  Accelerometer: AccNative,
-  Gyroscope: GyroNative,
-  Magnetometer: MagnNative
+  accelerometer: AccNative,
+  gyroscope: GyroNative,
+  magnetometer: MagnNative
 };
 
 // Cache the availability of sensors
