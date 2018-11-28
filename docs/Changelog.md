@@ -14,21 +14,31 @@ In this release we defined a whole new API that does not rely on promises anymor
 To migrate see the following diff:
 
 ```diff
-import { Accelerometer, Gyroscope } from "react-native-sensors";
+- import { Accelerometer, Gyroscope } from "react-native-sensors";
++ import {
++   accelerometer, // direct access to the observables
++   gyroscope,
++   setUpdateIntervalForType, // set update interval globally
++   SensorTypes
++ } from "react-native-sensors";
 
++ // update to RxJS >= 6
++ import { map, filter } from "rxjs/operators";
 - let accelerationObservable = null;
 - new Accelerometer({
-+ const accelerationObservable = new Accelerometer({
-  updateInterval: 400 // defaults to 100ms
-})
+-  updateInterval: 400 // defaults to 100ms
+- })
 -  .then(observable => {
 -    accelerationObservable = observable;
 
     // Normal RxJS functions
 -    accelerationObservable
-+   const subscription = accelerationObservable
-      .map(({ x, y, z }) => x + y + z)
-      .filter(speed => speed > 20)
+-      .map(({ x, y, z }) => x + y + z)
+-      .filter(speed => speed > 20)
++   const subscription = accelerometer.pipe(
++         map(({ x, y, z }) => x + y + z)
++         filter(speed => speed > 20)
++       )
 -      .subscribe(speed => console.log(`You moved your phone with ${speed}`));
 +      .subscribe(speed => console.log(`You moved your phone with ${speed}`), error => {
 +        console.log("The sensor is not available");
@@ -46,44 +56,8 @@ setTimeout(() => {
 
 #### Decorator
 
-```diff
-import React, { Component } from "react";
-import { Text, View } from "react-native";
-import {
-  decorator as sensors,
-  setUpdateIntervalForType,
-  SensorTypes
-} from "react-native-sensors";
-
-setUpdateIntervalForType(SensorTypes.Accelerometer, 400);
-
-function MyComponent({ sensorsFound, Accelerometer, Gyroscope }) {
-  if (!Accelerometer || !Gyroscope) {
-    // One of the sensors is still initializing
-    return null;
-  }
-
-  return (
-    <View style={styles.container}>
-      <Text style={styles.welcome}>
-        {(sensorsFound["Accelerometer"] &&
-          `Acceleration has value: ${Accelerometer}`) ||
-          "Acceleration is not available"}
-        {(sensorsFound["Gyroscope"] && `Gyro has value: ${Gyroscope}`) ||
-          "Gyro is not available"}
-      </Text>
-    </View>
-  );
-}
-
-export default sensors({
--  Accelerometer: {
--    updateInterval: 400
--  },
-+ Accelerometer: true,
-  Gyroscope: true
-})(MyComponent);
-```
+We dropped support for the decorator syntax as it added a lot of testing surface.
+Please use libraries like [recompose](https://github.com/acdlite/recompose) with `componentFromStream` to fill the gap. If you need help with this feel free to open an issue and we will provide more context and guidance.
 
 ## Version 4
 
