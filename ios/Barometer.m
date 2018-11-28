@@ -1,10 +1,10 @@
 //  Barometer.m
 
 
+#import "Barometer.h"
 #import <React/RCTBridge.h>
 #import <React/RCTEventDispatcher.h>
 #import <CoreMotion/CoreMotion.h>
-#import "Barometer.h"
 
 @implementation Barometer
 
@@ -64,7 +64,7 @@ RCT_EXPORT_METHOD(getUpdateInterval:(RCTResponseSenderBlock) cb) {
 RCT_EXPORT_METHOD(startUpdates) {
     NSLog(@"startUpdates");
 
-    [self._altimeter startRelativeAltitudeUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMAltitudeData * _Nullable altitudeData, NSError * _Nullable error) {
+    [self->_altimeter startRelativeAltitudeUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMAltitudeData * _Nullable altitudeData, NSError * _Nullable error) {
         if (error) {
             NSLog(@"error while getting sensor data");
         }
