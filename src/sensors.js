@@ -6,7 +6,8 @@ import RNSensors from "./rnsensors";
 const listenerKeys = new Map([
   ["accelerometer", "Accelerometer"],
   ["gyroscope", "Gyroscope"],
-  ["magnetometer", "Magnetometer"]
+  ["magnetometer", "Magnetometer"],
+  ["barometer", "Barometer"]
 ]);
 
 function createSensorObservable(sensorType) {
@@ -44,9 +45,11 @@ function makeSingleton() {
 const accelerometer = createSensorObservable("accelerometer");
 const gyroscope = createSensorObservable("gyroscope");
 const magnetometer = createSensorObservable("magnetometer");
+const barometer = createSensorObservable("barometer");
 
 export default {
   gyroscope,
   accelerometer,
-  magnetometer
+  magnetometer,
+  barometer
 };
