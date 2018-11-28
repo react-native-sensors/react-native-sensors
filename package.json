@@ -85,7 +85,7 @@
     "babel-preset-react-native": "4.0.0",
     "jest": "23.6.0",
     "prettier": "1.12.1",
-    "react": "16.5.1",
+    "react": "16.6.3",
     "react-native": "0.57.7",
     "regenerator-runtime": "0.11.1",
     "semantic-release": "15.9.15",
