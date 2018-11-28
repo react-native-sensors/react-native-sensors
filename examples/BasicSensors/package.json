@@ -9,7 +9,7 @@
   "dependencies": {
     "react": "16.6.1",
     "react-native": "0.57.7",
-    "react-native-sensors": "latest",
+    "react-native-sensors": "^5.1.2",
     "rxjs": "^6.3.3"
   },
   "devDependencies": {
