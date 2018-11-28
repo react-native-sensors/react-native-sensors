@@ -12,7 +12,9 @@ if (!GyroNative && !AccNative && !MagnNative) {
 }
 
 function getApi(type) {
-  switch (type.toLocaleLowerCase()) {
+  const lowercasedType = type.toLocaleLowerCase();
+
+  switch (lowercasedType) {
     case "accelerometer":
       return AccNative;
     case "gyroscope":
@@ -29,22 +31,30 @@ const availableSensors = {};
 
 const RNSensors = {
   start: function(type) {
-    getApi(type).startUpdates();
+    const api = getApi(type);
+    api.startUpdates();
   },
 
   isAvailable: function(type) {
-    const promise = availableSensors[type] || getApi(type).isAvailable();
+    if (availableSensors[type]) {
+      return availableSensors[type];
+    }
+
+    const api = getApi(type);
+    const promise = api.isAvailable();
     availableSensors[type] = promise;
 
     return promise;
   },
 
   stop: function(type) {
-    getApi(type).stopUpdates();
+    const api = getApi(type);
+    api.stopUpdates();
   },
 
   setUpdateInterval(type, updateInterval) {
-    getApi(type).setUpdateInterval(updateInterval);
+    const api = getApi(type);
+    api.setUpdateInterval(updateInterval);
   }
 };
 
