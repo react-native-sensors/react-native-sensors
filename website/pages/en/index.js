@@ -85,7 +85,7 @@ class HomeSplash extends React.Component {
               <li>Magnetometer</li>
             </ul>
           </PromoSection>
-          <Button href="/docs/GettingStarted.html">Try It Out</Button>
+          <Button href="/docs/Usage.html">Try It Out</Button>
         </div>
       </SplashContainer>
     );

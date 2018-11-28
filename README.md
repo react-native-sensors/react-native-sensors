@@ -62,74 +62,9 @@ Add the following to your Podfile and run `$ pod install`:
 * iOS simulators currently have **no support** for sensors. In order to retrieve any sensor output, you **must develop on a real device**
 * Android simulators offer support for some sensors. [This article](https://developer.android.com/studio/run/emulator#extended) documents how to use them (see "Virtual Sensors" section)
 
-## Usage
+## Documentation
 
-### RxJS API
-
-```javascript
-import {
-  Accelerometer,
-  Gyroscope,
-  setUpdateIntervalForType
-} from "react-native-sensors";
-
-setUpdateIntervalForType("Accelerometer", 400); // defaults to 100ms
-const accelerationObservable = new Accelerometer();
-
-// Normal RxJS functions
-const subscription = accelerationObservable
-  .map(({ x, y, z }) => x + y + z)
-  .filter(speed => speed > 20)
-  .subscribe(
-    speed => console.log(`You moved your phone with ${speed}`),
-    error => {
-      console.log("The sensor is not available");
-    }
-  );
-
-setTimeout(() => {
-  // If it's the last reference to an Accelerometer
-  // we will stop the native API
-  subscription.unsubscribe();
-}, 1000);
-```
-
-### Decorator usage
-
-```javascript
-import React, { Component } from "react";
-import { Text, View } from "react-native";
-import {
-  decorator as sensors,
-  setUpdateIntervalForType
-} from "react-native-sensors";
-
-setUpdateIntervalForType("Accelerometer", 400);
-
-function MyComponent({ sensorsFound, Accelerometer, Gyroscope }) {
-  if (!Accelerometer || !Gyroscope) {
-    // One of the sensors is still initializing
-    return null;
-  }
-
-  return (
-    <View style={styles.container}>
-      <Text style={styles.welcome}>
-        {(sensorsFound["Accelerometer"] &&
-          `Acceleration has value: ${Accelerometer}`) ||
-          "Acceleration is not available"}
-        {(sensorsFound["Gyroscope"] && `Gyro has value: ${Gyroscope}`) ||
-          "Gyro is not available"}
-      </Text>
-    </View>
-  );
-}
-
-export default sensors({
-  Accelerometer: true,
-  Gyroscope: true
-})(MyComponent);
-```
+Please visit our [website](https://react-native-sensors.github.io/) for the documentation.
 
 ## FAQ
 
@@ -156,12 +91,14 @@ This project is inspired by the [react-native-sensor-manager](https://github.com
 Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+
 <!-- prettier-ignore -->
 | [<img src="https://avatars2.githubusercontent.com/u/1337046?v=4" width="100px;"/><br /><sub><b>Daniel Schmidt</b></sub>](http://danielmschmidt.de/)<br />[💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=DanielMSchmidt "Code") | [<img src="https://avatars0.githubusercontent.com/u/6372489?v=4" width="100px;"/><br /><sub><b>Noitidart</b></sub>](http://noitidart.github.io/)<br />[📖](https://github.com/react-native-sensors/react-native-sensors/commits?author=Noitidart "Documentation") | [<img src="https://avatars2.githubusercontent.com/u/6213682?v=4" width="100px;"/><br /><sub><b>Christophe Lemonnier</b></sub>](https://github.com/tontonrally)<br />[💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=tontonrally "Code") | [<img src="https://avatars2.githubusercontent.com/u/12188900?v=4" width="100px;"/><br /><sub><b>Gennady</b></sub>](http://belogortsev.ru/)<br />[📖](https://github.com/react-native-sensors/react-native-sensors/commits?author=Greeny7 "Documentation") | [<img src="https://avatars2.githubusercontent.com/u/1251301?v=4" width="100px;"/><br /><sub><b>Jiaming Lu</b></sub>](https://github.com/jiaminglu)<br />[💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=jiaminglu "Code") | [<img src="https://avatars1.githubusercontent.com/u/4612947?v=4" width="100px;"/><br /><sub><b>Alex Wasner</b></sub>](https://github.com/alexwasner)<br />[💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=alexwasner "Code") | [<img src="https://avatars1.githubusercontent.com/u/9479593?v=4" width="100px;"/><br /><sub><b>Nam Đàm</b></sub>](https://github.com/namqdam)<br />[💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=namqdam "Code") |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | [<img src="https://avatars1.githubusercontent.com/u/103593?v=4" width="100px;"/><br /><sub><b>Mike Knapp</b></sub>](http://www.twitter.com/mikeee)<br />[💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=mikeknapp "Code") | [<img src="https://avatars1.githubusercontent.com/u/10956848?v=4" width="100px;"/><br /><sub><b>Kevin Gonnord</b></sub>](https://github.com/Lleios)<br />[💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=Lleios "Code") | [<img src="https://avatars3.githubusercontent.com/u/7541319?v=4" width="100px;"/><br /><sub><b>ImAtome</b></sub>](https://github.com/ImAtome)<br />[💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=ImAtome "Code") | [<img src="https://avatars0.githubusercontent.com/u/3603130?v=4" width="100px;"/><br /><sub><b>Lisa Huynh</b></sub>](https://github.com/lisamai)<br />[💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=lisamai "Code") | [<img src="https://avatars0.githubusercontent.com/u/7315?v=4" width="100px;"/><br /><sub><b>Cory Smith</b></sub>](http://bullish.io)<br />[💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=corymsmith "Code") | [<img src="https://avatars3.githubusercontent.com/u/225712?v=4" width="100px;"/><br /><sub><b>Esa-Matti Suuronen</b></sub>](https://medium.com/@esamatti)<br />[💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=epeli "Code") | [<img src="https://avatars1.githubusercontent.com/u/19377299?v=4" width="100px;"/><br /><sub><b>Viet Nguyen</b></sub>](https://openbeta.io)<br />[💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=vietnugent "Code") |
 | [<img src="https://avatars3.githubusercontent.com/u/3586691?v=4" width="100px;"/><br /><sub><b>Simon Bengtsson</b></sub>](http://simonbengtsson.com)<br />[💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=simonbengtsson "Code") | [<img src="https://avatars0.githubusercontent.com/u/7002833?v=4" width="100px;"/><br /><sub><b>maxkomarychev</b></sub>](https://github.com/maxkomarychev)<br />[💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=maxkomarychev "Code") | [<img src="https://avatars3.githubusercontent.com/u/6882605?v=4" width="100px;"/><br /><sub><b>Alexander Baygeldin</b></sub>](http://baygeldin.name)<br />[💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=baygeldin "Code") | [<img src="https://avatars1.githubusercontent.com/u/17160720?v=4" width="100px;"/><br /><sub><b>Noane Dan</b></sub>](https://github.com/NoaneDan)<br />[💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=NoaneDan "Code") | [<img src="https://avatars0.githubusercontent.com/u/23297390?v=4" width="100px;"/><br /><sub><b>David Escalera</b></sub>](https://github.com/dabit1)<br />[💬](#question-dabit1 "Answering Questions") [💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=dabit1 "Code") | [<img src="https://avatars1.githubusercontent.com/u/2933593?v=4" width="100px;"/><br /><sub><b>Ethan Neff</b></sub>](http://eneff.com)<br />[💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=ethanneff "Code") | [<img src="https://avatars1.githubusercontent.com/u/170832?v=4" width="100px;"/><br /><sub><b>Manuel Alabor</b></sub>](https://alabor.me)<br />[💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=swissmanu "Code") |
 | [<img src="https://avatars1.githubusercontent.com/u/13807?v=4" width="100px;"/><br /><sub><b>Michael Elsdörfer</b></sub>](http://blog.elsdoerfer.name)<br />[💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=miracle2k "Code") | [<img src="https://avatars3.githubusercontent.com/u/2194413?v=4" width="100px;"/><br /><sub><b>jmichalc</b></sub>](https://github.com/jmichalc)<br />[💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=jmichalc "Code") | [<img src="https://avatars3.githubusercontent.com/u/3059371?v=4" width="100px;"/><br /><sub><b>Adrian Carolli</b></sub>](http://adriancarolli.surge.sh/)<br />[🐛](https://github.com/react-native-sensors/react-native-sensors/issues?q=author%3Awatadarkstar "Bug reports") [💻](https://github.com/react-native-sensors/react-native-sensors/commits?author=watadarkstar "Code") |
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
