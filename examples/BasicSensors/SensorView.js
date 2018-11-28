@@ -9,20 +9,23 @@ const Value = ({ name, value }) => (
   </View>
 );
 
-export default function(sensorName) {
-  console.log("Starting sensor", sensorName, Sensors);
+export default function(sensorName, values) {
   const sensor$ = Sensors[sensorName];
 
   return class SensorView extends Component {
     constructor(props) {
       super(props);
 
-      this.state = { x: 0, y: 0, z: 0 };
+      const initialValue = values.reduce(
+        (carry, val) => ({ ...carry, [val]: 0 }),
+        {}
+      );
+      this.state = initialValue;
     }
 
     componentWillMount() {
-      const subscription = sensor$.subscribe(({ x, y, z }) => {
-        this.setState({ x, y, z });
+      const subscription = sensor$.subscribe(values => {
+        this.setState({ ...values });
       });
       this.setState({ subscription });
     }
@@ -36,9 +39,13 @@ export default function(sensorName) {
       return (
         <View style={styles.container}>
           <Text style={styles.headline}>{sensorName} values</Text>
-          <Value name="x" value={this.state.x} />
-          <Value name="y" value={this.state.y} />
-          <Value name="z" value={this.state.z} />
+          {values.map(valueName => (
+            <Value
+              key={sensorName + valueName}
+              name={valueName}
+              value={this.state[valueName]}
+            />
+          ))}
         </View>
       );
     }
