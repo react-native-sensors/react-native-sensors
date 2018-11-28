@@ -1,6 +1,6 @@
 {
   "docs": {
-    "Usage": ["Installation", "Usage", "API"],
+    "Usage": ["Installation", "Usage", "API", "FAQ"],
     "About": ["Changelog", "BlogPosts"]
   }
 }
