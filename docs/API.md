@@ -51,6 +51,8 @@ const subscription = barometer.subscribe(({ pressure }) =>
 );
 ```
 
+Please note that this sensor has no option to set the update rate.
+
 ## setUpdateIntervalForType(type: string, interval: number)
 
 As the sensors are global we can only set the rate in which the hardware is read globally.
