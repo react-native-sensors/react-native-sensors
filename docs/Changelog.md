@@ -5,13 +5,26 @@ title: Changelog
 
 ## Version 5
 
+### 5.1.0
+
+We added experimental support for the Barometer, it can be used like this:
+
+```js
+import { barometer } from "react-native-sensors";
+
+const subscription = barometer.subscribe(({ pressure }) =>
+  console.log({ pressure })
+);
+```
+
+Please help us improve the quality by using this sensor and giving feedback!
+
 ### 5.0.0
 
 In this release we defined a whole new API that does not rely on promises anymore.
+To migrate please also update RxJS to a version greater than 6.
 
 #### RxJS
-
-To migrate see the following diff:
 
 ```diff
 - import { Accelerometer, Gyroscope } from "react-native-sensors";
