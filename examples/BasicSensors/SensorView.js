@@ -10,7 +10,7 @@ const Value = ({ name, value }) => (
 );
 
 export default function(sensorName) {
-  console.log("Starting sensor", sensorName);
+  console.log("Starting sensor", sensorName, Sensors);
   const sensor$ = Sensors[sensorName];
 
   return class SensorView extends Component {
@@ -22,7 +22,6 @@ export default function(sensorName) {
 
     componentWillMount() {
       const subscription = sensor$.subscribe(({ x, y, z }) => {
-        console.log("sensor fires");
         this.setState({ x, y, z });
       });
       this.setState({ subscription });
