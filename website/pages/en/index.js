@@ -83,6 +83,7 @@ class HomeSplash extends React.Component {
               <li>Accelerometer</li>
               <li>Gyroscope</li>
               <li>Magnetometer</li>
+              <li>Barometer</li>
             </ul>
           </PromoSection>
           <Button href="/docs/Usage.html">Try It Out</Button>
