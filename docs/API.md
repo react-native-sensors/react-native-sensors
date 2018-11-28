@@ -56,7 +56,7 @@ Please note that this sensor has no option to set the update rate.
 ## setUpdateIntervalForType(type: string, interval: number)
 
 As the sensors are global we can only set the rate in which the hardware is read globally.
-Please note that the native platforms treat this more as a recommendation than an exact value
+Please note that the native platforms treat this more as a recommendation than an exact value.
 
 ```js
 import { setUpdateIntervalForType, SensorTypes } from "react-native-sensors";
