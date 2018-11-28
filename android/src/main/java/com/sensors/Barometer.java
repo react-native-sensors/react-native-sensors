@@ -86,10 +86,7 @@ public class Barometer extends ReactContextBaseJavaModule implements SensorEvent
         WritableMap map = arguments.createMap();
 
         if (mySensor.getType() == Sensor.TYPE_PRESSURE) {
-          map.putDouble("x", sensorEvent.values[0]);
-          map.putDouble("y", sensorEvent.values[1]);
-          map.putDouble("z", sensorEvent.values[2]);
-          map.putDouble("timestamp", tempMs);
+          map.putDouble("pressure", sensorEvent.values[0]);
           sendEvent("Barometer", map);
         }
       }

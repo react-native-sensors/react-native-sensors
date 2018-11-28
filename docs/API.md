@@ -41,6 +41,16 @@ const subscription = magenetometer.subscribe(({ x, y, z, timestamp }) =>
 );
 ```
 
+## barometer: Observable<{pressure: number}>
+
+```js
+import { barometer } from "react-native-sensors";
+
+const subscription = barometer.subscribe(({ pressure }) =>
+  console.log({ pressure })
+);
+```
+
 ## setUpdateIntervalForType(type: string, interval: number)
 
 As the sensors are global we can only set the rate in which the hardware is read globally.
