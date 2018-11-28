@@ -10,11 +10,9 @@ const Value = ({ name, value }) => (
 );
 
 export default function(sensorName) {
-  const sensor$ = new Sensors[sensorName]({
-    updateInterval: 400 // defaults to 100ms
-  });
+  const sensor$ = Sensors[sensorName];
 
-  return class GyroscopeView extends Component {
+  return class SensorView extends Component {
     constructor(props) {
       super(props);
 
@@ -22,6 +20,7 @@ export default function(sensorName) {
     }
 
     componentWillMount() {
+      debugger;
       const subscription = sensor$.subscribe(({ x, y, z }) =>
         this.setState({ x, y, z })
       );

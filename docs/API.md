@@ -3,58 +3,50 @@ id: API
 title: API
 ---
 
-We have two different APIs to provide the same functionality, one is **Default**, which is more verbose, the other one is **Decorator** which is a bit more elegant, but might be harder to read.
+We decided to use [RxJS](https://github.com/ReactiveX/rxjs) as basis for our implementation.
+This means, to use a sensor you simply subscribe to it and you get updates with all emitted values.
 
-Supported sensors:
+If this is too much for you to handle you can either use `setUpdateIntervalForType` to set down the interval in which you get updates or you can use common RxJS operators to throttle down the rate you get updates at on the JS side. In general you should prefer to set the update interval as this will put less stress on you React Native Bridge.
 
-* Accelerometer
-* Gyroscope
-* Magnetometer
+## accelerometer: Observable<{x: number, y: number, z: number, timestamp: string}>
 
-The API of each of them is the same, therefore you will just see Accelerometer in the docs:
+```js
+import { accelerometer } from "react-native-sensors";
 
-## General
+const subscription = accelerometer.subscribe(({ x, y, z, timestamp }) =>
+  console.log({ x, y, z, timestamp })
+);
+```
 
-### setUpdateIntervalForType(type: string, interval: number)
+It might be interesting to note that the gravity of the earth is not removed from the sensoric values.
+Dependening on the position of the phone you will need to substract this from the values if you are interested in the raw values.
+
+## gyroscope: Observable<{x: number, y: number, z: number, timestamp: string}>
+
+```js
+import { gyroscope } from "react-native-sensors";
+
+const subscription = gyroscope.subscribe(({ x, y, z, timestamp }) =>
+  console.log({ x, y, z, timestamp })
+);
+```
+
+## magenetometer: Observable<{x: number, y: number, z: number, timestamp: string}>
+
+```js
+import { magenetometer } from "react-native-sensors";
+
+const subscription = magenetometer.subscribe(({ x, y, z, timestamp }) =>
+  console.log({ x, y, z, timestamp })
+);
+```
+
+## setUpdateIntervalForType(type: string, interval: number)
+
+As the sensors are global we can only set the rate in which the hardware is read globally.
+Please note that the native platforms treat this more as a recommendation than an exact value
 
 ```js
 import { setUpdateIntervalForType, SensorTypes } from "react-native-sensors";
-setUpdateIntervalForType(SensorTypes.Accelerometer, 100);
+setUpdateIntervalForType(SensorTypes.accelerometer, 100);
 ```
-
-## RxJS
-
-```js
-import { Accelerometer } from "react-native-sensors";
-```
-
-### async constructor(options: Object) => SensorObservable
-
-#### options.updateInterval
-
-`number` indicating how often updates should be polled, defaults to 100ms.
-
-### SensorObservable
-
-This is an [RxJS Observable](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html) and when **every observable of this type is** unsubscribed it will automatically stop the sensor from polling.
-
-## Decorator
-
-```js
-import { decorator } from "react-native-sensors";
-```
-
-### decorator({ [sensorName: string]: (options: Object | Boolean) }) => Function(ReactComponent)
-
-```js
-export default sensors({
-  Accelerometer: {
-    updateInterval: 300
-  },
-  Gyroscope: true
-})(MyComponent);
-```
-
-#### options.updateInterval
-
-`number` indicating how often updates should be polled, defaults to 100ms.
