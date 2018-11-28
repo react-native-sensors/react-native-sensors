@@ -11,25 +11,13 @@ const deviceHeight = window.height;
 const imageWidth = 8 * deviceWidth;
 const imageHeight = deviceHeight;
 
-const middleOfTheScreenX = (imageWidth - deviceWidth) / 2;
+const gyro$ = new Gyroscope({
+  updateInterval: 50
+});
 
 export default class App extends Component {
   constructor(props) {
     super(props);
-
-    new Gyroscope({
-      updateInterval: 50
-    })
-      .then(observable => {
-        observable.subscribe(({ y }) => {
-          this.setState(state => ({
-            y: y + state.y
-          }));
-        });
-      })
-      .catch(error => {
-        console.log("The sensor is not available");
-      });
 
     this.state = {
       image: `https://placeimg.com/${PixelRatio.getPixelSizeForLayoutSize(
@@ -39,11 +27,25 @@ export default class App extends Component {
     };
   }
 
+  componentDidMount() {
+    const subscription = gyro$.subscribe(({ y }) => {
+      this.setState(state => ({
+        y: y + state.y
+      }));
+    });
+
+    this.setState({ subscription });
+  }
+
+  componentWillUnmount() {
+    this.state.subscription.unsubscribe();
+  }
+
   render() {
     const positionOnScreenX = -imageWidth / 2;
     // The y axis of the sensor data resembles what we need for the x axis
     // in the image
-    const movementX = -this.state.y / 10 * imageWidth;
+    const movementX = -this.state.y / 1000 * imageWidth;
 
     return (
       <View style={styles.container}>
