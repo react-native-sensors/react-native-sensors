@@ -117,7 +117,7 @@ const Features = props => (
         imageAlign: "top",
         title: "Full iOS & Android support",
         content:
-          "Our philosophy is not to ship partial support; same sensors for every device"
+          "Our philosophy is not to ship partial support; same sensors for every platform"
       }
     ]}
   </Block>
