@@ -3,13 +3,19 @@ import { Observable } from "rxjs";
 import { publish, refCount } from "rxjs/operators";
 import RNSensors from "./rnsensors";
 
+const listenerKeys = new Map([
+  ["accelerometer", "Accelerometer"],
+  ["gyroscope", "Gyroscope"],
+  ["magnetometer", "Magnetometer"]
+]);
+
 function createSensorObservable(sensorType) {
   return Observable.create(function subscribe(observer) {
     this.unsubscribeCallback = () => {};
 
     RNSensors.isAvailable(sensorType).then(
       () => {
-        DeviceEventEmitter.addListener(sensorType, data => {
+        DeviceEventEmitter.addListener(listenerKeys.get(sensorType), data => {
           observer.next(data);
         });
 
