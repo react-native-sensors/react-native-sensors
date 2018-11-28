@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
-import { Gyroscope } from "react-native-sensors";
+import { StyleSheet, View, Image } from "react-native";
+import { gyroscope } from "react-native-sensors";
 const Dimensions = require("Dimensions");
 const PixelRatio = require("PixelRatio");
 const window = Dimensions.get("window");
@@ -10,10 +10,6 @@ const deviceHeight = window.height;
 
 const imageWidth = 8 * deviceWidth;
 const imageHeight = deviceHeight;
-
-const gyro$ = new Gyroscope({
-  updateInterval: 50
-});
 
 export default class App extends Component {
   constructor(props) {
@@ -28,7 +24,7 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    const subscription = gyro$.subscribe(({ y }) => {
+    const subscription = gyroscope.subscribe(({ y }) => {
       this.setState(state => ({
         y: y + state.y
       }));

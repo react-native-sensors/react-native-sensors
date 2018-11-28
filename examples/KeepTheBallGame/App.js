@@ -1,18 +1,20 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { Accelerometer } from "react-native-sensors";
+import { StyleSheet, View } from "react-native";
+import {
+  accelerometer,
+  setUpdateIntervalForType,
+  SensorTypes
+} from "react-native-sensors";
 
 import Game from "./Game";
 
-const accelerometer$ = new Accelerometer({
-  updateInterval: 16
-});
+setUpdateIntervalForType(SensorTypes.accelerometer, 16);
 
 export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Game data={accelerometer$} />
+        <Game data={accelerometer} />
       </View>
     );
   }

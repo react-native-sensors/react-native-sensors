@@ -1,18 +1,11 @@
-import Sensors from "./src/sensors";
-import decorator from "./src/decorator";
-import { setUpdateInterval } from "./src/rnsensors";
-
-export const { Accelerometer, Gyroscope, Magnetometer } = { ...Sensors };
-export { decorator };
+import sensors from "./src/sensors";
+export { setUpdateInterval as setUpdateIntervalForType } from "./src/rnsensors";
 
 export const SensorTypes = {
-  Accelerometer: "Accelerometer",
-  Gyroscope: "Gyroscope",
-  Magnetometer: "Magnetometer"
+  accelerometer: "accelerometer",
+  gyroscope: "gyroscope",
+  magnetometer: "magnetometer"
 };
 
-export default {
-  ...Sensors,
-  decorator,
-  setUpdateIntervalForType: setUpdateInterval
-};
+export const { accelerometer, gyroscope, magnetometer } = sensors;
+export default sensors;
