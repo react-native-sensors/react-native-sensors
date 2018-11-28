@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B18A2800205ADE2700ED2038 /* Magnetometer.m in Sources */ = {isa = PBXBuildFile; fileRef = B18A27FF205ADE2700ED2038 /* Magnetometer.m */; };
+		E74E15A721AF4EA400E82D17 /* Barometer.m in Sources */ = {isa = PBXBuildFile; fileRef = E74E15A521AF4EA400E82D17 /* Barometer.m */; };
 		E7FCE1881E14639E005C5155 /* Gyroscope.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FCE1871E14639E005C5155 /* Gyroscope.m */; };
 		E7FCE18B1E150266005C5155 /* Accelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FCE18A1E150266005C5155 /* Accelerometer.m */; };
 /* End PBXBuildFile section */
@@ -28,6 +29,8 @@
 		134814201AA4EA6300B7C361 /* libRNSensors.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNSensors.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B18A27FE205ADE2700ED2038 /* Magnetometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Magnetometer.h; sourceTree = "<group>"; };
 		B18A27FF205ADE2700ED2038 /* Magnetometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Magnetometer.m; sourceTree = "<group>"; };
+		E74E15A521AF4EA400E82D17 /* Barometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Barometer.m; sourceTree = "<group>"; };
+		E74E15A621AF4EA400E82D17 /* Barometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Barometer.h; sourceTree = "<group>"; };
 		E7FCE1861E14639E005C5155 /* Gyroscope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gyroscope.h; sourceTree = "<group>"; };
 		E7FCE1871E14639E005C5155 /* Gyroscope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gyroscope.m; sourceTree = "<group>"; };
 		E7FCE1891E150266005C5155 /* Accelerometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Accelerometer.h; sourceTree = "<group>"; };
@@ -56,6 +59,8 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				E74E15A621AF4EA400E82D17 /* Barometer.h */,
+				E74E15A521AF4EA400E82D17 /* Barometer.m */,
 				B18A27FE205ADE2700ED2038 /* Magnetometer.h */,
 				B18A27FF205ADE2700ED2038 /* Magnetometer.m */,
 				E7FCE1891E150266005C5155 /* Accelerometer.h */,
@@ -125,6 +130,7 @@
 				E7FCE1881E14639E005C5155 /* Gyroscope.m in Sources */,
 				E7FCE18B1E150266005C5155 /* Accelerometer.m in Sources */,
 				B18A2800205ADE2700ED2038 /* Magnetometer.m in Sources */,
+				E74E15A721AF4EA400E82D17 /* Barometer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
