@@ -214,6 +214,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "watadarkstar",
+      "name": "Adrian Carolli",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3059371?v=4",
+      "profile": "http://adriancarolli.surge.sh/",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "repoType": "github"
