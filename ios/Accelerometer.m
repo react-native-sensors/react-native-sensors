@@ -42,12 +42,12 @@ RCT_REMAP_METHOD(isAvailable,
         {
             resolve(@YES);
         } else {
-            reject(@"-1", @"Acceletometer is not active", nil);
+            reject(@"-1", @"Accelerometer is not active", nil);
         }
     }
     else
     {
-        reject(@"-1", @"Acceletometer is not available", nil);
+        reject(@"-1", @"Accelerometer is not available", nil);
     }
 }
 
