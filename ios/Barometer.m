@@ -71,7 +71,7 @@ RCT_EXPORT_METHOD(startUpdates) {
         
         if (altitudeData) {
             [self.bridge.eventDispatcher sendDeviceEventWithName:@"Barometer" body:@{
-                @"pressure" : [NSNumber numberWithDouble:altitudeData.pressure]
+                @"pressure" : altitudeData.pressure
             }];
         }
         
