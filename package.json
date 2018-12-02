@@ -84,12 +84,12 @@
     "babel-jest": "23.6.0",
     "babel-preset-react-native": "4.0.0",
     "jest": "23.6.0",
-    "jest-runner-prettier": "^0.2.6",
+    "jest-runner-prettier": "0.2.6",
     "prettier": "1.12.1",
     "react": "16.5.1",
     "react-native": "0.57.7",
     "regenerator-runtime": "0.11.1",
-    "rxjs-marbles": "^4.3.5",
+    "rxjs-marbles": "4.3.5",
     "semantic-release": "15.9.15",
     "travis-deploy-once": "5.0.7"
   }
