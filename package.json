@@ -90,7 +90,7 @@
     "react-native": "0.57.7",
     "regenerator-runtime": "0.11.1",
     "rxjs-marbles": "4.3.5",
-    "semantic-release": "15.9.15",
+    "semantic-release": "15.12.3",
     "travis-deploy-once": "5.0.7"
   }
 }
