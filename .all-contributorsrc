@@ -224,6 +224,15 @@
         "bug",
         "code"
       ]
+    },
+    {
+      "login": "jdegger",
+      "name": "Jesse Degger",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/14085897?v=4",
+      "profile": "https://github.com/jdegger",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github"
