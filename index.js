@@ -1,6 +1,7 @@
 import sensors from "./src/sensors";
-export { setUpdateInterval as setUpdateIntervalForType } from "./src/rnsensors";
+import RNSensors from "./src/rnsensors";
 
+export const setUpdateIntervalForType = RNSensors.setUpdateInterval;
 export const SensorTypes = {
   accelerometer: "accelerometer",
   gyroscope: "gyroscope",
