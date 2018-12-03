@@ -1,7 +1,7 @@
 import { DeviceEventEmitter } from "react-native";
 import { Observable } from "rxjs";
 import { publish, refCount } from "rxjs/operators";
-import RNSensors from "./rnsensors";
+import * as RNSensors from "./rnsensors";
 
 const listenerKeys = new Map([
   ["accelerometer", "Accelerometer"],
