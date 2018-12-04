@@ -39,11 +39,7 @@ function createSensorObservable(sensorType) {
 
 // As we only have one sensor we need to share it between the different consumers
 function makeSingleton() {
-  return source =>
-    source.pipe(
-      publish(),
-      refCount()
-    );
+  return source => source.pipe(publish(), refCount());
 }
 
 const accelerometer = createSensorObservable("accelerometer");
