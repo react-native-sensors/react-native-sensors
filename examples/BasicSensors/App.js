@@ -18,9 +18,7 @@ export default class App extends Component {
   render() {
     return (
       <ScrollView>
-        {viewComponents.map((Comp, index) => (
-          <Comp key={index} />
-        ))}
+        {viewComponents.map((Comp, index) => <Comp key={index} />)}
       </ScrollView>
     );
   }
