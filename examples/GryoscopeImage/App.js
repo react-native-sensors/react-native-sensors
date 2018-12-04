@@ -41,7 +41,7 @@ export default class App extends Component {
     const positionOnScreenX = -imageWidth / 2;
     // The y axis of the sensor data resembles what we need for the x axis
     // in the image
-    const movementX = (-this.state.y / 1000) * imageWidth;
+    const movementX = -this.state.y / 1000 * imageWidth;
 
     return (
       <View style={styles.container}>
