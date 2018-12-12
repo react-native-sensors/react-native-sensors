@@ -73,8 +73,8 @@ const siteConfig = {
   },*/
   // This copyright info is used in /core/Footer.js and blog rss/atom feeds.
   copyright: "Copyright © " + new Date().getFullYear() + " Daniel Schmidt",
-  // organizationName: 'deltice', // or set an env variable ORGANIZATION_NAME
-  // projectName: 'test-site', // or set an env variable PROJECT_NAME
+  organizationName: "react-native-sensors", // or set an env variable ORGANIZATION_NAME
+  projectName: "react-native-sensors", // or set an env variable PROJECT_NAME
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks
     theme: "default"
