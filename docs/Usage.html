@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Usage · React Native Sensors</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;You can access your sensor data through a &lt;a href=&quot;http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html&quot;&gt;RxJS Observable&lt;/a&gt;. This way you have the maximum of control over your data stream. You can add the values up, filter them, only react if a certain value is reached: You have the choice. Here is a small example showing the relatively small API interface. If you would like to learn more, please see the &lt;a href=&quot;/docs/API.html&quot;&gt;API specification&lt;/a&gt;.&lt;/p&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Usage · React Native Sensors"/><meta property="og:type" content="website"/><meta property="og:url" content="https://react-native-sensors.github.io/index.html"/><meta property="og:description" content="&lt;p&gt;You can access your sensor data through a &lt;a href=&quot;http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html&quot;&gt;RxJS Observable&lt;/a&gt;. This way you have the maximum of control over your data stream. You can add the values up, filter them, only react if a certain value is reached: You have the choice. Here is a small example showing the relatively small API interface. If you would like to learn more, please see the &lt;a href=&quot;/docs/API.html&quot;&gt;API specification&lt;/a&gt;.&lt;/p&gt;
+"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">React Native Sensors</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/Installation.html" target="_self">Documentation</a></li><li class=""><a href="https://github.com/react-native-sensors/react-native-sensors" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Usage</span></h2></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Usage</h3><ul><li class="navListItem"><a class="navItem" href="/docs/Installation.html">Installation</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/Usage.html">General</a></li><li class="navListItem"><a class="navItem" href="/docs/API.html">API</a></li><li class="navListItem"><a class="navItem" href="/docs/FAQ.html">FAQ</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">About</h3><ul><li class="navListItem"><a class="navItem" href="/docs/Changelog.html">Changelog</a></li><li class="navListItem"><a class="navItem" href="/docs/BlogPosts.html">Blog Posts</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Usage</h1></header><article><div><span><p>You can access your sensor data through a <a href="http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html">RxJS Observable</a>. This way you have the maximum of control over your data stream. You can add the values up, filter them, only react if a certain value is reached: You have the choice. Here is a small example showing the relatively small API interface. If you would like to learn more, please see the <a href="/docs/API.html">API specification</a>.</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">import</span> {
+  accelerometer,
+  gyroscope,
+  setUpdateIntervalForType,
+  SensorTypes
+} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-native-sensors"</span>;
+<span class="hljs-keyword">import</span> { map, filter } <span class="hljs-keyword">from</span> <span class="hljs-string">"rxjs/operators"</span>;
+
+setUpdateIntervalForType(SensorTypes.Accelerometer, <span class="hljs-number">400</span>); <span class="hljs-comment">// defaults to 100ms</span>
+
+<span class="hljs-keyword">const</span> subscription = accelerometer
+  .pipe(map(<span class="hljs-function">(<span class="hljs-params">{ x, y, z }</span>) =&gt;</span> x + y + z), filter(<span class="hljs-function"><span class="hljs-params">speed</span> =&gt;</span> speed &gt; <span class="hljs-number">20</span>))
+  .subscribe(
+    <span class="hljs-function"><span class="hljs-params">speed</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`You moved your phone with <span class="hljs-subst">${speed}</span>`</span>),
+    error =&gt; {
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"The sensor is not available"</span>);
+    }
+  );
+
+setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-comment">// If it's the last subscription to accelerometer it will stop polling in the native API</span>
+  subscription.unsubscribe();
+}, <span class="hljs-number">1000</span>);
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/Installation.html"><span class="arrow-prev">← </span><span>Installation</span></a><a class="docs-next button" href="/docs/API.html"><span>API</span><span class="arrow-next"> →</span></a></div></div></div></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2018 Daniel Schmidt.</section></footer></div></body></html>
