@@ -91,6 +91,6 @@
     "regenerator-runtime": "0.11.1",
     "rxjs-marbles": "4.3.5",
     "semantic-release": "15.12.5",
-    "travis-deploy-once": "5.0.7"
+    "travis-deploy-once": "5.0.11"
   }
 }
