@@ -260,6 +260,16 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "dbanck",
+      "name": "Daniel Banck",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/45985?v=4",
+      "profile": "https://dbanck.de",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "repoType": "github"
