@@ -5573,6 +5573,13 @@ telnet-client@0.15.3:
   dependencies:
     bluebird "3.5.x"
 
+telnet-client@^0.16.2:
+  version "0.16.2"
+  resolved "https://registry.yarnpkg.com/telnet-client/-/telnet-client-0.16.2.tgz#e6d45cda9164602ae91506f49eb0223e532af6ff"
+  integrity sha512-GMaB8GT765jZf2o/kO/E9LbtyqgCARvYx1WBlK6DgpoMdIk74ITiU5ZRlRqUCla11qxQvFQCdZu1ScTm4WJEPQ==
+  dependencies:
+    bluebird "3.5.x"
+
 temp-dir@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/temp-dir/-/temp-dir-1.0.0.tgz#0a7c0ea26d3a39afa7e0ebea9c1fc0bc4daa011d"
