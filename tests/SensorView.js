@@ -5,7 +5,9 @@ import * as Sensors from "react-native-sensors";
 const Value = ({ name, testID, value }) => (
   <View style={styles.valueContainer}>
     <Text style={styles.valueName}>{name}:</Text>
-    <Text testID={testID} style={styles.valueValue}>{Math.round(value)}</Text>
+    <Text testID={testID} style={styles.valueValue}>
+      {Math.round(value)}
+    </Text>
   </View>
 );
 
