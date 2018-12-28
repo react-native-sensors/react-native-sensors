@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import * as Sensors from "react-native-sensors";
 
-const Value = ({ name, value }) => (
+const Value = ({ name, testID, value }) => (
   <View style={styles.valueContainer}>
     <Text style={styles.valueName}>{name}:</Text>
-    <Text style={styles.valueValue}>{new String(value).substr(0, 8)}</Text>
+    <Text testID={testID} style={styles.valueValue}>{Math.round(value)}</Text>
   </View>
 );
 
@@ -41,6 +41,7 @@ export default function(sensorName, values) {
           <Text style={styles.headline}>{sensorName} values</Text>
           {values.map(valueName => (
             <Value
+              testID={`${sensorName}-${valueName}`}
               key={sensorName + valueName}
               name={valueName}
               value={this.state[valueName]}
