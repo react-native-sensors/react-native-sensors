@@ -2,7 +2,7 @@
   <a href="https://react-native-sensors.github.io/">
     <img width="600px" src="https://github.com/react-native-sensors/logo/blob/master/rn_sensors_banner_900.png?raw=true"><br/>
   </a>
-  
+
   <h2 align="center">React Native Sensors</h2>
 </p>
 
@@ -11,8 +11,6 @@
   <a href="https://www.npmjs.com/package/react-native-sensors"><img src="https://img.shields.io/npm/v/react-native-sensors.svg?style=flat-square" alt="NPM version"></a>
   <a href="https://travis-ci.org/react-native-sensors/react-native-sensors"><img src="https://travis-ci.org/react-native-sensors/react-native-sensors.svg?branch=master" alt="Build Status"></a> <a href="https://github.com/semantic-release/semantic-release"><img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" alt="semantic-release"></a> <a href="#contributors"><img src="https://img.shields.io/badge/all_contributors-29-orange.svg?style=flat-square" alt="All Contributors"></a>
 </p>
-
-
 
 ## Supported React Native Versions
 
