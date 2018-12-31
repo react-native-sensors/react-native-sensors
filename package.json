@@ -6,6 +6,7 @@
     "contributor:add": "all-contributors add",
     "contributor:generate": "all-contributors generate",
     "test": "jest",
+    "test:e2e": "cd tests && npm test",
     "format": "prettier --write $(npx jest --listTests)",
     "semantic-release": "semantic-release",
     "travis-deploy-once": "travis-deploy-once"
