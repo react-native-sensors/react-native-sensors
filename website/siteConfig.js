@@ -39,7 +39,7 @@ const users = [
 
 const siteConfig = {
   title: "React Native Sensors",
-  tagline: "Get your sensor data the easy and reactive way",
+  tagline: "Get your Accelerometer, Gyroscope, Magnetometer, and Barometer data the easy and reactive way",
   url: "https://react-native-sensors.github.io",
   baseUrl: "/" /* base url for your project */,
   projectName: "react-native-sensors.github.io",
@@ -57,7 +57,7 @@ const siteConfig = {
   favicon: "",
   /* colors for website */
   colors: {
-    primaryColor: "#7692FF",
+    primaryColor: "#f6612c",
     secondaryColor: "#4BC6B9"
   },
   /* custom fonts for website */

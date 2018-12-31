@@ -5,6 +5,13 @@
   height: 400px;
 }
 
+.projectTitle > img {
+  display: block;
+  margin: 1em auto;
+  width: 30%;
+  max-width: 50vw;
+}
+
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
 }
 
