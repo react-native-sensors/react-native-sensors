@@ -50,15 +50,10 @@ const SplashContainer = props => (
   </div>
 );
 
-const Logo = props => (
-  <div className="projectLogo">
-    <img src={props.img_src} />
-  </div>
-);
-
 const ProjectTitle = props => (
   <h2 className="projectTitle">
     {siteConfig.title}
+    <img src="/img/logo.svg" />
     <small>{siteConfig.tagline}</small>
   </h2>
 );
@@ -78,14 +73,6 @@ class HomeSplash extends React.Component {
       <SplashContainer>
         <div className="inner">
           <ProjectTitle />
-          <PromoSection>
-            <ul style={{ textAlign: "left" }}>
-              <li>Accelerometer</li>
-              <li>Gyroscope</li>
-              <li>Magnetometer</li>
-              <li>Barometer</li>
-            </ul>
-          </PromoSection>
           <Button href="/docs/Usage.html">Try It Out</Button>
         </div>
       </SplashContainer>
