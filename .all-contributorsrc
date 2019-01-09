@@ -270,6 +270,15 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "jan-happy",
+      "name": "jan-happy",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/695826?v=4",
+      "profile": "https://github.com/jan-happy",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "repoType": "github"
