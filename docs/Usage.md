@@ -15,7 +15,7 @@ import {
 } from "react-native-sensors";
 import { map, filter } from "rxjs/operators";
 
-setUpdateIntervalForType(SensorTypes.Accelerometer, 400); // defaults to 100ms
+setUpdateIntervalForType(SensorTypes.accelerometer, 400); // defaults to 100ms
 
 const subscription = accelerometer
   .pipe(map(({ x, y, z }) => x + y + z), filter(speed => speed > 20))
