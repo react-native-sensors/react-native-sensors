@@ -39,7 +39,8 @@ const users = [
 
 const siteConfig = {
   title: "React Native Sensors",
-  tagline: "Get your Accelerometer, Gyroscope, Magnetometer, and Barometer data the easy and reactive way",
+  tagline:
+    "Get your Accelerometer, Gyroscope, Magnetometer, and Barometer data the easy and reactive way",
   url: "https://react-native-sensors.github.io",
   baseUrl: "/" /* base url for your project */,
   projectName: "react-native-sensors.github.io",
