@@ -36,7 +36,7 @@
 } <span class="hljs-keyword">from</span> <span class="hljs-string">"react-native-sensors"</span>;
 <span class="hljs-keyword">import</span> { map, filter } <span class="hljs-keyword">from</span> <span class="hljs-string">"rxjs/operators"</span>;
 
-setUpdateIntervalForType(SensorTypes.Accelerometer, <span class="hljs-number">400</span>); <span class="hljs-comment">// defaults to 100ms</span>
+setUpdateIntervalForType(SensorTypes.accelerometer, <span class="hljs-number">400</span>); <span class="hljs-comment">// defaults to 100ms</span>
 
 <span class="hljs-keyword">const</span> subscription = accelerometer
   .pipe(map(<span class="hljs-function">(<span class="hljs-params">{ x, y, z }</span>) =&gt;</span> x + y + z), filter(<span class="hljs-function"><span class="hljs-params">speed</span> =&gt;</span> speed &gt; <span class="hljs-number">20</span>))
@@ -52,4 +52,4 @@ setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;
   subscription.unsubscribe();
 }, <span class="hljs-number">1000</span>);
 </code></pre>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/Installation.html"><span class="arrow-prev">← </span><span>Installation</span></a><a class="docs-next button" href="/docs/API.html"><span>API</span><span class="arrow-next"> →</span></a></div></div></div></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2018 Daniel Schmidt.</section></footer></div></body></html>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/Installation.html"><span class="arrow-prev">← </span><span>Installation</span></a><a class="docs-next button" href="/docs/API.html"><span>API</span><span class="arrow-next"> →</span></a></div></div></div></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 Daniel Schmidt.</section></footer></div></body></html>
