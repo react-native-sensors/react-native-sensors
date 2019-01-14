@@ -31,12 +31,12 @@ const subscription = gyroscope.subscribe(({ x, y, z, timestamp }) =>
 );
 ```
 
-## magenetometer: Observable<{x: number, y: number, z: number, timestamp: string}>
+## magnetometer: Observable<{x: number, y: number, z: number, timestamp: string}>
 
 ```js
-import { magenetometer } from "react-native-sensors";
+import { magnetometer } from "react-native-sensors";
 
-const subscription = magenetometer.subscribe(({ x, y, z, timestamp }) =>
+const subscription = magnetometer.subscribe(({ x, y, z, timestamp }) =>
   console.log({ x, y, z, timestamp })
 );
 ```
