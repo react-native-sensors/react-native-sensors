@@ -37,14 +37,9 @@ RCT_REMAP_METHOD(isAvailable,
 - (void) isAvailableWithResolver:(RCTPromiseResolveBlock) resolve
                         rejecter:(RCTPromiseRejectBlock) reject {
 
-    if (![CMAltimeter isRelativeAltitudeAvailable]) 
+    if ([CMAltimeter isRelativeAltitudeAvailable]) 
     {
-        if([CMPedometer authorizationStatus] == CMAuthorizationStatusAuthorized)
-        {
-            resolve(@YES);
-        } else {
-            reject(@"-1", @"Barometer is not authorized", nil);
-        }
+        resolve(@YES);
     }
     else
     {
