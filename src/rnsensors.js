@@ -3,10 +3,11 @@ const {
   Gyroscope: GyroNative,
   Accelerometer: AccNative,
   Magnetometer: MagnNative,
-  Barometer: BarNative
+  Barometer: BarNative,
+  DeviceMotion: DevNative
 } = NativeModules;
 
-if (!GyroNative && !AccNative && !MagnNative && !BarNative) {
+if (!GyroNative && !AccNative && !MagnNative && !BarNative && !DevNative) {
   throw new Error(
     "Native modules for sensors not available. Did react-native link run successfully?"
   );
@@ -16,7 +17,8 @@ const nativeApis = new Map([
   ["accelerometer", AccNative],
   ["gyroscope", GyroNative],
   ["magnetometer", MagnNative],
-  ["barometer", BarNative]
+  ["barometer", BarNative], 
+  ["devicemotion",DevNative]
 ]);
 
 // Cache the availability of sensors
@@ -33,6 +35,7 @@ export function isAvailable(type) {
   }
 
   const api = nativeApis.get(type.toLocaleLowerCase());
+  
   const promise = api.isAvailable();
   availableSensors[type] = promise;
 

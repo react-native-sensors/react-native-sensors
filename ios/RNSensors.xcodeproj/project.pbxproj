@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		077DED2E21F89B830040BD53 /* DeviceMotion.m in Sources */ = {isa = PBXBuildFile; fileRef = 077DED2D21F89B830040BD53 /* DeviceMotion.m */; };
+		077DED3221F8A0EB0040BD53 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077DED3121F8A0EB0040BD53 /* CoreMotion.framework */; };
 		B18A2800205ADE2700ED2038 /* Magnetometer.m in Sources */ = {isa = PBXBuildFile; fileRef = B18A27FF205ADE2700ED2038 /* Magnetometer.m */; };
 		E74E15A721AF4EA400E82D17 /* Barometer.m in Sources */ = {isa = PBXBuildFile; fileRef = E74E15A521AF4EA400E82D17 /* Barometer.m */; };
 		E7FCE1881E14639E005C5155 /* Gyroscope.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FCE1871E14639E005C5155 /* Gyroscope.m */; };
@@ -26,6 +28,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		077DED2D21F89B830040BD53 /* DeviceMotion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceMotion.m; sourceTree = "<group>"; };
+		077DED2F21F89BA10040BD53 /* DeviceMotion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceMotion.h; sourceTree = "<group>"; };
+		077DED3121F8A0EB0040BD53 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		134814201AA4EA6300B7C361 /* libRNSensors.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNSensors.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B18A27FE205ADE2700ED2038 /* Magnetometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Magnetometer.h; sourceTree = "<group>"; };
 		B18A27FF205ADE2700ED2038 /* Magnetometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Magnetometer.m; sourceTree = "<group>"; };
@@ -42,12 +47,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				077DED3221F8A0EB0040BD53 /* CoreMotion.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		077DED3021F8A0EB0040BD53 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				077DED3121F8A0EB0040BD53 /* CoreMotion.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		134814211AA4EA7D00B7C361 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +73,8 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				077DED2F21F89BA10040BD53 /* DeviceMotion.h */,
+				077DED2D21F89B830040BD53 /* DeviceMotion.m */,
 				E74E15A621AF4EA400E82D17 /* Barometer.h */,
 				E74E15A521AF4EA400E82D17 /* Barometer.m */,
 				B18A27FE205ADE2700ED2038 /* Magnetometer.h */,
@@ -68,6 +84,7 @@
 				E7FCE1861E14639E005C5155 /* Gyroscope.h */,
 				E7FCE1871E14639E005C5155 /* Gyroscope.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
+				077DED3021F8A0EB0040BD53 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +147,7 @@
 				E7FCE1881E14639E005C5155 /* Gyroscope.m in Sources */,
 				E7FCE18B1E150266005C5155 /* Accelerometer.m in Sources */,
 				B18A2800205ADE2700ED2038 /* Magnetometer.m in Sources */,
+				077DED2E21F89B830040BD53 /* DeviceMotion.m in Sources */,
 				E74E15A721AF4EA400E82D17 /* Barometer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
