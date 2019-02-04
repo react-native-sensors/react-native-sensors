@@ -288,6 +288,16 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "RWOverdijk",
+      "name": "Roberto Wesley Overdijk",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/781745?v=4",
+      "profile": "https://medium.com/@r.w.overdijk",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "repoType": "github"
