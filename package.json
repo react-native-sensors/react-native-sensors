@@ -82,7 +82,7 @@
     "rxjs": ">= 6"
   },
   "devDependencies": {
-    "all-contributors-cli": "4.11.2",
+    "all-contributors-cli": "6.1.2",
     "babel-core": "6.26.3",
     "babel-jest": "24.1.0",
     "babel-preset-react-native": "4.0.0",
