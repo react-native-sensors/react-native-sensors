@@ -40,7 +40,7 @@ function createSensorObservable(sensorType) {
   
   return this.unsubscribeCallback;
   }).pipe(makeSingleton());
-  }
+}
 
 // As we only have one sensor we need to share it between the different consumers
 function makeSingleton() {
