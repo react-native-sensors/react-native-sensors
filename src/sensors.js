@@ -12,28 +12,33 @@ const listenerKeys = new Map([
 
 function createSensorObservable(sensorType) {
   return Observable.create(function subscribe(observer) {
-    this.unsubscribeCallback = () => {};
-
-    RNSensors.isAvailable(sensorType).then(
-      () => {
-        DeviceEventEmitter.addListener(listenerKeys.get(sensorType), data => {
-          observer.next(data);
-        });
-
-        // Register the unsubscribe handler
-        this.unsubscribeCallback = () => {
-          RNSensors.stop(sensorType);
-        };
-
+  
+  this.isSensorAvailable = false;
+  
+  this.unsubscribeCallback = () => {
+    
+    if (!this.isSensorAvailable) return;
+  
+    // stop the sensor
+    RNSensors.stop(sensorType);
+  };
+  
+  RNSensors.isAvailable(sensorType).then(
+    () => {
+      DeviceEventEmitter.addListener(listenerKeys.get(sensorType), data => {
+        observer.next(data);
+      });
+      this.isSensorAvailable = true;
+  
         // Start the sensor manager
         RNSensors.start(sensorType);
-      },
-      () => {
-        observer.error(`Sensor ${sensorType} is not available`);
-      }
-    );
-
-    return this.unsubscribeCallback;
+    },
+    () => {
+      observer.error(`Sensor ${sensorType} is not available`);
+    }
+  );
+  
+  return this.unsubscribeCallback;
   }).pipe(makeSingleton());
 }
 
