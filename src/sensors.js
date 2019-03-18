@@ -16,7 +16,6 @@ function createSensorObservable(sensorType) {
 
     this.unsubscribeCallback = () => {
       if (!this.isSensorAvailable) return;
-      
       // stop the sensor
       RNSensors.stop(sensorType);
     };
