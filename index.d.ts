@@ -32,7 +32,7 @@ declare module "react-native-sensors" {
     accelerometer,
     gyroscope,
     magnetometer,
-    barometer,
+    barometer
   }: {
     accelerometer: RNSensor;
     gyroscope: RNSensor;
