@@ -18,13 +18,14 @@ declare module "react-native-sensors" {
     timestamp: string;
   }
 
-  import { Observable } from "rxjs";
+  import { Observable, Unsubscribable } from "rxjs";
+  export { Unsubscribable };
   export type RNSensorObservable = Observable<SensorData>;
 
   export interface RNSensor {
     subscribe: (
       observer: ({ x, y, z, timestamp }: SensorData) => SensorData
-    ) => RNSensorObservable;
+    ) => Unsubscribable;
   }
 
   export const {
