@@ -1,5 +1,3 @@
-import { Observable } from "rxjs";
-
 declare module "react-native-sensors" {
   export const SensorTypes: {
     accelerometer: "accelerometer";
@@ -20,6 +18,7 @@ declare module "react-native-sensors" {
     timestamp: string;
   }
 
+  import { Observable } from "rxjs";
   export type RNSensorObservable = Observable<SensorData>;
 
   export interface RNSensor {
