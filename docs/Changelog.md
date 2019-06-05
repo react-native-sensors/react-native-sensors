@@ -5,6 +5,10 @@ title: Changelog
 
 ## Version 5
 
+### 5.2.0
+
+We added Typescript typings.
+
 ### 5.1.0
 
 We added experimental support for the Barometer, it can be used like this:
