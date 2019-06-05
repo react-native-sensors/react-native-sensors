@@ -298,6 +298,15 @@
         "bug",
         "code"
       ]
+    },
+    {
+      "login": "reitermarkus",
+      "name": "Markus Reiter",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1309829?v=4",
+      "profile": "http://reitermark.us",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github"
