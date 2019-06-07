@@ -4,7 +4,9 @@
   "description": "A developer friendly approach for sensors in react-native",
   "scripts": {
     "contributor:add": "all-contributors add",
+    "postcontributor:add": "npm run contributor:generate",
     "contributor:generate": "all-contributors generate",
+    "postcontributor:generate": "npm run format",
     "test": "jest",
     "format": "prettier --write $(npx jest --listTests)",
     "semantic-release": "semantic-release",
