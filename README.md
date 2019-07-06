@@ -16,8 +16,8 @@
 
 | React Native Version | react-native-sensors Version |
 | -------------------- | ---------------------------- |
-| <= 39                | < 1.0                        |
-| >= 40                | >= 1.0                       |
+| <= 0.39              | < 1.0                        |
+| >= 0.40              | >= 1.0                       |
 
 ## Documentation
 
