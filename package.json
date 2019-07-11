@@ -92,7 +92,7 @@
     "jest-runner-prettier": "0.2.6",
     "prettier": "1.12.1",
     "react": "16.8.4",
-    "react-native": "0.57.7",
+    "react-native": "0.60.3",
     "regenerator-runtime": "0.13.1",
     "rxjs-marbles": "5.0.0",
     "semantic-release": "15.13.16",
