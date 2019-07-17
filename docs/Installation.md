@@ -10,6 +10,22 @@ sidebar_label: Installation
 
 ### Automatic installation
 
+#### RN >=0.60.0
+CocoaPods is not the recommended method to adding libraries to react-native.
+
+Add the following to your Podfile and run `$ pod install`:
+
+`pod 'RNSensors', :path => '../node_modules/react-native-sensors'`
+
+then from your project directory run:
+
+`$ cd ios`
+`pod install`
+
+DO NOT RUN `react-native link react-native-sensors` this is no longer required with RN 0.60 or above.
+
+#### RN <=0.59.10
+
 `$ react-native link react-native-sensors`
 
 Option: With CocoaPods (iOS only)
