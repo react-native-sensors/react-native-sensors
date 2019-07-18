@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.license             = package['license']
   s.author              = package['author']
   s.source              = { :git => "https://github.com/react-native-sensors/react-native-sensors.git" }
-  s.platform            = :ios, "7.0"
+  s.platform            = :ios, "8.0"
   s.source_files        = "ios/*.{h,m}"
   s.preserve_paths      = "*.js"
   s.dependency 'React'
