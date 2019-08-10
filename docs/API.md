@@ -46,12 +46,12 @@ const subscription = magnetometer.subscribe(({ x, y, z, timestamp }) =>
 ```js
 import { barometer } from "react-native-sensors";
 
-const subscription = barometer.subscribe(({ pressure }) =>
-  console.log({ pressure })
+const subscription = barometer.subscribe(({ pressure, relativeAltitude }) =>
+  console.log({ pressure, relativeAltitude })
 );
 ```
 
-Please note that this sensor has no option to set the update rate.
+Please note that this sensor has no option to set the update rate and `relativeAltitude` is only available on iOS.
 
 ## setUpdateIntervalForType(type: string, interval: number)
 
