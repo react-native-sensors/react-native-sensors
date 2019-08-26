@@ -96,7 +96,7 @@ RCT_EXPORT_METHOD(startUpdates) {
          double timestamp = magnetometerData.timestamp;
          NSLog(@"startMagnetometerUpdates: %f, %f, %f, %f", x, y, z, timestamp);
 
-         [self.bridge.eventDispatcher sendDeviceEventWithName:@"Magnetometer" body:@{
+         [self sendEventWithName:@"Magnetometer" body:@{
                                                                                    @"x" : [NSNumber numberWithDouble:x],
                                                                                    @"y" : [NSNumber numberWithDouble:y],
                                                                                    @"z" : [NSNumber numberWithDouble:z],

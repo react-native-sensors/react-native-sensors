@@ -2,8 +2,9 @@
 
 #import <React/RCTBridgeModule.h>
 #import <CoreMotion/CoreMotion.h>
+#import <React/RCTEventEmitter.h>
 
-@interface Barometer : NSObject <RCTBridgeModule> {
+@interface Barometer : RCTEventEmitter <RCTBridgeModule> {
     CMAltimeter *_altimeter;
 }
 
