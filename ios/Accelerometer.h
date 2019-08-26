@@ -2,8 +2,9 @@
 
 #import <React/RCTBridgeModule.h>
 #import <CoreMotion/CoreMotion.h>
+#import <React/RCTEventEmitter.h>
 
-@interface Accelerometer : NSObject <RCTBridgeModule> {
+@interface Accelerometer : RCTEventEmitter <RCTBridgeModule> {
     CMMotionManager *_motionManager;
 }
 

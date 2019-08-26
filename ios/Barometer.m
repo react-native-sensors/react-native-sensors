@@ -65,7 +65,7 @@ RCT_EXPORT_METHOD(startUpdates) {
         }
         
         if (altitudeData) {
-            [self.bridge.eventDispatcher sendDeviceEventWithName:@"Barometer" body:@{
+            [self sendEventWithName:@"Barometer" body:@{
                 @"pressure" : @(altitudeData.pressure.doubleValue * 10.0)
             }];
         }
