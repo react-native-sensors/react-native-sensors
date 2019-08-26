@@ -93,7 +93,7 @@ RCT_EXPORT_METHOD(startUpdates) {
          double timestamp = gyroData.timestamp;
          NSLog(@"startUpdates: %f, %f, %f, %f", x, y, z, timestamp);
 
-         [self.bridge.eventDispatcher sendDeviceEventWithName:@"Gyroscope" body:@{
+         [self sendEventWithName:@"Gyroscope" body:@{
                                                                                      @"x" : [NSNumber numberWithDouble:x],
                                                                                      @"y" : [NSNumber numberWithDouble:y],
                                                                                      @"z" : [NSNumber numberWithDouble:z],

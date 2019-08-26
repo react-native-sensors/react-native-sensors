@@ -2,8 +2,9 @@
 
 #import <React/RCTBridgeModule.h>
 #import <CoreMotion/CoreMotion.h>
+#import <React/RCTEventEmitter.h>
 
-@interface Gyroscope : NSObject<RCTBridgeModule> {
+@interface Gyroscope : RCTEventEmitter <RCTBridgeModule> {
     CMMotionManager *_motionManager;
 }
 
