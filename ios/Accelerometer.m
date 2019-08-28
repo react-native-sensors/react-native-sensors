@@ -26,6 +26,11 @@ RCT_EXPORT_MODULE();
     return NO;
 }
 
+- (NSArray<NSString *> *)supportedEvents
+{
+  return @[@"Accelerometer"];
+}
+
 RCT_REMAP_METHOD(isAvailable,
                  resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject) {
