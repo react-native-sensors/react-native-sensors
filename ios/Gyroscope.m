@@ -19,6 +19,11 @@ RCT_EXPORT_MODULE();
     return self;
 }
 
+- (NSArray<NSString *> *)supportedEvents
+{
+  return @[@"Gyroscope"];
+}
+
 + (BOOL)requiresMainQueueSetup
 {
     return NO;
