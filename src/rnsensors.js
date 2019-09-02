@@ -1,4 +1,4 @@
-import { NativeModules, NativeEventEmitter } from "react-native";
+import { NativeModules } from "react-native";
 const {
   Gyroscope: GyroNative,
   Accelerometer: AccNative,
@@ -19,29 +19,10 @@ const nativeApis = new Map([
   ["barometer", BarNative]
 ]);
 
-const eventEmitters = new Map([
-  ["accelerometer", new NativeEventEmitter(AccNative)],
-  ["gyroscope", new NativeEventEmitter(GyroNative)],
-  ["magnetometer", new NativeEventEmitter(MagnNative)],
-  ["barometer", new NativeEventEmitter(BarNative)]
-]);
-
-const eventEmitterSubsciption = new Map([
-  ["accelerometer", null],
-  ["gyroscope", null],
-  ["magnetometer", null],
-  ["barometer", null]
-]);
-
 // Cache the availability of sensors
 const availableSensors = {};
 
 export function start(type) {
-  eventEmitterSubsciption.set(type, 
-    eventEmitters.get(type).addListener(listenerKeys.get(type), data => {
-      observer.next(data);
-    })
-  );
   const api = nativeApis.get(type.toLocaleLowerCase());
   api.startUpdates();
 }
@@ -59,7 +40,6 @@ export function isAvailable(type) {
 }
 
 export function stop(type) {
-  if (eventEmitterSubsciption.get(type)) eventEmitterSubsciption.get(type).remove()
   const api = nativeApis.get(type.toLocaleLowerCase());
   api.stopUpdates();
 }
