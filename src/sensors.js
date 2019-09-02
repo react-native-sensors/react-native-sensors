@@ -1,4 +1,4 @@
-import { DeviceEventEmitter } from "react-native";
+import { NativeEventEmitter } from "react-native";
 import { Observable } from "rxjs";
 import { publish, refCount } from "rxjs/operators";
 import * as RNSensors from "./rnsensors";
@@ -22,9 +22,7 @@ function createSensorObservable(sensorType) {
 
     RNSensors.isAvailable(sensorType).then(
       () => {
-        DeviceEventEmitter.addListener(listenerKeys.get(sensorType), data => {
-          observer.next(data);
-        });
+        
 
         this.isSensorAvailable = true;
 
