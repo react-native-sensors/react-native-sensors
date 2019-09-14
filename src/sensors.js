@@ -24,13 +24,6 @@ const nativeApis = new Map([
   ["barometer", BarNative]
 ]);
 
-const eventEmitters = new Map([
-  ["accelerometer", new NativeEventEmitter(AccNative)],
-  ["gyroscope", new NativeEventEmitter(GyroNative)],
-  ["magnetometer", new NativeEventEmitter(MagnNative)],
-  ["barometer", new NativeEventEmitter(BarNative)]
-]);
-
 const eventEmitterSubsciption = new Map([
   ["accelerometer", null],
   ["gyroscope", null],
@@ -54,13 +47,13 @@ function createSensorObservable(sensorType) {
       () => {
         this.isSensorAvailable = true;
 
+        const emitter = new NativeEventEmitter(nativeApis.get(sensorType));
+
         eventEmitterSubsciption.set(
           sensorType,
-          eventEmitters
-            .get(sensorType)
-            .addListener(listenerKeys.get(sensorType), data => {
-              observer.next(data);
-            })
+          emitter.addListener(listenerKeys.get(sensorType), data => {
+            observer.next(data);
+          })
         );
 
         // Start the sensor manager
