@@ -2,12 +2,13 @@
 
 
 #import <React/RCTBridge.h>
-#import <React/RCTEventDispatcher.h>
+#import <React/RCTEventEmitter.h>
+// #import <React/RCTEventDispatcher.h>
 #import "Accelerometer.h"
 
 @implementation Accelerometer
 
-@synthesize bridge = _bridge;
+//@synthesize bridge = _bridge;
 
 RCT_EXPORT_MODULE();
 
@@ -21,15 +22,15 @@ RCT_EXPORT_MODULE();
     return self;
 }
 
+- (NSArray<NSString *> *)supportedEvents {
+    return @[@"Accelerometer"];
+}
+
 + (BOOL)requiresMainQueueSetup
 {
     return NO;
 }
 
-- (NSArray<NSString *> *)supportedEvents
-{
-  return @[@"Accelerometer"];
-}
 
 RCT_REMAP_METHOD(isAvailable,
                  resolver:(RCTPromiseResolveBlock)resolve

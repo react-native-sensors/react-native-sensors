@@ -2,11 +2,12 @@
 
 #import "Gyroscope.h"
 #import <React/RCTBridge.h>
-#import <React/RCTEventDispatcher.h>
+// #import <React/RCTEventDispatcher.h>
+#import <React/RCTEventEmitter.h>
 
 @implementation Gyroscope
 
-@synthesize bridge = _bridge;
+// @synthesize bridge = _bridge;
 RCT_EXPORT_MODULE();
 
 - (id) init {
@@ -19,9 +20,8 @@ RCT_EXPORT_MODULE();
     return self;
 }
 
-- (NSArray<NSString *> *)supportedEvents
-{
-  return @[@"Gyroscope"];
+- (NSArray<NSString *> *)supportedEvents {
+    return @[@"Accelerometer"];
 }
 
 + (BOOL)requiresMainQueueSetup

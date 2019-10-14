@@ -1,4 +1,4 @@
-import { NativeEventEmitter, NativeModules } from "react-native";
+import { DeviceEventEmitter, NativeModules, NativeEventEmitter } from "react-native";
 import { Observable } from "rxjs";
 import { publish, refCount } from "rxjs/operators";
 import * as RNSensors from "./rnsensors";
@@ -10,13 +10,6 @@ const {
   Barometer: BarNative
 } = NativeModules;
 
-const listenerKeys = new Map([
-  ["accelerometer", "Accelerometer"],
-  ["gyroscope", "Gyroscope"],
-  ["magnetometer", "Magnetometer"],
-  ["barometer", "Barometer"]
-]);
-
 const nativeApis = new Map([
   ["accelerometer", AccNative],
   ["gyroscope", GyroNative],
@@ -24,11 +17,11 @@ const nativeApis = new Map([
   ["barometer", BarNative]
 ]);
 
-const eventEmitterSubsciption = new Map([
-  ["accelerometer", null],
-  ["gyroscope", null],
-  ["magnetometer", null],
-  ["barometer", null]
+const listenerKeys = new Map([
+  ["accelerometer", "Accelerometer"],
+  ["gyroscope", "Gyroscope"],
+  ["magnetometer", "Magnetometer"],
+  ["barometer", "Barometer"]
 ]);
 
 function createSensorObservable(sensorType) {
@@ -37,24 +30,21 @@ function createSensorObservable(sensorType) {
 
     this.unsubscribeCallback = () => {
       if (!this.isSensorAvailable) return;
-      if (eventEmitterSubsciption.get(sensorType))
-        eventEmitterSubsciption.get(sensorType).remove();
       // stop the sensor
       RNSensors.stop(sensorType);
     };
 
     RNSensors.isAvailable(sensorType).then(
       () => {
+        let event = new NativeEventEmitter(nativeApis.get(sensorType))
+        event.addListener(listenerKeys.get(sensorType), data => {
+          observer.next(data);
+        });
+        // DeviceEventEmitter.addListener(listenerKeys.get(sensorType), data => {
+        //   observer.next(data);
+        // });
+
         this.isSensorAvailable = true;
-
-        const emitter = new NativeEventEmitter(nativeApis.get(sensorType));
-
-        eventEmitterSubsciption.set(
-          sensorType,
-          emitter.addListener(listenerKeys.get(sensorType), data => {
-            observer.next(data);
-          })
-        );
 
         // Start the sensor manager
         RNSensors.start(sensorType);
