@@ -16,9 +16,9 @@ matrix:
       node_js: 8
 
     # Website
-    - language: node_js
-      env:
-        - NAME='Website - master'
-      node_js: 8
-      script:
-      - scripts/publish-website.sh 
+    # - language: node_js
+    #   env:
+    #     - NAME='Website - master'
+    #   node_js: 8
+    #   script:
+    #   - scripts/publish-website.sh 
