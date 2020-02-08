@@ -89,7 +89,7 @@
     "babel-jest": "24.1.0",
     "babel-preset-react-native": "4.0.0",
     "jest": "24.1.0",
-    "jest-runner-prettier": "0.2.6",
+    "jest-runner-prettier": "0.3.6",
     "prettier": "1.12.1",
     "react": "16.8.4",
     "react-native": "0.57.7",
