@@ -103,7 +103,10 @@ RCT_EXPORT_METHOD(getData:(RCTResponseSenderBlock) cb) {
 }
 
 RCT_EXPORT_METHOD(startUpdates) {
-    NSLog(@"startUpdates");
+    if (self->logLevel > 0) {
+        NSLog(@"startUpdates/startGyroUpdates");
+    }
+
     [self->_motionManager startGyroUpdates];
 
     /* Receive the gyroscope data on this block */
@@ -114,7 +117,10 @@ RCT_EXPORT_METHOD(startUpdates) {
          double y = gyroData.rotationRate.y;
          double z = gyroData.rotationRate.z;
          double timestamp = gyroData.timestamp;
-         NSLog(@"startUpdates: %f, %f, %f, %f", x, y, z, timestamp);
+
+         if (self->logLevel > 1) {
+             NSLog(@"Updated gyro values: %f, %f, %f, %f", x, y, z, timestamp);
+         }
 
          [self sendEventWithName:@"Gyroscope" body:@{
                                                                                      @"x" : [NSNumber numberWithDouble:x],
@@ -127,7 +133,10 @@ RCT_EXPORT_METHOD(startUpdates) {
 }
 
 RCT_EXPORT_METHOD(stopUpdates) {
-    NSLog(@"stopUpdates");
+    if (self->logLevel > 0) {
+        NSLog(@"stopUpdates");
+    }
+
     [self->_motionManager stopGyroUpdates];
 }
 

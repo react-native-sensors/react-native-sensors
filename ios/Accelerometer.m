@@ -105,7 +105,10 @@ RCT_EXPORT_METHOD(getData:(RCTResponseSenderBlock) cb) {
 }
 
 RCT_EXPORT_METHOD(startUpdates) {
-    NSLog(@"startUpdates");
+    if (self->logLevel > 0) {
+        NSLog(@"startUpdates/startAccelerometerUpdates");
+    }
+
     [self->_motionManager startAccelerometerUpdates];
 
     /* Receive the accelerometer data on this block */
@@ -116,7 +119,10 @@ RCT_EXPORT_METHOD(startUpdates) {
          double y = accelerometerData.acceleration.y;
          double z = accelerometerData.acceleration.z;
          double timestamp = accelerometerData.timestamp;
-         NSLog(@"startAccelerometerUpdates: %f, %f, %f, %f", x, y, z, timestamp);
+
+         if (self->logLevel > 1) {
+             NSLog(@"Updated accelerometer values: %f, %f, %f, %f", x, y, z, timestamp);
+         }
 
          [self sendEventWithName:@"Accelerometer" body:@{
                                                                                    @"x" : [NSNumber numberWithDouble:x],
@@ -129,7 +135,10 @@ RCT_EXPORT_METHOD(startUpdates) {
 }
 
 RCT_EXPORT_METHOD(stopUpdates) {
-    NSLog(@"stopUpdates");
+    if(self->logLevel > 0) {
+        NSLog(@"stopUpdates");
+    }
+
     [self->_motionManager stopAccelerometerUpdates];
 }
 

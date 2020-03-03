@@ -71,7 +71,9 @@ RCT_EXPORT_METHOD(getUpdateInterval:(RCTResponseSenderBlock) cb) {
 }
 
 RCT_EXPORT_METHOD(startUpdates) {
-    NSLog(@"startUpdates");
+    if (self->logLevel > 0) {
+        NSLog(@"startUpdates/startRelativeAltitudeUpdates");
+    }
 
     [self->_altimeter startRelativeAltitudeUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMAltitudeData * _Nullable altitudeData, NSError * _Nullable error) {
         if (error) {
@@ -79,6 +81,10 @@ RCT_EXPORT_METHOD(startUpdates) {
         }
 
         if (altitudeData) {
+            if (self->logLevel > 1) {
+                NSLog(@"Updated altitue value: %f, %f", altitudeData.pressure.doubleValue, timestamp);
+            }
+
             [self sendEventWithName:@"Barometer" body:@{
                 @"pressure" : @(altitudeData.pressure.doubleValue * 10.0)
             }];
@@ -88,7 +94,10 @@ RCT_EXPORT_METHOD(startUpdates) {
 }
 
 RCT_EXPORT_METHOD(stopUpdates) {
-    NSLog(@"stopUpdates");
+    if(self->logLevel > 0) {
+        NSLog(@"stopUpdates");
+    }
+
     [self->_altimeter stopRelativeAltitudeUpdates];
 }
 
