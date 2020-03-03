@@ -48,3 +48,8 @@ export function setUpdateInterval(type, updateInterval) {
   const api = nativeApis.get(type.toLocaleLowerCase());
   api.setUpdateInterval(updateInterval);
 }
+
+export function setLogLevelForType(type, level) {
+  const api = nativeApis.get(type.toLocaleLowerCase());
+  api.setLogLevel(level);
+}
