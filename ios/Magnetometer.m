@@ -106,7 +106,10 @@ RCT_EXPORT_METHOD(getData:(RCTResponseSenderBlock) cb) {
 }
 
 RCT_EXPORT_METHOD(startUpdates) {
-    NSLog(@"startUpdates");
+    if (self->logLevel > 0) {
+        NSLog(@"startUpdates/startMagnetometerUpdates");
+    }
+
     [self->_motionManager startMagnetometerUpdates];
 
     /* Receive the magnetometer data on this block */
@@ -117,7 +120,10 @@ RCT_EXPORT_METHOD(startUpdates) {
          double y = magnetometerData.magneticField.y;
          double z = magnetometerData.magneticField.z;
          double timestamp = magnetometerData.timestamp;
-         NSLog(@"startMagnetometerUpdates: %f, %f, %f, %f", x, y, z, timestamp);
+
+         if (self->logLevel > 1) {
+             NSLog(@"Updated magnetometer values: %f, %f, %f, %f", x, y, z, timestamp);
+         }
 
          [self sendEventWithName:@"Magnetometer" body:@{
                                                                                    @"x" : [NSNumber numberWithDouble:x],
@@ -130,7 +136,10 @@ RCT_EXPORT_METHOD(startUpdates) {
 }
 
 RCT_EXPORT_METHOD(stopUpdates) {
-    NSLog(@"stopUpdates");
+    if (self->logLevel > 0) {
+        NSLog(@"stopUpdates");
+    }
+
     [self->_motionManager stopMagnetometerUpdates];
 }
 
