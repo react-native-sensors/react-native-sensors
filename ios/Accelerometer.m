@@ -17,6 +17,7 @@ RCT_EXPORT_MODULE();
 
     if (self) {
         self->_motionManager = [[CMMotionManager alloc] init];
+        self->logLevel = 0;
     }
     return self;
 }
@@ -61,6 +62,14 @@ RCT_EXPORT_METHOD(setUpdateInterval:(double) interval) {
     double intervalInSeconds = interval / 1000;
 
     [self->_motionManager setAccelerometerUpdateInterval:intervalInSeconds];
+}
+
+RCT_EXPORT_METHOD(setLogLevel:(int) level) {
+    if (level > 0) {
+        NSLog(@"setLogLevel: %f", level);
+    }
+
+    self->logLevel = level;
 }
 
 RCT_EXPORT_METHOD(getUpdateInterval:(RCTResponseSenderBlock) cb) {
