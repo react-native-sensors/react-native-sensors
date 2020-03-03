@@ -89,7 +89,9 @@ RCT_EXPORT_METHOD(getData:(RCTResponseSenderBlock) cb) {
     double z = self->_motionManager.gyroData.rotationRate.z;
     double timestamp = self->_motionManager.gyroData.timestamp;
 
-    NSLog(@"getData: %f, %f, %f, %f", x, y, z, timestamp);
+    if (self->logLevel > 0) {
+        NSLog(@"getData: %f, %f, %f, %f", x, y, z, timestamp);
+    }
 
     cb(@[[NSNull null], @{
                  @"x" : [NSNumber numberWithDouble:x],
