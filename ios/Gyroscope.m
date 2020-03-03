@@ -56,7 +56,10 @@ RCT_REMAP_METHOD(isAvailable,
 }
 
 RCT_EXPORT_METHOD(setUpdateInterval:(double) interval) {
-    NSLog(@"setGyroUpdateInterval: %f", interval);
+    if (self->logLevel > 0) {
+        NSLog(@"setUpdateInterval: %f", interval);
+    }
+
     double intervalInSeconds = interval / 1000;
 
     [self->_motionManager setGyroUpdateInterval:intervalInSeconds];
@@ -72,7 +75,11 @@ RCT_EXPORT_METHOD(setLogLevel:(int) level) {
 
 RCT_EXPORT_METHOD(getUpdateInterval:(RCTResponseSenderBlock) cb) {
     double interval = self->_motionManager.gyroUpdateInterval;
-    NSLog(@"getUpdateInterval: %f", interval);
+
+    if (self->logLevel > 0) {
+        NSLog(@"getUpdateInterval: %f", interval);
+    }
+
     cb(@[[NSNull null], [NSNumber numberWithDouble:interval]]);
 }
 
