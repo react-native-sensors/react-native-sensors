@@ -6,12 +6,14 @@
 
 @interface Gyroscope : RCTEventEmitter <RCTBridgeModule> {
     CMMotionManager *_motionManager;
+    int logLevel;
 }
 
 - (void) isAvailableResolver:(RCTPromiseResolveBlock) resolve
          rejecter:(RCTPromiseRejectBlock) reject;
 - (void) setUpdateInterval:(double) interval;
 - (void) getUpdateInterval:(RCTResponseSenderBlock) cb;
+- (void) setLogLevel:(int) level;
 - (void) getData:(RCTResponseSenderBlock) cb;
 - (void) startUpdates;
 - (void) stopUpdates;

@@ -6,12 +6,14 @@
 
 @interface Barometer : RCTEventEmitter <RCTBridgeModule> {
     CMAltimeter *_altimeter;
+    int logLevel;
 }
 
 - (void) isAvailableWithResolver:(RCTPromiseResolveBlock) resolve
          rejecter:(RCTPromiseRejectBlock) reject;
 - (void) setUpdateInterval:(double) interval;
 - (void) getUpdateInterval:(RCTResponseSenderBlock) cb;
+- (void) setLogLevel:(int) level;
 - (void) startUpdates;
 - (void) stopUpdates;
 
