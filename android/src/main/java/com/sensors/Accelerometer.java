@@ -25,6 +25,7 @@ public class Accelerometer extends ReactContextBaseJavaModule implements SensorE
   private double lastReading = (double) System.currentTimeMillis();
   private int interval;
   private Arguments arguments;
+  private int logLevel = 0;
 
   public Accelerometer(ReactApplicationContext reactContext) {
     super(reactContext);
@@ -47,6 +48,11 @@ public class Accelerometer extends ReactContextBaseJavaModule implements SensorE
   @ReactMethod
   public void setUpdateInterval(int newInterval) {
     this.interval = newInterval;
+  }
+
+  @ReactMethod
+  public void setLogLevel(int newLevel) {
+    this.logLevel = newLevel;
   }
 
 

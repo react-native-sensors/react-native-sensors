@@ -25,6 +25,7 @@ public class Magnetometer extends ReactContextBaseJavaModule implements SensorEv
   private double lastReading = (double) System.currentTimeMillis();
   private int interval;
   private Arguments arguments;
+  private int logLevel = 0;
 
   public Magnetometer(ReactApplicationContext reactContext) {
     super(reactContext);
@@ -49,6 +50,10 @@ public class Magnetometer extends ReactContextBaseJavaModule implements SensorEv
     this.interval = newInterval;
   }
 
+  @ReactMethod
+  public void setLogLevel(int newLevel) {
+    this.logLevel = newLevel;
+  }
 
   @ReactMethod
   public void startUpdates() {
