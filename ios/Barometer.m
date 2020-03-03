@@ -18,6 +18,7 @@ RCT_EXPORT_MODULE();
 
     if (self) {
         self->_altimeter = [[CMAltimeter alloc] init];
+        self->logLevel = 0;
     }
     return self;
 }
@@ -42,7 +43,7 @@ RCT_REMAP_METHOD(isAvailable,
 - (void) isAvailableWithResolver:(RCTPromiseResolveBlock) resolve
                         rejecter:(RCTPromiseRejectBlock) reject {
 
-    if ([CMAltimeter isRelativeAltitudeAvailable]) 
+    if ([CMAltimeter isRelativeAltitudeAvailable])
     {
         resolve(@YES);
     }
@@ -54,6 +55,14 @@ RCT_REMAP_METHOD(isAvailable,
 
 RCT_EXPORT_METHOD(setUpdateInterval:(double) interval) {
     NSLog(@"Can not set update interval for barometer, doing nothing");
+}
+
+RCT_EXPORT_METHOD(setLogLevel:(int) level) {
+    if (level > 0) {
+        NSLog(@"setLogLevel: %f", level);
+    }
+
+    self->logLevel = level;
 }
 
 RCT_EXPORT_METHOD(getUpdateInterval:(RCTResponseSenderBlock) cb) {
@@ -68,13 +77,13 @@ RCT_EXPORT_METHOD(startUpdates) {
         if (error) {
             NSLog(@"error while getting sensor data");
         }
-        
+
         if (altitudeData) {
             [self sendEventWithName:@"Barometer" body:@{
                 @"pressure" : @(altitudeData.pressure.doubleValue * 10.0)
             }];
         }
-        
+
     }];
 }
 
