@@ -8,7 +8,7 @@
     "contributor:generate": "all-contributors generate",
     "postcontributor:generate": "npm run format",
     "test": "jest",
-    "format": "prettier --write $(npx jest --listTests)",
+    "format": "prettier --loglevel=warn --write $(npx jest --listTests)",
     "semantic-release": "semantic-release",
     "travis-deploy-once": "travis-deploy-once"
   },
