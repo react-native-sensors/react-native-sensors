@@ -1,6 +1,5 @@
 //  Barometer.m
 
-
 #import "Barometer.h"
 #import <React/RCTBridge.h>
 #import <React/RCTEventDispatcher.h>
