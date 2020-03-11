@@ -82,7 +82,7 @@ RCT_EXPORT_METHOD(startUpdates) {
 
         if (altitudeData) {
             if (self->logLevel > 1) {
-                NSLog(@"Updated altitue value: %f, %f", altitudeData.pressure.doubleValue, timestamp);
+                NSLog(@"Updated altitue value: %f, %f", altitudeData.pressure.doubleValue, altitudeData.timestamp);
             }
 
             [self sendEventWithName:@"Barometer" body:@{
