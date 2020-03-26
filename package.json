@@ -101,7 +101,7 @@
     "react": "16.8.4",
     "react-native": "0.57.7",
     "regenerator-runtime": "0.13.1",
-    "rxjs-marbles": "5.0.0",
+    "rxjs-marbles": "5.0.6",
     "semantic-release": "15.13.16",
     "travis-deploy-once": "5.0.11"
   },
