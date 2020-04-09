@@ -93,7 +93,7 @@
     "babel-core": "6.26.3",
     "babel-jest": "24.1.0",
     "babel-preset-react-native": "4.0.0",
-    "husky": "4.2.3",
+    "husky": "4.2.5",
     "jest": "24.1.0",
     "jest-runner-prettier": "0.2.6",
     "prettier": "1.12.1",
