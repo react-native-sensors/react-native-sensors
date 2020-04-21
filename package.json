@@ -96,7 +96,7 @@
     "husky": "4.2.3",
     "jest": "24.1.0",
     "jest-runner-prettier": "0.2.6",
-    "prettier": "1.12.1",
+    "prettier": "2.0.5",
     "pretty-quick": "2.0.1",
     "react": "16.8.4",
     "react-native": "0.57.7",
