@@ -57,7 +57,7 @@ public class Gyroscope extends ReactContextBaseJavaModule implements SensorEvent
 
   @ReactMethod
   public void startUpdates() {
-    // Milisecond to Mikrosecond conversion
+    // Milliseconds to Microseconds conversion
     sensorManager.registerListener(this, sensor, this.interval * 1000);
   }
 
@@ -94,7 +94,7 @@ public class Gyroscope extends ReactContextBaseJavaModule implements SensorEvent
           map.putDouble("x", sensorEvent.values[0]);
           map.putDouble("y", sensorEvent.values[1]);
           map.putDouble("z", sensorEvent.values[2]);
-          map.putDouble("timestamp", (double) System.currentTimeMillis());
+          map.putDouble("timestamp", Utils.sensorTimeToTimestampSince1970(sensorEvent.timestamp));
           sendEvent("Gyroscope", map);
         }
       }

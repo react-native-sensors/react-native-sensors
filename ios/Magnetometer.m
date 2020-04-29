@@ -5,6 +5,7 @@
 #import <React/RCTBridge.h>
 #import <React/RCTEventDispatcher.h>
 #import "Magnetometer.h"
+#import "Utils.h"
 
 @implementation Magnetometer
 
@@ -90,7 +91,7 @@ RCT_EXPORT_METHOD(getData:(RCTResponseSenderBlock) cb) {
     double x = self->_motionManager.magnetometerData.magneticField.x;
     double y = self->_motionManager.magnetometerData.magneticField.y;
     double z = self->_motionManager.magnetometerData.magneticField.z;
-    double timestamp = self->_motionManager.magnetometerData.timestamp;
+    double timestamp = [Utils sensorTimeToTimestampSince1970:self->_motionManager.magnetometerData.timestamp];
 
     if (self->logLevel > 0) {
         NSLog(@"getData: %f, %f, %f, %f", x, y, z, timestamp);
@@ -119,18 +120,18 @@ RCT_EXPORT_METHOD(startUpdates) {
          double x = magnetometerData.magneticField.x;
          double y = magnetometerData.magneticField.y;
          double z = magnetometerData.magneticField.z;
-         double timestamp = magnetometerData.timestamp;
+         double timestamp = [Utils sensorTimeToTimestampSince1970:magnetometerData.timestamp];
 
          if (self->logLevel > 1) {
              NSLog(@"Updated magnetometer values: %f, %f, %f, %f", x, y, z, timestamp);
          }
 
          [self sendEventWithName:@"Magnetometer" body:@{
-                                                                                   @"x" : [NSNumber numberWithDouble:x],
-                                                                                   @"y" : [NSNumber numberWithDouble:y],
-                                                                                   @"z" : [NSNumber numberWithDouble:z],
-                                                                                   @"timestamp" : [NSNumber numberWithDouble:timestamp]
-                                                                               }];
+                                                           @"x" : [NSNumber numberWithDouble:x],
+                                                           @"y" : [NSNumber numberWithDouble:y],
+                                                           @"z" : [NSNumber numberWithDouble:z],
+                                                           @"timestamp" : [NSNumber numberWithDouble:timestamp]
+                                                       }];
      }];
 
 }

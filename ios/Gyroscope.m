@@ -3,6 +3,7 @@
 #import "Gyroscope.h"
 #import <React/RCTBridge.h>
 #import <React/RCTEventDispatcher.h>
+#import "Utils.h"
 
 @implementation Gyroscope
 
@@ -87,7 +88,7 @@ RCT_EXPORT_METHOD(getData:(RCTResponseSenderBlock) cb) {
     double x = self->_motionManager.gyroData.rotationRate.x;
     double y = self->_motionManager.gyroData.rotationRate.y;
     double z = self->_motionManager.gyroData.rotationRate.z;
-    double timestamp = self->_motionManager.gyroData.timestamp;
+    double timestamp = [Utils sensorTimeToTimestampSince1970:self->_motionManager.gyroData.timestamp];
 
     if (self->logLevel > 0) {
         NSLog(@"getData: %f, %f, %f, %f", x, y, z, timestamp);
@@ -116,18 +117,18 @@ RCT_EXPORT_METHOD(startUpdates) {
          double x = gyroData.rotationRate.x;
          double y = gyroData.rotationRate.y;
          double z = gyroData.rotationRate.z;
-         double timestamp = gyroData.timestamp;
+         double timestamp = [Utils sensorTimeToTimestampSince1970:gyroData.timestamp];
 
          if (self->logLevel > 1) {
              NSLog(@"Updated gyro values: %f, %f, %f, %f", x, y, z, timestamp);
          }
 
          [self sendEventWithName:@"Gyroscope" body:@{
-                                                                                     @"x" : [NSNumber numberWithDouble:x],
-                                                                                     @"y" : [NSNumber numberWithDouble:y],
-                                                                                     @"z" : [NSNumber numberWithDouble:z],
-                                                                                     @"timestamp" : [NSNumber numberWithDouble:timestamp]
-                                                                                 }];
+                                                         @"x" : [NSNumber numberWithDouble:x],
+                                                         @"y" : [NSNumber numberWithDouble:y],
+                                                         @"z" : [NSNumber numberWithDouble:z],
+                                                         @"timestamp" : [NSNumber numberWithDouble:timestamp]
+                                                     }];
      }];
 
 }
