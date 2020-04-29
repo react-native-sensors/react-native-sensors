@@ -2,6 +2,6 @@
 
 @interface Utils : NSObject
 
-- (double)sensorTimeToTimestampSince1970:(double) timestamp;
++ (double)sensorTimestampToEpochMilliseconds:(double) timestamp;
 
 @end

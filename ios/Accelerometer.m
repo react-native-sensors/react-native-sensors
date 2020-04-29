@@ -90,7 +90,7 @@ RCT_EXPORT_METHOD(getData:(RCTResponseSenderBlock) cb) {
     double x = self->_motionManager.accelerometerData.acceleration.x;
     double y = self->_motionManager.accelerometerData.acceleration.y;
     double z = self->_motionManager.accelerometerData.acceleration.z;
-    double timestamp = [Utils sensorTimeToTimestampSince1970:self->_motionManager.accelerometerData.timestamp];
+    double timestamp = [Utils sensorTimestampToEpochMilliseconds:self->_motionManager.accelerometerData.timestamp];
 
     if (self->logLevel > 0) {
         NSLog(@"getData: %f, %f, %f, %f", x, y, z, timestamp);
@@ -119,7 +119,7 @@ RCT_EXPORT_METHOD(startUpdates) {
          double x = accelerometerData.acceleration.x;
          double y = accelerometerData.acceleration.y;
          double z = accelerometerData.acceleration.z;
-         double timestamp = [Utils sensorTimeToTimestampSince1970:accelerometerData.timestamp];
+         double timestamp = [Utils sensorTimestampToEpochMilliseconds:accelerometerData.timestamp];
 
          if (self->logLevel > 1) {
              NSLog(@"Updated accelerometer values: %f, %f, %f, %f", x, y, z, timestamp);

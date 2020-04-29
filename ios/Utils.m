@@ -2,9 +2,8 @@
 
 @implementation Utils
 
-- (double)sensorTimeToTimestampSince1970:(double) timestamp {
-    NSTimeInterval uptime = [[NSProcessInfo processInfo] systemUptime];
-    return ((NSTimeIntervalSince1970 + uptime) + (timestamp - uptime)) * 1000;
++ (double)sensorTimestampToEpochMilliseconds:(NSTimeInterval) timestamp {
+    return floor(([[NSDate date] timeIntervalSince1970] + (timestamp - [[NSProcessInfo processInfo] systemUptime])) * 1000);
 }
 
 @end
