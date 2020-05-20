@@ -5,22 +5,26 @@ name: Node.js CI
 
 on:
   push:
-    branches: 
+    branches:
       - master
 jobs:
-  build:
-
+  deploy_website:
+    name: "Deploy Website"
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js v13.12.0
-      uses: actions/setup-node@v1
-      with:
-        node-version: v13.12.0
-    - run: npm install
-    - run: ./scripts/publish-website.sh 
-      env:
-        GIT_USER: ${{ secrets.WebsiteDeployGitUser }}
-        GIT_TOKEN: ${{ secrets.WebsiteDeployGitPassword }}
-      
+      - uses: actions/checkout@v2
+      - name: Use Node.js v13.12.0
+        uses: actions/setup-node@v1
+        with:
+          node-version: v13.12.0
+      - run: npm install
+      - run: ./scripts/publish-website.sh
+        env:
+          GIT_USER: ${{ secrets.WebsiteDeployGitUser }}
+          GIT_TOKEN: ${{ secrets.WebsiteDeployGitPassword }}
+  run_always:
+    name: "Always run job"
+    runs-on: ubuntu-latest
+    steps:
+      name: Always runs
+      run: echo "This is for preventing the workflow to look failed"
