@@ -57,7 +57,7 @@ public class Magnetometer extends ReactContextBaseJavaModule implements SensorEv
 
   @ReactMethod
   public void startUpdates() {
-    // Milisecond to Mikrosecond conversion
+    // Milliseconds to Microseconds conversion
     sensorManager.registerListener(this, sensor, this.interval * 1000);
   }
 
@@ -91,10 +91,10 @@ public class Magnetometer extends ReactContextBaseJavaModule implements SensorEv
       WritableMap map = arguments.createMap();
 
       if (mySensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
-        map.putDouble("x", sensorEvent.values[0]);
-        map.putDouble("y", sensorEvent.values[1]);
-        map.putDouble("z", sensorEvent.values[2]);
-        map.putDouble("timestamp", tempMs);
+          map.putDouble("x", sensorEvent.values[0]);
+          map.putDouble("y", sensorEvent.values[1]);
+          map.putDouble("z", sensorEvent.values[2]);
+          map.putDouble("timestamp", Utils.sensorTimestampToEpochMilliseconds(sensorEvent.timestamp));
           sendEvent("Magnetometer", map);
         }
       }

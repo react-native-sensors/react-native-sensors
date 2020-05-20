@@ -58,7 +58,7 @@ public class Accelerometer extends ReactContextBaseJavaModule implements SensorE
 
   @ReactMethod
   public void startUpdates() {
-    // Milisecond to Mikrosecond conversion
+    // Milliseconds to Microseconds conversion
     sensorManager.registerListener(this, sensor, this.interval * 1000);
   }
 
@@ -95,7 +95,7 @@ public class Accelerometer extends ReactContextBaseJavaModule implements SensorE
           map.putDouble("x", sensorEvent.values[0]);
           map.putDouble("y", sensorEvent.values[1]);
           map.putDouble("z", sensorEvent.values[2]);
-          map.putDouble("timestamp", tempMs);
+          map.putDouble("timestamp", Utils.sensorTimestampToEpochMilliseconds(sensorEvent.timestamp));
           sendEvent("Accelerometer", map);
         }
       }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C5B457D24598D650018E8BA /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5B457C24598D650018E8BA /* Utils.m */; };
 		B18A2800205ADE2700ED2038 /* Magnetometer.m in Sources */ = {isa = PBXBuildFile; fileRef = B18A27FF205ADE2700ED2038 /* Magnetometer.m */; };
 		E74E15A721AF4EA400E82D17 /* Barometer.m in Sources */ = {isa = PBXBuildFile; fileRef = E74E15A521AF4EA400E82D17 /* Barometer.m */; };
 		E7FCE1881E14639E005C5155 /* Gyroscope.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FCE1871E14639E005C5155 /* Gyroscope.m */; };
@@ -27,6 +28,8 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNSensors.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNSensors.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C5B457C24598D650018E8BA /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		8C5B457F245992780018E8BA /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		B18A27FE205ADE2700ED2038 /* Magnetometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Magnetometer.h; sourceTree = "<group>"; };
 		B18A27FF205ADE2700ED2038 /* Magnetometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Magnetometer.m; sourceTree = "<group>"; };
 		E74E15A521AF4EA400E82D17 /* Barometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Barometer.m; sourceTree = "<group>"; };
@@ -59,6 +62,8 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				8C5B457F245992780018E8BA /* Utils.h */,
+				8C5B457C24598D650018E8BA /* Utils.m */,
 				E74E15A621AF4EA400E82D17 /* Barometer.h */,
 				E74E15A521AF4EA400E82D17 /* Barometer.m */,
 				B18A27FE205ADE2700ED2038 /* Magnetometer.h */,
@@ -110,6 +115,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 58B511D21A9E6C8500147676;
@@ -130,6 +136,7 @@
 				E7FCE1881E14639E005C5155 /* Gyroscope.m in Sources */,
 				E7FCE18B1E150266005C5155 /* Accelerometer.m in Sources */,
 				B18A2800205ADE2700ED2038 /* Magnetometer.m in Sources */,
+				8C5B457D24598D650018E8BA /* Utils.m in Sources */,
 				E74E15A721AF4EA400E82D17 /* Barometer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
