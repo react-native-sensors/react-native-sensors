@@ -24,7 +24,7 @@ const nativeApis = new Map([
   ["barometer", BarNative]
 ]);
 
-const eventEmitterSubsciption = new Map([
+const eventEmitterSubscription = new Map([
   ["accelerometer", null],
   ["gyroscope", null],
   ["magnetometer", null],
@@ -37,8 +37,8 @@ function createSensorObservable(sensorType) {
 
     this.unsubscribeCallback = () => {
       if (!this.isSensorAvailable) return;
-      if (eventEmitterSubsciption.get(sensorType))
-        eventEmitterSubsciption.get(sensorType).remove();
+      if (eventEmitterSubscription.get(sensorType))
+        eventEmitterSubscription.get(sensorType).remove();
       // stop the sensor
       RNSensors.stop(sensorType);
     };
@@ -49,7 +49,7 @@ function createSensorObservable(sensorType) {
 
         const emitter = new NativeEventEmitter(nativeApis.get(sensorType));
 
-        eventEmitterSubsciption.set(
+        eventEmitterSubscription.set(
           sensorType,
           emitter.addListener(listenerKeys.get(sensorType), data => {
             observer.next(data);
