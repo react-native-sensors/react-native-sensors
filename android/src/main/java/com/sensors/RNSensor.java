@@ -1,23 +1,22 @@
 package com.sensors;
 
-import android.os.Bundle;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.util.Log;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.bridge.Callback;
-import com.facebook.react.bridge.Promise;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 
-public class Barometer extends ReactContextBaseJavaModule implements SensorEventListener {
+public class RNSensor extends ReactContextBaseJavaModule implements SensorEventListener {
 
   private final ReactApplicationContext reactContext;
   private final SensorManager sensorManager;
@@ -26,12 +25,16 @@ public class Barometer extends ReactContextBaseJavaModule implements SensorEvent
   private int interval;
   private Arguments arguments;
   private int logLevel = 0;
+  private String sensorName;
+  private int sensorType;
 
-  public Barometer(ReactApplicationContext reactContext) {
+  public RNSensor(ReactApplicationContext reactContext, String sensorName, int sensorType) {
     super(reactContext);
     this.reactContext = reactContext;
+    this.sensorType = sensorType;
+    this.sensorName = sensorName;
     this.sensorManager = (SensorManager)reactContext.getSystemService(reactContext.SENSOR_SERVICE);
-    this.sensor = this.sensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE);
+    this.sensor = this.sensorManager.getDefaultSensor(this.sensorType);
   }
 
   // RN Methods
@@ -39,7 +42,7 @@ public class Barometer extends ReactContextBaseJavaModule implements SensorEvent
   public void isAvailable(Promise promise) {
     if (this.sensor == null) {
       // No sensor found, throw error
-      promise.reject(new RuntimeException("No Barometer found"));
+      promise.reject(new RuntimeException("No " + this.sensorName + " found"));
       return;
     }
     promise.resolve(null);
@@ -55,10 +58,9 @@ public class Barometer extends ReactContextBaseJavaModule implements SensorEvent
     this.logLevel = newLevel;
   }
 
-
   @ReactMethod
   public void startUpdates() {
-    // Milisecond to Mikrosecond conversion
+    // Milliseconds to Microseconds conversion
     sensorManager.registerListener(this, sensor, this.interval * 1000);
   }
 
@@ -69,7 +71,12 @@ public class Barometer extends ReactContextBaseJavaModule implements SensorEvent
 
   @Override
   public String getName() {
-    return "Barometer";
+    return this.sensorName;
+  }
+
+  private static double sensorTimestampToEpochMilliseconds(long elapsedTime) {
+    // elapsedTime = The time in nanoseconds at which the event happened.
+    return System.currentTimeMillis() + ((elapsedTime-SystemClock.elapsedRealtimeNanos())/1000000L);
   }
 
   // SensorEventListener Interface
@@ -82,24 +89,44 @@ public class Barometer extends ReactContextBaseJavaModule implements SensorEvent
     }
   }
 
-    @Override
-    public void onSensorChanged(SensorEvent sensorEvent) {
-      double tempMs = (double) System.currentTimeMillis();
-      if (tempMs - lastReading >= interval){
-        lastReading = tempMs;
+  @Override
+  public void onSensorChanged(SensorEvent sensorEvent) {
+    int currentType = sensorEvent.sensor.getType();
+    if(currentType != this.sensorType) { // not for the current Sensor
+      return;
+    }
 
-        Sensor mySensor = sensorEvent.sensor;
-        WritableMap map = arguments.createMap();
+    double tempMs = (double) System.currentTimeMillis();
+    if (tempMs - lastReading >= interval) {
+      lastReading = tempMs;
+      WritableMap map = this.arguments.createMap();
 
-        if (mySensor.getType() == Sensor.TYPE_PRESSURE) {
+      switch (currentType)
+      {
+        case Sensor.TYPE_ACCELEROMETER:
+        case Sensor.TYPE_GYROSCOPE:
+        case Sensor.TYPE_MAGNETIC_FIELD:
+          map.putDouble("x", sensorEvent.values[0]);
+          map.putDouble("y", sensorEvent.values[1]);
+          map.putDouble("z", sensorEvent.values[2]);
+          break;
+
+        case Sensor.TYPE_PRESSURE:
           map.putDouble("pressure", sensorEvent.values[0]);
-          map.putDouble("timestamp", Utils.sensorTimestampToEpochMilliseconds(sensorEvent.timestamp));
-          sendEvent("Barometer", map);
-        }
-      }
-    }
+          break;
 
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        default:
+          Log.e("ERROR", "Sensor type '" + currentType + "' not implemented!");
+          return;
+      }
+
+      // timestamp is added to all events
+      map.putDouble("timestamp", this.sensorTimestampToEpochMilliseconds(sensorEvent.timestamp));
+      this.sendEvent(this.sensorName, map);
     }
+  }
+
+  @Override
+  public void onAccuracyChanged(Sensor sensor, int accuracy) {
+  }
 }
