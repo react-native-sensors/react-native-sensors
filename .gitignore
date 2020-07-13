@@ -41,3 +41,7 @@ buck-out/
 \.buckd/
 android/app/libs
 android/keystores/debug.keystore
+android/gradle/
+android/gradlew
+android/gradlew.bat
+yarn.lock

@@ -9,7 +9,7 @@
     int logLevel;
 }
 
-- (void) isAvailableResolver:(RCTPromiseResolveBlock) resolve
+- (void) isAvailableWithResolver:(RCTPromiseResolveBlock) resolve
          rejecter:(RCTPromiseRejectBlock) reject;
 - (void) setUpdateInterval:(double) interval;
 - (void) getUpdateInterval:(RCTResponseSenderBlock) cb;
