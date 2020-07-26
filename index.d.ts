@@ -19,12 +19,12 @@ declare module "react-native-sensors" {
     x: number;
     y: number;
     z: number;
-    timestamp: string;
+    timestamp: number;
   }
 
   export interface BarometerData {
     pressure: number;
-    timestamp: string;
+    timestamp: number;
   }
 
   type SensorsBase = {
