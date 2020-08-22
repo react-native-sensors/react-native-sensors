@@ -91,10 +91,10 @@
   "devDependencies": {
     "all-contributors-cli": "6.1.2",
     "babel-core": "6.26.3",
-    "babel-jest": "24.1.0",
+    "babel-jest": "26.3.0",
     "babel-preset-react-native": "4.0.0",
     "husky": "4.2.3",
-    "jest": "24.1.0",
+    "jest": "26.4.2",
     "jest-runner-prettier": "0.2.6",
     "prettier": "1.12.1",
     "pretty-quick": "2.0.1",
