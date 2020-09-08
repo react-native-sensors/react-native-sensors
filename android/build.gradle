@@ -26,7 +26,7 @@ android {
     compileSdkVersion safeExtGet('compileSdkVersion', 23)
 
     defaultConfig {
-        minSdkVersion 23
+        minSdkVersion 17
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -43,6 +43,6 @@ android {
 
 dependencies {
     implementation 'com.facebook.react:react-native:+'
-    implementation 'androidx.appcompat:appcompat:1.0.2' 
+    implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.annotation:annotation:1.0.2'
 }
