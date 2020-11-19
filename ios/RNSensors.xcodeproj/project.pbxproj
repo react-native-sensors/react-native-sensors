@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8C5B457D24598D650018E8BA /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5B457C24598D650018E8BA /* Utils.m */; };
 		B18A2800205ADE2700ED2038 /* Magnetometer.m in Sources */ = {isa = PBXBuildFile; fileRef = B18A27FF205ADE2700ED2038 /* Magnetometer.m */; };
+		D5E5AE36256688A10036B102 /* Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E5AE35256688A10036B102 /* Orientation.m */; };
 		E74E15A721AF4EA400E82D17 /* Barometer.m in Sources */ = {isa = PBXBuildFile; fileRef = E74E15A521AF4EA400E82D17 /* Barometer.m */; };
 		E7FCE1881E14639E005C5155 /* Gyroscope.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FCE1871E14639E005C5155 /* Gyroscope.m */; };
 		E7FCE18B1E150266005C5155 /* Accelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FCE18A1E150266005C5155 /* Accelerometer.m */; };
@@ -32,6 +33,8 @@
 		8C5B457F245992780018E8BA /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		B18A27FE205ADE2700ED2038 /* Magnetometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Magnetometer.h; sourceTree = "<group>"; };
 		B18A27FF205ADE2700ED2038 /* Magnetometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Magnetometer.m; sourceTree = "<group>"; };
+		D5E5AE34256688A10036B102 /* Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Orientation.h; sourceTree = "<group>"; };
+		D5E5AE35256688A10036B102 /* Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Orientation.m; sourceTree = "<group>"; };
 		E74E15A521AF4EA400E82D17 /* Barometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Barometer.m; sourceTree = "<group>"; };
 		E74E15A621AF4EA400E82D17 /* Barometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Barometer.h; sourceTree = "<group>"; };
 		E7FCE1861E14639E005C5155 /* Gyroscope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gyroscope.h; sourceTree = "<group>"; };
@@ -62,6 +65,8 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				D5E5AE34256688A10036B102 /* Orientation.h */,
+				D5E5AE35256688A10036B102 /* Orientation.m */,
 				8C5B457F245992780018E8BA /* Utils.h */,
 				8C5B457C24598D650018E8BA /* Utils.m */,
 				E74E15A621AF4EA400E82D17 /* Barometer.h */,
@@ -135,6 +140,7 @@
 			files = (
 				E7FCE1881E14639E005C5155 /* Gyroscope.m in Sources */,
 				E7FCE18B1E150266005C5155 /* Accelerometer.m in Sources */,
+				D5E5AE36256688A10036B102 /* Orientation.m in Sources */,
 				B18A2800205ADE2700ED2038 /* Magnetometer.m in Sources */,
 				8C5B457D24598D650018E8BA /* Utils.m in Sources */,
 				E74E15A721AF4EA400E82D17 /* Barometer.m in Sources */,
