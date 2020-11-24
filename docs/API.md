@@ -13,9 +13,7 @@ If this is too much for you to handle you can either use `setUpdateIntervalForTy
 ```js
 import { accelerometer } from "react-native-sensors";
 
-const subscription = accelerometer.subscribe(({ x, y, z, timestamp }) =>
-  console.log({ x, y, z, timestamp })
-);
+const subscription = accelerometer.subscribe(({ x, y, z, timestamp }) => console.log({ x, y, z, timestamp }));
 ```
 
 It might be interesting to note that the gravity of the earth is not removed from the sensoric values.
@@ -26,9 +24,7 @@ Dependening on the position of the phone you will need to substract this from th
 ```js
 import { gyroscope } from "react-native-sensors";
 
-const subscription = gyroscope.subscribe(({ x, y, z, timestamp }) =>
-  console.log({ x, y, z, timestamp })
-);
+const subscription = gyroscope.subscribe(({ x, y, z, timestamp }) => console.log({ x, y, z, timestamp }));
 ```
 
 ## magnetometer: Observable<{x: number, y: number, z: number, timestamp: string}>
@@ -36,9 +32,7 @@ const subscription = gyroscope.subscribe(({ x, y, z, timestamp }) =>
 ```js
 import { magnetometer } from "react-native-sensors";
 
-const subscription = magnetometer.subscribe(({ x, y, z, timestamp }) =>
-  console.log({ x, y, z, timestamp })
-);
+const subscription = magnetometer.subscribe(({ x, y, z, timestamp }) => console.log({ x, y, z, timestamp }));
 ```
 
 ## barometer: Observable<{pressure: number}>
@@ -46,9 +40,7 @@ const subscription = magnetometer.subscribe(({ x, y, z, timestamp }) =>
 ```js
 import { barometer } from "react-native-sensors";
 
-const subscription = barometer.subscribe(({ pressure }) =>
-  console.log({ pressure })
-);
+const subscription = barometer.subscribe(({ pressure }) => console.log({ pressure }));
 ```
 
 Please note that this sensor has no option to set the update rate.
@@ -67,6 +59,41 @@ qx, qy, qz, qw are quaternion values.
 pitch, roll, yaw are calculated by iOS/Android. (Yaw is called Azimuth in Android documentation)
 
 Note: reference frame for iOS is different from Android. Check Apple's and Google documentation.
+
+[iOS - Understanding Reference Frames and Device Attitude](https://developer.apple.com/documentation/coremotion/getting_processed_device-motion_data/understanding_reference_frames_and_device_attitude?language=objc)
+
+[Android - Use the rotation vector sensor](https://developer.android.com/guide/topics/sensors/sensors_motion#sensors-motion-rotate)
+
+[Quaternion](https://en.wikipedia.org/wiki/Quaternion)
+
+[Quaternions and spatial rotation](https://en.wikipedia.org/wiki/Quaternions_and_spatial_rotation)
+
+Example how to convert quaternion to Euler angles:
+
+```js
+export function quaternionToAngles(q) {
+  let data = q;
+
+  let ysqr = data.y * data.y;
+  let t0 = -2.0 * (ysqr + data.z * data.z) + 1.0;
+  let t1 = +2.0 * (data.x * data.y + data.w * data.z);
+  let t2 = -2.0 * (data.x * data.z - data.w * data.y);
+  let t3 = +2.0 * (data.y * data.z + data.w * data.x);
+  let t4 = -2.0 * (data.x * data.x + ysqr) + 1.0;
+
+  t2 = t2 > 1.0 ? 1.0 : t2;
+  t2 = t2 < -1.0 ? -1.0 : t2;
+
+  const toDeg = 180 / Math.PI;
+
+  const euler = {};
+  euler.pitch = Math.asin(t2) * toDeg;
+  euler.roll = Math.atan2(t3, t4) * toDeg;
+  euler.yaw = Math.atan2(t1, t0) * toDeg;
+
+  return euler;
+}
+```
 
 ## setUpdateIntervalForType(type: string, interval: number)
 
