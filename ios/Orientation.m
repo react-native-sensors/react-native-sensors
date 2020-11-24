@@ -125,7 +125,6 @@ RCT_EXPORT_METHOD(startUpdates) {
     }
 
     [self->_motionManager setShowsDeviceMovementDisplay:YES];
-    [self->_motionManager startMagnetometerUpdates];
 
     /* Receive the orientation data on this block */
     [self->_motionManager startDeviceMotionUpdatesUsingReferenceFrame:CMAttitudeReferenceFrameXTrueNorthZVertical
