@@ -27,6 +27,9 @@ public class RNSensor extends ReactContextBaseJavaModule implements SensorEventL
   private int logLevel = 0;
   private String sensorName;
   private int sensorType;
+  private float[] rotation = new float[9];
+  private float[] orientation = new float[3];
+  private float[] quaternion = new float[4];
 
   public RNSensor(ReactApplicationContext reactContext, String sensorName, int sensorType) {
     super(reactContext);
@@ -113,6 +116,21 @@ public class RNSensor extends ReactContextBaseJavaModule implements SensorEventL
 
         case Sensor.TYPE_PRESSURE:
           map.putDouble("pressure", sensorEvent.values[0]);
+          break;
+
+        case Sensor.TYPE_ROTATION_VECTOR:
+          SensorManager.getQuaternionFromVector(quaternion, sensorEvent.values);
+          SensorManager.getRotationMatrixFromVector(rotation, sensorEvent.values);
+          SensorManager.getOrientation(rotation, orientation);
+
+          map.putDouble("qw", quaternion[0]);
+          map.putDouble("qx", quaternion[1]);
+          map.putDouble("qy", quaternion[2]);
+          map.putDouble("qz", quaternion[3]);
+
+          map.putDouble("yaw", quaternion[0]);
+          map.putDouble("pitch", quaternion[1]);
+          map.putDouble("roll", quaternion[2]);
           break;
 
         default:
