@@ -4,13 +4,11 @@ const {
   Accelerometer: AccNative,
   Magnetometer: MagnNative,
   Barometer: BarNative,
-  Orientation: OrientNative,
+  Orientation: OrientNative
 } = NativeModules;
 
 if (!GyroNative && !AccNative && !MagnNative && !BarNative && !OrientNative) {
-  throw new Error(
-    "Native modules for sensors not available. Did react-native link run successfully?"
-  );
+  throw new Error("Native modules for sensors not available. Did react-native link run successfully?");
 }
 
 const nativeApis = new Map([
