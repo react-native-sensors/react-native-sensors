@@ -53,6 +53,21 @@ const subscription = barometer.subscribe(({ pressure }) =>
 
 Please note that this sensor has no option to set the update rate.
 
+## orientation: Observable<{qx: number, qy: number, qz: number, qw: number, pitch: number, roll: number, yaw: number, timestamp: string}>
+
+```js
+import { orientation } from "react-native-sensors";
+
+const subscription = orientation.subscribe(({ qx, qy, qz, qw, pitch, roll, yaw, timestamp }) =>
+  console.log({ qx, qy, qz, qw, pitch, roll, yaw, timestamp })
+);
+```
+
+qx, qy, qz, qw are quaternion values.
+pitch, roll, yaw are calculated by iOS/Android. (Yaw is called Azimuth in Android documentation)
+
+Note: reference frame for iOS is different from Android. Check Apple's and Google documentation.
+
 ## setUpdateIntervalForType(type: string, interval: number)
 
 As the sensors are global we can only set the rate in which the hardware is read globally.
