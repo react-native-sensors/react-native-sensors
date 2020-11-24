@@ -128,9 +128,9 @@ public class RNSensor extends ReactContextBaseJavaModule implements SensorEventL
           map.putDouble("qy", quaternion[2]);
           map.putDouble("qz", quaternion[3]);
 
-          map.putDouble("yaw", quaternion[0]);
-          map.putDouble("pitch", quaternion[1]);
-          map.putDouble("roll", quaternion[2]);
+          map.putDouble("yaw", orientation[0]);
+          map.putDouble("pitch", orientation[1]);
+          map.putDouble("roll", orientation[2]);
           break;
 
         default:
