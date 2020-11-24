@@ -8,7 +8,7 @@ const {
   Accelerometer: AccNative,
   Magnetometer: MagnNative,
   Barometer: BarNative,
-  Orientation: OrientNative,
+  Orientation: OrientNative
 } = NativeModules;
 
 const listenerKeys = new Map([
@@ -41,8 +41,7 @@ function createSensorObservable(sensorType) {
 
     this.unsubscribeCallback = () => {
       if (!this.isSensorAvailable) return;
-      if (eventEmitterSubscription.get(sensorType))
-        eventEmitterSubscription.get(sensorType).remove();
+      if (eventEmitterSubscription.get(sensorType)) eventEmitterSubscription.get(sensorType).remove();
       // stop the sensor
       RNSensors.stop(sensorType);
     };
