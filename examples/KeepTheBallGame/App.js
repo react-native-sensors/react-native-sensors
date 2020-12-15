@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
-import {
-  accelerometer,
-  setUpdateIntervalForType,
-  SensorTypes
-} from "react-native-sensors";
+import { accelerometer, setUpdateIntervalForType, SensorTypes } from "react-native-sensors";
 
 import Game from "./Game";
 

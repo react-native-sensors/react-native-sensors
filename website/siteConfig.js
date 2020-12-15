@@ -10,37 +10,32 @@ const users = [
   {
     caption: "react-native-live-translator",
     infoLink: "https://github.com/agrcrobles/react-native-live-translator",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png",
     pinned: true
   },
   {
     caption: "imagination-react-native",
     infoLink: "https://github.com/Matzielab/imagination-react-native",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png",
     pinned: true
   },
   {
     caption: "react-native-game-engine-handbook",
     infoLink: "https://github.com/bberak/react-native-game-engine-handbook",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png",
     pinned: true
   },
   {
     caption: "react-native-iridescent",
     infoLink: "https://github.com/elevenfooteleven/react-native-iridescent",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png",
     pinned: true
   }
 ];
 
 const siteConfig = {
   title: "React Native Sensors",
-  tagline:
-    "Get your Accelerometer, Gyroscope, Magnetometer, and Barometer data the easy and reactive way",
+  tagline: "Get your Accelerometer, Gyroscope, Magnetometer, and Barometer data the easy and reactive way",
   url: "https://react-native-sensors.github.io",
   baseUrl: "/" /* base url for your project */,
   projectName: "react-native-sensors.github.io",

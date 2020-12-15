@@ -18,10 +18,7 @@ export default function(sensorName, values) {
     constructor(props) {
       super(props);
 
-      const initialValue = values.reduce(
-        (carry, val) => ({ ...carry, [val]: 0 }),
-        {}
-      );
+      const initialValue = values.reduce((carry, val) => ({ ...carry, [val]: 0 }), {});
       this.state = initialValue;
     }
 

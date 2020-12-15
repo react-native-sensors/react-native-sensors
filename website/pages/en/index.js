@@ -81,11 +81,7 @@ class HomeSplash extends React.Component {
 }
 
 const Block = props => (
-  <Container
-    padding={["bottom", "top"]}
-    id={props.id}
-    background={props.background}
-  >
+  <Container padding={["bottom", "top"]} id={props.id} background={props.background}>
     <GridBlock align="center" contents={props.children} layout={props.layout} />
   </Container>
 );
@@ -103,8 +99,7 @@ const Features = props => (
         image: "http://amenssolutions.com/images/HD/ios-android.png",
         imageAlign: "top",
         title: "Full iOS & Android support",
-        content:
-          "Our philosophy is not to ship partial support; same sensors for every platform"
+        content: "Our philosophy is not to ship partial support; same sensors for every platform"
       }
     ]}
   </Block>
@@ -141,13 +136,10 @@ const Examples = props => (
       <h2>Examples in Action</h2>
       <p>
         We have several examples ready for you to check out, you can find them{" "}
-        <a href="https://github.com/react-native-sensors/react-native-sensors/tree/master/examples">
-          here.
-        </a>
+        <a href="https://github.com/react-native-sensors/react-native-sensors/tree/master/examples">here.</a>
       </p>
       <p className="hide-small">
-        The example on the right side is using the gyroscope sensor to move an
-        image around.{" "}
+        The example on the right side is using the gyroscope sensor to move an image around.{" "}
         <a href="https://github.com/react-native-sensors/react-native-sensors/tree/master/examples/GryoscopeImage">
           You can find the implementation here.
         </a>

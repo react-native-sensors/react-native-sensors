@@ -16,10 +16,7 @@ export default function(sensorName, values) {
     constructor(props) {
       super(props);
 
-      const initialValue = values.reduce(
-        (carry, val) => ({ ...carry, [val]: 0 }),
-        {}
-      );
+      const initialValue = values.reduce((carry, val) => ({ ...carry, [val]: 0 }), {});
       this.state = initialValue;
     }
 
@@ -40,11 +37,7 @@ export default function(sensorName, values) {
         <View style={styles.container}>
           <Text style={styles.headline}>{sensorName} values</Text>
           {values.map(valueName => (
-            <Value
-              key={sensorName + valueName}
-              name={valueName}
-              value={this.state[valueName]}
-            />
+            <Value key={sensorName + valueName} name={valueName} value={this.state[valueName]} />
           ))}
         </View>
       );

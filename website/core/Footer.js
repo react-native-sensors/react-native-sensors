@@ -22,9 +22,7 @@ class Footer extends React.Component {
     const currentYear = new Date().getFullYear();
     return (
       <footer className="nav-footer" id="footer">
-        <section className="copyright">
-          Copyright &copy; {currentYear} Daniel Schmidt.
-        </section>
+        <section className="copyright">Copyright &copy; {currentYear} Daniel Schmidt.</section>
       </footer>
     );
   }
