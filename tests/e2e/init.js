@@ -12,10 +12,7 @@ const telnetParams = {
   timeout: 2500
 };
 
-const tokenFilePath = path.join(
-  process.env.HOME,
-  ".emulator_console_auth_token"
-);
+const tokenFilePath = path.join(process.env.HOME, ".emulator_console_auth_token");
 
 const getEmulatorAuthToken = () => fs.readFileSync(tokenFilePath, "utf8");
 

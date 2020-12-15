@@ -1,14 +1,7 @@
 import React from "react";
 import { componentFromStreamWithConfig } from "recompose";
 import { of, from } from "rxjs";
-import {
-  switchMap,
-  startWith,
-  scan,
-  tap,
-  map,
-  catchError
-} from "rxjs/operators";
+import { switchMap, startWith, scan, tap, map, catchError } from "rxjs/operators";
 
 import Ball from "./Ball";
 import Table, { TABLE_SIZE } from "./Table";
@@ -25,17 +18,13 @@ const neutralData = {
   y: 0
 };
 
-const hasFallenFromTable = (x, y) =>
-  Math.abs(x) > TABLE_SIZE / 2 || Math.abs(y) > TABLE_SIZE / 2;
+const hasFallenFromTable = (x, y) => Math.abs(x) > TABLE_SIZE / 2 || Math.abs(y) > TABLE_SIZE / 2;
 
 export default componentFromStream(props$ =>
   props$.pipe(
     switchMap(props => props.data),
     startWith(neutralData),
-    scan(
-      (acc, value) => ({ x: acc.x - value.x, y: acc.y + value.y }),
-      neutralData
-    ),
+    scan((acc, value) => ({ x: acc.x - value.x, y: acc.y + value.y }), neutralData),
     tap(({ x, y }) => {
       if (hasFallenFromTable(x, y)) {
         console.log("Marking the game as done");
@@ -47,12 +36,6 @@ export default componentFromStream(props$ =>
         <Ball x={x} y={y} />
       </Table>
     )),
-    catchError(() =>
-      of(
-        <GameOverScreen
-          onNewGame={() => console.log("We should start a new game")}
-        />
-      )
-    )
+    catchError(() => of(<GameOverScreen onNewGame={() => console.log("We should start a new game")} />))
   )
 );

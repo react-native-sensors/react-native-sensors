@@ -45,11 +45,7 @@ export default class App extends Component {
 
     return (
       <View style={styles.container}>
-        <Image
-          translateX={positionOnScreenX + movementX}
-          style={styles.image}
-          source={{ uri: this.state.image }}
-        />
+        <Image translateX={positionOnScreenX + movementX} style={styles.image} source={{ uri: this.state.image }} />
       </View>
     );
   }

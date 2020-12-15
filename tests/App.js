@@ -10,16 +10,10 @@ const availableSensors = {
   magnetometer: axis,
   barometer: ["pressure"]
 };
-const viewComponents = Object.entries(availableSensors).map(([name, values]) =>
-  SensorView(name, values)
-);
+const viewComponents = Object.entries(availableSensors).map(([name, values]) => SensorView(name, values));
 
 export default class App extends Component {
   render() {
-    return (
-      <ScrollView testID="scroller">
-        {viewComponents.map((Comp, index) => <Comp key={index} />)}
-      </ScrollView>
-    );
+    return <ScrollView testID="scroller">{viewComponents.map((Comp, index) => <Comp key={index} />)}</ScrollView>;
   }
 }

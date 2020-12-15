@@ -16,9 +16,7 @@ We added experimental support for the Barometer, it can be used like this:
 ```js
 import { barometer } from "react-native-sensors";
 
-const subscription = barometer.subscribe(({ pressure }) =>
-  console.log({ pressure })
-);
+const subscription = barometer.subscribe(({ pressure }) => console.log({ pressure }));
 ```
 
 Please help us improve the quality by using this sensor and giving feedback!
