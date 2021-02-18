@@ -11,7 +11,7 @@ const Value = ({ name, testID, value }) => (
   </View>
 );
 
-export default function(sensorName, values) {
+export default function (sensorName, values) {
   const sensor$ = Sensors[sensorName];
 
   return class SensorView extends Component {
@@ -23,7 +23,7 @@ export default function(sensorName, values) {
     }
 
     componentWillMount() {
-      const subscription = sensor$.subscribe(values => {
+      const subscription = sensor$.subscribe((values) => {
         this.setState({ ...values });
       });
       this.setState({ subscription });
@@ -38,7 +38,7 @@ export default function(sensorName, values) {
       return (
         <View style={styles.container}>
           <Text style={styles.headline}>{sensorName} values</Text>
-          {values.map(valueName => (
+          {values.map((valueName) => (
             <Value
               testID={`${sensorName}-${valueName}`}
               key={sensorName + valueName}
@@ -58,29 +58,29 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#F5FCFF",
-    marginVertical: 25
+    marginVertical: 25,
   },
   headline: {
     fontSize: 30,
     textAlign: "left",
-    margin: 10
+    margin: 10,
   },
   valueContainer: {
     flexDirection: "row",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
   },
   valueValue: {
     width: 200,
-    fontSize: 20
+    fontSize: 20,
   },
   valueName: {
     width: 50,
     fontSize: 20,
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   instructions: {
     textAlign: "center",
     color: "#333333",
-    marginBottom: 5
-  }
+    marginBottom: 5,
+  },
 });

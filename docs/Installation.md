@@ -31,8 +31,8 @@ Add the following to your Podfile and run `$ pod install`:
 
 1.  Open up `android/app/src/main/java/[...]/MainApplication.java`
 
-* Add `import com.sensors.RNSensorsPackage;` to the imports at the top of the file
-* Add `new RNSensorsPackage()` to the list returned by the `getPackages()` method
+- Add `import com.sensors.RNSensorsPackage;` to the imports at the top of the file
+- Add `new RNSensorsPackage()` to the list returned by the `getPackages()` method
 
 2.  Append the following lines to `android/settings.gradle`:
     ```
