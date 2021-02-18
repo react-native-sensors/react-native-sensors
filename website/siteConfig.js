@@ -11,26 +11,26 @@ const users = [
     caption: "react-native-live-translator",
     infoLink: "https://github.com/agrcrobles/react-native-live-translator",
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png",
-    pinned: true
+    pinned: true,
   },
   {
     caption: "imagination-react-native",
     infoLink: "https://github.com/Matzielab/imagination-react-native",
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png",
-    pinned: true
+    pinned: true,
   },
   {
     caption: "react-native-game-engine-handbook",
     infoLink: "https://github.com/bberak/react-native-game-engine-handbook",
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png",
-    pinned: true
+    pinned: true,
   },
   {
     caption: "react-native-iridescent",
     infoLink: "https://github.com/elevenfooteleven/react-native-iridescent",
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png",
-    pinned: true
-  }
+    pinned: true,
+  },
 ];
 
 const siteConfig = {
@@ -43,8 +43,8 @@ const siteConfig = {
     { doc: "Installation", label: "Documentation" },
     {
       href: "https://github.com/react-native-sensors/react-native-sensors",
-      label: "GitHub"
-    }
+      label: "GitHub",
+    },
   ],
   users,
   /* path to images for header/footer */
@@ -54,7 +54,7 @@ const siteConfig = {
   /* colors for website */
   colors: {
     primaryColor: "#f6612c",
-    secondaryColor: "#4BC6B9"
+    secondaryColor: "#4BC6B9",
   },
   /* custom fonts for website */
   /*fonts: {
@@ -73,11 +73,11 @@ const siteConfig = {
   projectName: "react-native-sensors.github.io", // or set an env variable PROJECT_NAME
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks
-    theme: "default"
+    theme: "default",
   },
   scripts: ["https://buttons.github.io/buttons.js"],
   // You may provide arbitrary config keys to be used as needed by your template.
-  repoUrl: "https://github.com/react-native-sensors/react-native-sensors"
+  repoUrl: "https://github.com/react-native-sensors/react-native-sensors",
   /* On page navigation for the current documentation page */
   // onPageNav: 'separate',
 };

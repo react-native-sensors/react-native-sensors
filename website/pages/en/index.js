@@ -39,10 +39,10 @@ class Button extends React.Component {
 }
 
 Button.defaultProps = {
-  target: "_self"
+  target: "_self",
 };
 
-const SplashContainer = props => (
+const SplashContainer = (props) => (
   <div className="homeContainer">
     <div className="homeSplashFade">
       <div className="wrapper homeWrapper">{props.children}</div>
@@ -50,7 +50,7 @@ const SplashContainer = props => (
   </div>
 );
 
-const ProjectTitle = props => (
+const ProjectTitle = (props) => (
   <h2 className="projectTitle">
     {siteConfig.title}
     <img src="/img/logo.svg" />
@@ -58,7 +58,7 @@ const ProjectTitle = props => (
   </h2>
 );
 
-const PromoSection = props => (
+const PromoSection = (props) => (
   <div className="section promoSection">
     <div className="promoRow">
       <div className="pluginRowBlock">{props.children}</div>
@@ -80,32 +80,32 @@ class HomeSplash extends React.Component {
   }
 }
 
-const Block = props => (
+const Block = (props) => (
   <Container padding={["bottom", "top"]} id={props.id} background={props.background}>
     <GridBlock align="center" contents={props.children} layout={props.layout} />
   </Container>
 );
 
-const Features = props => (
+const Features = (props) => (
   <Block layout="fourColumn">
     {[
       {
         image: siteConfig.baseUrl + "img/rxjs_logo.png",
         imageAlign: "top",
         title: "RxJS Observables as API",
-        content: "This gives you an intuitive way to deal with sensor data"
+        content: "This gives you an intuitive way to deal with sensor data",
       },
       {
         image: "http://amenssolutions.com/images/HD/ios-android.png",
         imageAlign: "top",
         title: "Full iOS & Android support",
-        content: "Our philosophy is not to ship partial support; same sensors for every platform"
-      }
+        content: "Our philosophy is not to ship partial support; same sensors for every platform",
+      },
     ]}
   </Block>
 );
 
-const Showcase = props => {
+const Showcase = (props) => {
   if ((siteConfig.users || []).length === 0) {
     return null;
   }
@@ -116,21 +116,21 @@ const Showcase = props => {
       <p>This project is used by all these amazing Open Source projects:</p>
       <Block layout="fourColumn">
         {siteConfig.users
-          .filter(user => {
+          .filter((user) => {
             return user.pinned;
           })
           .slice(0, 4)
-          .map(user => ({
+          .map((user) => ({
             image: user.image,
             imageAlign: "top",
-            title: user.caption
+            title: user.caption,
           }))}
       </Block>
     </div>
   );
 };
 
-const Examples = props => (
+const Examples = (props) => (
   <div className="productShowcaseSection paddingBottom split-container">
     <div className="split-left">
       <h2>Examples in Action</h2>

@@ -9,7 +9,7 @@ const telnetParams = {
   host: "127.0.0.1",
   port: 5554,
   shellPrompt: "OK\r",
-  timeout: 2500
+  timeout: 2500,
 };
 
 const tokenFilePath = path.join(process.env.HOME, ".emulator_console_auth_token");
