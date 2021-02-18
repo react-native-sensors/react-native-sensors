@@ -7,8 +7,9 @@
     "postcontributor:add": "npm run contributor:generate",
     "contributor:generate": "all-contributors generate",
     "postcontributor:generate": "npm run format",
+    "format": "prettier --write ./src/*",
+    "pretest": "prettier --check ./src/*",
     "test": "jest",
-    "format": "prettier --loglevel=warn --write $(npx jest --listTests)",
     "semantic-release": "semantic-release",
     "travis-deploy-once": "travis-deploy-once"
   },
@@ -38,40 +39,6 @@
           "tests/*"
         ],
         "timers": "fake"
-      },
-      {
-        "displayName": "Prettier",
-        "runner": "jest-runner-prettier",
-        "moduleFileExtensions": [
-          "js",
-          "jsx",
-          "json",
-          "ts",
-          "tsx",
-          "css",
-          "less",
-          "scss",
-          "graphql",
-          "md",
-          "markdown"
-        ],
-        "testMatch": [
-          "**/*.js",
-          "**/*.jsx",
-          "**/*.json",
-          "**/*.ts",
-          "**/*.tsx",
-          "**/*.css",
-          "**/*.less",
-          "**/*.scss",
-          "**/*.graphql",
-          "**/*.md",
-          "**/*.markdown"
-        ],
-        "testPathIgnorePatterns": [
-          "package.json",
-          "package-lock.json"
-        ]
       }
     ]
   },
@@ -95,9 +62,8 @@
     "babel-preset-react-native": "4.0.0",
     "husky": "4.2.3",
     "jest": "24.1.0",
-    "jest-runner-prettier": "0.3.6",
     "prettier": "2.2.1",
-    "pretty-quick": "2.0.1",
+    "pretty-quick": "3.1.0",
     "react": "16.8.4",
     "react-native": "0.57.7",
     "regenerator-runtime": "0.13.1",
