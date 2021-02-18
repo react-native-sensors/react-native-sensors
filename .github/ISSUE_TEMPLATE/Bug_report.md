@@ -19,9 +19,9 @@ A clear and concise description of what you expected to happen.
 
 **Desktop (please complete the following information):**
 
-* React Native Version: [e.g. 55.0.1]
-* Device [e.g. real iOS device, android simu]
-* Version [e.g. 3.0.0-rc.2]
+- React Native Version: [e.g. 55.0.1]
+- Device [e.g. real iOS device, android simu]
+- Version [e.g. 3.0.0-rc.2]
 
 **Additional context**
 Add any other context about the problem here.

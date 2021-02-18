@@ -8,7 +8,7 @@ const {
   Accelerometer: AccNative,
   Magnetometer: MagnNative,
   Barometer: BarNative,
-  Orientation: OrientNative
+  Orientation: OrientNative,
 } = NativeModules;
 
 const listenerKeys = new Map([
@@ -16,7 +16,7 @@ const listenerKeys = new Map([
   ["gyroscope", "Gyroscope"],
   ["magnetometer", "Magnetometer"],
   ["barometer", "Barometer"],
-  ["orientation", "Orientation"]
+  ["orientation", "Orientation"],
 ]);
 
 const nativeApis = new Map([
@@ -24,7 +24,7 @@ const nativeApis = new Map([
   ["gyroscope", GyroNative],
   ["magnetometer", MagnNative],
   ["barometer", BarNative],
-  ["orientation", OrientNative]
+  ["orientation", OrientNative],
 ]);
 
 const eventEmitterSubscription = new Map([
@@ -32,7 +32,7 @@ const eventEmitterSubscription = new Map([
   ["gyroscope", null],
   ["magnetometer", null],
   ["barometer", null],
-  ["orientation", null]
+  ["orientation", null],
 ]);
 
 function createSensorObservable(sensorType) {
@@ -54,7 +54,7 @@ function createSensorObservable(sensorType) {
 
         eventEmitterSubscription.set(
           sensorType,
-          emitter.addListener(listenerKeys.get(sensorType), data => {
+          emitter.addListener(listenerKeys.get(sensorType), (data) => {
             observer.next(data);
           })
         );
@@ -73,7 +73,7 @@ function createSensorObservable(sensorType) {
 
 // As we only have one sensor we need to share it between the different consumers
 function makeSingleton() {
-  return source => source.pipe(publish(), refCount());
+  return (source) => source.pipe(publish(), refCount());
 }
 
 const accelerometer = createSensorObservable("accelerometer");
@@ -87,5 +87,5 @@ export default {
   accelerometer,
   magnetometer,
   barometer,
-  orientation
+  orientation,
 };

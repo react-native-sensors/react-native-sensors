@@ -14,6 +14,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     height: TABLE_SIZE,
     justifyContent: "center",
-    width: TABLE_SIZE
-  }
+    width: TABLE_SIZE,
+  },
 });
