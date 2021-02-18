@@ -8,8 +8,7 @@
     "contributor:generate": "all-contributors generate",
     "postcontributor:generate": "npm run format",
     "format": "prettier --write ./src/*",
-    "pretest": "prettier --check ./src/*",
-    "test": "jest",
+    "test": "prettier --check ./src/*",
     "semantic-release": "semantic-release",
     "travis-deploy-once": "travis-deploy-once"
   },
