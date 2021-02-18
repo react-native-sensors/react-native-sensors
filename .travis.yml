@@ -9,11 +9,7 @@ matrix:
   include:
     # Unit tests on node 10
     - language: node_js
-      node_js: 10
-
-    # Unit tests on node 8
-    - language: node_js
-      node_js: 8
+      node_js: 14
 
     # Website
     # - language: node_js
@@ -21,4 +17,4 @@ matrix:
     #     - NAME='Website - master'
     #   node_js: 8
     #   script:
-    #   - scripts/publish-website.sh 
+    #   - scripts/publish-website.sh
