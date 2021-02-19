@@ -12,6 +12,8 @@ declare module "react-native-sensors" {
   export const SensorTypes: Sensors;
 
   export const setUpdateIntervalForType: (type: keyof Sensors, updateInterval: number) => void;
+  
+  export const setLogLevelForType: (type: keyof Sensors, logLevel: 0 | 1 | 2) => void;
 
   export interface SensorData {
     x: number;
