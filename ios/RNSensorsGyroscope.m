@@ -1,11 +1,11 @@
 // Inspired by https://github.com/pwmckenna/react-native-motion-manager
 
-#import "Gyroscope.h"
+#import "RNSensorsGyroscope.h"
 #import <React/RCTBridge.h>
 #import <React/RCTEventDispatcher.h>
-#import "Utils.h"
+#import "RNSensorsUtils.h"
 
-@implementation Gyroscope
+@implementation RNSensorsGyroscope
 
 @synthesize bridge = _bridge;
 RCT_EXPORT_MODULE();

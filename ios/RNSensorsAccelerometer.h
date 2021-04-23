@@ -4,7 +4,7 @@
 #import <CoreMotion/CoreMotion.h>
 #import <React/RCTEventEmitter.h>
 
-@interface Gyroscope : RCTEventEmitter <RCTBridgeModule> {
+@interface RNSensorsAccelerometer : RCTEventEmitter <RCTBridgeModule> {
     CMMotionManager *_motionManager;
     int logLevel;
 }
