@@ -1,10 +1,10 @@
 import { NativeModules } from "react-native";
 const {
-  Gyroscope: GyroNative,
-  Accelerometer: AccNative,
-  Magnetometer: MagnNative,
-  Barometer: BarNative,
-  Orientation: OrientNative,
+  RNSensorsGyroscope: GyroNative,
+  RNSensorsAccelerometer: AccNative,
+  RNSensorsMagnetometer: MagnNative,
+  RNSensorsBarometer: BarNative,
+  RNSensorsOrientation: OrientNative,
 } = NativeModules;
 
 if (!GyroNative && !AccNative && !MagnNative && !BarNative && !OrientNative) {

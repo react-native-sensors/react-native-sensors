@@ -1,13 +1,13 @@
 
-//  Orientation.m
+//  RNSensorsOrientation.m
 
 
 #import <React/RCTBridge.h>
 #import <React/RCTEventDispatcher.h>
-#import "Orientation.h"
-#import "Utils.h"
+#import "RNSensorsOrientation.h"
+#import "RNSensorsUtils.h"
 
-@implementation Orientation
+@implementation RNSensorsOrientation
 
 @synthesize bridge = _bridge;
 

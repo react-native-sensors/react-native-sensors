@@ -1,13 +1,13 @@
 //  Barometer.m
 
 
-#import "Barometer.h"
+#import "RNSensorsBarometer.h"
 #import <React/RCTBridge.h>
 #import <React/RCTEventDispatcher.h>
 #import <CoreMotion/CoreMotion.h>
-#import "Utils.h"
+#import "RNSensorsUtils.h"
 
-@implementation Barometer
+@implementation RNSensorsBarometer
 
 @synthesize bridge = _bridge;
 
