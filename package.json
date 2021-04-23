@@ -48,8 +48,8 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "react-native": ">=0.39.0",
-    "prop-types": "^15.6.0"
+    "prop-types": "^15.6.0",
+    "react-native": ">=0.39.0"
   },
   "dependencies": {
     "rxjs": ">= 6"

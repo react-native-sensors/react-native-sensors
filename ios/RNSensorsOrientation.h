@@ -4,7 +4,7 @@
 #import <CoreMotion/CoreMotion.h>
 #import <React/RCTEventEmitter.h>
 
-@interface Magnetometer : RCTEventEmitter <RCTBridgeModule> {
+@interface RNSensorsOrientation : RCTEventEmitter <RCTBridgeModule> {
     CMMotionManager *_motionManager;
     int logLevel;
 }
