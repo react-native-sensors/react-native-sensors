@@ -99,7 +99,7 @@ RCT_EXPORT_METHOD(getData:(RCTResponseSenderBlock) cb) {
     double roll = attitude.roll;
     double yaw = attitude.yaw;
 
-    double timestamp = [Utils sensorTimestampToEpochMilliseconds:self->_motionManager.deviceMotion.timestamp];
+    double timestamp = [RNSensorsUtils sensorTimestampToEpochMilliseconds:self->_motionManager.deviceMotion.timestamp];
 
     if (self->logLevel > 0) {
         NSLog(@"getData pitch/roll/yaw: %f, %f, %f, %f", pitch, roll, yaw, timestamp);
@@ -142,7 +142,7 @@ RCT_EXPORT_METHOD(startUpdates) {
          double roll = attitude.roll;
          double yaw = attitude.yaw;
 
-         double timestamp = [Utils sensorTimestampToEpochMilliseconds:deviceMotion.timestamp];
+         double timestamp = [RNSensorsUtils sensorTimestampToEpochMilliseconds:deviceMotion.timestamp];
 
          if (self->logLevel > 1) {
              NSLog(@"Updated device motion pitch/roll/yaw: %f, %f, %f, %f", pitch, roll, yaw, timestamp);
