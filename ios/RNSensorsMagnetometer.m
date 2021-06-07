@@ -91,7 +91,7 @@ RCT_EXPORT_METHOD(getData:(RCTResponseSenderBlock) cb) {
     double x = self->_motionManager.magnetometerData.magneticField.x;
     double y = self->_motionManager.magnetometerData.magneticField.y;
     double z = self->_motionManager.magnetometerData.magneticField.z;
-    double timestamp = [Utils sensorTimestampToEpochMilliseconds:self->_motionManager.magnetometerData.timestamp];
+    double timestamp = [RNSensorsUtils sensorTimestampToEpochMilliseconds:self->_motionManager.magnetometerData.timestamp];
 
     if (self->logLevel > 0) {
         NSLog(@"getData: %f, %f, %f, %f", x, y, z, timestamp);
@@ -120,7 +120,7 @@ RCT_EXPORT_METHOD(startUpdates) {
          double x = magnetometerData.magneticField.x;
          double y = magnetometerData.magneticField.y;
          double z = magnetometerData.magneticField.z;
-         double timestamp = [Utils sensorTimestampToEpochMilliseconds:magnetometerData.timestamp];
+         double timestamp = [RNSensorsUtils sensorTimestampToEpochMilliseconds:magnetometerData.timestamp];
 
          if (self->logLevel > 1) {
              NSLog(@"Updated magnetometer values: %f, %f, %f, %f", x, y, z, timestamp);

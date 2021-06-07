@@ -75,12 +75,12 @@ RCT_EXPORT_METHOD(getData:(RCTResponseSenderBlock) cb) {
     CMAltitudeData * _Nullable altitudeData = self->_altimeter;
     if (altitudeData) {
         if (self->logLevel > 0) {
-            NSLog(@"getData: %f, %f, %f", altitudeData.pressure.doubleValue, altitudeData.timestamp, [Utils sensorTimestampToEpochMilliseconds:altitudeData.timestamp]);
+            NSLog(@"getData: %f, %f, %f", altitudeData.pressure.doubleValue, altitudeData.timestamp, [RNSensorsUtils sensorTimestampToEpochMilliseconds:altitudeData.timestamp]);
         }
 
         cb(@[[NSNull null], @{
                 @"pressure" : @(altitudeData.pressure.doubleValue * 10.0),
-                @"timestamp" : [NSNumber numberWithDouble:[Utils sensorTimestampToEpochMilliseconds:altitudeData.timestamp]]
+                @"timestamp" : [NSNumber numberWithDouble:[RNSensorsUtils sensorTimestampToEpochMilliseconds:altitudeData.timestamp]]
             }]
            );
     }
@@ -102,12 +102,12 @@ RCT_EXPORT_METHOD(startUpdates) {
 
         if (altitudeData) {
             if (self->logLevel > 1) {
-                NSLog(@"Updated altitue value: %f, %f, %f", altitudeData.pressure.doubleValue, altitudeData.timestamp, [Utils sensorTimestampToEpochMilliseconds:altitudeData.timestamp]);
+                NSLog(@"Updated altitue value: %f, %f, %f", altitudeData.pressure.doubleValue, altitudeData.timestamp, [RNSensorsUtils sensorTimestampToEpochMilliseconds:altitudeData.timestamp]);
             }
 
             [self sendEventWithName:@"Barometer" body:@{
                 @"pressure" : @(altitudeData.pressure.doubleValue * 10.0),
-                @"timestamp" : [NSNumber numberWithDouble:[Utils sensorTimestampToEpochMilliseconds:altitudeData.timestamp]]
+                @"timestamp" : [NSNumber numberWithDouble:[RNSensorsUtils sensorTimestampToEpochMilliseconds:altitudeData.timestamp]]
             }];
         }
 
