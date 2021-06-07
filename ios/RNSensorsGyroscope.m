@@ -88,7 +88,7 @@ RCT_EXPORT_METHOD(getData:(RCTResponseSenderBlock) cb) {
     double x = self->_motionManager.gyroData.rotationRate.x;
     double y = self->_motionManager.gyroData.rotationRate.y;
     double z = self->_motionManager.gyroData.rotationRate.z;
-    double timestamp = [Utils sensorTimestampToEpochMilliseconds:self->_motionManager.gyroData.timestamp];
+    double timestamp = [RNSensorsUtils sensorTimestampToEpochMilliseconds:self->_motionManager.gyroData.timestamp];
 
     if (self->logLevel > 0) {
         NSLog(@"getData: %f, %f, %f, %f", x, y, z, timestamp);
@@ -117,7 +117,7 @@ RCT_EXPORT_METHOD(startUpdates) {
          double x = gyroData.rotationRate.x;
          double y = gyroData.rotationRate.y;
          double z = gyroData.rotationRate.z;
-         double timestamp = [Utils sensorTimestampToEpochMilliseconds:gyroData.timestamp];
+         double timestamp = [RNSensorsUtils sensorTimestampToEpochMilliseconds:gyroData.timestamp];
 
          if (self->logLevel > 1) {
              NSLog(@"Updated gyro values: %f, %f, %f, %f", x, y, z, timestamp);
