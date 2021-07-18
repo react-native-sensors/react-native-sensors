@@ -4,11 +4,12 @@ import { publish, refCount } from "rxjs/operators";
 import * as RNSensors from "./rnsensors";
 
 const {
-  RNSensorsGyroscope: GyroNative,
-  RNSensorsAccelerometer: AccNative,
-  RNSensorsMagnetometer: MagnNative,
-  RNSensorsBarometer: BarNative,
-  RNSensorsOrientation: OrientNative,
+  Gyroscope: GyroNative,
+  Accelerometer: AccNative,
+  Magnetometer: MagnNative,
+  Barometer: BarNative,
+  Orientation: OrientNative,
+  Gravity: GravNative
 } = NativeModules;
 
 const listenerKeys = new Map([
@@ -17,6 +18,7 @@ const listenerKeys = new Map([
   ["magnetometer", "Magnetometer"],
   ["barometer", "Barometer"],
   ["orientation", "Orientation"],
+  ["gravity", "Gravity"]
 ]);
 
 const nativeApis = new Map([
@@ -25,6 +27,7 @@ const nativeApis = new Map([
   ["magnetometer", MagnNative],
   ["barometer", BarNative],
   ["orientation", OrientNative],
+  ["gravity", GravNative]
 ]);
 
 const eventEmitterSubscription = new Map([
@@ -33,6 +36,7 @@ const eventEmitterSubscription = new Map([
   ["magnetometer", null],
   ["barometer", null],
   ["orientation", null],
+  ["gravity", null]
 ]);
 
 function createSensorObservable(sensorType) {
@@ -81,6 +85,7 @@ const gyroscope = createSensorObservable("gyroscope");
 const magnetometer = createSensorObservable("magnetometer");
 const barometer = createSensorObservable("barometer");
 const orientation = createSensorObservable("orientation");
+const gravity = createSensorObservable("gravity");
 
 export default {
   gyroscope,
@@ -88,4 +93,5 @@ export default {
   magnetometer,
   barometer,
   orientation,
+  gravity
 };

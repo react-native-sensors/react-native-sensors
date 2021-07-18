@@ -19,12 +19,14 @@ const rnSensors = {
     gyroscope: 'gyroscope',
     magnetometer: 'magnetometer',
     barometer: 'barometer',
+    gravity: 'gravity'
   },
 
   accelerometer: sensorMock(),
   gyroscope: sensorMock(),
   magnetometer: sensorMock(),
   barometer: sensorMock({ pressure: 0 }),
+  gravity: sensorMock(),
 
   setLogLevelForType: jest.fn(),
   setUpdateIntervalForType: jest.fn(),
