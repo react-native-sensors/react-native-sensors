@@ -4,12 +4,12 @@ import { publish, refCount } from "rxjs/operators";
 import * as RNSensors from "./rnsensors";
 
 const {
-  Gyroscope: GyroNative,
-  Accelerometer: AccNative,
-  Magnetometer: MagnNative,
-  Barometer: BarNative,
-  Orientation: OrientNative,
-  Gravity: GravNative
+  RNSensorsGyroscope: GyroNative,
+  RNSensorsAccelerometer: AccNative,
+  RNSensorsMagnetometer: MagnNative,
+  RNSensorsBarometer: BarNative,
+  RNSensorsOrientation: OrientNative,
+  RNSensorsGravity: GravNative
 } = NativeModules;
 
 const listenerKeys = new Map([

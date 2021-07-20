@@ -15,12 +15,12 @@ import com.facebook.react.bridge.JavaScriptModule;
 public class RNSensorsPackage implements ReactPackage {
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
       return Arrays.<NativeModule>asList(
-        new RNSensor(reactContext, "Gyroscope", Sensor.TYPE_GYROSCOPE),
-        new RNSensor(reactContext, "Accelerometer", Sensor.TYPE_ACCELEROMETER),
-        new RNSensor(reactContext, "Gravity", Sensor.TYPE_GRAVITY),
-        new RNSensor(reactContext, "Magnetometer", Sensor.TYPE_MAGNETIC_FIELD),
-        new RNSensor(reactContext, "Barometer", Sensor.TYPE_PRESSURE),
-        new RNSensor(reactContext, "Orientation", Sensor.TYPE_ROTATION_VECTOR)
+        new RNSensor(reactContext, "RNSensorsGyroscope", Sensor.TYPE_GYROSCOPE),
+        new RNSensor(reactContext, "RNSensorsAccelerometer", Sensor.TYPE_ACCELEROMETER),
+        new RNSensor(reactContext, "RNSensorsGravity", Sensor.TYPE_GRAVITY),
+        new RNSensor(reactContext, "RNSensorsMagnetometer", Sensor.TYPE_MAGNETIC_FIELD),
+        new RNSensor(reactContext, "RNSensorsBarometer", Sensor.TYPE_PRESSURE),
+        new RNSensor(reactContext, "RNSensorsOrientation", Sensor.TYPE_ROTATION_VECTOR)
       );
     }
 
