@@ -107,6 +107,7 @@ public class RNSensor extends ReactContextBaseJavaModule implements SensorEventL
       switch (currentType)
       {
         case Sensor.TYPE_ACCELEROMETER:
+        case Sensor.TYPE_GRAVITY:
         case Sensor.TYPE_GYROSCOPE:
         case Sensor.TYPE_MAGNETIC_FIELD:
           map.putDouble("x", sensorEvent.values[0]);

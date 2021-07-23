@@ -45,3 +45,5 @@ android/gradle/
 android/gradlew
 android/gradlew.bat
 yarn.lock
+
+.vscode
