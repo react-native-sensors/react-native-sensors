@@ -9,7 +9,7 @@ const {
   RNSensorsMagnetometer: MagnNative,
   RNSensorsBarometer: BarNative,
   RNSensorsOrientation: OrientNative,
-  RNSensorsGravity: GravNative
+  RNSensorsGravity: GravNative,
 } = NativeModules;
 
 const listenerKeys = new Map([
@@ -18,7 +18,7 @@ const listenerKeys = new Map([
   ["magnetometer", "Magnetometer"],
   ["barometer", "Barometer"],
   ["orientation", "Orientation"],
-  ["gravity", "Gravity"]
+  ["gravity", "Gravity"],
 ]);
 
 const nativeApis = new Map([
@@ -27,7 +27,7 @@ const nativeApis = new Map([
   ["magnetometer", MagnNative],
   ["barometer", BarNative],
   ["orientation", OrientNative],
-  ["gravity", GravNative]
+  ["gravity", GravNative],
 ]);
 
 const eventEmitterSubscription = new Map([
@@ -36,7 +36,7 @@ const eventEmitterSubscription = new Map([
   ["magnetometer", null],
   ["barometer", null],
   ["orientation", null],
-  ["gravity", null]
+  ["gravity", null],
 ]);
 
 function createSensorObservable(sensorType) {
@@ -93,5 +93,5 @@ export default {
   magnetometer,
   barometer,
   orientation,
-  gravity
+  gravity,
 };
