@@ -5,7 +5,7 @@ const {
   RNSensorsMagnetometer: MagnNative,
   RNSensorsBarometer: BarNative,
   RNSensorsOrientation: OrientNative,
-  RNSensorsGravity: GravNative
+  RNSensorsGravity: GravNative,
 } = NativeModules;
 
 if (!GyroNative && !AccNative && !MagnNative && !BarNative && !OrientNative && !GravNative) {
@@ -18,7 +18,7 @@ const nativeApis = new Map([
   ["magnetometer", MagnNative],
   ["barometer", BarNative],
   ["orientation", OrientNative],
-  ["gravity", GravNative]
+  ["gravity", GravNative],
 ]);
 
 // Cache the availability of sensors
