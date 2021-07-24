@@ -6,6 +6,9 @@ sidebar_label: General
 
 You can access your sensor data through a [RxJS Observable](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html). This way you have the maximum of control over your data stream. You can add the values up, filter them, only react if a certain value is reached: You have the choice. Here is a small example showing the relatively small API interface. If you would like to learn more, please see the [API specification](/docs/API.html).
 
+
+## Device speed
+
 ```javascript
 import { accelerometer, gyroscope, setUpdateIntervalForType, SensorTypes } from "react-native-sensors";
 import { map, filter } from "rxjs/operators";
@@ -29,3 +32,36 @@ setTimeout(() => {
   subscription.unsubscribe();
 }, 1000);
 ```
+
+## Raw device acceleration
+
+You can get user raw acceleration which is calculated with (accelerometer - gravity) formula, to achieve this you can use RxJs combineLatest
+
+```javascript
+import { accelerometer, gravity, setUpdateIntervalForType, SensorTypes } from "react-native-sensors";
+import { combineLatest } from "rxjs";
+import { map } from 'rxjs/operators';
+
+const interval = 100;
+
+setUpdateIntervalForType(SensorTypes.accelerometer, interval);
+setUpdateIntervalForType(SensorTypes.gravity, interval);
+
+const userAccelerationStream = combineLatest(accelerometer, gravity).pipe(
+  map(([accelerometerValue, gravityValue]) => ({
+    accelerometer: accelerometerValue,
+    gravity: gravityValue,
+  }))
+)
+
+const subscription = userAccelerationStream.subscribe(event => console.log(
+  'x:', event.accelerometer.x - event.gravity.x,
+  'y:', event.accelerometer.y - event.gravity.y,
+  'z:', event.accelerometer.z - event.gravity.z,
+));
+
+setTimeout(() => {
+  subscription.unsubscribe();
+}, 1000);
+```
+
