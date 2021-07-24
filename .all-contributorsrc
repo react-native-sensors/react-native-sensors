@@ -325,6 +325,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Ehsan0Hejazi",
+      "name": "Ehsan Hejazi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/70890584?v=4",
+      "profile": "https://github.com/Ehsan0Hejazi",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "repoType": "github"

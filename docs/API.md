@@ -18,6 +18,15 @@ const subscription = accelerometer.subscribe(({ x, y, z, timestamp }) => console
 
 It might be interesting to note that the gravity of the earth is not removed from the sensoric values.
 Dependening on the position of the phone you will need to substract this from the values if you are interested in the raw values.
+See example : [device acceleration](https://react-native-sensors.github.io/docs/Usage.html#Raw-device-acceleration)
+
+## gravity: Observable<{x: number, y: number, z: number, timestamp: string}>
+
+```js
+import { gravity } from "react-native-sensors";
+
+const subscription = gravity.subscribe(({ x, y, z, timestamp }) => console.log({ x, y, z, timestamp }));
+```
 
 ## gyroscope: Observable<{x: number, y: number, z: number, timestamp: string}>
 
