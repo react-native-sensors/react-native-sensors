@@ -5,7 +5,7 @@
 #import <React/RCTBridge.h>
 #import <React/RCTEventDispatcher.h>
 #import "RNSensorsGravity.h"
-#import "Utils.h"
+#import "RNSensorsUtils.h"
 
 @implementation RNSensorsGravity
 
@@ -91,7 +91,7 @@ RCT_EXPORT_METHOD(getData:(RCTResponseSenderBlock) cb) {
     double x = self->_motionManager.deviceMotion.gravity.x;
     double y = self->_motionManager.deviceMotion.gravity.y;
     double z = self->_motionManager.deviceMotion.gravity.z;
-    double timestamp = [Utils sensorTimestampToEpochMilliseconds:self->_motionManager.deviceMotion.timestamp];
+    double timestamp = [RNSensorsUtils sensorTimestampToEpochMilliseconds:self->_motionManager.deviceMotion.timestamp];
 
     if (self->logLevel > 0) {
         NSLog(@"getData: %f, %f, %f, %f", x, y, z, timestamp);
@@ -122,7 +122,7 @@ RCT_EXPORT_METHOD(startUpdates) {
         double y = deviceMotion.gravity.y;
         double z = deviceMotion.gravity.z;
 
-         double timestamp = [Utils sensorTimestampToEpochMilliseconds:deviceMotion.timestamp];
+         double timestamp = [RNSensorsUtils sensorTimestampToEpochMilliseconds:deviceMotion.timestamp];
 
          if (self->logLevel > 1) {
              NSLog(@"Updated gravity values: %f, %f, %f, %f", x, y, z, timestamp);
