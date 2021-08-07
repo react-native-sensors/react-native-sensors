@@ -13,12 +13,12 @@ const {
 } = NativeModules;
 
 const listenerKeys = new Map([
-  ["accelerometer", "Accelerometer"],
-  ["gyroscope", "Gyroscope"],
-  ["magnetometer", "Magnetometer"],
-  ["barometer", "Barometer"],
-  ["orientation", "Orientation"],
-  ["gravity", "Gravity"],
+  ["accelerometer", "RNSensorsAccelerometer"],
+  ["gyroscope", "RNSensorsGyroscope"],
+  ["magnetometer", "RNSensorsMagnetometer"],
+  ["barometer", "RNSensorsBarometer"],
+  ["orientation", "RNSensorsOrientation"],
+  ["gravity", "RNSensorsGravity"],
 ]);
 
 const nativeApis = new Map([
