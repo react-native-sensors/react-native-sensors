@@ -15,7 +15,7 @@ RCT_EXPORT_MODULE();
 
 - (id) init {
     self = [super init];
-    NSLog(@"Barometer");
+    NSLog(@"RNSensorsBarometer");
 
     if (self) {
         self->_altimeter = [[CMAltimeter alloc] init];
@@ -26,7 +26,7 @@ RCT_EXPORT_MODULE();
 
 - (NSArray<NSString *> *)supportedEvents
 {
-  return @[@"Barometer"];
+  return @[@"RNSensorsBarometer"];
 }
 
 + (BOOL)requiresMainQueueSetup
@@ -105,7 +105,7 @@ RCT_EXPORT_METHOD(startUpdates) {
                 NSLog(@"Updated altitue value: %f, %f, %f", altitudeData.pressure.doubleValue, altitudeData.timestamp, [RNSensorsUtils sensorTimestampToEpochMilliseconds:altitudeData.timestamp]);
             }
 
-            [self sendEventWithName:@"Barometer" body:@{
+            [self sendEventWithName:@"RNSensorsBarometer" body:@{
                 @"pressure" : @(altitudeData.pressure.doubleValue * 10.0),
                 @"timestamp" : [NSNumber numberWithDouble:[RNSensorsUtils sensorTimestampToEpochMilliseconds:altitudeData.timestamp]]
             }];
