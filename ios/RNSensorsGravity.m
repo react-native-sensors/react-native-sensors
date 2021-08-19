@@ -15,7 +15,7 @@ RCT_EXPORT_MODULE();
 
 - (id) init {
     self = [super init];
-    NSLog(@"Gravity");
+    NSLog(@"RNSensorsGravity");
 
     if (self) {
         self->_motionManager = [[CMMotionManager alloc] init];
@@ -26,7 +26,7 @@ RCT_EXPORT_MODULE();
 
 - (NSArray<NSString *> *)supportedEvents
 {
-  return @[@"Gravity"];
+  return @[@"RNSensorsGravity"];
 }
 
 + (BOOL)requiresMainQueueSetup
@@ -128,7 +128,7 @@ RCT_EXPORT_METHOD(startUpdates) {
              NSLog(@"Updated gravity values: %f, %f, %f, %f", x, y, z, timestamp);
          }
 
-         [self sendEventWithName:@"Gravity" body:@{
+         [self sendEventWithName:@"RNSensorsGravity" body:@{
                                                            @"x" : [NSNumber numberWithDouble:x],
                                                            @"y" : [NSNumber numberWithDouble:y],
                                                            @"z" : [NSNumber numberWithDouble:z],
