@@ -14,7 +14,7 @@ RCT_EXPORT_MODULE();
 
 - (id) init {
     self = [super init];
-    NSLog(@"Accelerometer");
+    NSLog(@"RNSensorsAccelerometer");
 
     if (self) {
         self->_motionManager = [[CMMotionManager alloc] init];
@@ -30,7 +30,7 @@ RCT_EXPORT_MODULE();
 
 - (NSArray<NSString *> *)supportedEvents
 {
-  return @[@"Accelerometer"];
+  return @[@"RNSensorsAccelerometer"];
 }
 
 RCT_REMAP_METHOD(isAvailable,
@@ -125,7 +125,7 @@ RCT_EXPORT_METHOD(startUpdates) {
              NSLog(@"Updated accelerometer values: %f, %f, %f, %f", x, y, z, timestamp);
          }
 
-         [self sendEventWithName:@"Accelerometer" body:@{
+         [self sendEventWithName:@"RNSensorsAccelerometer" body:@{
                                                            @"x" : [NSNumber numberWithDouble:x],
                                                            @"y" : [NSNumber numberWithDouble:y],
                                                            @"z" : [NSNumber numberWithDouble:z],

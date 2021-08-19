@@ -15,7 +15,7 @@ RCT_EXPORT_MODULE();
 
 - (id) init {
     self = [super init];
-    NSLog(@"Magnetometer");
+    NSLog(@"RNSensorsMagnetometer");
 
     if (self) {
         self->_motionManager = [[CMMotionManager alloc] init];
@@ -26,7 +26,7 @@ RCT_EXPORT_MODULE();
 
 - (NSArray<NSString *> *)supportedEvents
 {
-  return @[@"Magnetometer"];
+  return @[@"RNSensorsMagnetometer"];
 }
 
 + (BOOL)requiresMainQueueSetup
@@ -126,7 +126,7 @@ RCT_EXPORT_METHOD(startUpdates) {
              NSLog(@"Updated magnetometer values: %f, %f, %f, %f", x, y, z, timestamp);
          }
 
-         [self sendEventWithName:@"Magnetometer" body:@{
+         [self sendEventWithName:@"RNSensorsMagnetometer" body:@{
                                                            @"x" : [NSNumber numberWithDouble:x],
                                                            @"y" : [NSNumber numberWithDouble:y],
                                                            @"z" : [NSNumber numberWithDouble:z],

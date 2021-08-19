@@ -15,7 +15,7 @@ RCT_EXPORT_MODULE();
 
 - (id) init {
     self = [super init];
-    NSLog(@"Orientation");
+    NSLog(@"RNSensorsOrientation");
 
     if (self) {
         self->_motionManager = [[CMMotionManager alloc] init];
@@ -26,7 +26,7 @@ RCT_EXPORT_MODULE();
 
 - (NSArray<NSString *> *)supportedEvents
 {
-  return @[@"Orientation"];
+  return @[@"RNSensorsOrientation"];
 }
 
 + (BOOL)requiresMainQueueSetup
@@ -149,7 +149,7 @@ RCT_EXPORT_METHOD(startUpdates) {
              NSLog(@"Updated device motion quaternion: %f, %f, %f, %f %f", qx, qy, qz, qw, timestamp);
          }
 
-         [self sendEventWithName:@"Orientation" body:@{
+         [self sendEventWithName:@"RNSensorsOrientation" body:@{
                                                            @"pitch" : [NSNumber numberWithDouble:pitch],
                                                            @"roll" : [NSNumber numberWithDouble:roll],
                                                            @"yaw" : [NSNumber numberWithDouble:yaw],
