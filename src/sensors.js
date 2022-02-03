@@ -21,14 +21,15 @@ const listenerKeys = new Map([
   ["gravity", "RNSensorsGravity"],
 ]);
 
-const nativeApis = new Map([
-  ["accelerometer", AccNative],
-  ["gyroscope", GyroNative],
-  ["magnetometer", MagnNative],
-  ["barometer", BarNative],
-  ["orientation", OrientNative],
-  ["gravity", GravNative],
-]);
+const nativeApis = {
+  accelerometer: AccNative,
+  gyroscope: GyroNative,
+  magnetometer: MagnNative,
+  barometer: BarNative,
+  orientation: OrientNative,
+  gravity: GravNative,
+}
+
 
 const eventEmitterSubscription = new Map([
   ["accelerometer", null],
@@ -54,7 +55,7 @@ function createSensorObservable(sensorType) {
       () => {
         this.isSensorAvailable = true;
 
-        const emitter = new NativeEventEmitter(nativeApis.get(sensorType));
+        const emitter = new NativeEventEmitter(nativeApis[sensorType]);
 
         eventEmitterSubscription.set(
           sensorType,
