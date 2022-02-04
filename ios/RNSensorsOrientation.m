@@ -127,9 +127,8 @@ RCT_EXPORT_METHOD(startUpdates) {
     [self->_motionManager setShowsDeviceMovementDisplay:YES];
 
     /* Receive the orientation data on this block */
-    [self->_motionManager startDeviceMotionUpdatesUsingReferenceFrame:CMAttitudeReferenceFrameXTrueNorthZVertical
-                                               toQueue:[NSOperationQueue mainQueue]
-                                               withHandler:^(CMDeviceMotion *deviceMotion, NSError *error)
+		NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [self->_motionManager startDeviceMotionUpdatesToQueue:queue withHandler:^(CMDeviceMotion *deviceMotion, NSError *error)
      {
          CMAttitude *attitude = deviceMotion.attitude;
          
