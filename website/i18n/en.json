@@ -3,7 +3,7 @@
   "localized-strings": {
     "next": "Next",
     "previous": "Previous",
-    "tagline": "Get your sensor data the easy and reactive way",
+    "tagline": "Get your Accelerometer, Gyroscope, Magnetometer, and Barometer data the easy and reactive way",
     "docs": {
       "API": {
         "title": "API"
