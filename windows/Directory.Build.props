@@ -1,0 +1,11 @@
+<Project>
+  <Import Condition="Exists($([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../')))" Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+  <PropertyGroup>
+    <!-- SolutionDir is only available when building through Visual Studio -->
+    <SolutionDir Condition="'$(SolutionDir)' == ''">$(MSBuildThisFileDirectory)</SolutionDir>
+
+    <!-- Variable for controlling our NuGet reference paths. Consuming applications can override. -->
+    <NuGetRepositoryPath Condition="'$(NuGetRepositoryPath)' == ''">$(SolutionDir)\packages\</NuGetRepositoryPath>
+  </PropertyGroup>
+</Project>

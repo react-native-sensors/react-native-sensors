@@ -10,7 +10,8 @@
     "format": "prettier --write ./src/*",
     "test": "prettier --check ./src/*",
     "semantic-release": "semantic-release",
-    "travis-deploy-once": "travis-deploy-once"
+    "travis-deploy-once": "travis-deploy-once",
+    "windows": "react-native run-windows"
   },
   "main": "index.js",
   "repository": "git@github.com:react-native-sensors/react-native-sensors.git",
@@ -65,6 +66,7 @@
     "pretty-quick": "3.1.0",
     "react": "16.8.4",
     "react-native": "0.57.7",
+    "react-native-windows": "^0.64.0",
     "regenerator-runtime": "0.13.1",
     "rxjs-marbles": "5.0.0",
     "semantic-release": "17.3.9",
