@@ -61,7 +61,7 @@ void GyroscopeManager::setUpdateInterval(uint32_t newInterval) noexcept
     if (m_gyrometer)
     {
         uint32_t minimumReportInterval = m_gyrometer.MinimumReportInterval();
-        m_gyrometer.ReportInterval(std::max(minimumReportInterval, m_desiredIntervalMs));
+        m_gyrometer.ReportInterval(std::max<uint32_t>(minimumReportInterval, m_desiredIntervalMs));
     }
 }
 

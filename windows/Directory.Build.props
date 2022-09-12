@@ -1,6 +1,10 @@
 <Project>
   <Import Condition="Exists($([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../')))" Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
 
+  <PropertyGroup Label="NuGet" Condition="'$(MSBuildProjectExtension)' == '.vcxproj'">
+    <ResolveNuGetPackages>false</ResolveNuGetPackages>
+  </PropertyGroup>
+
   <PropertyGroup>
     <!-- SolutionDir is only available when building through Visual Studio -->
     <SolutionDir Condition="'$(SolutionDir)' == ''">$(MSBuildThisFileDirectory)</SolutionDir>

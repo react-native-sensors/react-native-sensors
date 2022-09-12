@@ -59,7 +59,7 @@ void AccelerometerManager::setUpdateInterval(uint32_t newInterval) noexcept
     if (m_accelerometer)
     {
         uint32_t minimumReportInterval = m_accelerometer.MinimumReportInterval();
-        m_accelerometer.ReportInterval(std::max(minimumReportInterval, m_desiredIntervalMs));
+        m_accelerometer.ReportInterval(std::max<uint32_t>(minimumReportInterval, m_desiredIntervalMs));
     }
 }
 
