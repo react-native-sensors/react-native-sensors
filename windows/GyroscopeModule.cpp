@@ -61,14 +61,7 @@ void GyroscopeManager::setUpdateInterval(uint32_t newInterval) noexcept
     if (m_gyrometer)
     {
         uint32_t minimumReportInterval = m_gyrometer.MinimumReportInterval();
-        if (m_desiredIntervalMs > minimumReportInterval)
-        {
-            m_gyrometer.ReportInterval(m_desiredIntervalMs);
-        }
-        else
-        {
-            m_gyrometer.ReportInterval(minimumReportInterval);
-        }
+        m_gyrometer.ReportInterval(std::max(minimumReportInterval, m_desiredIntervalMs));
     }
 }
 
@@ -78,8 +71,9 @@ void GyroscopeManager::startUpdates() noexcept
 
     if (m_gyrometer && !m_readingChangedEventRevoker)
     {
+        setUpdateInterval(m_desiredIntervalMs);
         m_readingChangedEventRevoker =
-            m_gyrometer.ReadingChanged(winrt::auto_revoke, {get_weak(), &GyroscopeManager::OnReadingChanged});
+            m_gyrometer.ReadingChanged(winrt::auto_revoke, { get_weak(), &GyroscopeManager::OnReadingChanged });
     }
 }
 
@@ -98,31 +92,24 @@ void GyroscopeManager::OnReadingChanged(Gyrometer /* sender */, GyrometerReading
 {
     GyrometerReading reading = args.Reading();
 
-    // Note that CallJSFunction was used intentionally instead of EmitJSEvent here.
-    // At the time of writing this comment, a bug exists in the RNW implementation
-    // that is consumed by this library.
-    // See: * https://github.com/microsoft/react-native-windows/issues/5951 (the bug)
-    //      * https://github.com/microsoft/react-native-windows/pull/6285   (the PR it was fixed in)
-    // The bug is that EmitJSEvent wraps single arguments passed (in this case the JSValueObject)
-    // in an array without reason. This makes it such that on the JS side the type of the data
-    // passed through the event is not what it expects. Using this workaround through
-    // CallJSFunction however does not hit the bug and the data of the event goes through as expected.
-    m_reactContext.CallJSFunction(
+    m_reactContext.EmitJSEvent(
         L"RCTDeviceEventEmitter",
-        L"emit",
         L"Gyroscope",
-        JSValueObject{
-            {"x", reading.AngularVelocityX() / 180 * Pi},
-            {"y", reading.AngularVelocityY() / 180 * Pi},
-            {"z", reading.AngularVelocityZ() / 180 * Pi},
-            {"timestamp", reading.Timestamp().time_since_epoch().count()}});
+        JSValueObject{ { "x", reading.AngularVelocityX() / 180 * Pi },
+                       { "y", reading.AngularVelocityY() / 180 * Pi },
+                       { "z", reading.AngularVelocityZ() / 180 * Pi },
+                       { "timestamp", reading.Timestamp().time_since_epoch().count() } });
 }
 
 GyroscopeModule::~GyroscopeModule()
 {
-    if (m_reactContext)
+    if (m_reactContext && m_gyroManager)
     {
-        m_reactContext.UIDispatcher().Post([gyroManager = m_gyroManager]() { gyroManager->Teardown(); });
+        m_reactContext.UIDispatcher().Post(
+            [gyroManager = std::move(m_gyroManager)]()
+            {
+                gyroManager->Teardown();
+            });
     }
 }
 
@@ -132,27 +119,45 @@ void GyroscopeModule::Initialize(ReactContext const& context) noexcept
     m_gyroManager = winrt::make_self<GyroscopeManager>();
 
     m_reactContext.UIDispatcher().Post(
-        [gyroManager = m_gyroManager, reactContext = m_reactContext]() { gyroManager->Initialize(reactContext); });
+        [gyroManager = m_gyroManager, reactContext = m_reactContext]()
+        {
+            gyroManager->Initialize(reactContext);
+        });
 }
 
 void GyroscopeModule::isAvailable(ReactPromise<void> promise) noexcept
 {
-    m_reactContext.UIDispatcher().Post([gyroManager = m_gyroManager, promise]() { gyroManager->isAvailable(promise); });
+    m_reactContext.UIDispatcher().Post(
+        [gyroManager = m_gyroManager, promise]()
+        {
+            gyroManager->isAvailable(promise);
+        });
 }
 
 void GyroscopeModule::setUpdateInterval(uint32_t newInterval) noexcept
 {
     m_reactContext.UIDispatcher().Post(
-        [gyroManager = m_gyroManager, newInterval]() { gyroManager->setUpdateInterval(newInterval); });
+        [gyroManager = m_gyroManager, newInterval]()
+        {
+            gyroManager->setUpdateInterval(newInterval);
+        });
 }
 
 void GyroscopeModule::startUpdates() noexcept
 {
-    m_reactContext.UIDispatcher().Post([gyroManager = m_gyroManager]() { gyroManager->startUpdates(); });
+    m_reactContext.UIDispatcher().Post(
+        [gyroManager = m_gyroManager]()
+        {
+            gyroManager->startUpdates();
+        });
 }
 
 void GyroscopeModule::stopUpdates() noexcept
 {
-    m_reactContext.UIDispatcher().Post([gyroManager = m_gyroManager]() { gyroManager->stopUpdates(); });
+    m_reactContext.UIDispatcher().Post(
+        [gyroManager = m_gyroManager]()
+        {
+            gyroManager->stopUpdates();
+        });
 }
 } // namespace winrt::RNSensors::implementation
