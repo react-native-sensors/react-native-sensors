@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+  <!-- Use cleartext traffic for the sideload connection which can happen on any ip (or localhost) -->
+  <base-config cleartextTrafficPermitted="true"/>
+  <domain-config cleartextTrafficPermitted="true">
+    <domain includeSubdomains="false">localhost</domain>
+  </domain-config>
+  <!-- Allow Fiddler to intercept network traffic in debug -->
+  <debug-overrides>
+    <trust-anchors>
+      <certificates src="user"/>
+    </trust-anchors>
+  </debug-overrides>
+</network-security-config>
