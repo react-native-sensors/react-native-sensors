@@ -1,49 +1,41 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import * as Sensors from "react-native-sensors";
+import sensors from "react-native-sensors";
 
-const Value = ({ name, value }) => (
+const SensorValue = ({ name, value }) => (
   <View style={styles.valueContainer}>
     <Text style={styles.valueName}>{name}:</Text>
-    <Text style={styles.valueValue}>{new String(value).substr(0, 8)}</Text>
+    <Text style={styles.valueValue}>{new String(value).substring(0, 8)}</Text>
   </View>
 );
 
-export default function (sensorName, values) {
-  const sensor$ = Sensors[sensorName];
+export const SensorView = ({ sensorName, values }) => {
+  const sensor$ = sensors[sensorName];
+  const initialValue = values.reduce((carry, val) => ({ ...carry, [val]: 0 }), {});
+  const [sensorValues, setSensorValues] = useState(initialValue);
+  const [subscription, setSubscription] = useState();
 
-  return class SensorView extends Component {
-    constructor(props) {
-      super(props);
+  useEffect(() => {
+    const sensorSubsciption = sensor$.subscribe((values) => {
+      setSensorValues({ ...values });
+    });
+    setSubscription(sensorSubsciption);
 
-      const initialValue = values.reduce((carry, val) => ({ ...carry, [val]: 0 }), {});
-      this.state = initialValue;
-    }
+    return () => {
+      subscription.unsubscribe();
+      setSubscription(null);
+    };
+  }, []);
 
-    componentWillMount() {
-      const subscription = sensor$.subscribe((values) => {
-        this.setState({ ...values });
-      });
-      this.setState({ subscription });
-    }
-
-    componentWillUnmount() {
-      this.state.subscription.unsubscribe();
-      this.setState({ subscription: null });
-    }
-
-    render() {
-      return (
-        <View style={styles.container}>
-          <Text style={styles.headline}>{sensorName} values</Text>
-          {values.map((valueName) => (
-            <Value key={sensorName + valueName} name={valueName} value={this.state[valueName]} />
-          ))}
-        </View>
-      );
-    }
-  };
-}
+  return (
+    <View style={styles.container}>
+      <Text style={styles.headline}>{sensorName} values</Text>
+      {values.map((valueName) => (
+        <SensorValue key={sensorName + valueName} name={valueName} value={sensorValues[valueName]} />
+      ))}
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -77,3 +69,5 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+export default SensorView;

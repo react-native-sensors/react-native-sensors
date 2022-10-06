@@ -77,11 +77,12 @@
   "files": [
     "/RNSensors.podspec",
     "/src/*.js",
+    "/index.*",
     "/android/",
     "/ios/",
     "/windows/",
-    "LICENSE",
-    "/readme.md",
+    "/LICENSE",
+    "/README.md",
     "/scripts/",
     "/website/"
   ]
