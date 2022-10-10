@@ -10,8 +10,7 @@
     "format": "prettier --write ./src/*",
     "test": "prettier --check ./src/*",
     "semantic-release": "semantic-release",
-    "travis-deploy-once": "travis-deploy-once",
-    "windows": "react-native run-windows"
+    "travis-deploy-once": "travis-deploy-once"
   },
   "main": "index.js",
   "types": "index.d.ts",

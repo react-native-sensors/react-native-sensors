@@ -4,7 +4,11 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "windows": "react-native run-windows",
+    "pod": "cd ios/ && pod install"
   },
   "dependencies": {
     "react": "^17.0.2",
