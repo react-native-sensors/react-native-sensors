@@ -30,7 +30,7 @@ private:
         m_readingChangedEventRevoker;
 };
 
-REACT_MODULE(AccelerometerModule, L"Accelerometer")
+REACT_MODULE(AccelerometerModule, L"RNSensorsAccelerometer")
 struct AccelerometerModule
 {
 public:

@@ -31,7 +31,7 @@ private:
         m_readingChangedEventRevoker;
 };
 
-REACT_MODULE(GyroscopeModule, L"Gyroscope");
+REACT_MODULE(GyroscopeModule, L"RNSensorsGyroscope");
 struct GyroscopeModule
 {
 public:

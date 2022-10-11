@@ -29,7 +29,7 @@ namespace winrt::RNSensors::implementation
     WS::Magnetometer::ReadingChanged_revoker m_readingChangedEventRevoker;
   };
 
-  REACT_MODULE(MagnetometerModule, L"Magnetometer")
+  REACT_MODULE(MagnetometerModule, L"RNSensorsMagnetometer")
     struct MagnetometerModule
   {
   public:

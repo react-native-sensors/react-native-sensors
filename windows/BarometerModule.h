@@ -29,7 +29,7 @@ namespace winrt::RNSensors::implementation
     WS::Barometer::ReadingChanged_revoker m_readingChangedEventRevoker;
   };
 
-  REACT_MODULE(BarometerModule, L"Barometer")
+  REACT_MODULE(BarometerModule, L"RNSensorsBarometer")
     struct BarometerModule
   {
   public:
