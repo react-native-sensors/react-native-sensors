@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView } from "react-native";
 import SensorView from "./SensorView";
 
 export const App = () => {
