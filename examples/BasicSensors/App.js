@@ -15,7 +15,7 @@ export const App = () => {
   return (
     <ScrollView>
       {Object.entries(availableSensors).map(([name, values]) => (
-        <SensorView sensorName={name} values={values} />
+        <SensorView key={name} sensorName={name} values={values} />
       ))}
     </ScrollView>
   );

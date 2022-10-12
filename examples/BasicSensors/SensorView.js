@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import sensors from "react-native-sensors";
 
@@ -10,22 +10,20 @@ const SensorValue = ({ name, value }) => (
 );
 
 export const SensorView = ({ sensorName, values }) => {
-  // const sensor$ = sensors[sensorName];
   const initialValue = values.reduce((carry, val) => ({ ...carry, [val]: 0 }), {});
   const [sensorValues, setSensorValues] = useState(initialValue);
-  const [subscription, setSubscription] = useState();
+  const sensorSubscriptionRef = useRef();
 
-  // useEffect(() => {
-  //   const sensorSubsciption = sensor$.subscribe((values) => {
-  //     setSensorValues({ ...values });
-  //   });
-  //   setSubscription(sensorSubsciption);
+  useEffect(() => {
+    sensorSubscriptionRef.current = sensor$.subscribe((values) => {
+      setSensorValues({ ...values });
+    });
 
-  //   return () => {
-  //     subscription.unsubscribe();
-  //     setSubscription(null);
-  //   };
-  // }, []);
+    return () => {
+      sensorSubscriptionRef.current.unsubscribe();
+      sensorSubscriptionRef.current = null;
+    };
+  }, []);
 
   return (
     <View style={styles.container}>

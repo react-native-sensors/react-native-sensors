@@ -70,7 +70,7 @@ RCT_EXPORT_METHOD(setUpdateInterval:(double) interval) {
 
 RCT_EXPORT_METHOD(setLogLevel:(int) level) {
     if (level > 0) {
-        NSLog(@"setLogLevel: %f", level);
+        NSLog(@"setLogLevel: %d", level);
     }
 
     self->logLevel = level;
