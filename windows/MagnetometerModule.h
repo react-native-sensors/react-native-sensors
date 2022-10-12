@@ -2,8 +2,6 @@
 
 #include "NativeModules.h"
 
-#include <winrt/Windows.Devices.Sensors.h>
-
 namespace RN = winrt::Microsoft::ReactNative;
 namespace WS = winrt::Windows::Devices::Sensors;
 

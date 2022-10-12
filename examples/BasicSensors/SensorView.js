@@ -10,22 +10,22 @@ const SensorValue = ({ name, value }) => (
 );
 
 export const SensorView = ({ sensorName, values }) => {
-  const sensor$ = sensors[sensorName];
+  // const sensor$ = sensors[sensorName];
   const initialValue = values.reduce((carry, val) => ({ ...carry, [val]: 0 }), {});
   const [sensorValues, setSensorValues] = useState(initialValue);
   const [subscription, setSubscription] = useState();
 
-  useEffect(() => {
-    const sensorSubsciption = sensor$.subscribe((values) => {
-      setSensorValues({ ...values });
-    });
-    setSubscription(sensorSubsciption);
+  // useEffect(() => {
+  //   const sensorSubsciption = sensor$.subscribe((values) => {
+  //     setSensorValues({ ...values });
+  //   });
+  //   setSubscription(sensorSubsciption);
 
-    return () => {
-      subscription.unsubscribe();
-      setSubscription(null);
-    };
-  }, []);
+  //   return () => {
+  //     subscription.unsubscribe();
+  //     setSubscription(null);
+  //   };
+  // }, []);
 
   return (
     <View style={styles.container}>
@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     textAlign: "left",
     margin: 10,
+    color: "#333",
   },
   valueContainer: {
     flexDirection: "row",
@@ -57,11 +58,13 @@ const styles = StyleSheet.create({
   valueValue: {
     width: 200,
     fontSize: 20,
+    color: "#333",
   },
   valueName: {
     width: 50,
     fontSize: 20,
     fontWeight: "bold",
+    color: "#333",
   },
   instructions: {
     textAlign: "center",
