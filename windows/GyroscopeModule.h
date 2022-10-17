@@ -50,6 +50,14 @@ public:
     REACT_METHOD(stopUpdates)
     void stopUpdates() noexcept;
 
+    // Suppresses a warning that isn't really valid with react-native-windows
+    REACT_METHOD(addListener);
+    void addListener(std::string) noexcept;
+
+    // Suppresses a warning that isn't really valid with react-native-windows
+    REACT_METHOD(removeListeners);
+    void removeListeners(int64_t) noexcept;
+
 private:
     RN::ReactContext m_reactContext;
     winrt::com_ptr<GyroscopeManager> m_gyroManager;

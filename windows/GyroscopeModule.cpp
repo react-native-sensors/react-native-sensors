@@ -160,4 +160,14 @@ void GyroscopeModule::stopUpdates() noexcept
             gyroManager->stopUpdates();
         });
 }
+
+void GyroscopeModule::addListener(std::string) noexcept
+{
+    // Keep: Required for RN build in Event Emitter Calls.
+}
+
+void GyroscopeModule::removeListeners(int64_t) noexcept
+{
+    // Keep: Required for RN build in Event Emitter Calls.
+}
 } // namespace winrt::RNSensors::implementation

@@ -116,6 +116,16 @@ void BarometerModule::stopUpdates() noexcept
     });
   }
 }
+
+void BarometerModule::addListener(std::string) noexcept
+{
+    // Keep: Required for RN build in Event Emitter Calls.
+}
+
+void BarometerModule::removeListeners(int64_t) noexcept
+{
+    // Keep: Required for RN build in Event Emitter Calls.
+}
 } // namespace winrt::RNSensors::implementation
 
 

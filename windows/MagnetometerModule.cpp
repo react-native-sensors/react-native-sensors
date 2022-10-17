@@ -118,6 +118,16 @@ void MagnetometerModule::stopUpdates() noexcept
     });
   }
 }
+
+void MagnetometerModule::addListener(std::string) noexcept
+{
+  // Keep: Required for RN build in Event Emitter Calls.
+}
+
+void MagnetometerModule::removeListeners(int64_t) noexcept
+{
+  // Keep: Required for RN build in Event Emitter Calls.
+}
 } // namespace winrt::RNSensors::implementation
 
 

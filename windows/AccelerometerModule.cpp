@@ -158,4 +158,15 @@ void AccelerometerModule::stopUpdates() noexcept
             accelManager->stopUpdates();
         });
 }
+
+void AccelerometerModule::addListener(std::string) noexcept
+{
+    // Keep: Required for RN build in Event Emitter Calls.
+}
+
+void AccelerometerModule::removeListeners(int64_t) noexcept
+{
+    // Keep: Required for RN build in Event Emitter Calls.
+}
+
 } // namespace winrt::RNSensors::implementation
