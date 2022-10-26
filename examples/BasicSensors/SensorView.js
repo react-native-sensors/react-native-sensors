@@ -10,6 +10,7 @@ const SensorValue = ({ name, value }) => (
 );
 
 export const SensorView = ({ sensorName, values }) => {
+  const sensor$ = sensors[sensorName];
   const initialValue = values.reduce((carry, val) => ({ ...carry, [val]: 0 }), {});
   const [sensorValues, setSensorValues] = useState(initialValue);
   const sensorSubscriptionRef = useRef();
