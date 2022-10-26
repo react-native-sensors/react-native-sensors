@@ -64,7 +64,7 @@
     "prettier": "2.2.1",
     "pretty-quick": "3.1.0",
     "react": "^17.0.0",
-    "react-native": "^0.68.0",
+    "react-native": "^0.70.0",
     "regenerator-runtime": "0.13.1",
     "rxjs-marbles": "5.0.0",
     "semantic-release": "17.3.9",
