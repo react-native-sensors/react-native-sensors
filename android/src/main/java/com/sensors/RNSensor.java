@@ -21,6 +21,7 @@ public class RNSensor extends ReactContextBaseJavaModule implements SensorEventL
   private final ReactApplicationContext reactContext;
   private final SensorManager sensorManager;
   private final Sensor sensor;
+  private final double gravityValue = 9.80665; // m/s^2
   private double lastReading = (double) System.currentTimeMillis();
   private int interval;
   private Arguments arguments;
@@ -114,6 +115,11 @@ public class RNSensor extends ReactContextBaseJavaModule implements SensorEventL
       {
         case Sensor.TYPE_ACCELEROMETER:
         case Sensor.TYPE_GRAVITY:
+          map.putDouble("x", sensorEvent.values[0] / gravityValue);
+          map.putDouble("y", sensorEvent.values[1] / gravityValue);
+          map.putDouble("z", sensorEvent.values[2] / gravityValue);
+          break;
+
         case Sensor.TYPE_GYROSCOPE:
         case Sensor.TYPE_MAGNETIC_FIELD:
           map.putDouble("x", sensorEvent.values[0]);
