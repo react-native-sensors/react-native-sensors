@@ -21,7 +21,7 @@ public class RNSensor extends ReactContextBaseJavaModule implements SensorEventL
   private final ReactApplicationContext reactContext;
   private final SensorManager sensorManager;
   private final Sensor sensor;
-  private final double gravityValue = 9.80665; // m/s^2
+  private final double gravityValue = -9.80665; // m/s^2
   private double lastReading = (double) System.currentTimeMillis();
   private int interval;
   private Arguments arguments;
