@@ -25,7 +25,7 @@ const nativeApis = new Map([
 const availableSensors = {};
 
 export function start(type) {
-  const api = nativeApis.get(type.toLocaleLowerCase());
+  const api = nativeApis.get(type);
   api.startUpdates();
 }
 
@@ -34,7 +34,7 @@ export function isAvailable(type) {
     return availableSensors[type];
   }
 
-  const api = nativeApis.get(type.toLocaleLowerCase());
+  const api = nativeApis.get(type);
   const promise = api.isAvailable();
   availableSensors[type] = promise;
 
@@ -42,16 +42,16 @@ export function isAvailable(type) {
 }
 
 export function stop(type) {
-  const api = nativeApis.get(type.toLocaleLowerCase());
+  const api = nativeApis.get(type);
   api.stopUpdates();
 }
 
 export function setUpdateInterval(type, updateInterval) {
-  const api = nativeApis.get(type.toLocaleLowerCase());
+  const api = nativeApis.get(type);
   api.setUpdateInterval(updateInterval);
 }
 
 export function setLogLevelForType(type, level) {
-  const api = nativeApis.get(type.toLocaleLowerCase());
+  const api = nativeApis.get(type);
   api.setLogLevel(level);
 }
