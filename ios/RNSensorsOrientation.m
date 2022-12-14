@@ -89,7 +89,7 @@ RCT_EXPORT_METHOD(getUpdateInterval:(RCTResponseSenderBlock) cb) {
 
 RCT_EXPORT_METHOD(getData:(RCTResponseSenderBlock) cb) {
     CMAttitude *attitude = self->_motionManager.deviceMotion.attitude;
-    
+
     double qx = attitude.quaternion.x;
     double qy = attitude.quaternion.y;
     double qz = attitude.quaternion.z;
@@ -128,10 +128,10 @@ RCT_EXPORT_METHOD(startUpdates) {
 
     /* Receive the orientation data on this block */
 		NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [self->_motionManager startDeviceMotionUpdatesToQueue:queue withHandler:^(CMDeviceMotion *deviceMotion, NSError *error)
+    [self->_motionManager startDeviceMotionUpdatesUsingReferenceFrame:CMAttitudeReferenceFrameXTrueNorthZVertical toQueue:queue withHandler:^(CMDeviceMotion *deviceMotion, NSError *error)
      {
          CMAttitude *attitude = deviceMotion.attitude;
-         
+
          double qx = attitude.quaternion.x;
          double qy = attitude.quaternion.y;
          double qz = attitude.quaternion.z;
