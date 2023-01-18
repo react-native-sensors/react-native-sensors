@@ -198,6 +198,8 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+
+    implementation project(':react-native-sensors')
 }
 
 // Run this once to be able to run the application with BUCK
