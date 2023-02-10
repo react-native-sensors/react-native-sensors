@@ -46,11 +46,9 @@ public class RNSensor extends ReactContextBaseJavaModule implements SensorEventL
   @ReactMethod
   public void isAvailable(Promise promise) {
     if (this.sensor == null) {
-      // No sensor found, throw error
-      promise.reject(new RuntimeException("No " + this.sensorName + " found"));
-      return;
+      promise.resolve(false);
     }
-    promise.resolve(null);
+    promise.resolve(true);
   }
 
   @ReactMethod

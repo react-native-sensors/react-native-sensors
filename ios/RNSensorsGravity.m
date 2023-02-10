@@ -50,12 +50,12 @@ RCT_REMAP_METHOD(isAvailable,
         {
             resolve(@YES);
         } else {
-            reject(@"-1", @"Gravity is not active", nil);
+            resolve(@NO);
         }
     }
     else
     {
-        reject(@"-1", @"Gravity is not available", nil);
+        resolve(@NO);
     }
 }
 
