@@ -161,13 +161,19 @@ void GyroscopeModule::stopUpdates() noexcept
         });
 }
 
+// Keep: Required for RN build in Event Emitter Calls.
 void GyroscopeModule::addListener(std::string) noexcept
 {
-    // Keep: Required for RN build in Event Emitter Calls.
+  hasListeners = true;
 }
 
+// Keep: Required for RN build in Event Emitter Calls.
 void GyroscopeModule::removeListeners(int64_t) noexcept
 {
-    // Keep: Required for RN build in Event Emitter Calls.
+  hasListeners = false;
+  // If we no longer have listeners registered we should also probably also stop the sensor since the sensor events are essentially being dropped.
+  if (m_gyroManager) {
+    GyroscopeModule::stopUpdates();
+  }
 }
 } // namespace winrt::RNSensors::implementation

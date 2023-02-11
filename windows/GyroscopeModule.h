@@ -61,5 +61,6 @@ public:
 private:
     RN::ReactContext m_reactContext;
     winrt::com_ptr<GyroscopeManager> m_gyroManager;
+    bool hasListeners;
 };
 } // namespace winrt::RNSensors::implementation

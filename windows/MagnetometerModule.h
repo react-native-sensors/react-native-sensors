@@ -57,5 +57,6 @@ namespace winrt::RNSensors::implementation
   private:
     RN::ReactContext m_reactContext;
     winrt::com_ptr<MagnetometerManager> m_magnetoManager;
+    bool hasListeners;
   };
 }

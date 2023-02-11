@@ -7,6 +7,7 @@
 @interface RNSensorsOrientation : RCTEventEmitter <RCTBridgeModule> {
     CMMotionManager *_motionManager;
     int logLevel;
+    bool hasListeners;
 }
 
 - (void) isAvailableWithResolver:(RCTPromiseResolveBlock) resolve

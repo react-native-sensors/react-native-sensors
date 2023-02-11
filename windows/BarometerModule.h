@@ -57,5 +57,6 @@ namespace winrt::RNSensors::implementation
   private:
     RN::ReactContext m_reactContext;
     winrt::com_ptr<BarometerManager> m_baroManager;
+    bool hasListeners;
   };
 }

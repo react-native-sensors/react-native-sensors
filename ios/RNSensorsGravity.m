@@ -146,4 +146,20 @@ RCT_EXPORT_METHOD(stopUpdates) {
     [self->_motionManager stopDeviceMotionUpdates];
 }
 
+// Will be called when this module's first listener is added.
+-(void)startObserving {
+    hasListeners = YES;
+    // Set up any upstream listeners or background tasks as necessary
+}
+
+// Will be called when this module's last listener is removed, or on dealloc.
+-(void)stopObserving {
+    // Remove upstream listeners, stop unnecessary background tasks
+    hasListeners = NO;
+    // If we no longer have listeners registered we should also probably also stop the sensor since the sensor events are essentially being dropped.
+    if (self->_motionManager) {
+        [self stopUpdates];
+    }
+}
+
 @end

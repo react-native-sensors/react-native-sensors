@@ -74,16 +74,6 @@ public class RNSensor extends ReactContextBaseJavaModule implements SensorEventL
     sensorManager.unregisterListener(this);
   }
 
-  @ReactMethod
-  public void addListener(String eventName) {
-    // Set up any upstream listeners or background tasks as necessary
-  }
-
-  @ReactMethod
-  public void removeListeners(Integer count) {
-    // Remove upstream listeners, stop unnecessary background tasks
-  }
-
   @Override
   public String getName() {
     return this.sensorName;
@@ -177,6 +167,9 @@ public class RNSensor extends ReactContextBaseJavaModule implements SensorEventL
   @ReactMethod
   public void removeListeners(Integer count) {
     isBeingObserved = false;
-    stopUpdates(); // maybe only calling `stopUpdates()` is enough
+    // If we no longer have listeners registered we should also probably also stop the sensor since the sensor events are essentially being dropped.
+    if (this.sensorManager != null) {
+      stopUpdates(); // maybe only calling `stopUpdates()` is enough
+    }
   }
 }

@@ -119,14 +119,20 @@ void MagnetometerModule::stopUpdates() noexcept
   }
 }
 
+// Keep: Required for RN build in Event Emitter Calls.
 void MagnetometerModule::addListener(std::string) noexcept
 {
-  // Keep: Required for RN build in Event Emitter Calls.
+  hasListeners = true;
 }
 
+// Keep: Required for RN build in Event Emitter Calls.
 void MagnetometerModule::removeListeners(int64_t) noexcept
 {
-  // Keep: Required for RN build in Event Emitter Calls.
+  hasListeners = false;
+  // If we no longer have listeners registered we should also probably also stop the sensor since the sensor events are essentially being dropped.
+  if (m_magnetoManager) {
+    MagnetometerModule::stopUpdates();
+  }
 }
 } // namespace winrt::RNSensors::implementation
 
