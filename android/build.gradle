@@ -11,12 +11,13 @@ repositories {
 
 buildscript {
     repositories {
+        mavenLocal()
+        mavenCentral()
         google()
-        jcenter()
     }
 
     dependencies {
-        classpath("com.android.tools.build:gradle:3.5.1")
+        classpath("com.android.tools.build:gradle:7.2.0")
     }
 }
 
@@ -27,7 +28,7 @@ android {
 
     defaultConfig {
         minSdkVersion 17
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         ndk {
@@ -38,8 +39,6 @@ android {
        warning 'InvalidPackage'
     }
 }
-
-
 
 dependencies {
     implementation 'com.facebook.react:react-native:+'

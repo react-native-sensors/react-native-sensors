@@ -7,6 +7,7 @@
 @interface RNSensorsBarometer : RCTEventEmitter <RCTBridgeModule> {
     CMAltimeter *_altimeter;
     int logLevel;
+    bool hasListeners;
 }
 
 - (void) isAvailableWithResolver:(RCTPromiseResolveBlock) resolve
