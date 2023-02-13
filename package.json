@@ -61,7 +61,7 @@
     "babel-core": "6.26.3",
     "babel-jest": "24.1.0",
     "babel-preset-react-native": "4.0.0",
-    "husky": "4.2.3",
+    "husky": "4.3.7",
     "jest": "24.1.0",
     "metro-config": "^0.67.0",
     "prettier": "2.2.1",
