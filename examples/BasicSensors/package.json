@@ -4,19 +4,23 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "windows": "react-native run-windows",
+    "pod": "cd ios/ && pod install"
   },
   "dependencies": {
-    "react": "16.6.1",
-    "react-native": "0.57.7",
-    "react-native-sensors": "^5.1.2",
+    "react": "^17.0.2",
+    "react-native": "^0.68.5",
+    "react-native-windows": "^0.68.15",
     "rxjs": "^6.3.3"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
     "jest": "23.6.0",
-    "metro-react-native-babel-preset": "0.49.2",
-    "react-test-renderer": "16.6.1"
+    "metro-react-native-babel-preset": "^0.68.0",
+    "react-test-renderer": "^17.0.0"
   },
   "jest": {
     "preset": "react-native"

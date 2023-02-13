@@ -46,4 +46,12 @@ android/gradlew
 android/gradlew.bat
 yarn.lock
 
+# Visual Studio
+.vs/
+Generated\ Files/
+windows/packages/
+windows/x64/
+windows/x86/
+windows/arm64/
+
 .vscode
