@@ -172,8 +172,6 @@ void GyroscopeModule::removeListeners(int64_t) noexcept
 {
   hasListeners = false;
   // If we no longer have listeners registered we should also probably also stop the sensor since the sensor events are essentially being dropped.
-  if (m_gyroManager) {
-    GyroscopeModule::stopUpdates();
-  }
+  GyroscopeModule::stopUpdates();
 }
 } // namespace winrt::RNSensors::implementation
