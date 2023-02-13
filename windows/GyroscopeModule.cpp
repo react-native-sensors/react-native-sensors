@@ -168,9 +168,9 @@ void GyroscopeModule::addListener(std::string) noexcept
 }
 
 // Keep: Required for RN build in Event Emitter Calls.
-void GyroscopeModule::removeListeners(int64_t) noexcept
+void GyroscopeModule::removeListeners(int64_t count) noexcept
 {
-    m_listenerCount -= 1;
+    m_listenerCount -= count;
     if (m_listenerCount <= 0) {
         // If we no longer have listeners registered we should also probably also stop the sensor since the sensor events are essentially being dropped.
         GyroscopeModule::stopUpdates();
