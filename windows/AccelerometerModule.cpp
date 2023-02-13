@@ -162,15 +162,17 @@ void AccelerometerModule::stopUpdates() noexcept
 // Keep: Required for RN build in Event Emitter Calls.
 void AccelerometerModule::addListener(std::string) noexcept
 {
-  hasListeners = true;
+    m_listenerCount += 1;
 }
 
 // Keep: Required for RN build in Event Emitter Calls.
-void AccelerometerModule::removeListeners(int64_t) noexcept
+void AccelerometerModule::removeListeners(int64_t count) noexcept
 {
-  hasListeners = false;
-  // If we no longer have listeners registered we should also probably also stop the sensor since the sensor events are essentially being dropped.
-  AccelerometerModule::stopUpdates();
+    m_listenerCount -= 1;
+    if (m_listenerCount <= 0) {
+        // If we no longer have listeners registered we should also probably also stop the sensor since the sensor events are essentially being dropped.
+        AccelerometerModule::stopUpdates();
+    }
 }
 
 } // namespace winrt::RNSensors::implementation

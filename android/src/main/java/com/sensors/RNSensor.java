@@ -31,7 +31,7 @@ public class RNSensor extends ReactContextBaseJavaModule implements SensorEventL
   private float[] orientation = new float[3];
   private float[] quaternion = new float[4];
 
-  private Boolean isBeingObserved = false;
+  private int listenerCount = 0;
 
   public RNSensor(ReactApplicationContext reactContext, String sensorName, int sensorType) {
     super(reactContext);
@@ -96,7 +96,7 @@ public class RNSensor extends ReactContextBaseJavaModule implements SensorEventL
 
   @Override
   public void onSensorChanged(SensorEvent sensorEvent) {
-    if(!isBeingObserved) {
+    if(this.listenerCount <= 0) {
       return; // avoid all the computation if there are no observers
     }
 
@@ -159,16 +159,16 @@ public class RNSensor extends ReactContextBaseJavaModule implements SensorEventL
   // not implementing this method will cause a warning on RN 0.65 onwards
   @ReactMethod
   public void addListener(String eventName) {
-    isBeingObserved = true;
+    this.listenerCount += 1;
   }
 
   // this is called by RN when the last listener is deregistered
   // not implementing this method will cause a warning on RN 0.65 onwards
   @ReactMethod
   public void removeListeners(Integer count) {
-    isBeingObserved = false;
+    this.listenerCount -= count;
     // If we no longer have listeners registered we should also probably also stop the sensor since the sensor events are essentially being dropped.
-    if (this.sensorManager != null) {
+    if (this.sensorManager != null && this.listenerCount <= 0) {
       stopUpdates(); // maybe only calling `stopUpdates()` is enough
     }
   }

@@ -61,6 +61,6 @@ public:
 private:
     RN::ReactContext m_reactContext;
     winrt::com_ptr<AccelerometerManager> m_accelManager;
-    bool hasListeners;
+    int64_t m_listenerCount;
 };
 } // namespace winrt::RNSensors::implementation

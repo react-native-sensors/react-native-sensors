@@ -26,7 +26,6 @@ const availableSensors = {};
 
 export function start(type) {
   const api = nativeApis.get(type);
-  console.log(`Starting sensor: ${type}`);
   api.startUpdates();
 }
 
@@ -55,5 +54,4 @@ export function setUpdateInterval(type, updateInterval) {
 export function setLogLevelForType(type, level) {
   const api = nativeApis.get(type);
   api.setLogLevel(level);
-  console.log(`Setting log level for ${type} ${level}`);
 }

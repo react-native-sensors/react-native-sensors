@@ -9,54 +9,54 @@ namespace winrt::RNSensors::implementation
 {
   struct MagnetometerManager : public winrt::implements<MagnetometerManager, winrt::Windows::Foundation::IInspectable>
   {
-    void Initialize(RN::ReactContext const& context);
-    void Teardown();
+	void Initialize(RN::ReactContext const& context);
+	void Teardown();
 
-    void isAvailable(RN::ReactPromise<void> /* promise */) noexcept;
-    void setUpdateInterval(uint32_t /* newInterval */) noexcept;
-    void startUpdates() noexcept;
-    void stopUpdates() noexcept;
+	void isAvailable(RN::ReactPromise<void> /* promise */) noexcept;
+	void setUpdateInterval(uint32_t /* newInterval */) noexcept;
+	void startUpdates() noexcept;
+	void stopUpdates() noexcept;
 
   private:
-    RN::ReactContext m_reactContext;
-    WS::Magnetometer m_magnetometer{ nullptr };
+	RN::ReactContext m_reactContext;
+	WS::Magnetometer m_magnetometer{ nullptr };
 
-    uint32_t m_desiredIntervalMs = 16;
+	uint32_t m_desiredIntervalMs = 16;
 
-    void OnReadingChanged(WS::Magnetometer /* sender */, WS::MagnetometerReadingChangedEventArgs /* args */);
-    WS::Magnetometer::ReadingChanged_revoker m_readingChangedEventRevoker;
+	void OnReadingChanged(WS::Magnetometer /* sender */, WS::MagnetometerReadingChangedEventArgs /* args */);
+	WS::Magnetometer::ReadingChanged_revoker m_readingChangedEventRevoker;
   };
 
   REACT_MODULE(MagnetometerModule, L"RNSensorsMagnetometer")
-    struct MagnetometerModule
+	struct MagnetometerModule
   {
   public:
-    MagnetometerModule() = default;
-    ~MagnetometerModule();
+	MagnetometerModule() = default;
+	~MagnetometerModule();
 
-    REACT_METHOD(isAvailable)
-      void isAvailable(RN::ReactPromise<void> promise) noexcept;
+	REACT_METHOD(isAvailable)
+	  void isAvailable(RN::ReactPromise<void> promise) noexcept;
 
-    REACT_METHOD(setUpdateInterval)
-      void setUpdateInterval(uint32_t newInterval) noexcept;
+	REACT_METHOD(setUpdateInterval)
+	  void setUpdateInterval(uint32_t newInterval) noexcept;
 
-    REACT_METHOD(startUpdates)
-      void startUpdates() noexcept;
+	REACT_METHOD(startUpdates)
+	  void startUpdates() noexcept;
 
-    REACT_METHOD(stopUpdates)
-      void stopUpdates() noexcept;
+	REACT_METHOD(stopUpdates)
+	  void stopUpdates() noexcept;
 
-    // Suppresses a warning that isn't really valid with react-native-windows
-    REACT_METHOD(addListener);
-    void addListener(std::string) noexcept;
+	// Suppresses a warning that isn't really valid with react-native-windows
+	REACT_METHOD(addListener);
+	void addListener(std::string) noexcept;
 
-    // Suppresses a warning that isn't really valid with react-native-windows
-    REACT_METHOD(removeListeners);
-    void removeListeners(int64_t) noexcept;
+	// Suppresses a warning that isn't really valid with react-native-windows
+	REACT_METHOD(removeListeners);
+	void removeListeners(int64_t) noexcept;
 
   private:
-    RN::ReactContext m_reactContext;
-    winrt::com_ptr<MagnetometerManager> m_magnetoManager;
-    bool hasListeners;
+	RN::ReactContext m_reactContext;
+	winrt::com_ptr<MagnetometerManager> m_magnetoManager;
+	int64_t m_listenerCount;
   };
 }

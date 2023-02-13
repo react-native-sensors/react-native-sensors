@@ -164,14 +164,16 @@ void GyroscopeModule::stopUpdates() noexcept
 // Keep: Required for RN build in Event Emitter Calls.
 void GyroscopeModule::addListener(std::string) noexcept
 {
-  hasListeners = true;
+    m_listenerCount += 1;
 }
 
 // Keep: Required for RN build in Event Emitter Calls.
 void GyroscopeModule::removeListeners(int64_t) noexcept
 {
-  hasListeners = false;
-  // If we no longer have listeners registered we should also probably also stop the sensor since the sensor events are essentially being dropped.
-  GyroscopeModule::stopUpdates();
+    m_listenerCount -= 1;
+    if (m_listenerCount <= 0) {
+        // If we no longer have listeners registered we should also probably also stop the sensor since the sensor events are essentially being dropped.
+        GyroscopeModule::stopUpdates();
+    }
 }
 } // namespace winrt::RNSensors::implementation
