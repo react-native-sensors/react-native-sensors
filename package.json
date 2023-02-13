@@ -70,7 +70,7 @@
     "react-native": "^0.68.0",
     "regenerator-runtime": "0.13.1",
     "rxjs-marbles": "5.0.0",
-    "semantic-release": "17.3.9",
+    "semantic-release": "19.0.3",
     "travis-deploy-once": "5.0.11"
   },
   "files": [
