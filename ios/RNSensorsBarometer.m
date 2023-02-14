@@ -50,7 +50,7 @@ RCT_REMAP_METHOD(isAvailable,
     }
     else
     {
-        reject(@"-1", @"Barometer is not available", nil);
+        resolve(@NO);
     }
 }
 
