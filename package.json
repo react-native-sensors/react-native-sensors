@@ -66,7 +66,7 @@
     "metro-config": "^0.67.0",
     "prettier": "2.2.1",
     "pretty-quick": "3.1.0",
-    "react": "^17.0.2",
+    "react": "^18.0.0",
     "react-native": "^0.68.0",
     "regenerator-runtime": "0.13.1",
     "rxjs-marbles": "5.0.0",
