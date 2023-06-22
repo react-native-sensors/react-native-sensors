@@ -8,7 +8,12 @@
 
 const sensorMock = (observerValue) => ({
   subscribe: (observer) => {
-    observer(observerValue || { x: 0, y: 0, z: 0, timestamp: 0 })
+    if ('next' in observer) {
+      observer.next(observerValue || { x: 0, y: 0, z: 0, timestamp: 0 })
+    } else {
+      observer(observerValue || { x: 0, y: 0, z: 0, timestamp: 0 })
+    }
+
     return ({ unsubscribe: jest.fn() })
   },
 })
