@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#F5FCFF",
-    marginTop: 50,
+    marginVertical: 25,
   },
   headline: {
     fontSize: 30,
