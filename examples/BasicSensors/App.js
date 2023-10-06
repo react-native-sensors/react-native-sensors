@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView } from "react-native";
+import { SafeAreaView, ScrollView } from "react-native";
 import SensorView from "./SensorView";
 
 export const App = () => {
@@ -14,11 +14,13 @@ export const App = () => {
   };
 
   return (
-    <ScrollView>
-      {Object.entries(availableSensors).map(([name, values]) => (
-        <SensorView key={name} sensorName={name} values={values} />
-      ))}
-    </ScrollView>
+    <SafeAreaView>
+      <ScrollView>
+        {Object.entries(availableSensors).map(([name, values]) => (
+          <SensorView key={name} sensorName={name} values={values} />
+        ))}
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
