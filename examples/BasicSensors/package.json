@@ -8,8 +8,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "windows": "react-native run-windows",
-    "pod": "cd ios/ && pod install",
-    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --dev=true --platform='ios'"
+    "pod": "cd ios/ && pod install"
   },
   "dependencies": {
     "react": "^17.0.2",
@@ -20,7 +19,7 @@
   "devDependencies": {
     "babel-jest": "23.6.0",
     "jest": "23.6.0",
-    "metro-react-native-babel-preset": "^0.67.0",
+    "metro-react-native-babel-preset": "^0.68.0",
     "react-test-renderer": "^17.0.0"
   },
   "jest": {
