@@ -72,7 +72,10 @@ RCT_EXPORT_METHOD(getData:(RCTResponseSenderBlock) cb) {
     if (self->logLevel > 0) {
         NSLog(@"getData: %d", proximityState);
     }
-    cb(@[[NSNull null], @{@"proximity": @(proximityState)}]);
+    cb(@[[NSNull null], @{
+                 @"is_close" : @(proximityState),
+                 @"distance": @(proximityState ? 0 : 10),
+    }]);
 }
 
 RCT_EXPORT_METHOD(startUpdates) {
@@ -88,7 +91,16 @@ RCT_EXPORT_METHOD(startUpdates) {
 
 - (void)proximityStateDidChange:(NSNotification *)notification {
     BOOL proximityState = [UIDevice currentDevice].proximityState;
-    [self sendEventWithName:@"RNSensorsProximity" body:@{@"proximity": @(proximityState)}];
+
+    cb(@[[NSNull null], @{
+                 @"is_close" : @(proximityState),
+                 @"distance": @(proximityState ? 0 : 10),
+    }]);
+    [self sendEventWithName:@"RNSensorsProximity"
+                      body:@{
+                             @"is_close": @(proximityState),
+                             @"distance": @(proximityState ? 0 : 10),
+                             }];
 }
 
 RCT_EXPORT_METHOD(stopUpdates) {

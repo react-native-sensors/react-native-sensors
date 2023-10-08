@@ -10,7 +10,7 @@ export const App = () => {
     gyroscope: axis,
     magnetometer: axis,
     barometer: ["pressure"],
-    proximity: ["proximity"],
+    proximity: ["distance", "is_close"],
   };
 
   return (
