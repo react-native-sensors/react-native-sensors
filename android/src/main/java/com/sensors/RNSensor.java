@@ -30,6 +30,9 @@ public class RNSensor extends ReactContextBaseJavaModule implements SensorEventL
   private float[] rotation = new float[9];
   private float[] orientation = new float[3];
   private float[] quaternion = new float[4];
+  private boolean isClose = false;
+  private double lastCloseTime = 0;
+  private double lastFarTime = 0;
 
   private int listenerCount = 0;
 
@@ -123,6 +126,24 @@ public class RNSensor extends ReactContextBaseJavaModule implements SensorEventL
 
         case Sensor.TYPE_PRESSURE:
           map.putDouble("pressure", sensorEvent.values[0]);
+          break;
+
+        case Sensor.TYPE_PROXIMITY:
+          float distance = sensorEvent.values[0];
+
+          if (distance <= 3) {
+            if (tempMs - lastCloseTime >= 500) {
+              isClose = true;
+              lastCloseTime = tempMs;
+            }
+          } else if (distance >= 7) {
+            if (tempMs - lastFarTime >= 500) {
+              isClose = false;
+              lastFarTime = tempMs;
+            }
+          }
+          map.putDouble("distance", distance);
+          map.putDouble("is_close", isClose);
           break;
 
         case Sensor.TYPE_ROTATION_VECTOR:

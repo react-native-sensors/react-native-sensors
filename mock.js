@@ -8,18 +8,19 @@
 
 const sensorMock = (observerValue) => ({
   subscribe: (observer) => {
-    observer(observerValue || { x: 0, y: 0, z: 0, timestamp: 0 })
-    return ({ unsubscribe: jest.fn() })
+    observer(observerValue || { x: 0, y: 0, z: 0, timestamp: 0 });
+    return { unsubscribe: jest.fn() };
   },
-})
+});
 
 const rnSensors = {
   SensorTypes: {
-    accelerometer: 'accelerometer',
-    gyroscope: 'gyroscope',
-    magnetometer: 'magnetometer',
-    barometer: 'barometer',
-    gravity: 'gravity'
+    accelerometer: "accelerometer",
+    gyroscope: "gyroscope",
+    magnetometer: "magnetometer",
+    barometer: "barometer",
+    gravity: "gravity",
+    proximity: "proximity",
   },
 
   accelerometer: sensorMock(),
@@ -27,9 +28,10 @@ const rnSensors = {
   magnetometer: sensorMock(),
   barometer: sensorMock({ pressure: 0 }),
   gravity: sensorMock(),
+  proximity: sensorMock({ distance: 0, is_close: false }),
 
   setLogLevelForType: jest.fn(),
   setUpdateIntervalForType: jest.fn(),
-}
+};
 
-module.exports = rnSensors
+module.exports = rnSensors;
