@@ -63,7 +63,7 @@
     "babel-preset-react-native": "4.0.0",
     "husky": "4.2.3",
     "jest": "24.1.0",
-    "metro-config": "^0.67.0",
+    "metro-config": "^0.80.0",
     "prettier": "2.2.1",
     "pretty-quick": "3.1.0",
     "react": "^17.0.2",
