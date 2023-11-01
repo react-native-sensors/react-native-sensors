@@ -95,17 +95,23 @@ RCT_EXPORT_METHOD(startUpdates) {
         NSLog(@"startUpdates/startRelativeAltitudeUpdates");
     }
 
+    __weak RNSensorsBarometer *weakSelf = self;
     [self->_altimeter startRelativeAltitudeUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMAltitudeData * _Nullable altitudeData, NSError * _Nullable error) {
+        RNSensorsBarometer *strongSelf = weakSelf;
+        if (!strongSelf) {
+            return;
+        }
+        
         if (error) {
             NSLog(@"error while getting sensor data");
         }
 
         if (altitudeData) {
-            if (self->logLevel > 1) {
+            if (strongSelf->logLevel > 1) {
                 NSLog(@"Updated altitue value: %f, %f, %f", altitudeData.pressure.doubleValue, altitudeData.timestamp, [RNSensorsUtils sensorTimestampToEpochMilliseconds:altitudeData.timestamp]);
             }
 
-            [self sendEventWithName:@"RNSensorsBarometer" body:@{
+            [strongSelf sendEventWithName:@"RNSensorsBarometer" body:@{
                 @"pressure" : @(altitudeData.pressure.doubleValue * 10.0),
                 @"timestamp" : [NSNumber numberWithDouble:[RNSensorsUtils sensorTimestampToEpochMilliseconds:altitudeData.timestamp]]
             }];

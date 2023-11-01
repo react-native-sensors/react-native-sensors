@@ -112,20 +112,25 @@ RCT_EXPORT_METHOD(startUpdates) {
 
     [self->_motionManager startAccelerometerUpdates];
 
+    __weak RNSensorsAccelerometer *weakSelf = self;
     /* Receive the accelerometer data on this block */
     [self->_motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue mainQueue]
                                                withHandler:^(CMAccelerometerData *accelerometerData, NSError *error)
      {
+         RNSensorsAccelerometer *strongSelf = weakSelf;
+         if (!strongSelf) {
+             return;
+         }
          double x = accelerometerData.acceleration.x;
          double y = accelerometerData.acceleration.y;
          double z = accelerometerData.acceleration.z;
          double timestamp = [RNSensorsUtils sensorTimestampToEpochMilliseconds:accelerometerData.timestamp];
 
-         if (self->logLevel > 1) {
+         if (strongSelf->logLevel > 1) {
              NSLog(@"Updated accelerometer values: %f, %f, %f, %f", x, y, z, timestamp);
          }
 
-         [self sendEventWithName:@"RNSensorsAccelerometer" body:@{
+         [strongSelf sendEventWithName:@"RNSensorsAccelerometer" body:@{
                                                            @"x" : [NSNumber numberWithDouble:x],
                                                            @"y" : [NSNumber numberWithDouble:y],
                                                            @"z" : [NSNumber numberWithDouble:z],
