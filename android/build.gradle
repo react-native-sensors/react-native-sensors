@@ -17,7 +17,7 @@ buildscript {
     }
 
     dependencies {
-        classpath("com.android.tools.build:gradle:7.2.0")
+        classpath("com.android.tools.build:gradle:7.3.1")
     }
 }
 
@@ -27,8 +27,8 @@ android {
     compileSdkVersion safeExtGet('compileSdkVersion', 23)
 
     defaultConfig {
-        minSdkVersion 17
-        targetSdkVersion 30
+        minSdkVersion 26
+        targetSdkVersion 32
         versionCode 1
         versionName "1.0"
         ndk {

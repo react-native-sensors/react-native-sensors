@@ -10,6 +10,7 @@ const {
   RNSensorsBarometer: BarNative,
   RNSensorsOrientation: OrientNative,
   RNSensorsGravity: GravNative,
+  RNSensorsLuminance: LuminanceNative,
 } = NativeModules;
 
 const listenerKeys = new Map([
@@ -19,6 +20,7 @@ const listenerKeys = new Map([
   ["barometer", "RNSensorsBarometer"],
   ["orientation", "RNSensorsOrientation"],
   ["gravity", "RNSensorsGravity"],
+  ["luminance", "RNSensorsLuminance"],
 ]);
 
 const nativeApis = new Map([
@@ -28,6 +30,7 @@ const nativeApis = new Map([
   ["barometer", BarNative],
   ["orientation", OrientNative],
   ["gravity", GravNative],
+  ["luminance", LuminanceNative],
 ]);
 
 const eventEmitterSubscription = new Map([
@@ -37,6 +40,7 @@ const eventEmitterSubscription = new Map([
   ["barometer", null],
   ["orientation", null],
   ["gravity", null],
+  ["luminance", null],
 ]);
 
 function createSensorObservable(sensorType) {
@@ -86,6 +90,7 @@ const magnetometer = createSensorObservable("magnetometer");
 const barometer = createSensorObservable("barometer");
 const orientation = createSensorObservable("orientation");
 const gravity = createSensorObservable("gravity");
+const luminance = createSensorObservable("luminance");
 
 export default {
   gyroscope,
@@ -94,4 +99,5 @@ export default {
   barometer,
   orientation,
   gravity,
+  luminance,
 };

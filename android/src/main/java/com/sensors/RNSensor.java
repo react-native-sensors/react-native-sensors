@@ -31,7 +31,9 @@ public class RNSensor extends ReactContextBaseJavaModule implements SensorEventL
   private float[] orientation = new float[3];
   private float[] quaternion = new float[4];
 
-  private int listenerCount = 0;
+  private final Sensor mSensorLight;
+
+  private Boolean isBeingObserved = false;
 
   public RNSensor(ReactApplicationContext reactContext, String sensorName, int sensorType) {
     super(reactContext);
@@ -40,6 +42,8 @@ public class RNSensor extends ReactContextBaseJavaModule implements SensorEventL
     this.sensorName = sensorName;
     this.sensorManager = (SensorManager)reactContext.getSystemService(reactContext.SENSOR_SERVICE);
     this.sensor = this.sensorManager.getDefaultSensor(this.sensorType);
+
+    this.mSensorLight = this.sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
   }
 
   // RN Methods
@@ -96,7 +100,7 @@ public class RNSensor extends ReactContextBaseJavaModule implements SensorEventL
 
   @Override
   public void onSensorChanged(SensorEvent sensorEvent) {
-    if(this.listenerCount <= 0) {
+    if(!isBeingObserved) {
       return; // avoid all the computation if there are no observers
     }
 
@@ -140,6 +144,10 @@ public class RNSensor extends ReactContextBaseJavaModule implements SensorEventL
           map.putDouble("roll", orientation[2]);
           break;
 
+        case Sensor.TYPE_LIGHT:
+          map.putDouble("lux", sensorEvent.values[0]);
+          break;
+
         default:
           Log.e("ERROR", "Sensor type '" + currentType + "' not implemented!");
           return;
@@ -159,17 +167,36 @@ public class RNSensor extends ReactContextBaseJavaModule implements SensorEventL
   // not implementing this method will cause a warning on RN 0.65 onwards
   @ReactMethod
   public void addListener(String eventName) {
-    this.listenerCount += 1;
+    isBeingObserved = true;
   }
 
   // this is called by RN when the last listener is deregistered
   // not implementing this method will cause a warning on RN 0.65 onwards
   @ReactMethod
   public void removeListeners(Integer count) {
-    this.listenerCount -= count;
-    // If we no longer have listeners registered we should also probably also stop the sensor since the sensor events are essentially being dropped.
-    if (this.sensorManager != null && this.listenerCount <= 0) {
-      stopUpdates(); // maybe only calling `stopUpdates()` is enough
+    isBeingObserved = false;
+    stopUpdates(); // maybe only calling `stopUpdates()` is enough
+  }
+
+  @ReactMethod
+  public void hasLightSensor(Promise promise) {
+    boolean hasSensor = mSensorLight != null;
+    promise.resolve(hasSensor);
+  }
+
+  @ReactMethod
+  public void startLightSensor() {
+    if (mSensorLight == null) {
+      return;
     }
+    sensorManager.registerListener(this, mSensorLight, SensorManager.SENSOR_DELAY_NORMAL);
+  }
+
+  @ReactMethod
+  public void stopLightSensor() {
+    if (mSensorLight == null) {
+      return;
+    }
+    sensorManager.unregisterListener(this);
   }
 }
