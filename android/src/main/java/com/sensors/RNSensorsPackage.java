@@ -22,7 +22,6 @@ public class RNSensorsPackage implements ReactPackage {
         new RNSensor(reactContext, "RNSensorsBarometer", Sensor.TYPE_PRESSURE),
         new RNSensor(reactContext, "RNSensorsOrientation", Sensor.TYPE_ROTATION_VECTOR),
         new RNSensor(reactContext, "RNSensorsLuminance", Sensor.TYPE_LIGHT)
-        //FAHAD
       );
     }
 
