@@ -99,5 +99,5 @@ export default {
   barometer,
   orientation,
   gravity,
-  luminance,
+  illuminance,
 };
