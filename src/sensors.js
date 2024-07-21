@@ -90,7 +90,7 @@ const magnetometer = createSensorObservable("magnetometer");
 const barometer = createSensorObservable("barometer");
 const orientation = createSensorObservable("orientation");
 const gravity = createSensorObservable("gravity");
-const luminance = createSensorObservable("luminance");
+const illuminance = createSensorObservable("illuminance");
 
 export default {
   gyroscope,
