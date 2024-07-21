@@ -6,7 +6,7 @@ const {
   RNSensorsBarometer: BarNative,
   RNSensorsOrientation: OrientNative,
   RNSensorsGravity: GravNative,
-  RNSensorsLuminance: LuminanceNative,
+  RNSensorsIlluminance: IlluminanceNative,
 } = NativeModules;
 
 if (!GyroNative && !AccNative && !MagnNative && !BarNative && !OrientNative && !GravNative) {
