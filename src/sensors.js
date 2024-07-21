@@ -30,7 +30,7 @@ const nativeApis = new Map([
   ["barometer", BarNative],
   ["orientation", OrientNative],
   ["gravity", GravNative],
-  ["luminance", LuminanceNative],
+  ["illuminance", IlluminanceNative],
 ]);
 
 const eventEmitterSubscription = new Map([
