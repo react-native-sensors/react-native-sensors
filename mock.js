@@ -6,7 +6,7 @@
  * ```
  */
 
-const { luminance } = require(".")
+const { illuminance } = require(".")
 
 const sensorMock = (observerValue) => ({
   subscribe: (observer) => {
