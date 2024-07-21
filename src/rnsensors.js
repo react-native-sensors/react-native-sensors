@@ -20,7 +20,7 @@ const nativeApis = new Map([
   ["barometer", BarNative],
   ["orientation", OrientNative],
   ["gravity", GravNative],
-  ["luminance", LuminanceNative],
+  ["illuminance", IlluminanceNative],
 ]);
 
 // Cache the availability of sensors
