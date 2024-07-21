@@ -22,7 +22,7 @@ const rnSensors = {
     magnetometer: 'magnetometer',
     barometer: 'barometer',
     gravity: 'gravity',
-    luminance: "luminance",
+    illuminance: "illuminance",
   },
 
   accelerometer: sensorMock(),
