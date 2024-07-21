@@ -40,7 +40,7 @@ declare module "react-native-sensors" {
     timestamp: number;
   }
 
-  export interface LuminanceData {
+  export interface IlluminanceData {
     lux: number;
   }
 
