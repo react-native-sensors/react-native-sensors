@@ -8,7 +8,7 @@ export const SensorTypes = {
   barometer: "barometer",
   orientation: "orientation",
   gravity: "gravity",
-  luminance: "luminance",
+  illuminance: "illuminance",
 };
 
 export const { accelerometer, gyroscope, magnetometer, barometer, orientation, gravity, luminance } = sensors;
