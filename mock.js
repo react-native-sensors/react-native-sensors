@@ -30,7 +30,7 @@ const rnSensors = {
   magnetometer: sensorMock(),
   barometer: sensorMock({ pressure: 0 }),
   gravity: sensorMock(),
-  luminance: sensorMock({ luminance: 0 }),
+  illuminance: sensorMock({ illuminance: 0 }),
 
   setLogLevelForType: jest.fn(),
   setUpdateIntervalForType: jest.fn(),
