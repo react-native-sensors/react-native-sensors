@@ -40,7 +40,7 @@ const eventEmitterSubscription = new Map([
   ["barometer", null],
   ["orientation", null],
   ["gravity", null],
-  ["luminance", null],
+  ["illuminance", null],
 ]);
 
 function createSensorObservable(sensorType) {
