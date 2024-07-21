@@ -8,7 +8,7 @@ declare module "react-native-sensors" {
     barometer: "barometer";
     orientation: "orientation";
     gravity: "gravity";
-    luminance: "luminance";
+    illuminance: "illuminance";
   };
 
   export const SensorTypes: Sensors;
