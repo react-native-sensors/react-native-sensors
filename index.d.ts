@@ -51,7 +51,7 @@ declare module "react-native-sensors" {
     barometer: Observable<BarometerData>;
     orientation: Observable<OrientationData>;
     gravity: Observable<SensorData>;
-    luminance: Observable<LuminanceData>;
+    illluminance: Observable<IlluminanceData>;
   };
 
   export const { accelerometer, gyroscope, magnetometer, barometer, orientation, gravity, luminance }: SensorsBase;
