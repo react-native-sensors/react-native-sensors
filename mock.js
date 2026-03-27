@@ -6,6 +6,8 @@
  * ```
  */
 
+const { illuminance } = require(".")
+
 const sensorMock = (observerValue) => ({
   subscribe: (observer) => {
     observer(observerValue || { x: 0, y: 0, z: 0, timestamp: 0 })
@@ -19,7 +21,8 @@ const rnSensors = {
     gyroscope: 'gyroscope',
     magnetometer: 'magnetometer',
     barometer: 'barometer',
-    gravity: 'gravity'
+    gravity: 'gravity',
+    illuminance: "illuminance",
   },
 
   accelerometer: sensorMock(),
@@ -27,6 +30,7 @@ const rnSensors = {
   magnetometer: sensorMock(),
   barometer: sensorMock({ pressure: 0 }),
   gravity: sensorMock(),
+  illuminance: sensorMock({ illuminance: 0 }),
 
   setLogLevelForType: jest.fn(),
   setUpdateIntervalForType: jest.fn(),
