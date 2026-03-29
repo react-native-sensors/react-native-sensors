@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06D0E5972AD0742A004FC3FF /* RNSensorsProximity.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D0E5952AD0742A004FC3FF /* RNSensorsProximity.m */; };
 		8C5B457D24598D650018E8BA /* RNSensorsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5B457C24598D650018E8BA /* RNSensorsUtils.m */; };
 		B18A2800205ADE2700ED2038 /* RNSensorsMagnetometer.m in Sources */ = {isa = PBXBuildFile; fileRef = B18A27FF205ADE2700ED2038 /* RNSensorsMagnetometer.m */; };
 		D5E5AE36256688A10036B102 /* RNSensorsOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E5AE35256688A10036B102 /* RNSensorsOrientation.m */; };
@@ -28,6 +29,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		06D0E5952AD0742A004FC3FF /* RNSensorsProximity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSensorsProximity.m; sourceTree = "<group>"; };
+		06D0E5962AD0742A004FC3FF /* RNSensorsProximity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNSensorsProximity.h; sourceTree = "<group>"; };
 		134814201AA4EA6300B7C361 /* libRNSensors.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNSensors.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C5B457C24598D650018E8BA /* RNSensorsUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSensorsUtils.m; sourceTree = "<group>"; };
 		8C5B457F245992780018E8BA /* RNSensorsUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNSensorsUtils.h; sourceTree = "<group>"; };
@@ -77,6 +80,8 @@
 				E7FCE18A1E150266005C5155 /* RNSensorsAccelerometer.m */,
 				E7FCE1861E14639E005C5155 /* RNSensorsGyroscope.h */,
 				E7FCE1871E14639E005C5155 /* RNSensorsGyroscope.m */,
+				06D0E5962AD0742A004FC3FF /* RNSensorsProximity.h */,
+				06D0E5952AD0742A004FC3FF /* RNSensorsProximity.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7FCE1881E14639E005C5155 /* RNSensorsGyroscope.m in Sources */,
+				06D0E5972AD0742A004FC3FF /* RNSensorsProximity.m in Sources */,
 				E7FCE18B1E150266005C5155 /* RNSensorsAccelerometer.m in Sources */,
 				D5E5AE36256688A10036B102 /* RNSensorsOrientation.m in Sources */,
 				B18A2800205ADE2700ED2038 /* RNSensorsMagnetometer.m in Sources */,

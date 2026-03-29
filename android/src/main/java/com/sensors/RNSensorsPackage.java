@@ -20,7 +20,8 @@ public class RNSensorsPackage implements ReactPackage {
         new RNSensor(reactContext, "RNSensorsGravity", Sensor.TYPE_GRAVITY),
         new RNSensor(reactContext, "RNSensorsMagnetometer", Sensor.TYPE_MAGNETIC_FIELD),
         new RNSensor(reactContext, "RNSensorsBarometer", Sensor.TYPE_PRESSURE),
-        new RNSensor(reactContext, "RNSensorsOrientation", Sensor.TYPE_ROTATION_VECTOR)
+        new RNSensor(reactContext, "RNSensorsOrientation", Sensor.TYPE_ROTATION_VECTOR),
+        new RNSensor(reactContext, "RNSensorsProximity", Sensor.TYPE_PROXIMITY)
       );
     }
 

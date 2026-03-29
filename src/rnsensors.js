@@ -6,9 +6,10 @@ const {
   RNSensorsBarometer: BarNative,
   RNSensorsOrientation: OrientNative,
   RNSensorsGravity: GravNative,
+  RNSensorsProximity: ProxNative,
 } = NativeModules;
 
-if (!GyroNative && !AccNative && !MagnNative && !BarNative && !OrientNative && !GravNative) {
+if (!GyroNative && !AccNative && !MagnNative && !BarNative && !OrientNative && !GravNative && !ProxNative) {
   throw new Error("Native modules for sensors not available. Did react-native link run successfully?");
 }
 
@@ -19,6 +20,7 @@ const nativeApis = new Map([
   ["barometer", BarNative],
   ["orientation", OrientNative],
   ["gravity", GravNative],
+  ["proximity", ProxNative],
 ]);
 
 // Cache the availability of sensors

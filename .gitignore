@@ -29,7 +29,7 @@ project.xcworkspace
 .idea
 .gradle
 local.properties
-
+.hprof
 
 # node.js
 #
