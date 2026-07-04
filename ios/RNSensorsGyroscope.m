@@ -110,20 +110,25 @@ RCT_EXPORT_METHOD(startUpdates) {
 
     [self->_motionManager startGyroUpdates];
 
+    __weak RNSensorsGyroscope *weakSelf = self;
     /* Receive the gyroscope data on this block */
     [self->_motionManager startGyroUpdatesToQueue:[NSOperationQueue mainQueue]
                                       withHandler:^(CMGyroData *gyroData, NSError *error)
      {
+         RNSensorsGyroscope *strongSelf = weakSelf;
+         if (!strongSelf) {
+             return;
+         }
          double x = gyroData.rotationRate.x;
          double y = gyroData.rotationRate.y;
          double z = gyroData.rotationRate.z;
          double timestamp = [RNSensorsUtils sensorTimestampToEpochMilliseconds:gyroData.timestamp];
 
-         if (self->logLevel > 1) {
+         if (strongSelf->logLevel > 1) {
              NSLog(@"Updated gyro values: %f, %f, %f, %f", x, y, z, timestamp);
          }
 
-         [self sendEventWithName:@"RNSensorsGyroscope" body:@{
+         [strongSelf sendEventWithName:@"RNSensorsGyroscope" body:@{
                                                          @"x" : [NSNumber numberWithDouble:x],
                                                          @"y" : [NSNumber numberWithDouble:y],
                                                          @"z" : [NSNumber numberWithDouble:z],

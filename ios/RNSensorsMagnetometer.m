@@ -113,20 +113,25 @@ RCT_EXPORT_METHOD(startUpdates) {
 
     [self->_motionManager startMagnetometerUpdates];
 
+    __weak RNSensorsMagnetometer *weakSelf = self;
     /* Receive the magnetometer data on this block */
     [self->_motionManager startMagnetometerUpdatesToQueue:[NSOperationQueue mainQueue]
                                                withHandler:^(CMMagnetometerData *magnetometerData, NSError *error)
      {
+         RNSensorsMagnetometer *strongSelf = weakSelf;
+         if (!strongSelf) {
+             return;
+         }
          double x = magnetometerData.magneticField.x;
          double y = magnetometerData.magneticField.y;
          double z = magnetometerData.magneticField.z;
          double timestamp = [RNSensorsUtils sensorTimestampToEpochMilliseconds:magnetometerData.timestamp];
 
-         if (self->logLevel > 1) {
+         if (strongSelf->logLevel > 1) {
              NSLog(@"Updated magnetometer values: %f, %f, %f, %f", x, y, z, timestamp);
          }
 
-         [self sendEventWithName:@"RNSensorsMagnetometer" body:@{
+         [strongSelf sendEventWithName:@"RNSensorsMagnetometer" body:@{
                                                            @"x" : [NSNumber numberWithDouble:x],
                                                            @"y" : [NSNumber numberWithDouble:y],
                                                            @"z" : [NSNumber numberWithDouble:z],

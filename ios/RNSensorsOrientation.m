@@ -126,10 +126,15 @@ RCT_EXPORT_METHOD(startUpdates) {
 
     [self->_motionManager setShowsDeviceMovementDisplay:YES];
 
+    __weak RNSensorsOrientation *weakSelf = self;
     /* Receive the orientation data on this block */
 		NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     [self->_motionManager startDeviceMotionUpdatesToQueue:queue withHandler:^(CMDeviceMotion *deviceMotion, NSError *error)
      {
+         RNSensorsOrientation *strongSelf = weakSelf;
+         if (!strongSelf) {
+             return;
+         }
          CMAttitude *attitude = deviceMotion.attitude;
          
          double qx = attitude.quaternion.x;
@@ -143,12 +148,12 @@ RCT_EXPORT_METHOD(startUpdates) {
 
          double timestamp = [RNSensorsUtils sensorTimestampToEpochMilliseconds:deviceMotion.timestamp];
 
-         if (self->logLevel > 1) {
+         if (strongSelf->logLevel > 1) {
              NSLog(@"Updated device motion pitch/roll/yaw: %f, %f, %f, %f", pitch, roll, yaw, timestamp);
              NSLog(@"Updated device motion quaternion: %f, %f, %f, %f %f", qx, qy, qz, qw, timestamp);
          }
 
-         [self sendEventWithName:@"RNSensorsOrientation" body:@{
+         [strongSelf sendEventWithName:@"RNSensorsOrientation" body:@{
                                                            @"pitch" : [NSNumber numberWithDouble:pitch],
                                                            @"roll" : [NSNumber numberWithDouble:roll],
                                                            @"yaw" : [NSNumber numberWithDouble:yaw],

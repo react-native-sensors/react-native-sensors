@@ -112,23 +112,27 @@ RCT_EXPORT_METHOD(startUpdates) {
     }
 
     [self->_motionManager setShowsDeviceMovementDisplay:YES];
-
+    
+    __weak RNSensorsGravity *weakSelf = self;
     /* Receive the orientation data on this block */
     [self->_motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue mainQueue]
                                                withHandler:^(CMDeviceMotion *deviceMotion, NSError *error)
      {
-
+        RNSensorsGravity *strongSelf = weakSelf;
+        if (!strongSelf) {
+            return;
+        }
         double x = deviceMotion.gravity.x;
         double y = deviceMotion.gravity.y;
         double z = deviceMotion.gravity.z;
 
          double timestamp = [RNSensorsUtils sensorTimestampToEpochMilliseconds:deviceMotion.timestamp];
 
-         if (self->logLevel > 1) {
+         if (strongSelf->logLevel > 1) {
              NSLog(@"Updated gravity values: %f, %f, %f, %f", x, y, z, timestamp);
          }
 
-         [self sendEventWithName:@"RNSensorsGravity" body:@{
+         [strongSelf sendEventWithName:@"RNSensorsGravity" body:@{
                                                            @"x" : [NSNumber numberWithDouble:x],
                                                            @"y" : [NSNumber numberWithDouble:y],
                                                            @"z" : [NSNumber numberWithDouble:z],
