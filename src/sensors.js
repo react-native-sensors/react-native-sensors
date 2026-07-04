@@ -51,8 +51,8 @@ function createSensorObservable(sensorType) {
     };
 
     RNSensors.isAvailable(sensorType).then(
-      () => {
-        this.isSensorAvailable = true;
+      (available) => {
+        this.isSensorAvailable = available;
 
         const emitter = new NativeEventEmitter(nativeApis.get(sensorType));
 
@@ -67,7 +67,7 @@ function createSensorObservable(sensorType) {
         RNSensors.start(sensorType);
       },
       () => {
-        observer.error(`Sensor ${sensorType} is not available`);
+        this.isSensorAvailable = false;
       }
     );
 
