@@ -13,7 +13,7 @@ jobs:
       - name: Use Node.js v13.12.0
         uses: actions/setup-node@v2
         with:
-          node-version: v13.12.0
+          node-version: 24.18.0
       - name: Deploy Website
         run: ./scripts/publish-website.sh
         env:
