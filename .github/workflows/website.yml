@@ -9,7 +9,7 @@ jobs:
     name: Deploy Website
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v7
       - name: Use Node.js v13.12.0
         uses: actions/setup-node@v2
         with:
