@@ -51,7 +51,7 @@
   "peerDependencies": {
     "prop-types": "^15.6.0",
     "react-native": ">=0.39.0",
-    "react-native-windows": "^0.68.15"
+    "react-native-windows": "^0.68.15 || ^0.84.0"
   },
   "dependencies": {
     "rxjs": ">= 6"
