@@ -46,6 +46,6 @@ android {
 
 dependencies {
     implementation 'com.facebook.react:react-native:+'
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.8.0'
     implementation 'androidx.annotation:annotation:1.0.2'
 }
